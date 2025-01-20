@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { globalReducer } from './slices/globalSlice';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 
 export * from './constants';
 export * from './services';
@@ -9,12 +9,12 @@ export * from './states';
 export * from './thunk';
 
 const rootReducer = combineReducers({
-  global: globalReducer,
+  global: globalReducer
 });
 
 export const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.REACT_APP_ENVIRONMENT === 'development',
+  devTools: process.env.REACT_APP_ENVIRONMENT === 'development'
 });
 
 export type IApplicationState = ReturnType<typeof store.getState>;

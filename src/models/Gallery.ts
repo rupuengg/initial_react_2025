@@ -1,4 +1,4 @@
-import { IPhoto } from "./Photo";
+import { IPhoto } from './Photo';
 
 export interface IGallery {
   type: string;

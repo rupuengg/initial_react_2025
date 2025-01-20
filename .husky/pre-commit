@@ -1,0 +1,3 @@
+npx eslint src/components/**
+npx prettier --write ./src/**/*.{ts,tsx}
+# npm test

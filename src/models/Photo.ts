@@ -22,11 +22,11 @@ export interface IPhoto {
   fileId: string;
   tags?: string;
   AITags?: string;
-  versionInfo: IVersionInfo,
+  versionInfo: IVersionInfo;
   embeddedMetadata: IEmbeddedMetadata;
   isPublished: string;
   customCoordinates?: string;
-  customMetadata: ICutomPhoto,
+  customMetadata: ICutomPhoto;
   isPrivateFile: boolean;
   url: string;
   thumbnail: string;
