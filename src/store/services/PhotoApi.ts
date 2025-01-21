@@ -15,14 +15,14 @@ export interface IPhotoApi {
 export const PhotoApi: IPhotoApi = {
   getAll: async (): Promise<IPhoto[]> => {
     try {
-      return (await imageKitAxiosInstance.get(`${ApiPath.PATH}`, { headers: { 'Content-Type': 'application/json' } })).data;
+      return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.PHOTO_PATH}`, { headers: { 'Content-Type': 'application/json' } })).data;
     } catch {
       return [];
     }
   },
   getByKey: async (key: string): Promise<IPhoto> => {
     try {
-      return (await imageKitAxiosInstance.get(`${ApiPath.PATH}/${key}`, { headers: { 'Content-Type': 'application/json' } })).data;
+      return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}/${key}`, { headers: { 'Content-Type': 'application/json' } })).data;
     } catch {
       throw new Error('Error while converting');
     }
@@ -30,7 +30,7 @@ export const PhotoApi: IPhotoApi = {
   create: async (photo: IPhoto): Promise<IPhoto> => {
     try {
       return (
-        await imageKitAxiosInstance.post(`${ApiPath.PATH}`, JSON.stringify(photo), {
+        await imageKitAxiosInstance.post(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}`, JSON.stringify(photo), {
           headers: { 'Content-Type': 'application/json' }
         })
       ).data;
@@ -41,7 +41,7 @@ export const PhotoApi: IPhotoApi = {
   update: async (photo: IPhoto): Promise<IPhoto> => {
     try {
       return (
-        await imageKitAxiosInstance.put(`${ApiPath.PATH}`, JSON.stringify(photo), {
+        await imageKitAxiosInstance.put(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}`, JSON.stringify(photo), {
           headers: { 'Content-Type': 'application/json' }
         })
       ).data;
@@ -52,7 +52,7 @@ export const PhotoApi: IPhotoApi = {
   updateActivePage: async (photo: IPhoto): Promise<string> => {
     try {
       return (
-        await imageKitAxiosInstance.put(ApiPath.PATH, JSON.stringify(photo), {
+        await imageKitAxiosInstance.put(ApiPath.PATH.ROUTE_PATH.GALLERY_PATH, JSON.stringify(photo), {
           headers: { 'Content-Type': 'application/json' }
         })
       ).data;
@@ -63,7 +63,7 @@ export const PhotoApi: IPhotoApi = {
   clearActivePage: async (photo: IPhoto): Promise<string> => {
     try {
       return (
-        await imageKitAxiosInstance.put(ApiPath.PATH, JSON.stringify(photo), {
+        await imageKitAxiosInstance.put(ApiPath.PATH.ROUTE_PATH.GALLERY_PATH, JSON.stringify(photo), {
           headers: { 'Content-Type': 'application/json' }
         })
       ).data;
@@ -73,7 +73,7 @@ export const PhotoApi: IPhotoApi = {
   },
   delete: async (key: string): Promise<string> => {
     try {
-      return (await imageKitAxiosInstance.delete(`${ApiPath.PATH}/${key}`, { headers: { 'Content-Type': 'application/json' } })).data;
+      return (await imageKitAxiosInstance.delete(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}/${key}`, { headers: { 'Content-Type': 'application/json' } })).data;
     } catch {
       throw new Error('Error while converting');
     }

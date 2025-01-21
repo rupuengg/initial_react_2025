@@ -26,6 +26,21 @@ const banners = [
   }
 ];
 
+export enum E_Data_Load_Status {
+  NOT_YET_STARTED = 'notyetstarted',
+  FULFULLED = 'fulfilled',
+  PENDING = 'pending',
+  REJECTED = 'rejected'
+}
+
+export interface IDataStatus {
+  loadAllPhotos?: E_Data_Load_Status;
+}
+
+export const EMPTY_DATA_STATUS_ENTITY: IDataStatus = {
+  loadAllPhotos: E_Data_Load_Status.NOT_YET_STARTED
+};
+
 export interface IGlobalState {
   photos: IPhoto[];
   banners: IBanner[];
