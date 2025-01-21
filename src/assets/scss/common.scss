@@ -1,0 +1,99 @@
+$site-max-width: 1200px;
+$site-padding: 0 25px;
+$site-padding-min-width: 0 50px;
+$site-margin: 0 auto;
+
+// Media definition
+$breakpoint-tablet: 768px;
+
+// sass variable map
+$colors: (
+  green: #00a87b,
+  gray: #cccccc,
+  yellow: #ffbb00,
+  red: #ff4633,
+  blue: #436fb6,
+  white: #ffffff,
+  white_1: #fafafa,
+  black: #000000,
+  light_black: #262626,
+  white_logo: #262627,
+  white_font_color: #333333,
+  white_font_color_light: #adadad,
+  nav_menu_font_color: #8a8a8a,
+  nav_menu_font_color_hover: #222222
+);
+
+// loop over each name, color
+:root {
+  // each item in color map
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+}
+
+@function get-color($color, $variant: null) {
+  $color: map-get($colors, $color);
+  @return map-get(
+      (
+        extra-light: mix($color, white, 25%),
+        light: mix($color, white, 50%),
+        semi-light: mix($color, white, 75%),
+        semi-dark: mix($color, black, 75%),
+        dark: mix($color, black, 50%),
+        extra-dark: mix($color, black, 25%)
+      ),
+      $variant
+    )
+    or $color;
+}
+
+.p0 {
+  padding: 0;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.siteCss {
+  position: static;
+  padding: $site-padding;
+  margin: $site-margin;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $site-padding-min-width;
+  }
+
+  .pageTitle {
+    font-size: 32px;
+    margin-bottom: 20px;
+    line-height: 32px;
+  }
+}
+
+html,
+body {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  line-height: 1.5em;
+  text-transform: none;
+  color: #787878;
+}
+
+.clear {
+  clear: both;
+}
+
+.fontawesome {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+:export {
+  site-max-width: $site-max-width;
+  site-padding: $site-padding;
+  site-margin: $site-margin;
+}

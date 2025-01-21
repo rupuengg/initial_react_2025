@@ -1,0 +1,33 @@
+@import 'assets/scss/common.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  & .bottom {
+    display: block;
+    padding: 10px 0;
+    background-color: get_color(light_black);
+
+    & ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: get_color(white);
+      font-size: 8px;
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+
+      @media (min-width: $breakpoint-tablet) {
+        letter-spacing: 0.1em;
+        font-size: 12px;
+      }
+    }
+  }
+}

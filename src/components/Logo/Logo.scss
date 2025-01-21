@@ -1,0 +1,42 @@
+@import 'assets/scss/common.scss';
+
+.logo {
+  display: inline-flex;
+
+  & ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 2px solid get_color(white_logo);
+    border-radius: 20px 0 20px 0;
+
+    & li {
+      float: left;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: get_color(white_logo);
+
+      & div {
+        margin: 10px;
+        line-height: 19px;
+        font-size: 17px;
+        font-weight: 500;
+
+        @media (max-width: $breakpoint-tablet) {
+          margin: 6px;
+          font-size: 18px;
+        }
+      }
+
+      &:last-child {
+        border-left: 2px solid get_color(white_logo);
+
+        & div {
+          padding-left: 10px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

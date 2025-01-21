@@ -1,24 +1,21 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IPhoto } from 'models';
-import { IGlobalState } from 'store';
-import { defaultGlobalState } from 'store';
-import { getAllPhotos } from 'store';
-
-export const GLOABL_SLICE = 'globalSlice';
+import { IGlobalState, defaultGlobalState } from 'store/states';
+import { getAllPhotos } from 'store/thunk';
 
 export const globalSlice = createSlice({
-  name: GLOABL_SLICE,
+  name: 'globalSlice',
   initialState: defaultGlobalState,
   reducers: {
     setAllPhotos(draft: IGlobalState, action: PayloadAction<IPhoto[]>) {
       draft.photos = action.payload;
-    },
+    }
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder.addCase(getAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IPhoto[]>) => {
       globalSlice.caseReducers.setAllPhotos(draft, action);
     });
-  },
+  }
 });
 
 export const GlobalActions = globalSlice.actions;
