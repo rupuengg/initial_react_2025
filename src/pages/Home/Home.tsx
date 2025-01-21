@@ -4,7 +4,7 @@ import { Footer, Header } from 'pages/Common';
 import { Link } from 'react-router-dom';
 import { BannerList, Enquiry, Offer } from 'components';
 
-const Home = () => {
+export const Home = () => {
   return (
     <>
       <Header />
@@ -25,5 +25,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;

@@ -1,0 +1,25 @@
+@import 'assets/scss/common.scss';
+
+.noMatch {
+  display: block;
+
+  & .content {
+    display: block;
+
+    padding: 100px 0;
+
+    & a {
+      font-size: 16px;
+      color: get_color(nav_menu_font_color);
+      text-decoration: none;
+      letter-spacing: 0.1rem;
+      padding: 0 0 4px 0;
+      border-bottom: 1px solid get_color(nav_menu_font_color);
+
+      &:hover {
+        border-bottom: 1px solid transparent;
+        color: get_color(nav_menu_font_color_hover);
+      }
+    }
+  }
+}
