@@ -10,27 +10,27 @@ import { IOffer } from 'models/Offer';
 
 const banners = [
   {
-    img: banner1
+    img: banner1,
   },
   {
-    img: banner2
+    img: banner2,
   },
   {
-    img: banner3
+    img: banner3,
   },
   {
-    img: banner4
+    img: banner4,
   },
   {
-    img: banner5
-  }
+    img: banner5,
+  },
 ];
 
 export enum E_Data_Load_Status {
   NOT_YET_STARTED = 'notyetstarted',
   FULFULLED = 'fulfilled',
   PENDING = 'pending',
-  REJECTED = 'rejected'
+  REJECTED = 'rejected',
 }
 
 export interface IDataStatus {
@@ -38,7 +38,7 @@ export interface IDataStatus {
 }
 
 export const EMPTY_DATA_STATUS_ENTITY: IDataStatus = {
-  loadAllPhotos: E_Data_Load_Status.NOT_YET_STARTED
+  loadAllPhotos: E_Data_Load_Status.NOT_YET_STARTED,
 };
 
 export interface IGlobalState {
@@ -52,5 +52,5 @@ export const defaultGlobalState: IGlobalState = {
   photos: [],
   banners,
   navigation: navData,
-  offers: offerData
+  offers: offerData,
 };

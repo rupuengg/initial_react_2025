@@ -1,6 +1,6 @@
-import { imageKitAxiosInstance } from './axios';
 import { IPhoto } from 'models';
 import { ApiPath } from 'store/constants';
+import { imageKitAxiosInstance } from './axios';
 
 export interface IPhotoApi {
   getAll(): Promise<IPhoto[]>;
@@ -31,7 +31,7 @@ export const PhotoApi: IPhotoApi = {
     try {
       return (
         await imageKitAxiosInstance.post(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}`, JSON.stringify(photo), {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
         })
       ).data;
     } catch {
@@ -42,7 +42,7 @@ export const PhotoApi: IPhotoApi = {
     try {
       return (
         await imageKitAxiosInstance.put(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}`, JSON.stringify(photo), {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
         })
       ).data;
     } catch {
@@ -53,7 +53,7 @@ export const PhotoApi: IPhotoApi = {
     try {
       return (
         await imageKitAxiosInstance.put(ApiPath.PATH.ROUTE_PATH.GALLERY_PATH, JSON.stringify(photo), {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
         })
       ).data;
     } catch {
@@ -64,7 +64,7 @@ export const PhotoApi: IPhotoApi = {
     try {
       return (
         await imageKitAxiosInstance.put(ApiPath.PATH.ROUTE_PATH.GALLERY_PATH, JSON.stringify(photo), {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
         })
       ).data;
     } catch {
@@ -77,5 +77,5 @@ export const PhotoApi: IPhotoApi = {
     } catch {
       throw new Error('Error while converting');
     }
-  }
+  },
 };

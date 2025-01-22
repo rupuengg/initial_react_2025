@@ -1,4 +1,3 @@
-import './Header.scss';
 // import { faList } from '@fortawesome/free-solid-svg-icons';
 // import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IApplicationState } from 'store';
 import { Logo } from 'components';
+import './Header.scss';
 
 export const Header = () => {
   const { navigation } = useSelector((state: IApplicationState) => state.global);

@@ -9,13 +9,13 @@ export const globalSlice = createSlice({
   reducers: {
     setAllPhotos(draft: IGlobalState, action: PayloadAction<IPhoto[]>) {
       draft.photos = action.payload;
-    }
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder.addCase(getAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IPhoto[]>) => {
       globalSlice.caseReducers.setAllPhotos(draft, action);
     });
-  }
+  },
 });
 
 export const GlobalActions = globalSlice.actions;

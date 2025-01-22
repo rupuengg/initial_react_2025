@@ -2,7 +2,7 @@ import axios from 'axios';
 import { encodeUrl } from 'utils';
 
 export const tokenReference: { token: string | undefined } = {
-  token: undefined
+  token: undefined,
 };
 
 export const axiosWithIntercepter = (baseURL: string | undefined) => {

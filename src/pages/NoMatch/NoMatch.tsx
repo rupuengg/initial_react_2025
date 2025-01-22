@@ -1,6 +1,6 @@
-import './NoMatch.scss';
 import { Footer, Header } from 'pages/Common';
 import { Link } from 'react-router-dom';
+import './NoMatch.scss';
 
 export const NoMatch = () => {
   return (

@@ -1,8 +1,8 @@
-import './App.css';
 import { MainNavigation } from 'navigation';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { store } from 'store';
+import './App.css';
 
 export const App = () => {
   return (

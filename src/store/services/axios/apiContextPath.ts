@@ -1,1 +1,1 @@
-export const DATA_MANAGEMENT_API_CONTEXT_PATH = process.env.REACT_APP_HOT;
+export const API_CONTEXT_PATH = process.env.REACT_APP_HOST;

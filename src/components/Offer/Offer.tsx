@@ -1,7 +1,7 @@
-import './Offer.scss';
-import { OfferItem } from './OfferItem';
 import { useSelector } from 'react-redux';
 import { IApplicationState } from 'store';
+import './Offer.scss';
+import { OfferItem } from './OfferItem';
 
 export const Offer = () => {
   const { offers } = useSelector((state: IApplicationState) => state.global);

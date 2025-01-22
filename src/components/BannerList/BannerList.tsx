@@ -1,7 +1,7 @@
-import './BannerList.scss';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IApplicationState } from 'store';
+import './BannerList.scss';
 
 export const BannerList = () => {
   const { banners } = useSelector((state: IApplicationState) => state.global);

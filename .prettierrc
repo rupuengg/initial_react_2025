@@ -10,7 +10,11 @@
   "bracketSameLine": false,
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
+    "^_",
     "^react",
+    "^veronica",
+    "^enzyme",
+    "^@cfaester",
     "^constant",
     "^containers",
     "^entities",
@@ -20,14 +24,17 @@
     "^hooks",
     "^utils",
     "^store",
-    "^components"
+    "^components",
+    "^mockStore",
+    "^mockValues",
+    "^./"
   ],
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
 
   "experimentalTernaries": false,
   "quoteProps": "as-needed",
-  "trailingComma": "none",
+  "trailingComma": "es5",
   "singleAttributePerLine": false,
   "htmlWhitespaceSensitivity": "css",
   "vueIndentScriptAndStyle": false,

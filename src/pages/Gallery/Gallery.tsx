@@ -1,6 +1,6 @@
-import './Home.scss';
 import { Footer, Header } from 'pages/Common';
 import { Link } from 'react-router-dom';
+import './Home.scss';
 
 export const Gallery = () => {
   return (
