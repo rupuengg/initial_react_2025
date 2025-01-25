@@ -5,28 +5,29 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { EMPTY_DATA_STATUS_ENTITY, E_Data_Load_Status, IApplicationState, IDataStatus, IUseDispatch, getAllPhotos, useAppDispatch } from 'store';
-import './Gallery.scss';
+import { Link, useParams } from 'react-router-dom';
+import { EMPTY_DATA_STATUS_ENTITY, E_Data_Load_Status, IApplicationState, IDataStatus, IUseDispatch, getGalleryPhotos, useAppDispatch } from 'store';
+import './Project.scss';
 
-export const Gallery = () => {
-  const { photos } = useSelector((state: IApplicationState) => state.global);
+export const ProjectPhoto = () => {
+  const { gallery } = useSelector((state: IApplicationState) => state.global);
   const dispatch: IUseDispatch = useAppDispatch();
+  const params = useParams();
   const startRef = useRef<IDataStatus>(EMPTY_DATA_STATUS_ENTITY);
   const [index, setIndex] = useState(-1);
 
   useEffect(() => {
     if (startRef.current.loadAllPhotos === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, loadAllPhotos: E_Data_Load_Status.PENDING };
-      dispatch(getAllPhotos());
+      dispatch(getGalleryPhotos(params.id || ''));
     }
-  }, [dispatch]);
+  }, [params.id, dispatch]);
 
   const images = useMemo(() => {
-    return photos.map(g => {
-      return { src: g.thumbnail, width: g.width, height: g.height, url: g.url } as Photo;
+    return gallery?.photos.map(g => {
+      return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;
     });
-  }, [photos]);
+  }, [gallery?.photos]);
 
   if (!images) return null;
 
@@ -41,7 +42,7 @@ export const Gallery = () => {
               <Link to='/projects/1'>{/* <img src={project1d1} alt='' /> */}</Link>
             </li>
           </ul>
-          <RowsPhotoAlbum photos={images} targetRowHeight={250} onClick={({ index: current }) => setIndex(current)} />
+          <RowsPhotoAlbum photos={images} targetRowHeight={400} onClick={({ index: current }) => setIndex(current)} />
 
           <Lightbox index={index} slides={images} open={index >= 0} close={() => setIndex(-1)} />
         </div>

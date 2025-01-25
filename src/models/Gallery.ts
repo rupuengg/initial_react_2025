@@ -8,4 +8,6 @@ export interface IGallery {
   fileType: string;
   filePath: string;
   photos: IPhoto[];
+  width: number;
+  height: number;
 }

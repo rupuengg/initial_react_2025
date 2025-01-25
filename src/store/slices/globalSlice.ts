@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IPhoto } from 'models';
+import { IGallery, IPhoto } from 'models';
 import { IGlobalState, defaultGlobalState } from 'store/states';
-import { getAllPhotos } from 'store/thunk';
+import { getAllGallery, getAllPhotos, getGalleryPhotos } from 'store/thunk';
 
 export const globalSlice = createSlice({
   name: 'globalSlice',
@@ -10,11 +10,24 @@ export const globalSlice = createSlice({
     setAllPhotos(draft: IGlobalState, action: PayloadAction<IPhoto[]>) {
       draft.photos = action.payload;
     },
+    setAllGallery(draft: IGlobalState, action: PayloadAction<IGallery[]>) {
+      draft.galleries = action.payload;
+    },
+    setGalleryPhotos(draft: IGlobalState, action: PayloadAction<IGallery>) {
+      draft.gallery = action.payload;
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
-    builder.addCase(getAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IPhoto[]>) => {
-      globalSlice.caseReducers.setAllPhotos(draft, action);
-    });
+    builder
+      .addCase(getAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IPhoto[]>) => {
+        globalSlice.caseReducers.setAllPhotos(draft, action);
+      })
+      .addCase(getAllGallery.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery[]>) => {
+        globalSlice.caseReducers.setAllGallery(draft, action);
+      })
+      .addCase(getGalleryPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery>) => {
+        globalSlice.caseReducers.setGalleryPhotos(draft, action);
+      });
   },
 });
 

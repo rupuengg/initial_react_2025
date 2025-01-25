@@ -61,6 +61,12 @@
     "items": []
   },
   {
+    "title": "Gallery",
+    "link": "/gallery",
+    "scrollTo": "",
+    "items": []
+  },
+  {
     "title": "Contact",
     "link": "/contact",
     "scrollTo": "",

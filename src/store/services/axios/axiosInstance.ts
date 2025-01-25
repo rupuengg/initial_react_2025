@@ -6,7 +6,7 @@ export const tokenReference: { token: string | undefined } = {
 };
 
 export const axiosWithIntercepter = (baseURL: string | undefined) => {
-  const axiosInstance = axios.create({ baseURL: baseURL });
+  const axiosInstance = axios.create({ baseURL });
 
   axiosInstance.interceptors.request.use(
     config => {

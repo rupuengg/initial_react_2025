@@ -1,10 +1,11 @@
-import { IPhoto } from 'models';
+import { IGallery, IPhoto } from 'models';
 import { ApiPath } from 'store/constants';
 import { imageKitAxiosInstance } from './axios';
 
 export interface IPhotoApi {
   getAll(): Promise<IPhoto[]>;
-  getByKey(key: string): Promise<IPhoto>;
+  getAllGallery(): Promise<IGallery[]>;
+  getByKey(key: string): Promise<IGallery>;
   create(photo: IPhoto): Promise<IPhoto>;
   update(photo: IPhoto): Promise<IPhoto>;
   updateActivePage(photo: IPhoto): Promise<string>;
@@ -20,7 +21,14 @@ export const PhotoApi: IPhotoApi = {
       return [];
     }
   },
-  getByKey: async (key: string): Promise<IPhoto> => {
+  getAllGallery: async (): Promise<IGallery[]> => {
+    try {
+      return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}`, { headers: { 'Content-Type': 'application/json' } })).data;
+    } catch {
+      return [];
+    }
+  },
+  getByKey: async (key: string): Promise<IGallery> => {
     try {
       return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}/${key}`, { headers: { 'Content-Type': 'application/json' } })).data;
     } catch {

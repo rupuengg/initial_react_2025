@@ -5,7 +5,7 @@ import banner4 from 'assets/images/banner/banner4.jpg';
 import banner5 from 'assets/images/banner/banner5.jpg';
 import navData from 'json/navigation.json';
 import offerData from 'json/offers.json';
-import { IBanner, INavigation, IPhoto } from 'models';
+import { IBanner, IGallery, INavigation, IPhoto } from 'models';
 import { IOffer } from 'models/Offer';
 
 const banners = [
@@ -43,6 +43,8 @@ export const EMPTY_DATA_STATUS_ENTITY: IDataStatus = {
 
 export interface IGlobalState {
   photos: IPhoto[];
+  galleries: IGallery[];
+  gallery?: IGallery;
   banners: IBanner[];
   navigation: INavigation[];
   offers: IOffer[];
@@ -50,6 +52,7 @@ export interface IGlobalState {
 
 export const defaultGlobalState: IGlobalState = {
   photos: [],
+  galleries: [],
   banners,
   navigation: navData,
   offers: offerData,

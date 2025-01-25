@@ -1,0 +1,17 @@
+.all_projects {
+  display: block;
+  margin: 0 0 40px;
+
+  & ul {
+    display: flex;
+    list-style: none;
+
+    & li {
+      flex: 1 0 20%;
+
+      & img {
+        height: 200px;
+      }
+    }
+  }
+}
