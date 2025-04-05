@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3d53ca09.css",
+    "main.js": "/static/js/main.253090c4.js",
+    "static/js/453.3edff6b5.chunk.js": "/static/js/453.3edff6b5.chunk.js",
+    "static/media/kitchen_right.jpg": "/static/media/kitchen_right.569bf1ac5524acba65d9.jpg",
+    "static/media/kitchen_left.jpg": "/static/media/kitchen_left.c96911d0c1744bb1120f.jpg",
+    "static/media/banner2.jpg": "/static/media/banner2.22014d30e17b66ba0708.jpg",
+    "static/media/banner1.jpg": "/static/media/banner1.fbb91cdadc93b63f5a3d.jpg",
+    "static/media/banner3.jpg": "/static/media/banner3.28cf09491fdb18fdff73.jpg",
+    "static/media/banner5.jpg": "/static/media/banner5.2f5520c44645fa915afb.jpg",
+    "static/media/banner4.jpg": "/static/media/banner4.c8189475707f2574b2c6.jpg",
+    "static/media/Montserrat.ttf": "/static/media/Montserrat.cfbf0da06d33097e6d0a.ttf",
+    "static/media/B612Mono.ttf": "/static/media/B612Mono.282d57161b4539b7f9fc.ttf",
+    "static/media/IslandResort_interiordesign_after.jpg": "/static/media/IslandResort_interiordesign_after.7a9219906553e0de01c1.jpg",
+    "static/media/living_area.jpg": "/static/media/living_area.4ab2449de466a9906d8a.jpg",
+    "static/media/our_work_living_room.jpg": "/static/media/our_work_living_room.9c3b155615fe29218fcd.jpg",
+    "static/media/active.webp": "/static/media/active.4580035dcae65b7c4580.webp",
+    "static/media/background.jpg": "/static/media/background.f7c0378b456c94405cf6.jpg",
+    "static/media/user1.jpg": "/static/media/user1.1fff15cdece284f4e92e.jpg",
+    "static/media/logo-color.svg": "/static/media/logo-color.ef5b18d0f4cb9e4b8d48.svg",
+    "static/media/logo-no-background.svg": "/static/media/logo-no-background.4ee5563940779dc95346.svg",
+    "static/media/logoNoBackground.png": "/static/media/logoNoBackground.685bee94c68e4ba795a3.png",
+    "static/media/3-bhk.png": "/static/media/3-bhk.fb560c1c721f62fc169f.png",
+    "static/media/instagram.svg": "/static/media/instagram.178dba441287320186a9.svg",
+    "index.html": "/index.html",
+    "static/media/twitter.svg": "/static/media/twitter.1fb9c2538f1a1f38796d.svg",
+    "static/media/linkedIn.svg": "/static/media/linkedIn.4dd0f9efff45104c4404.svg",
+    "static/media/facebook.svg": "/static/media/facebook.7eefcb1c4ab7218e8811.svg",
+    "main.3d53ca09.css.map": "/static/css/main.3d53ca09.css.map",
+    "main.253090c4.js.map": "/static/js/main.253090c4.js.map",
+    "453.3edff6b5.chunk.js.map": "/static/js/453.3edff6b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d53ca09.css",
+    "static/js/main.253090c4.js"
+  ]
+}
