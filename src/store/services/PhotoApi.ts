@@ -6,6 +6,7 @@ export interface IPhotoApi {
   getAll(): Promise<IPhoto[]>;
   getAllGallery(): Promise<IGallery[]>;
   getByKey(key: string): Promise<IGallery>;
+  getFeaturedGallery(): Promise<IGallery>;
   create(photo: IPhoto): Promise<IPhoto>;
   update(photo: IPhoto): Promise<IPhoto>;
   updateActivePage(photo: IPhoto): Promise<string>;
@@ -31,6 +32,13 @@ export const PhotoApi: IPhotoApi = {
   getByKey: async (key: string): Promise<IGallery> => {
     try {
       return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}/${key}`, { headers: { 'Content-Type': 'application/json' } })).data;
+    } catch {
+      throw new Error('Error while converting');
+    }
+  },
+  getFeaturedGallery: async (): Promise<IGallery> => {
+    try {
+      return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}/featured`, { headers: { 'Content-Type': 'application/json' } })).data;
     } catch {
       throw new Error('Error while converting');
     }

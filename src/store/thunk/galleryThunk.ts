@@ -9,3 +9,7 @@ export const getAllGallery = createAsyncThunk(`globalSlice/getAllGallery`, async
 export const getGalleryPhotos = createAsyncThunk(`globalSlice/getGalleryPhotos`, async (galleryName: string, _thunkAPI) => {
   return await PhotoApi.getByKey(galleryName);
 });
+
+export const getFeaturedGallery = createAsyncThunk(`globalSlice/getFeaturedGallery`, async (_: void, _thunkAPI) => {
+  return await PhotoApi.getFeaturedGallery();
+});

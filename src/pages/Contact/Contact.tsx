@@ -1,12 +1,12 @@
-import { Footer, Header } from 'pages/Common';
+import { DefaultLayout } from 'layouts';
 import { Enquiry } from 'components';
 
 export const Contact = () => {
   return (
     <>
-      <Header />
-      <Enquiry />
-      <Footer />
+      <DefaultLayout>
+        <Enquiry />
+      </DefaultLayout>
     </>
   );
 };

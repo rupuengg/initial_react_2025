@@ -46,6 +46,9 @@
       position: relative;
       z-index: 2;
       color: get_color(white);
+      font-family: B612;
+      text-transform: uppercase;
+      font-size: 40px;
     }
 
     &.active {

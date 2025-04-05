@@ -3,7 +3,11 @@ import { useSelector } from 'react-redux';
 import { IApplicationState } from 'store';
 import './BannerList.scss';
 
-export const BannerList = () => {
+interface IBannerList {
+  text?: string;
+}
+
+export const BannerList: React.FC<IBannerList> = ({ text }) => {
   const { banners } = useSelector((state: IApplicationState) => state.global);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -28,7 +32,7 @@ export const BannerList = () => {
           <div key={`banner-${index}`} className={`bannerItem ${index === activeIndex ? 'active' : ''}`}>
             <div className='slideItem' style={{ backgroundImage: 'url(' + item.img + ')' }}>
               <div className='siteCss'>
-                <div className='contentBox'>Text</div>
+                <div className='contentBox'>{text || item.txt}</div>
               </div>
             </div>
           </div>

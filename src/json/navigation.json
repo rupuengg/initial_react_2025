@@ -49,12 +49,6 @@
     ]
   },
   {
-    "title": "Location",
-    "link": "/location",
-    "scrollTo": "",
-    "items": []
-  },
-  {
     "title": "Projects",
     "link": "/projects",
     "scrollTo": "",

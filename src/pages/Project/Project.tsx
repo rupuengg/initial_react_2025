@@ -1,27 +1,18 @@
-import { Footer, Header } from 'pages/Common';
+import { DefaultLayout } from 'layouts';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
-import { EMPTY_DATA_STATUS_ENTITY, E_Data_Load_Status, IApplicationState, IDataStatus, IUseDispatch, getAllGallery, useAppDispatch } from 'store';
+import { IApplicationState } from 'store';
 import './Project.scss';
 
 export const Project = () => {
   const { galleries } = useSelector((state: IApplicationState) => state.global);
-  const dispatch: IUseDispatch = useAppDispatch();
   // const navigate = useNavigate();
-  const startRef = useRef<IDataStatus>(EMPTY_DATA_STATUS_ENTITY);
   const [index, setIndex] = useState(-1);
-
-  useEffect(() => {
-    if (startRef.current.loadAllPhotos === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, loadAllPhotos: E_Data_Load_Status.PENDING };
-      dispatch(getAllGallery());
-    }
-  }, [dispatch]);
 
   const images = useMemo(() => {
     return galleries.map(g => {
@@ -32,8 +23,7 @@ export const Project = () => {
   if (!images) return null;
 
   return (
-    <>
-      <Header />
+    <DefaultLayout>
       <div className='siteCss' aria-hidden='true' aria-modal='true'>
         <div className='all_projects'>
           <h1>Gallery</h1>
@@ -61,7 +51,6 @@ export const Project = () => {
           />
         </div>
       </div>
-      <Footer />
-    </>
+    </DefaultLayout>
   );
 };

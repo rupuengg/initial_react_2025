@@ -1,4 +1,4 @@
-import { Contact, Gallery, Home, NoMatch, Project, ProjectPhoto } from 'pages';
+import { About, Contact, Gallery, Home, NoMatch, Project, ProjectPhoto, Services } from 'pages';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const MainNavigation = () => {
@@ -7,6 +7,8 @@ export const MainNavigation = () => {
       <Route path='/'>
         <Route index element={<Navigate to={`/home`} replace />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/services' element={<Services />} />
         <Route path='/projects/:id' element={<ProjectPhoto />} />
         <Route path='/projects' element={<Project />} />
         <Route path='/gallery' element={<Gallery />} />

@@ -17,8 +17,8 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
           <img src={require('assets/images/' + offer.floor_image)} alt='2bhk interiors' />
         </section>
         <figcaption>
-          <p>{offer.title.toUpperCase()}</p>
-          <h3>
+          <h2 className='header2'>{offer.title.toUpperCase()}</h2>
+          <h3 className='header3'>
             {offer.price}
             <sup>*</sup>
           </h3>
@@ -34,9 +34,9 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
         {offer.options.map((option, index) => (
           <p
             key={`list-${index}`}
-            className={currentOption === index ? 'active' : ''}
+            className={currentOption === index ? 'para active' : 'para'}
             onClick={() => setCurrentOption(index)}
-            style={{ backgroundImage: currentOption === index ? `url("${require('assets/images/offer/active.png')}")` : 'none' }}
+            style={{ backgroundImage: currentOption === index ? `url("${require('../../assets/images/offer/active.png')}")` : 'none' }}
           >
             {option.title}
           </p>
@@ -52,7 +52,7 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
       <article className='rightbox' style={{ display: 'block' }}>
         <img alt='Modular kitchen' src={require('assets/images/' + img)} />
         <hr />
-        <h3>{title}</h3>
+        <h3 className='header3'>{title}</h3>
         <ul>
           {items.map((item, index) => (
             <li key={`item-${index}`}>{item}</li>

@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IGallery, IPhoto } from 'models';
 import { IGlobalState, defaultGlobalState } from 'store/states';
-import { getAllGallery, getAllPhotos, getGalleryPhotos } from 'store/thunk';
+import { getAllGallery, getAllPhotos, getFeaturedGallery, getGalleryPhotos } from 'store/thunk';
 
 export const globalSlice = createSlice({
   name: 'globalSlice',
@@ -16,6 +16,9 @@ export const globalSlice = createSlice({
     setGalleryPhotos(draft: IGlobalState, action: PayloadAction<IGallery>) {
       draft.gallery = action.payload;
     },
+    setFeaturedGallery(draft: IGlobalState, action: PayloadAction<IGallery>) {
+      draft.featureGallery = action.payload;
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder
@@ -27,6 +30,9 @@ export const globalSlice = createSlice({
       })
       .addCase(getGalleryPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery>) => {
         globalSlice.caseReducers.setGalleryPhotos(draft, action);
+      })
+      .addCase(getFeaturedGallery.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery>) => {
+        globalSlice.caseReducers.setFeaturedGallery(draft, action);
       });
   },
 });

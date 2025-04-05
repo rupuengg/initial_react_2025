@@ -2,12 +2,16 @@
   "name": "initial_react_2025",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.9",
     "cra-template-typescript": "1.2.0",
+    "gh-pages": "^6.3.0",
+    "imagekitio-react": "^4.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-photo-album": "^3.0.2",
@@ -41,6 +45,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "gh-pages -d build",
     "develop": "cross-env REACT_APP_ENV=development PORT=3001 NODE_OPTIONS=\"--max-http-header-size=100000\" react-scripts start --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -68,6 +73,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:3000/"
+  }
 }

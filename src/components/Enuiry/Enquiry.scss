@@ -1,12 +1,16 @@
 @import 'assets/scss/common.scss';
 
 .enquire {
-  display: block;
+  display: flex;
+  flex-direction: column;
 
   & .formBox {
     display: flex;
-    width: 40%;
     flex-direction: column;
+
+    & .header1 {
+      text-align: center;
+    }
 
     @media (max-width: $breakpoint-tablet) {
       width: 100%;
@@ -14,29 +18,44 @@
 
     & .formItem {
       flex: 1 0 100%;
-      margin-bottom: 20px;
 
       & label {
         display: block;
-        color: get_color(nav_menu_font_color);
+        color: #8a8a8a;
+        font-weight: 600;
         font-size: 14px;
         padding-left: 0;
         padding-bottom: 4px;
+        font-family: Montserrat;
+      }
+
+      & .box {
+        box-shadow: 2px 2px 3px 2px #8a8a8a;
+        border-radius: 10px;
+        padding: 10px;
+
+        &.button {
+          box-shadow: none;
+          text-align: right;
+        }
       }
 
       & input,
       & textarea {
         display: block;
-        width: 100%;
-        padding: 10px 0;
-        margin: 0;
-        border: 1px solid get_color(gray);
-        background-color: get_color(white_1);
+        font-family: Montserrat;
+        border: 0;
+        width: 90%;
         font-size: 18px;
+
+        &:focus-visible {
+          outline-style: none;
+        }
       }
 
       & button {
         padding: 10px 30px;
+        border-radius: 10px;
         margin: 0;
         border: 0;
         font-size: 14px;

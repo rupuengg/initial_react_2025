@@ -19,7 +19,7 @@
     }
 
     & > aside {
-      box-shadow: 0 2px 4px 0 #000000;
+      box-shadow: 2px 2px 3px 2px #8a8a8a;
       background-color: #ffffff;
       float: left;
       width: 100%;
@@ -44,10 +44,19 @@
 
 @media (min-width: $breakpoint-tablet) {
   .offer {
-    display: block;
-    position: relative;
-    flex: 1 1 50%;
+    flex: 0 0 45%;
     margin: 0;
+
+    & figcaption {
+      .header2 {
+        display: block;
+        font-size: 18px;
+      }
+      .header3 {
+        display: block;
+        font-size: 14px;
+      }
+    }
 
     &:first-child {
       padding-right: 20px;
@@ -81,8 +90,9 @@
 
     & > aside {
       height: 420px;
-      box-shadow: 0 2px 4px 0 #000000;
+      box-shadow: 2px 2px 3px 2px #8a8a8a;
       background-color: #ffffff;
+      border-radius: 20px;
       padding: 2.5rem;
       padding-bottom: 0;
       display: block;
@@ -109,6 +119,9 @@
 }
 
 .navBar > p {
+  display: block;
+  text-align: left;
+  padding: 0;
   background-repeat: no-repeat;
   background-size: 20px 20px;
   height: 36px;
@@ -126,6 +139,10 @@
 .rightbox img {
   width: 76px;
   height: 45px;
+}
+
+.rightbox .header3 {
+  font-size: 16px;
 }
 
 .rightbox ul {
