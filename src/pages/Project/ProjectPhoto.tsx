@@ -79,7 +79,9 @@ export const ProjectPhoto = () => {
     <DefaultLayout>
       <div className='siteCssFullWidth'>
         <div className='gallery_page marginBottom100'>
-          <h1 className='header1'>Project Gallery</h1>
+          <h1 id='/projects' className='header1'>
+            Project Gallery
+          </h1>
           <div className='p0 m0 marginTop50'>
             <RowsPhotoAlbum photos={images} targetRowHeight={250} onClick={({ index: current }) => setIndex(current)} />
 

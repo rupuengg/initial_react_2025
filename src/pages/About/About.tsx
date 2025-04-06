@@ -12,7 +12,9 @@ export const About = () => {
       <div className='siteCssWidth1200'>
         <div className='offer_to_client marginTop50'>
           <div className='inner'>
-            <h1 className='header1'>About Us</h1>
+            <h1 id='/about' className='header1'>
+              About Us
+            </h1>
 
             <p className='para'>
               PanacheWorld provides one-stop interior design and renovation services for residential and commercial projects in India. With the aim of providing the most satisfactory design for

@@ -11,7 +11,9 @@ export const Faq = () => {
       <div className='siteCssWidth1200'>
         <div className='offer_to_client marginTop50 marginBottom100'>
           <div className='inner'>
-            <h1 className='header1'>Frequently Asked Questions (FAQ)</h1>
+            <h1 id='/faq' className='header1'>
+              Frequently Asked Questions (FAQ)
+            </h1>
 
             <h3 className='header3'>What types of projects does PanacheWorld specialize in?</h3>
 

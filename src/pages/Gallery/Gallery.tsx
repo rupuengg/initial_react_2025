@@ -24,7 +24,9 @@ export const Gallery = () => {
     <DefaultLayout>
       <div className='siteCssFullWidth'>
         <div className='gallery_page marginBottom100'>
-          <h1 className='header1'>Gallery - Our work</h1>
+          <h1 id='/gallery' className='header1'>
+            Gallery - Our work
+          </h1>
           <div className='p0 m0 marginTop50'>
             <RowsPhotoAlbum photos={images} targetRowHeight={250} onClick={({ index: current }) => setIndex(current)} />
 

@@ -8,15 +8,14 @@ import { DefaultLayout } from 'layouts';
 import { useCallback, useMemo } from 'react';
 import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from 'store';
 import { BannerList, Enquiry, OfferItem } from 'components';
 
 export const Home = () => {
   const { featureGallery, galleries, offers } = useSelector((state: IApplicationState) => state.global);
-  // const navigate = useNavigate();
-  // const [, setIndex] = useState(-1);
+  const navigate = useNavigate();
 
   const images = useMemo(() => {
     if (featureGallery) return { src: featureGallery.url, width: featureGallery.width, height: featureGallery.height } as Photo;
@@ -25,9 +24,9 @@ export const Home = () => {
 
   const projects = useMemo(() => galleries.map(g => ({ src: g.url, width: g.width, height: g.height, url: g.url }) as Photo), [galleries]);
 
-  const handleClick = useCallback(({ index: current }: any) => {
-    console.log(current);
-  }, []);
+  const handleClick = useCallback(() => {
+    navigate('/projects/6793dda8432c476416de5b59');
+  }, [navigate]);
 
   return (
     <DefaultLayout>
@@ -40,7 +39,9 @@ export const Home = () => {
         <div className='offer_to_client marginTop100'>
           <div className='inner'>
             <div className='above_box'>
-              <h2 className='header2'>what we offer to our clients</h2>
+              <h2 id='/home' className='header2'>
+                what we offer to our clients
+              </h2>
               <p className='para'>
                 We offers custom interiors, <br />
                 space planning, styling, sustainable design, <br />
@@ -175,6 +176,12 @@ export const Home = () => {
             </div>
           </div>
 
+          <div className='marginTop50' style={{ textAlign: 'center' }}>
+            <NavLink to={'/gallery'} className={'link'} onClick={() => {}}>
+              More
+            </NavLink>
+          </div>
+
           <ul className='p0 m0'>
             <li className='p0 m0'>
               <Link to='/projects/1'>{/* <img src={project1d1} alt='' /> */}</Link>
@@ -184,12 +191,33 @@ export const Home = () => {
       </div>
       {/* End */}
 
+      {/* Featured Project */}
+      <div className='siteCssFullWidth'>
+        <div className='our_work_may_impress marginTop100'>
+          <h2 className='header2'>featured project</h2>
+
+          <div className='box'>
+            <div className='column'>
+              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0014.jpg' />
+              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0018.jpg' />
+            </div>
+            <div className='column'>
+              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0033.jpg' />
+            </div>
+            <div className='column'>
+              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0025.jpg' />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* End */}
+
       {/* Testimonial */}
       <div className='siteCssFullWidth'>
         <div className='testimonial marginTop100'>
           <h2 className='header2'>testimonial</h2>
 
-          <div className='main-item'>
+          <div className='main-item marginTop50'>
             <div className='item-list'>
               <div className='inner-box'>
                 <div className='img'></div>

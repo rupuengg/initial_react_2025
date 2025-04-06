@@ -34,7 +34,9 @@ export const Project = () => {
     <DefaultLayout>
       <div className='siteCss' aria-hidden='true' aria-modal='true'>
         <div className='project_page marginBottom100'>
-          <h1 className='header1'>Our Projects</h1>
+          <h1 id='/projects' className='header1'>
+            Our Projects
+          </h1>
           <div className='marginTop50'>
             <RowsPhotoAlbum photos={images} targetRowHeight={400} onClick={handleClick} />
 
