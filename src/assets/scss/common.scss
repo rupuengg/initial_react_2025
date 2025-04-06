@@ -210,9 +210,11 @@ body {
 }
 
 .header1 {
+  justify-content: center;
+  display: inline-flex;
   color: #111111ff;
   font-family: B612;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 5px;

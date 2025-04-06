@@ -5,7 +5,7 @@ export const Enquiry = () => {
     <div className='siteCssWidth1200'>
       <div className='enquire marginTop100 marginBottom100'>
         <div className='formBox'>
-          <h2 className='header2'>Enquire for services</h2>
+          <h1 className='header1'>Enquire for services</h1>
           <div className='formItem marginTop20'>
             <label>Name</label>
             <div className='box'>

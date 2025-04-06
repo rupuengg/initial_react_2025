@@ -1,4 +1,5 @@
 import { About, Contact, Gallery, Home, NoMatch, Project, ProjectPhoto, Services } from 'pages';
+import { Faq } from 'pages/Faq';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const MainNavigation = () => {
@@ -13,6 +14,7 @@ export const MainNavigation = () => {
         <Route path='/projects' element={<Project />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/faq' element={<Faq />} />
         <Route path='*' element={<NoMatch />} />
       </Route>
     </Routes>

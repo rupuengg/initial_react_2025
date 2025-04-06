@@ -65,5 +65,11 @@
     "link": "/contact",
     "scrollTo": "",
     "items": []
+  },
+  {
+    "title": "Faq",
+    "link": "/faq",
+    "scrollTo": "",
+    "items": []
   }
 ]

@@ -6,13 +6,13 @@ export const About = () => {
   return (
     <DefaultLayout>
       {/* Banner Start */}
-      <BannerList text='About Us' />
+      <BannerList text='About Us' isHideAnimation={true} />
       {/* End */}
 
-      <div className='siteCssWidth1200' aria-hidden='true' aria-modal='true'>
+      <div className='siteCssWidth1200'>
         <div className='offer_to_client marginTop50'>
           <div className='inner'>
-            <h2 className='header2'>About Us</h2>
+            <h1 className='header1'>About Us</h1>
 
             <p className='para'>
               PanacheWorld provides one-stop interior design and renovation services for residential and commercial projects in India. With the aim of providing the most satisfactory design for
