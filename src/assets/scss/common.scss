@@ -211,46 +211,74 @@ body {
 
 .header1 {
   justify-content: center;
+  text-align: center;
   display: inline-flex;
   color: #111111ff;
   font-family: B612;
-  font-size: 35px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 5px;
   line-height: 1;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 20px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 35px;
+  }
 }
 
 .header2 {
   justify-content: center;
+  text-align: center;
   display: inline-flex;
   color: #111111ff;
   font-family: B612;
-  font-size: 30px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 5px;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 18px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 30px;
+  }
 }
 
 .header3 {
   justify-content: center;
+  text-align: center;
   display: inline-flex;
   color: #111111ff;
   font-family: B612;
-  font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 5px;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 14px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 18px;
+  }
 }
 
 .para {
   justify-content: center;
+  text-align: center;
   display: inline-flex;
   color: #111111ff;
   font-family: Montserrat;
-  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   text-align: center;
   padding: 20px 0 0 0;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 15px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 15px;
+  }
 }

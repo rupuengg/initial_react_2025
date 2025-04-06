@@ -57,6 +57,10 @@
         & .social-media {
           padding: 10px 20px 0;
 
+          @media (max-width: $breakpoint-tablet) {
+            display: none;
+          }
+
           & a {
             margin-left: 15px;
           }

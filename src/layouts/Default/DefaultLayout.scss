@@ -54,7 +54,13 @@
 
       & .lower_box {
         display: flex;
-        flex-direction: row;
+        @media (max-width: $breakpoint-tablet) {
+          flex-direction: column;
+        }
+
+        @media (min-width: $breakpoint-tablet) {
+          flex-direction: row;
+        }
         text-align: center;
 
         & .box {
@@ -86,7 +92,13 @@
 
     & .box {
       display: flex;
-      flex-direction: row;
+      @media (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        flex-direction: row;
+      }
       justify-content: space-between;
 
       & > div {
@@ -152,7 +164,13 @@
 
       & .item-list {
         display: flex;
-        flex: 0 0 25%;
+        @media (max-width: $breakpoint-tablet) {
+          flex: 0 0 100%;
+        }
+
+        @media (min-width: $breakpoint-tablet) {
+          flex: 0 0 25%;
+        }
         width: 25%;
         height: 450px;
 

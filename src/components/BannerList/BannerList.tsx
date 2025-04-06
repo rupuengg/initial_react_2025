@@ -8,7 +8,7 @@ interface IBannerList {
   isHideAnimation?: boolean;
 }
 
-export const BannerList: React.FC<IBannerList> = ({ text, isHideAnimation }) => {
+export const BannerList: React.FC<IBannerList> = ({ isHideAnimation }) => {
   const { banners } = useSelector((state: IApplicationState) => state.global);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -36,11 +36,9 @@ export const BannerList: React.FC<IBannerList> = ({ text, isHideAnimation }) => 
         {banners.map((item, index) => (
           <div key={`banner-${index}`} className={`bannerItem ${index === activeIndex ? 'active' : ''}`}>
             <div className='slideItem' style={{ backgroundImage: 'url(' + item.img + ')' }}>
-              <div className='siteCss'>
-                <div className='contentBox'>
-                  <h1 className='header1'>{text || item.txt}</h1>
-                </div>
-              </div>
+              {/* <div className='contentBox'>
+                <h1 className='header1'>{text || item.txt}</h1>
+              </div> */}
             </div>
           </div>
         ))}
