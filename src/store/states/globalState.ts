@@ -3,8 +3,10 @@ import banner2 from '../../assets/images/banner/banner2.jpg';
 import banner3 from '../../assets/images/banner/banner3.jpg';
 import banner4 from '../../assets/images/banner/banner4.jpg';
 import banner5 from '../../assets/images/banner/banner5.jpg';
+// import galleries from 'json/galleries.json';
 import navData from 'json/navigation.json';
 import offerData from 'json/offers.json';
+import photos from 'json/photos.json';
 import { IBanner, IGallery, INavigation, IPhoto } from 'models';
 import { IOffer } from 'models/Offer';
 
@@ -61,7 +63,7 @@ export interface IGlobalState {
 }
 
 export const defaultGlobalState: IGlobalState = {
-  photos: [],
+  photos,
   galleries: [],
   banners,
   navigation: navData,
