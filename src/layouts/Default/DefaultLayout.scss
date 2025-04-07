@@ -1,6 +1,64 @@
 @import 'assets/scss/common.scss';
 
 .default_layout {
+  position: relative;
+
+  & > .query {
+    position: fixed;
+    bottom: 0px;
+    right: 100px;
+    display: flex;
+    z-index: 80;
+
+    & > .text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      border: 2px solid #ffffff;
+      width: 50px;
+      height: 50px;
+      background: #ddceb0;
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    & > .query_form {
+      border: 2px solid #ddceb0;
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 10px;
+      display: block;
+      position: relative;
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 81%;
+        height: 60vh;
+
+        & iframe {
+          width: 100%;
+          height: 80vh;
+        }
+      }
+
+      & svg {
+        position: absolute;
+        right: -16px;
+        top: -16px;
+        width: 40px;
+        height: 40px;
+        color: #ddceb0;
+        cursor: pointer;
+
+        @media (max-width: $breakpoint-tablet) {
+          right: 0px;
+        }
+      }
+    }
+  }
+
   & .conatainer {
     min-height: calc(1200px);
   }
@@ -229,6 +287,26 @@
   .project_page {
     display: flex;
     flex-direction: column;
+
+    & .react-photo-album {
+      & button {
+        position: relative;
+
+        &::before {
+          position: absolute;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+          top: 10px;
+          content: '';
+          border: 4px solid #ffffff;
+        }
+
+        &:hover::before {
+          border-color: #ddceb0;
+        }
+      }
+    }
   }
 
   .services {

@@ -15,7 +15,6 @@ export const Header = () => {
   const { navigation } = useSelector((state: IApplicationState) => state.global);
   const [isShowSubMenu, setIsShowSubMenu] = useState(false);
   const [isFixedHeader, setIsFixedHeader] = useState(false);
-  // const params = useParams();
 
   useEffect(() => {
     const scrollCallback = (e: any) => {

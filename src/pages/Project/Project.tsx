@@ -38,7 +38,7 @@ export const Project = () => {
             Our Projects
           </h1>
           <div className='marginTop50'>
-            <RowsPhotoAlbum photos={images} targetRowHeight={400} onClick={handleClick} />
+            <RowsPhotoAlbum photos={images} targetRowHeight={600} onClick={handleClick} />
 
             {/* <Lightbox index={index} slides={images} open={index >= 0} close={() => setIndex(-1)} />
 

@@ -3,28 +3,117 @@
 .footer {
   display: flex;
   flex-direction: column;
-  flex: 1 0 100%;
-  width: 100%;
 
-  & .bottom {
-    display: block;
-    padding: 10px 0;
+  & .main_box {
+    display: flex;
+    padding: 50px;
+    min-height: 450px;
+    position: relative;
     background-color: get_color(light_black);
 
-    & ul {
+    & ul,
+    & li,
+    & p {
       margin: 0;
       padding: 0;
       list-style: none;
+    }
+
+    & > ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 90%;
       color: get_color(white);
       font-size: 8px;
       font-weight: 400;
       font-style: normal;
       letter-spacing: 0.05em;
-      text-transform: uppercase;
 
       @media (min-width: $breakpoint-tablet) {
         letter-spacing: 0.1em;
         font-size: 12px;
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        letter-spacing: 0.1em;
+        font-size: 12px;
+        flex-direction: column;
+      }
+
+      & > li {
+        @media (min-width: $breakpoint-tablet) {
+          flex: 0 0 30%;
+        }
+      }
+
+      & .logo {
+        & img {
+          width: 100%;
+        }
+      }
+
+      & .middle {
+        & p a {
+          color: #bb8f71;
+          font-size: 12px;
+          text-decoration: none;
+          font-weight: 600;
+          font-style: normal;
+          margin-left: 10px;
+        }
+
+        & hr {
+          margin: 40px 0;
+        }
+
+        & .social-media {
+          & a {
+            margin-right: 15px;
+          }
+
+          & svg {
+            width: 15px;
+            height: 15px;
+            color: #bb8f71;
+          }
+        }
+      }
+
+      & .sitemap {
+        display: flex;
+
+        & ul {
+          display: flex;
+          flex-direction: column;
+
+          & li {
+            padding-top: 15px;
+
+            &:first-child {
+              padding-top: 0px;
+            }
+          }
+
+          & ul li {
+            margin-left: 20px;
+          }
+        }
+      }
+
+      & .copy {
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        transform: rotate(180deg);
+        white-space: nowrap;
+        writing-mode: vertical-lr;
+        font-size: 11px;
+        letter-spacing: 1.2px;
+        user-select: none;
+        -webkit-user-select: none;
+        font-weight: 500;
       }
     }
   }

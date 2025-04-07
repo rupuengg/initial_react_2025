@@ -71,7 +71,6 @@ export const ProjectPhoto = () => {
       return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;
     });
   }, [gallery?.photos]);
-  console.log('gallery?.photos', gallery?.photos);
 
   if (!images) return null;
 
