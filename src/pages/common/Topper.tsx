@@ -2,8 +2,8 @@ import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
 import { faMailReply } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { E_Icon_Name } from 'enums/E_Icon_Name';
-import { Icon } from 'components/Icon/Icon';
+import { E_Icon_Name } from 'enums';
+import { Icon } from 'components';
 import './Topper.scss';
 
 export const Topper = () => {

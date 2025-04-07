@@ -10,7 +10,6 @@ export const MainNavigation = () => {
     <Routes>
       <Route path='/'>
         <Route index element={<Navigate to={`${navigation[0].link}`} replace />} />
-        <Route path={`${navigation[0].link}`} element={navigation[0].element} />
         {navigation.map(nav => (
           <Route key={nav.link} path={nav.link} element={nav.element} />
         ))}

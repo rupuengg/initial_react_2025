@@ -1,25 +1,24 @@
-import { Footer, Header } from 'pages/Common';
+import { DefaultLayout } from 'layouts';
 import { Link } from 'react-router-dom';
-import './NoMatch.scss';
 
 export const NoMatch = () => {
   return (
-    <>
-      <Header />
-      <div className='noMatch'>
-        <div className='siteCss'>
+    <DefaultLayout>
+      <div className='siteCssWidth1200'>
+        <div className='noMatch marginTop100'>
           <div className='content'>
-            This page is currently is in progress.
+            <h1 className='header1'>This page is currently is in progress.</h1>
             <br />
             <br />
             <br />
             <br />
             <br />
-            <Link to='/home'>Home</Link>
+            <Link className='link' to='/'>
+              Home
+            </Link>
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </DefaultLayout>
   );
 };

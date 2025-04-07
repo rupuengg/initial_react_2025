@@ -5,9 +5,9 @@ import { INavigation } from 'models';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { E_Icon_Name } from 'enums/E_Icon_Name';
+import { E_Icon_Name } from 'enums';
 import { IApplicationState } from 'store';
-import { Icon } from 'components/Icon';
+import { Icon } from 'components';
 import './Footer.scss';
 
 export const Footer = () => {

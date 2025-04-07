@@ -2,6 +2,8 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Footer, Header } from 'pages';
 import React, { useCallback, useState } from 'react';
+import { E_Icon_Name } from 'enums';
+import { Icon } from 'components';
 import './DefaultLayout.scss';
 
 interface IDefaultLayout {
@@ -25,9 +27,14 @@ export const DefaultLayout: React.FC<IDefaultLayout> = ({ children }) => {
 
       <div className='query'>
         {!isShowQuery && (
-          <div className='text' onClick={handleQuery}>
-            Query
-          </div>
+          <>
+            <div className='text' onClick={handleQuery}>
+              Query
+            </div>
+            <a className='whatsapp' target='_blank' href='https://wa.me/9599385377?text=Hello' rel='noreferrer'>
+              <Icon iconName={E_Icon_Name.WHATSAPP} />
+            </a>
+          </>
         )}
         {isShowQuery && (
           <div className='query_form'>
