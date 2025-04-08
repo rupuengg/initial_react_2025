@@ -69,7 +69,7 @@ export const ProjectPhoto = () => {
   }, [photos, params.id]);
 
   const images = useMemo(() => {
-    return PhotoUtils(gallery?.photos)
+    return PhotoUtils(gallery?.photos?.filter(p => p.audioCodec !== 'aac'))
       .sort()
       ?.map(g => {
         return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;

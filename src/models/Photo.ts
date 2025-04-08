@@ -16,7 +16,7 @@ export interface IVersionInfo {
 
 export interface IPhoto {
   type?: string;
-  name?: string;
+  name: string;
   audioCodec?: string;
   createdAt?: string;
   updatedAt?: string;
