@@ -1,9 +1,9 @@
-import logoNoBackground from '../../assets/images/logo/logoNoBackground.png';
+import { LogoSvg } from './LogoSvg';
 
 export const Logo = () => {
   return (
     <div className='logo'>
-      <img src={logoNoBackground} alt='PanacheWorld Interior' />
+      <LogoSvg titleColor='#111111' />
     </div>
   );
 };

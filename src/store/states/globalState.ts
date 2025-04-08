@@ -63,7 +63,7 @@ export interface IGlobalState {
 }
 
 export const defaultGlobalState: IGlobalState = {
-  photos,
+  photos: photos,
   galleries: [],
   banners,
   navigation: defaultNavigation,

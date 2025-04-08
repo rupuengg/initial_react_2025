@@ -1,4 +1,4 @@
-import logoNoBackground from '../../assets/images/logo/logoNoBackground.png';
+// import logoNoBackground from '../../assets/images/logo/logoNoBackground.png';
 import { faMailReply, faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { INavigation } from 'models';
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from 'store';
 import { SocialMedia } from 'components';
+import { LogoSvg } from 'components/Logo/LogoSvg';
 import './Footer.scss';
 
 export const Footer = () => {
@@ -29,7 +30,8 @@ export const Footer = () => {
         <ul>
           <li className='logo'>
             <Link to='/'>
-              <img src={logoNoBackground} alt='PanacheWorld Interior' />
+              {/* <img src={logoNoBackground} alt='PanacheWorld Interior' /> */}
+              <LogoSvg titleColor='#ddceb0' />
             </Link>
           </li>
           <li className='middle'>

@@ -1,5 +1,5 @@
 import { INavigation } from 'models';
-import { About, Contact, Faq, Gallery, Home, Project, ProjectPhoto, Services } from 'pages';
+import { About, Contact, Faq, Gallery, Home, Project, Services } from 'pages';
 import React from 'react';
 
 export const defaultNavigation: INavigation[] = [
@@ -64,13 +64,6 @@ export const defaultNavigation: INavigation[] = [
     title: 'Projects',
     link: '/project_done_by_us',
     element: React.createElement(Project),
-    scrollTo: '',
-    items: [],
-  },
-  {
-    title: 'Projects',
-    link: '/project_done_by_us/:id',
-    element: React.createElement(ProjectPhoto),
     scrollTo: '',
     items: [],
   },

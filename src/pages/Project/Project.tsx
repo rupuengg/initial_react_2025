@@ -23,7 +23,7 @@ export const Project = () => {
   const handleClick = useCallback(
     (d: any) => {
       const photo = photos.find(p => p.fileId === d.photo.key);
-      if (photo) navigate(photo.fileId || '');
+      if (photo) navigate(`/project_done_by_us/${photo.fileId || ''}`);
     },
     [photos, navigate]
   );
@@ -32,7 +32,7 @@ export const Project = () => {
 
   return (
     <DefaultLayout>
-      <div className='siteCss' aria-hidden='true' aria-modal='true'>
+      <div className='siteCss'>
         <div className='project_page marginBottom100'>
           <h1 id='/projects' className='header1'>
             Our Projects
@@ -49,7 +49,6 @@ export const Project = () => {
 
                   const height = slide.width && slide.height ? Math.round(Math.min(rect.height, (rect.width / slide.width) * slide.height)) : rect.height;
 
-                  console.log(width, height);
                   return <Navigate to={`/home`} replace />;
                 },
               }}

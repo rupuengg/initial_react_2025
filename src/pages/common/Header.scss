@@ -12,6 +12,11 @@
     & img {
       width: 250px;
     }
+
+    & svg {
+      width: 250px;
+      height: 55px;
+    }
   }
 
   & ul,
@@ -187,6 +192,13 @@
     & .logo img {
       width: 150px !important;
     }
+
+    // & .logo {
+    //   & svg {
+    //     width: 150px;
+    //     height: 33px;
+    //   }
+    // }
 
     & > .lowerHeader {
       & .navBar {

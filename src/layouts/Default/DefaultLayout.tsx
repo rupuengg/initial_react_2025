@@ -1,7 +1,8 @@
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Footer, Header } from 'pages';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { E_Icon_Name } from 'enums';
 import { Icon } from 'components';
 import './DefaultLayout.scss';
@@ -12,6 +13,11 @@ interface IDefaultLayout {
 
 export const DefaultLayout: React.FC<IDefaultLayout> = ({ children }) => {
   const [isShowQuery, setIsShowQuery] = useState(false);
+  const params = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [params]);
 
   const handleQuery = useCallback(() => {
     setIsShowQuery(p => !p);

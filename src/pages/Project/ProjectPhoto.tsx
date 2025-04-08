@@ -1,3 +1,4 @@
+import { IKContext, IKVideo } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
 import { IGallery } from 'models';
 import Lightbox from 'yet-another-react-lightbox';
@@ -7,6 +8,7 @@ import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { PhotoUtils } from 'utils';
 import { IApplicationState } from 'store';
 import './Project.scss';
 
@@ -67,10 +69,14 @@ export const ProjectPhoto = () => {
   }, [photos, params.id]);
 
   const images = useMemo(() => {
-    return gallery?.photos?.map(g => {
-      return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;
-    });
+    return PhotoUtils(gallery?.photos)
+      .sort()
+      ?.map(g => {
+        return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;
+      });
   }, [gallery?.photos]);
+
+  const video = useMemo(() => PhotoUtils(gallery?.photos).getVideo(), [gallery?.photos]);
 
   if (!images) return null;
 
@@ -81,8 +87,15 @@ export const ProjectPhoto = () => {
           <h1 id='/projects' className='header1'>
             Project Gallery
           </h1>
+          {video && (
+            <div className='p0 m0 marginTop50 video-box'>
+              <IKContext urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn'}>
+                <IKVideo className='ikvideo-default' path={video.filePath || ''} controls={true} />
+              </IKContext>
+            </div>
+          )}
           <div className='p0 m0 marginTop50'>
-            <RowsPhotoAlbum photos={images} targetRowHeight={250} onClick={({ index: current }) => setIndex(current)} />
+            <RowsPhotoAlbum photos={images} targetRowHeight={550} onClick={({ index: current }) => setIndex(current)} />
 
             <Lightbox index={index} slides={images} open={index >= 0} close={() => setIndex(-1)} />
           </div>

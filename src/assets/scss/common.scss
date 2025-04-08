@@ -197,7 +197,16 @@ body {
   border-bottom: 0px solid transparent;
   padding: 0 0 0 0;
 
-  &:hover,
+  &:hover {
+    color: get_color(nav_menu_font_color_hover);
+    border-color: get_color(nav_menu_font_color_hover);
+    -webkit-transition: border 0s ease-out;
+    -moz-transition: border 0s ease-out;
+    -o-transition: border 0s ease-out;
+    transition: border 0s ease-out;
+    color: #111111;
+  }
+
   &.active {
     color: get_color(nav_menu_font_color_hover);
     border-color: get_color(nav_menu_font_color_hover);
@@ -205,7 +214,7 @@ body {
     -moz-transition: border 0s ease-out;
     -o-transition: border 0s ease-out;
     transition: border 0s ease-out;
-    color: #ddceb0;
+    color: #bb8f71;
   }
 }
 

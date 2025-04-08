@@ -55,7 +55,7 @@ export const Home = () => {
                   <div className='pagelayer-service-text'>
                     <p className='para'>Interior design enhances spaces through color, texture, lighting, and layout for beauty and function.</p>
                   </div>
-                  <NavLink to={'/interior'} className={'link'} onClick={() => {}}>
+                  <NavLink to={'/all_photos'} className={'link'} onClick={() => {}}>
                     More
                   </NavLink>
                 </div>
@@ -66,7 +66,7 @@ export const Home = () => {
                   <div className='pagelayer-service-text'>
                     <p className='para'>Efficient space planning is crucial for maximizing your area’s potential</p>
                   </div>
-                  <NavLink to={'/interior1'} className={'link'} onClick={() => {}}>
+                  <NavLink to={'/all_photos'} className={'link'} onClick={() => {}}>
                     More
                   </NavLink>
                 </div>
@@ -77,7 +77,7 @@ export const Home = () => {
                   <div className='pagelayer-service-text'>
                     <p className='para'>We are committed to sustainability and eco-friendly practices</p>
                   </div>
-                  <NavLink to={'/interior1'} className={'link'} onClick={() => {}}>
+                  <NavLink to={'/all_photos'} className={'link'} onClick={() => {}}>
                     More
                   </NavLink>
                 </div>
@@ -156,28 +156,54 @@ export const Home = () => {
 
           <div className='box'>
             <div className='column'>
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='000%20-%20F%20142%20Gulshan%20Bellina%20-%20Done/003-mb-b-fw.1aad6ffb.jpeg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0014.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done/IMG-20220322-WA0005.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='016%20-%20F%20-%20044%20-%20Gulshan%20Bellina%20-%20Done/IMG-20211114-WA0106.jpg' />
+              <a href='/project_done_by_us/676bf281e375273f6051db9f'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='000%20-%20F%20142%20Gulshan%20Bellina%20-%20Done/003-mb-b-fw.1aad6ffb.jpeg' />
+              </a>
+              <a href='/project_done_by_us/6793dda8432c476416de5b59'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0014.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793e170432c476416eed258'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done/IMG-20220322-WA0005.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793d4ba432c476416ae4aa7'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='016%20-%20F%20-%20044%20-%20Gulshan%20Bellina%20-%20Done/IMG-20211114-WA0106.jpg' />
+              </a>
             </div>
             <div className='column'>
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0033.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='029%20-%20A-%20183%20-%20Gulshan%20Bellina%20-%20Done/IMG_20220311_130805.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done/IMG-20220322-WA0011.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='034%20-%20G%203052%20-%20Gaur%20City%2014%20Avenue/IMG_20220506_233115.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='016%20-%20F%20-%20044%20-%20Gulshan%20Bellina%20-%20Done/IMG_9055.JPG' />
+              <a href='/project_done_by_us/6793dda8432c476416de5b59'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0033.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793e27b432c476416f41831'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='029%20-%20A-%20183%20-%20Gulshan%20Bellina%20-%20Done/IMG_20220311_130805.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793e170432c476416eed258'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done/IMG-20220322-WA0011.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793e0a2432c476416eabdcd'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='034%20-%20G%203052%20-%20Gaur%20City%2014%20Avenue/IMG_20220506_233115.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793d4ba432c476416ae4aa7'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='016%20-%20F%20-%20044%20-%20Gulshan%20Bellina%20-%20Done/IMG_9055.JPG' />
+              </a>
             </div>
             <div className='column'>
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0025.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0018.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done/IMG-20220322-WA0010.jpg' />
-              <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='049%20-%20J%20-%20061%20-%20Subodh%20-%20Gulshan%20Bellina%20-%20Done/IMG_20220914_194548862.jpg' />
+              <a href='/project_done_by_us/6793dda8432c476416de5b59'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0025.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793dda8432c476416de5b59'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0018.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793e170432c476416eed258'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done/IMG-20220322-WA0010.jpg' />
+              </a>
+              <a href='/project_done_by_us/6793df71432c476416e44d94'>
+                <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='049%20-%20J%20-%20061%20-%20Subodh%20-%20Gulshan%20Bellina%20-%20Done/IMG_20220914_194548862.jpg' />
+              </a>
             </div>
           </div>
 
           <div className='marginTop50' style={{ textAlign: 'center' }}>
-            <NavLink to={'/gallery'} className={'link'} onClick={() => {}}>
+            <NavLink to={'/all_photos'} className={'link'} onClick={() => {}}>
               More
             </NavLink>
           </div>
@@ -198,14 +224,38 @@ export const Home = () => {
 
           <div className='box'>
             <div className='column'>
-              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0014.jpg' />
-              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0018.jpg' />
+              <a href='/project_done_by_us/6793dda8432c476416de5b59' title='This is featured project'>
+                <IKImage
+                  onClick={handleClick}
+                  urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'}
+                  path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0014.jpg'
+                />
+              </a>
+              <a href='/project_done_by_us/6793dda8432c476416de5b59' title='This is featured project'>
+                <IKImage
+                  onClick={handleClick}
+                  urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'}
+                  path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0018.jpg'
+                />
+              </a>
             </div>
             <div className='column'>
-              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0033.jpg' />
+              <a href='/project_done_by_us/6793dda8432c476416de5b59' title='This is featured project'>
+                <IKImage
+                  onClick={handleClick}
+                  urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'}
+                  path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0033.jpg'
+                />
+              </a>
             </div>
             <div className='column'>
-              <IKImage onClick={handleClick} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0025.jpg' />
+              <a href='/project_done_by_us/6793dda8432c476416de5b59' title='This is featured project'>
+                <IKImage
+                  onClick={handleClick}
+                  urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'}
+                  path='043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done/IMG-20221104-WA0025.jpg'
+                />
+              </a>
             </div>
           </div>
         </div>
