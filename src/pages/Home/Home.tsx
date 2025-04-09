@@ -11,10 +11,10 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from 'store';
-import { BannerList, Enquiry, OfferItem } from 'components';
+import { CustomSlider, Enquiry, OfferItem } from 'components';
 
 export const Home = () => {
-  const { featureGallery, galleries, offers } = useSelector((state: IApplicationState) => state.global);
+  const { banners, featureGallery, galleries, offers } = useSelector((state: IApplicationState) => state.global);
   const navigate = useNavigate();
 
   const images = useMemo(() => {
@@ -30,9 +30,9 @@ export const Home = () => {
 
   return (
     <DefaultLayout>
-      {/* Banner Start */}
-      <BannerList />
-      {/* End */}
+      {/* Slider */}
+      <CustomSlider items={banners.map(b => ({ image: b.img, title: b.txt }))} />
+      {/* Slider End */}
 
       {/* We Offer to Client Section */}
       <div className='siteCssWidth1200'>
@@ -149,12 +149,12 @@ export const Home = () => {
 
       {/* Projects */}
       <div className='siteCssFullWidth'>
-        <div className='our_work_may_impress'>
+        <div className='our_work_may_impress marginTop100'>
           <RowsPhotoAlbum photos={projects} targetRowHeight={400} onClick={handleClick} />
           <h2 className='header2'>our works may impress you</h2>
           {images && <RowsPhotoAlbum photos={[images]} targetRowHeight={400} onClick={handleClick} />}
 
-          <div className='box'>
+          <div className='box marginTop50'>
             <div className='column'>
               <a href='/project_done_by_us/676bf281e375273f6051db9f'>
                 <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path='000%20-%20F%20142%20Gulshan%20Bellina%20-%20Done/003-mb-b-fw.1aad6ffb.jpeg' />
@@ -222,7 +222,7 @@ export const Home = () => {
         <div className='our_work_may_impress marginTop100'>
           <h2 className='header2'>featured project</h2>
 
-          <div className='box'>
+          <div className='box marginTop50'>
             <div className='column'>
               <a href='/project_done_by_us/6793dda8432c476416de5b59' title='This is featured project'>
                 <IKImage

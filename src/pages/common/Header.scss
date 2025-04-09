@@ -3,8 +3,10 @@
 .mainHeader {
   margin-top: 44px;
   width: 100%;
+  height: 115px;
   z-index: 99;
   background-color: get_color(white);
+  position: relative;
 
   .logo {
     display: flex;
@@ -28,7 +30,9 @@
 
   & > .lowerHeader {
     display: block;
-    position: relative;
+    width: 100%;
+    background-color: get_color(white);
+    border-bottom: 2px solid #ddceb0;
 
     // @media (min-width: $breakpoint-tablet) {
     //   margin: 20px 0;
@@ -185,22 +189,21 @@
   }
 
   &.fixed {
-    position: fixed;
-    top: 0;
+    margin-top: 115px;
+    // height: 69px;
     border-bottom: 2px solid #ddceb0;
+    transition: height 0.2s ease-in-out;
 
     & .logo img {
       width: 150px !important;
     }
 
-    // & .logo {
-    //   & svg {
-    //     width: 150px;
-    //     height: 33px;
-    //   }
-    // }
-
     & > .lowerHeader {
+      position: fixed;
+      top: 44px;
+      transition: position 0.1s ease-in-out;
+      width: 100%;
+
       & .navBar {
         @media (min-width: $breakpoint-tablet) {
           padding: 6px 0;

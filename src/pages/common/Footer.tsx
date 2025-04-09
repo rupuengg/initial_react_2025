@@ -5,8 +5,9 @@ import { INavigation } from 'models';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { E_Icon_Name } from 'enums';
 import { IApplicationState } from 'store';
-import { SocialMedia } from 'components';
+import { Icon, SocialMedia } from 'components';
 import { LogoSvg } from 'components/Logo/LogoSvg';
 import './Footer.scss';
 
@@ -47,20 +48,19 @@ export const Footer = () => {
               </span>
               <a href='mailto:shabadinteriors@gmail.com'>+91-9599385377</a>
             </p>
-            <p>
-              <span>
-                <FontAwesomeIcon icon={faPhoneVolume} />
+            <p style={{ display: 'flex' }}>
+              <span style={{ display: 'flex', alignItems: 'center', width: '12px' }}>
+                <Icon className='whatsapp-icon' style={{ width: '15px', height: '15px', display: 'inline-flex' }} iconName={E_Icon_Name.WHATSAPP} />
               </span>
-              <a href='mailto:shabadinteriors@gmail.com'>+91-9599385377</a>
+              <a target='_blank' href='https://wa.me/9599385377?text=Hello' rel='noreferrer'>
+                +91-9599385377
+              </a>
             </p>
             <hr />
             <SocialMedia />
           </li>
           <li className='sitemap'>
-            <ul className='nav-sitemap'>
-              <li>Sitemap</li>
-              {makeMenu(navigation, 0)}
-            </ul>
+            <ul className='nav-sitemap'>{makeMenu(navigation, 0)}</ul>
           </li>
           <li className='copy'>Copyright &copy; 2021 panacheworld.in. All right reserved</li>
         </ul>

@@ -9,7 +9,7 @@
   }
 
   @media (min-width: $breakpoint-tablet) {
-    height: 600px;
+    height: 400px;
   }
 
   & .siteCss {
@@ -22,6 +22,8 @@
   & .bannerItem {
     display: none;
     opacity: 0;
+    width: 100%;
+    height: 100%;
 
     & .slideItem {
       position: relative;
@@ -30,15 +32,14 @@
       background-size: cover;
       overflow: hidden;
       width: 100%;
-      background-size: 100% 300px;
+      height: 100%;
+      background-position: 0px 100%;
 
       @media (max-width: $breakpoint-tablet) {
-        height: 300px;
         background-size: 100% 300px;
       }
 
       @media (min-width: $breakpoint-tablet) {
-        height: 600px;
         background-size: 100% 600px;
       }
     }

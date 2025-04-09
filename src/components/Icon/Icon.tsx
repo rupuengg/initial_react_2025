@@ -31,13 +31,19 @@ const arrayIcon: { [x: string]: React.JSX.Element } = {
 
 interface IIcon {
   iconName: E_Icon_Name;
+  style?: React.CSSProperties;
+  className?: string;
 }
 
-export const Icon: React.FC<IIcon> = ({ iconName }) => {
+export const Icon: React.FC<IIcon> = ({ iconName, style = {}, className }) => {
   const icon = useMemo(() => {
     if (arrayIcon[iconName]) return arrayIcon[iconName];
     return null;
   }, [iconName]);
 
-  return icon;
+  return (
+    <span className={className || ''} style={style}>
+      {icon}
+    </span>
+  );
 };

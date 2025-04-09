@@ -82,7 +82,7 @@ export const ProjectPhoto = () => {
 
   return (
     <DefaultLayout>
-      <div className='siteCssFullWidth'>
+      <div className='siteCss'>
         <div className='gallery_page marginBottom100'>
           <h1 id='/projects' className='header1'>
             Project Gallery

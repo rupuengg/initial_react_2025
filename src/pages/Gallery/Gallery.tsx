@@ -22,7 +22,7 @@ export const Gallery = () => {
 
   return (
     <DefaultLayout>
-      <div className='siteCssFullWidth'>
+      <div className='siteCss'>
         <div className='gallery_page marginBottom100'>
           <h1 id='/gallery' className='header1'>
             Gallery - Our work

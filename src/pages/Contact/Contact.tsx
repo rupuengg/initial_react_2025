@@ -1,12 +1,16 @@
 import { DefaultLayout } from 'layouts';
-import { Enquiry } from 'components';
+import { BannerList, Enquiry } from 'components';
 
 export const Contact = () => {
   return (
-    <>
-      <DefaultLayout>
-        <Enquiry />
-      </DefaultLayout>
-    </>
+    <DefaultLayout>
+      {/* Banner Start */}
+      <BannerList text='AFrequently Asked Questions (FAQ)' isHideAnimation={true} />
+      {/* End */}
+
+      {/* Enquirey */}
+      <Enquiry />
+      {/* End */}
+    </DefaultLayout>
   );
 };

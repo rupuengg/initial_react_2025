@@ -32,17 +32,11 @@ export const BannerList: React.FC<IBannerList> = ({ isHideAnimation }) => {
 
   return (
     <div className='bannerBox'>
-      <div>
-        {banners.map((item, index) => (
-          <div key={`banner-${index}`} className={`bannerItem ${index === activeIndex ? 'active' : ''}`}>
-            <div className='slideItem' style={{ backgroundImage: 'url(' + item.img + ')' }}>
-              {/* <div className='contentBox'>
-                <h1 className='header1'>{text || item.txt}</h1>
-              </div> */}
-            </div>
-          </div>
-        ))}
-      </div>
+      {banners.map((item, index) => (
+        <div key={`banner-${index}`} className={`bannerItem ${index === activeIndex ? 'active' : ''}`}>
+          <div className='slideItem' style={{ backgroundImage: 'url(' + item.img + ')' }}></div>
+        </div>
+      ))}
     </div>
   );
 };
