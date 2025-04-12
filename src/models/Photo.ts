@@ -1,10 +1,13 @@
 export interface ICutomPhoto {
-  cover?: boolean;
+  cover?: boolean | string;
+  featured?: boolean | string;
+  galleryId?: string;
+  galleryName?: string;
 }
 
 export interface IEmbeddedMetadata {
-  YResolution?: number;
-  XResolution?: number;
+  YResolution?: string;
+  XResolution?: string;
   DateCreated?: string;
   DateTimeCreated?: string;
 }
@@ -25,17 +28,17 @@ export interface IPhoto {
   AITags?: string | null;
   versionInfo?: IVersionInfo;
   embeddedMetadata?: IEmbeddedMetadata;
-  isPublished?: boolean;
+  isPublished?: string;
   customCoordinates?: string | null;
   customMetadata?: ICutomPhoto;
-  isPrivateFile?: boolean;
+  isPrivateFile?: string;
   url?: string;
   thumbnail?: string;
   fileType?: string;
   filePath?: string;
-  height?: number;
-  width?: number;
-  size?: number;
-  hasAlpha?: boolean;
+  height?: string;
+  width?: string;
+  size?: string;
+  hasAlpha?: string;
   mime?: string;
 }

@@ -28,7 +28,8 @@ export const ProjectPhoto = () => {
     const galleries: { [x: string]: IGallery } = {};
 
     if (photos && params.id) {
-      const photo = photos.find(p => p.fileId === params.id);
+      const d = photos.find(p => p.customMetadata?.galleryId === params.id);
+      const photo = photos.find(p => p.fileId === d?.fileId);
       if (photo) {
         const photoAr: string[] | undefined = photo?.filePath?.split('/');
 
@@ -47,8 +48,8 @@ export const ProjectPhoto = () => {
                 fileType: p.fileType,
                 filePath: p.filePath,
                 photos: [p],
-                width: p.width,
-                height: p.height,
+                width: Number(p.width),
+                height: Number(p.height),
               };
             }
 
@@ -72,7 +73,7 @@ export const ProjectPhoto = () => {
     return PhotoUtils(gallery?.photos?.filter(p => p.audioCodec !== 'aac'))
       .sort()
       ?.map(g => {
-        return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;
+        return { src: g.url, width: Number(g.width), height: Number(g.height), url: g.url } as Photo;
       });
   }, [gallery?.photos]);
 

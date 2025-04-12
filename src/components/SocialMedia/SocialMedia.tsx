@@ -13,10 +13,10 @@ export const SocialMedia = () => {
       <Link to={''} onClick={() => handleOpen('https://www.facebook.com')}>
         <Icon iconName={E_Icon_Name.FACEBOOK} />
       </Link>
-      <Link to={''} onClick={() => handleOpen('https://www.x.com')}>
+      <Link to={''} onClick={() => handleOpen('https://x.com/Panachew0rld')}>
         <Icon iconName={E_Icon_Name.TWITTER} />
       </Link>
-      <Link to={''} onClick={() => handleOpen('https://www.instagram.com')}>
+      <Link to={''} onClick={() => handleOpen('https://www.instagram.com/panachew0rld')}>
         <Icon iconName={E_Icon_Name.INSTAGRAM} />
       </Link>
       <Link to={''} onClick={() => handleOpen('https://linkedin.com')}>

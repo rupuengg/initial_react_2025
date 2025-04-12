@@ -14,7 +14,7 @@ export const Gallery = () => {
 
   const images = useMemo(() => {
     return photos.map(g => {
-      return { src: g.url, width: g.width, height: g.height, url: g.url } as Photo;
+      return { src: g.url, width: Number(g.width), height: Number(g.height), url: g.url } as Photo;
     });
   }, [photos]);
 

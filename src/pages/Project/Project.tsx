@@ -14,16 +14,16 @@ export const Project = () => {
 
   const images = useMemo(() => {
     return photos
-      .filter(p => p.customMetadata && p.customMetadata.cover)
+      .filter(p => p.customMetadata && typeof p.customMetadata.cover === 'boolean' && p.customMetadata.cover)
       .map(g => {
-        return { src: g.url, width: g.width, height: g.height, url: g.url, key: g.fileId } as Photo;
+        return { src: g.url, width: Number(g.width), height: Number(g.height), url: g.url, key: g.fileId } as Photo;
       });
   }, [photos]);
 
   const handleClick = useCallback(
     (d: any) => {
       const photo = photos.find(p => p.fileId === d.photo.key);
-      if (photo) navigate(`/project_done_by_us/${photo.fileId || ''}`);
+      if (photo) navigate(`/project_done_by_us/${photo.customMetadata?.galleryId || ''}`);
     },
     [photos, navigate]
   );
