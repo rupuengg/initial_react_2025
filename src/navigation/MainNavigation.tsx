@@ -16,6 +16,7 @@ export const MainNavigation = () => {
         <Route path='/project_done_by_us/:id' element={<ProjectPhoto />} />
         <Route path='*' element={<NoMatch />} />
       </Route>
+      <Route path='*' element={<NoMatch />} />
     </Routes>
   );
 };
