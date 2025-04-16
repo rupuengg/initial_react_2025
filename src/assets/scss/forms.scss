@@ -15,10 +15,21 @@
   & .form-field {
     flex: 1 0 100%;
 
-    & label {
+    & label,
+    & p.label {
       display: block;
       color: #8a8a8a;
       font-weight: 600;
+      font-size: 14px;
+      padding-left: 0;
+      padding-bottom: 4px;
+      font-family: Montserrat;
+    }
+
+    & p.text {
+      display: block;
+      color: #8a8a8a;
+      font-weight: 400;
       font-size: 14px;
       padding-left: 0;
       padding-bottom: 4px;
