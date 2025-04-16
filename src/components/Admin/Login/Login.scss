@@ -1,0 +1,32 @@
+@import 'assets/scss/common.scss';
+@import 'assets/scss/forms.scss';
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  & .inner {
+    display: flex;
+    width: 500px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 2px solid #bb8f71;
+    border-radius: 10px;
+
+    & .content {
+      padding: 30px;
+      width: 100%;
+
+      & .logo {
+        border-bottom: 2px solid #bb8e71;
+
+        svg {
+          height: 85px;
+          width: 360px;
+        }
+      }
+    }
+  }
+}

@@ -9,7 +9,6 @@ import { E_Icon_Name } from 'enums';
 import { IApplicationState } from 'store';
 import { Icon, SocialMedia } from 'components';
 import { LogoSvg } from 'components/Logo/LogoSvg';
-import './Footer.scss';
 
 export const Footer = () => {
   const { navigation } = useSelector((state: IApplicationState) => state.global);

@@ -1,0 +1,75 @@
+@import 'assets/scss/common.scss';
+
+.mainHeader {
+  width: 100%;
+  z-index: 99;
+  background-color: get_color(white);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  .logo {
+    display: flex;
+
+    & img {
+      width: 250px;
+    }
+
+    & svg {
+      width: 250px;
+      height: 55px;
+    }
+  }
+
+  & ul,
+  & li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & > .lowerHeader {
+    display: block;
+    width: 100%;
+    background-color: get_color(white);
+    border-bottom: 2px solid #ddceb0;
+
+    // @media (min-width: $breakpoint-tablet) {
+    //   margin: 20px 0;
+    // }
+
+    & .navBar {
+      display: flex;
+      align-items: center;
+
+      @media (min-width: $breakpoint-tablet) {
+        padding: 10px 20px 10px 0;
+      }
+
+      & .logo-box {
+        flex: 0 0 auto;
+
+        & > a {
+          display: block;
+        }
+
+        @media (max-width: $breakpoint-tablet) {
+          flex: 0 0 90%;
+          padding: 15px 0;
+          height: 55px;
+        }
+
+        & a {
+          text-decoration: none;
+          color: get_color(white_font_color);
+        }
+      }
+    }
+
+    & .navMenu {
+      display: flex;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+    }
+  }
+}

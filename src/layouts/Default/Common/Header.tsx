@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { IApplicationState } from 'store';
 import { Logo } from 'components';
-import './Header.scss';
 import { Topper } from './Topper';
 
 export const Header = () => {

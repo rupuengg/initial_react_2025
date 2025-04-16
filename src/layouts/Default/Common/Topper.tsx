@@ -2,7 +2,6 @@ import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
 import { faMailReply } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SocialMedia } from 'components';
-import './Topper.scss';
 
 export const Topper = () => {
   return (

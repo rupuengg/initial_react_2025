@@ -1,3 +1,4 @@
+export * from './Admin';
 export * from './App';
 export * from './BannerList';
 export * from './CustomSlider';

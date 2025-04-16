@@ -1,0 +1,91 @@
+@import 'assets/scss/common.scss';
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+
+  & .header1 {
+    text-align: center;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+  }
+
+  & .form-field {
+    flex: 1 0 100%;
+
+    & label {
+      display: block;
+      color: #8a8a8a;
+      font-weight: 600;
+      font-size: 14px;
+      padding-left: 0;
+      padding-bottom: 4px;
+      font-family: Montserrat;
+    }
+
+    & .box {
+      box-shadow: 2px 2px 3px 2px #8a8a8a;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    & .button {
+      box-shadow: none;
+      text-align: right;
+    }
+
+    & input,
+    & textarea {
+      display: block;
+      font-family: Montserrat;
+      border: 0;
+      width: 90%;
+      font-size: 18px;
+
+      &:focus-visible {
+        outline-style: none;
+      }
+    }
+
+    & button {
+      padding: 10px 30px;
+      border-radius: 10px;
+      margin: 0;
+      border: 0;
+      font-size: 14px;
+      border: 2px solid get_color(nav_menu_font_color);
+      background-color: get_color(white);
+      font-weight: 600;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition:
+        0.1s background-color linear,
+        0.1s color linear;
+      color: get_color(nav_menu_font_color);
+      cursor: pointer;
+
+      &:hover {
+        background-color: get_color(nav_menu_font_color);
+        color: get_color(white);
+      }
+
+      &[type='submit'] {
+        background-color: #bb8f71;
+        border: 2px solid #bb8f71;
+        color: #ffffff;
+
+        &:hover {
+          background-color: #ffffff;
+          color: #bb8f71;
+        }
+      }
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}

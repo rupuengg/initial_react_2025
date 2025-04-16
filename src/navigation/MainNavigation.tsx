@@ -1,7 +1,8 @@
-import { NoMatch, ProjectPhoto } from 'pages';
+import { NoMatch } from 'pages';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { IApplicationState } from 'store';
+import { PrivateRoute } from 'components/Admin/Login/PrivateRoute';
 
 export const MainNavigation = () => {
   const { navigation } = useSelector((state: IApplicationState) => state.global);
@@ -13,7 +14,7 @@ export const MainNavigation = () => {
         {navigation.map(nav => (
           <Route key={nav.link} path={nav.link} element={nav.element} />
         ))}
-        <Route path='/project_done_by_us/:id' element={<ProjectPhoto />} />
+        <Route path={'/admin/*'} element={<PrivateRoute />} />
         <Route path='*' element={<NoMatch />} />
       </Route>
       <Route path='*' element={<NoMatch />} />

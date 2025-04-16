@@ -32,6 +32,10 @@ $colors: (
   }
 }
 
+#root {
+  height: 100%;
+}
+
 @function get-color($color, $variant: null) {
   $color: map-get($colors, $color);
   @return map-get(
@@ -117,6 +121,26 @@ $colors: (
   @media (min-width: $breakpoint-tablet) {
     // padding: 0 100px;
     // width: 800px;
+  }
+
+  .pageTitle {
+    font-size: 32px;
+    margin-bottom: 20px;
+    line-height: 32px;
+  }
+}
+
+.siteCssForLogin {
+  position: static;
+  width: 100%;
+  height: 100%;
+  margin: $site-margin;
+
+  @media (min-width: $breakpoint-tablet) {
+    // padding: 0 100px;
+    // width: 800px;
+    width: 500px;
+    height: 100%;
   }
 
   .pageTitle {
