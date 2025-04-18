@@ -1,9 +1,9 @@
 import { DashboardLayout } from 'layouts';
 
-export const Setting = () => {
+export const SiteConfig = () => {
   return (
     <DashboardLayout>
-      <h1 className='header1'>Setting</h1>
+      <h1 className='header1'>SiteConfig</h1>
     </DashboardLayout>
   );
 };

@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import { entityDataReducer } from './slices/entityDataSlice';
 import { globalReducer } from './slices/globalSlice';
 
 export * from './constants';
@@ -10,6 +11,7 @@ export * from './thunk';
 
 const rootReducer = combineReducers({
   global: globalReducer,
+  entityData: entityDataReducer,
 });
 
 export const store = configureStore({

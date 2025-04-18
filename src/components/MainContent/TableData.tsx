@@ -10,12 +10,12 @@ import { IApplicationState, IUseDispatch, deleteData, getDataList, useAppDispatc
 import { AgTable, AgTableHeader } from 'components';
 
 export const TableData = () => {
-  const { workspace, entityData } = useSelector((state: IApplicationState) => state);
+  const { global, entityData } = useSelector((state: IApplicationState) => state);
   const dispatch: IUseDispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { path, entrypoint, sectionId, mfeTitle } = workspace;
+  const { path, entrypoint, sectionId, mfeTitle } = global;
   const [isExport, setIsExport] = useState<boolean>(false);
   const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
 
@@ -31,14 +31,11 @@ export const TableData = () => {
       pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other, E_Operation_Permission.ADD),
       search: `?${searchParams.toString()}`,
     });
-  }, [params]);
+  }, [params, navigate, searchParams]);
 
-  const handleRowClick = useCallback(
-    (data: CommonEntity) => {
-      console.log(data);
-    },
-    [entrypoint]
-  );
+  const handleRowClick = useCallback((data: CommonEntity) => {
+    console.log(data);
+  }, []);
 
   const handleRowDoubleClick = useCallback(
     (e: any, data: CommonEntity) => {
@@ -47,14 +44,14 @@ export const TableData = () => {
         search: `?${searchParams.toString()}`,
       });
     },
-    [params]
+    [params, navigate, searchParams]
   );
 
   const handleDelete = useCallback(
     (data: CommonEntity) => {
       dispatch(deleteData({ ...mapper, dataKey: data.id.toString() }));
     },
-    [mapper]
+    [mapper, dispatch]
   );
 
   useEffect(() => {
@@ -71,7 +68,7 @@ export const TableData = () => {
       // Load Data
       if (!entityData.items[mapper.entrypoint] || !entityData.items[mapper.entrypoint].list || entityData.items[mapper.entrypoint].list.length === 0) dispatch(getDataList(mapper));
     }
-  }, [mapper, entityData.items]);
+  }, [mapper, entityData.items, dispatch]);
 
   if (!entityData.items || !entityData.items[mapper.entrypoint] || (entityData.items[mapper.entrypoint] && !entityData.items[mapper.entrypoint].isTabularDataActive)) return <h1>Loading...</h1>;
 

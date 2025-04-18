@@ -16,7 +16,8 @@ export function mapFormWithValues(form: IBaseForm, entity: CommonEntity): IBaseF
   const cb = (frm: IBaseForm): IBaseForm => {
     const newFrm: IBaseForm = { ...frm };
 
-    if (newFrm.type === E_Form_Type.FIELD && newFrm.fieldName && entity[newFrm.fieldName]) newFrm.fieldValue = entity[newFrm.fieldName] as keyof CommonEntity;
+    if (newFrm.type === E_Form_Type.FIELD && newFrm.fieldName && entity[newFrm.fieldName as keyof CommonEntity])
+      newFrm.fieldValue = entity[newFrm.fieldName as keyof CommonEntity] as keyof CommonEntity;
 
     if (newFrm.type === E_Form_Type.COLUMN) newFrm.rows = newFrm.rows?.map(r => ({ ...r, ...cb(r) }));
     else if (newFrm.type === E_Form_Type.ROW) newFrm.fields = newFrm.fields?.map(f => ({ ...f, ...cb(f) }));
@@ -62,8 +63,8 @@ interface IAddEditViewForm {
 }
 
 export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
-  const { workspace, entityData } = useSelector((state: IApplicationState) => state);
-  const { path, entrypoint, sectionId, mainNavTitle, mfeSupTitle, mfeTitle } = workspace;
+  const { global, entityData } = useSelector((state: IApplicationState) => state);
+  const { path, entrypoint, sectionId, mainNavTitle, mfeSupTitle, mfeTitle } = global;
   const { mapper, entityForm, defaultEntity } = useTableMapper(path, entrypoint, sectionId);
   const { allowCreate, allowUpdate } = useANAModulePermission(mapper.permission);
   const { isAdd, isEditable, isRead } = getPermission(type);
@@ -76,8 +77,8 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   // Set item by ID
   useEffect(() => {
     if (params.dataId && params.entity && entityData.items[params.entity]) {
-      setItem(entityData.items[params.entity].list.find(i => i.key === params.dataId));
-      setInitialItem(entityData.items[params.entity].list.find(i => i.key === params.dataId));
+      setItem(entityData.items[params.entity].list.find(i => i.id.toString() === params.dataId));
+      setInitialItem(entityData.items[params.entity].list.find(i => i.id.toString() === params.dataId));
     } else {
       if (defaultEntity) {
         setItem(defaultEntity);

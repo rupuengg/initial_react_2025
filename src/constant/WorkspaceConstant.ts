@@ -1,5 +1,5 @@
 export const WorkspaceConstant = {
-  API_MAIN_ROUTE: 'veronica',
+  API_MAIN_ROUTE: '',
   COMMON_NOTIFICATION_MESSAGE: {
     EXISTS: `"{title}" already exists. Please rename it.`,
     CREATED: `"{title}" created successfully.`,

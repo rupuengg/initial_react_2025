@@ -1,5 +1,5 @@
 export * from './BaseForm';
-export * from './QuayCraneEntityForm';
+export * from './SiteConfigEntityForm';
 export * from './RenderForm';
 export * from './TextField';
 export * from './fields';

@@ -1,6 +1,7 @@
 export * from './Admin';
 export * from './AgTable';
 export * from './App';
+export * from './Auth';
 export * from './BannerList';
 export * from './CustomSlider';
 export * from './Enuiry';

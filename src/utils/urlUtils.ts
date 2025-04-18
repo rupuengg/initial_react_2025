@@ -1,4 +1,4 @@
-import { WorkspaceConstant } from 'constant';
+// import { WorkspaceConstant } from 'constant';
 
 export const UrlUtils = (() => {
   let route: string[] = [];
@@ -21,7 +21,7 @@ export const UrlUtils = (() => {
     extra1: string | undefined = undefined,
     extra2: string | undefined = undefined
   ) {
-    route.push(WorkspaceConstant.API_MAIN_ROUTE);
+    // route.push(WorkspaceConstant.API_MAIN_ROUTE);
 
     if (domain) route.push(domain);
     if (view) route.push(view);

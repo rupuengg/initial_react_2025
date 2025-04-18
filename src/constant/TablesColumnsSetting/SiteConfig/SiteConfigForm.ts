@@ -1,4 +1,3 @@
-import { GroupCheckboxList, GroupRadioButtonProp } from 'veronica-ui-component/dist/component/core';
 import { DropdownOptions } from 'store';
 
 export const quayCraneRequiredFieldList: string[] = [
@@ -17,7 +16,7 @@ export const quayCraneRequiredFieldList: string[] = [
   'color',
 ];
 
-export const qcTieDownCheckboxOption: GroupCheckboxList[] = [{ key: 'tieDownIndr', name: '' }];
+export const qcTieDownCheckboxOption: any[] = [{ key: 'tieDownIndr', name: '' }];
 
 export const qcTypeDropdownOption: DropdownOptions[] = [
   { dropdownLabel: 'Quay Crane', tagLabel: 'O1', value: 'Q' },
@@ -26,7 +25,7 @@ export const qcTypeDropdownOption: DropdownOptions[] = [
   { dropdownLabel: 'Self-Sustain', tagLabel: 'O1', value: 'S' },
 ];
 
-export const qcmaintenanceRadioOption: GroupRadioButtonProp[] = [
+export const qcmaintenanceRadioOption: any[] = [
   {
     inputId: 1,
     key: 'Repair',

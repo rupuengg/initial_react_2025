@@ -1,8 +1,7 @@
-import { FieldType } from 'veronica-ui-component/dist/component/core';
-import { E_Form_Type } from 'enums';
+import { E_FieldType, E_Form_Type } from 'enums';
 import { IBaseForm } from './BaseForm';
 
-export const QuayCraneEntityForm: IBaseForm = {
+export const SiteConfigEntityForm: IBaseForm = {
   type: E_Form_Type.COLUMN,
   key: 'column1',
   rows: [
@@ -13,14 +12,14 @@ export const QuayCraneEntityForm: IBaseForm = {
         {
           type: E_Form_Type.FIELD,
           key: 'quayCraneNo',
-          fieldType: FieldType.TEXT,
+          fieldType: E_FieldType.TEXT,
           fieldName: 'quayCraneNo',
           fieldLabel: 'Quay Crane',
         },
         {
           type: E_Form_Type.FIELD,
           key: 'berthingTml',
-          fieldType: FieldType.TEXT,
+          fieldType: E_FieldType.TEXT,
           fieldName: 'berthingTml',
           fieldLabel: 'Berth Terminal',
         },

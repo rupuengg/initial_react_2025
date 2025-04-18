@@ -1,3 +1,4 @@
+import { Permission } from 'constant/Ana';
 import { CommonEntity } from 'entities';
 
 // import { Permission } from 'module/Ana';
@@ -39,7 +40,7 @@ export interface IEntityDataParams<CommonEntity> {
   path: string;
   entrypoint: string;
   sectionId?: string | null;
-  // permission?: Permission;
+  permission?: Permission;
   endpoint: IEndpoint;
   dataKey?: string;
   data?: CommonEntity;

@@ -1,5 +1,5 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
-import { IBaseForm } from 'forms';
+import { IBaseForm, SiteConfigEntityForm } from 'forms';
 import { defaultSiteConfigEntity } from 'mock/defaultSiteConfigEntity';
 import { getSiteConfigColumnSetting } from 'constant';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
@@ -29,7 +29,7 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
 
   switch (entrypoint) {
     case 'siteConfig':
-      return getCondition(getSiteConfigColumnSetting, Permission.CHASSIS_TYPE, undefined, defaultSiteConfigEntity);
+      return getCondition(getSiteConfigColumnSetting, Permission.CHASSIS_TYPE, SiteConfigEntityForm, defaultSiteConfigEntity);
     default:
       return getCondition([], Permission.LOGIN);
   }
