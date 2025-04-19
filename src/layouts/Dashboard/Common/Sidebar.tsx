@@ -12,19 +12,16 @@ export const Sidebar = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  console.log('Ok');
   const { uriPath, uriEntrypoint, uriSectionId, uriDefaultPageInformation, uriIsMainMenu } = useEntrypoint();
 
   const whenMfeOpen = useCallback(
     (mfe: INavigation) => {
-      // dispatch(updateLiveUserActivePage({ ...makeLiveUserEntry({ path: mfe.path, entrypoint: mfe.entrypoint }), key: email || '', module: mfe.path || '' }));
       dispatch(GlobalActions.onOpenMFE(mfe));
     },
     [dispatch]
   );
 
   useEffect(() => {
-    console.log({ uriPath, uriEntrypoint, uriSectionId, uriDefaultPageInformation, uriIsMainMenu });
     if (uriPath && uriEntrypoint) {
       const isExists = (nav: INavigation) => {
         return nav.path === uriPath && nav.entrypoint === uriEntrypoint && nav.sectionId === uriSectionId;

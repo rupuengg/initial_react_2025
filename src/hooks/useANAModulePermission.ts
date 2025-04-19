@@ -36,7 +36,7 @@ export const useANAModulePermission = (permission?: Permission) => {
         }));
       }
     }
-  }, [permission, anaInfo.allHphPermission]);
+  }, [permission, anaInfo.allHphPermission, anaInfo.currentBu, anaInfo.email, anaInfo.token]);
 
   return { ...anaInfoPermission };
 };

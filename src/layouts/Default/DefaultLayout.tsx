@@ -45,7 +45,13 @@ export const DefaultLayout: React.FC<IDefaultLayout> = ({ children }) => {
         {isShowQuery && (
           <div className='query_form'>
             <FontAwesomeIcon icon={faClose} onClick={() => setIsShowQuery(p => !p)} />
-            <iframe src='https://docs.google.com/forms/d/e/1FAIpQLSdPharPv_A5_XryCnkNpM-3kOELA9BLvnGF5sbdVTYcfW4ZyA/viewform?embedded=true' width='440' height='663' frameBorder='0'></iframe>
+            <iframe
+              title='Conatct Us'
+              src='https://docs.google.com/forms/d/e/1FAIpQLSdPharPv_A5_XryCnkNpM-3kOELA9BLvnGF5sbdVTYcfW4ZyA/viewform?embedded=true'
+              width='440'
+              height='663'
+              frameBorder='0'
+            ></iframe>
           </div>
         )}
       </div>

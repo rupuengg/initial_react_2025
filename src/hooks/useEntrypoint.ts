@@ -11,7 +11,6 @@ export const useEntrypoint = () => {
 
   useEffect(() => {
     const cb = (path: string) => {
-      console.log(path);
       if (path) {
         const str = path.replace(`#/${WorkspaceConstant.API_MAIN_ROUTE}`, '');
         if (str.length > 1) {
@@ -38,7 +37,6 @@ export const useEntrypoint = () => {
       }
     };
 
-    console.log('Hello', window.location);
     if (window.location.hash) cb(window.location.hash);
     else cb('#/' + window.location.pathname);
   }, []);

@@ -5,11 +5,14 @@ import { Logo } from 'components';
 export const Header = () => {
   const navigate = useNavigate();
 
-  const handleLoggedOut = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    sessionStorage.removeItem('token');
-    navigate('/admin/login');
-  }, []);
+  const handleLoggedOut = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      sessionStorage.removeItem('token');
+      navigate('/admin/login');
+    },
+    [navigate]
+  );
 
   return (
     <div className={`mainHeader`}>
