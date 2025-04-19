@@ -12,28 +12,30 @@ export const Login = () => {
   const navigate = useNavigate();
   const { isLogin } = useAuth();
   const [username, setUsername] = useState<string>('admin');
-  const [password, setPassword] = useState<string>('admin');
+  const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
     if (isLogin === E_Is_Login.LOGIN) {
       if (params['*'] === 'login') navigate('/admin/dashboard');
     }
-  }, [isLogin, params.id]);
+  }, [isLogin, params, navigate]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'email') setUsername(e.target.value);
     if (e.target.name === 'password') setPassword(e.target.value);
   }, []);
 
-  const handleLogin = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log('username, password', username, password);
-    if (username === 'admin' && password === 'admin') {
-      const token = encryption(JSON.stringify(defaultUser));
-      sessionStorage.setItem('token', token);
-      navigate('/admin/dashboard');
-    }
-  }, []);
+  const handleLogin = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (username === 'admin' && password === 'rupendra') {
+        const token = encryption(JSON.stringify(defaultUser));
+        sessionStorage.setItem('token', token);
+        navigate('/admin/dashboard');
+      }
+    },
+    [username, password, navigate]
+  );
 
   return (
     <div className='siteCssForLogin'>

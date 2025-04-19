@@ -6,9 +6,10 @@ import banner5 from '../../assets/images/banner/banner5.jpg';
 // import galleries from 'json/galleries.json';
 import offerData from 'json/offers.json';
 import photos from 'json/photos.json';
-import { defaultNavigation } from 'mock';
+import { defaultNavigation, defaultSideBarNavigation } from 'mock';
 import { IBanner, IGallery, INavigation, IPhoto } from 'models';
 import { IOffer } from 'models/Offer';
+import { E_Notification_Type } from 'enums';
 
 const banners = [
   {
@@ -52,6 +53,20 @@ export const EMPTY_DATA_STATUS_ENTITY: IDataStatus = {
   loadFeaturedGallery: E_Data_Load_Status.NOT_YET_STARTED,
 };
 
+export interface INotificationState {
+  isShowNotification: boolean;
+  notificationType: E_Notification_Type;
+  notificationMessage: string;
+  isActiveScreen: boolean;
+}
+
+export const defaultNotificationState: INotificationState = {
+  isShowNotification: false,
+  notificationType: E_Notification_Type.SUCCESS,
+  notificationMessage: '',
+  isActiveScreen: false,
+};
+
 export interface IGlobalState {
   photos: IPhoto[];
   galleries: IGallery[];
@@ -59,7 +74,16 @@ export interface IGlobalState {
   featureGallery?: IGallery;
   banners: IBanner[];
   navigation: INavigation[];
+  sidebarNavigations: INavigation[];
   offers: IOffer[];
+
+  entrypoint?: string;
+  path?: string;
+  sectionId?: string | null;
+  mfeTitle?: string;
+  mfeSupTitle?: any[];
+  mainNavTitle?: string[];
+  notification: INotificationState;
 }
 
 export const defaultGlobalState: IGlobalState = {
@@ -67,5 +91,13 @@ export const defaultGlobalState: IGlobalState = {
   galleries: [],
   banners,
   navigation: defaultNavigation,
+  sidebarNavigations: defaultSideBarNavigation,
   offers: offerData,
+
+  entrypoint: '',
+  path: '',
+  mfeTitle: '',
+  mfeSupTitle: [],
+  mainNavTitle: [],
+  notification: defaultNotificationState,
 };
