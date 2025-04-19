@@ -25,7 +25,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, onChange }
         }
       }
     },
-    [isReadable]
+    [isReadable, onChange]
   );
 
   const getField = useCallback(
@@ -46,12 +46,12 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, onChange }
         return React.createElement('div', { className: 'flex-row-item', id: column.key, key: column.key }, getMainField(column));
       }
     },
-    [isReadable]
+    [getMainField]
   );
 
   const mainForm = useMemo(() => {
     return React.createElement('div', { className: 'flex-row-auto' }, getField(form));
-  }, [form, isReadable]);
+  }, [form, getField]);
 
   return mainForm;
 };
