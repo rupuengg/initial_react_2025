@@ -4,21 +4,22 @@ export const defaultSideBarNavigation: INavigation[] = [
   {
     title: 'Dashboard',
     link: '/dashboard',
+    element: undefined,
     scrollTo: '',
-    items: [],
     entrypoint: 'dashboard',
   },
   {
     title: 'Blogs',
     link: '/blogs',
+    element: undefined,
     scrollTo: '',
     entrypoint: 'blogs',
   },
   {
     title: 'Setting',
     link: '/setting',
+    element: undefined,
     scrollTo: '',
-    path: '',
     entrypoint: 'siteConfig',
   },
 ];

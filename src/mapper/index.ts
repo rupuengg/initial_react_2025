@@ -36,24 +36,24 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
 }
 
 export class Mapper {
-  private path?: string;
+  // private path?: string;
   private entrypoint?: string;
-  private sectionId?: string | null;
+  // private sectionId?: string | null;
   private endpoint?: string | IEndpoint;
   private permission?: Permission;
   private anaInfo?: ANAInfoModel;
   private form?: IBaseForm;
   private defaultEntity?: CommonEntity;
 
-  constructor(path: string, entrypoint: string, sectionId?: string | null, anaInfo?: ANAInfoModel) {
-    this.path = path;
+  constructor(entrypoint: string, anaInfo?: ANAInfoModel) {
+    // this.path = path;
     this.entrypoint = entrypoint;
-    this.sectionId = sectionId;
+    // this.sectionId = sectionId;
     this.anaInfo = anaInfo;
   }
 
   setEndpoint() {
-    if (this.path && this.entrypoint) this.endpoint = getEndpoint(this.path, DataApiPath[this.entrypoint]);
+    if (this.entrypoint) this.endpoint = getEndpoint(DataApiPath[this.entrypoint]);
   }
 
   getPermission() {
@@ -97,13 +97,11 @@ export class Mapper {
     this.form = mapFormWithValues(getMappingData(E_Mapping_Data.FORM, this.entrypoint) as IBaseForm, this.defaultEntity);
     this.setAnaInfoPermission();
 
-    const { path, entrypoint, sectionId, endpoint, permission } = this;
+    const { entrypoint, endpoint, permission } = this;
 
     return {
       ...defaultEntityDataParams,
-      path,
       entrypoint,
-      sectionId,
       endpoint,
       permission,
     };

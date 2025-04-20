@@ -31,14 +31,17 @@ export const Header = () => {
   }, []);
 
   const makeMenu = (items: INavigation[], parentIndex: number = 0) => {
-    return items.map((item, index) => (
-      <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'}parentIndex - ${index}`}>
-        <NavLink to={item.link} className={({ isActive }) => (isActive ? 'link active' : 'link inactive')} onClick={() => setIsShowSubMenu(false)}>
-          {item.title}
-        </NavLink>
-        {item.items && item.items.length > 0 && <ul>{makeMenu(item.items, index)}</ul>}
-      </li>
-    ));
+    return items.map(
+      (item, index) =>
+        !item.isHide && (
+          <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'}parentIndex - ${index}`}>
+            <NavLink to={item.link} className={({ isActive }) => (isActive ? 'link active' : 'link inactive')} onClick={() => setIsShowSubMenu(false)}>
+              {item.title}
+            </NavLink>
+            {item.items && item.items.length > 0 && <ul>{makeMenu(item.items, index)}</ul>}
+          </li>
+        )
+    );
   };
 
   return (

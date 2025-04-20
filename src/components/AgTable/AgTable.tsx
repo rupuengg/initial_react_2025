@@ -29,6 +29,8 @@ import {
   ValidationModule,
   provideGlobalGridOptions,
 } from 'ag-grid-community';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {
   AllEnterpriseModule,
   ColumnMenuModule,
@@ -43,7 +45,6 @@ import {
   RowGroupingPanelModule,
   SetFilterModule,
 } from 'ag-grid-enterprise';
-import 'ag-grid-enterprise/styles/ag-theme-alpine.css';
 import { AgGridReact } from 'ag-grid-react';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { CommonEntity } from 'entities';

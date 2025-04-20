@@ -33,7 +33,7 @@ export const AgTableHeader: React.FC<IAgTableHeader> = ({
 }) => {
   return (
     <div className='header-bar'>
-      {typeof headerLabel === 'string' ? <div className='label' dangerouslySetInnerHTML={{ __html: headerLabel }} /> : <div className='label'>{headerLabel}</div>}
+      {typeof headerLabel === 'string' ? <h1 className='header1' dangerouslySetInnerHTML={{ __html: headerLabel }} /> : <h1 className='header1'>{headerLabel}</h1>}
 
       <div className='table-actionbar'>
         {/* {showAddIcon && <IconButton id='add' fileName='Icon-add' size='medium' toolTipArrow={false} toolTipPlacement='left' toolTipText={'Add'} onClick={onAdd && onAdd} />} */}

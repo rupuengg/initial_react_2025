@@ -78,8 +78,6 @@ export interface IGlobalState {
   offers: IOffer[];
 
   entrypoint?: string;
-  path?: string;
-  sectionId?: string | null;
   mfeTitle?: string;
   mfeSupTitle?: any[];
   mainNavTitle?: string[];
@@ -95,7 +93,6 @@ export const defaultGlobalState: IGlobalState = {
   offers: offerData,
 
   entrypoint: '',
-  path: '',
   mfeTitle: '',
   mfeSupTitle: [],
   mainNavTitle: [],
