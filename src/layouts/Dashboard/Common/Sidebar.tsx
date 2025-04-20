@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { useEntrypoint } from 'hooks';
-import { UrlUtils, encryption } from 'utils';
+import { UrlUtils } from 'utils';
 import { GlobalActions, IApplicationState, IUseDispatch, useAppDispatch } from 'store';
 
 export const Sidebar = () => {
@@ -12,7 +12,7 @@ export const Sidebar = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const { uriPath, uriEntrypoint, uriSectionId, uriDefaultPageInformation, uriIsMainMenu } = useEntrypoint();
+  const { uriPath, uriEntrypoint } = useEntrypoint();
 
   const whenMfeOpen = useCallback(
     (mfe: INavigation) => {
@@ -24,7 +24,7 @@ export const Sidebar = () => {
   useEffect(() => {
     if (uriPath && uriEntrypoint) {
       const isExists = (nav: INavigation) => {
-        return nav.path === uriPath && nav.entrypoint === uriEntrypoint && nav.sectionId === uriSectionId;
+        return nav.entrypoint === uriEntrypoint || nav.link === '/' + uriEntrypoint;
       };
 
       const searchMenu = (navigation: INavigation[]): INavigation | undefined => {
@@ -42,14 +42,14 @@ export const Sidebar = () => {
       const result = searchMenu(sidebarNavigations || []);
       if (result) whenMfeOpen({ ...result });
     }
-  }, [sidebarNavigations, uriPath, uriEntrypoint, uriSectionId, uriDefaultPageInformation, uriIsMainMenu, whenMfeOpen]);
+  }, [sidebarNavigations, uriPath, uriEntrypoint, whenMfeOpen]);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, nav: INavigation): void => {
       e.preventDefault();
       // searchParams.delete('defaultPageInformation');
       navigate({
-        pathname: UrlUtils.makeRouteWidthoutSearch(`admin${nav.link}`, encryption(nav.path + ' ' + nav.entrypoint + ' ' + nav.sectionId)),
+        pathname: UrlUtils.makeRouteWidthoutSearch(`admin${nav.link}`),
         search: `?${searchParams.toString()}`,
       });
     },

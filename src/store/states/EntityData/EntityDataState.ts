@@ -13,8 +13,8 @@ export interface IEndpoint {
 
 export const defaultEndpoint: IEndpoint = {};
 
-export function getEndpoint(path: string, uri?: string | IEndpoint): IEndpoint {
-  const version = path === 'raas' ? '' : '/v1/';
+export function getEndpoint(uri?: string | IEndpoint): IEndpoint {
+  const version = ''; //path === 'raas' ? '' : '/v1/';
   const endpoint: IEndpoint = { ...defaultEndpoint };
 
   if (uri && typeof uri === 'string') {

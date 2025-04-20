@@ -64,8 +64,8 @@ interface IAddEditViewForm {
 
 export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const { global, entityData } = useSelector((state: IApplicationState) => state);
-  const { path, entrypoint, sectionId, mainNavTitle, mfeSupTitle, mfeTitle } = global;
-  const { mapper, entityForm, defaultEntity } = useTableMapper(path, entrypoint, sectionId);
+  const { entrypoint, mainNavTitle, mfeSupTitle, mfeTitle } = global;
+  const { mapper, entityForm, defaultEntity } = useTableMapper(entrypoint);
   const { allowCreate, allowUpdate } = useANAModulePermission(mapper.permission);
   const { isAdd, isEditable, isRead } = getPermission(type);
   const [item, setItem] = useState<CommonEntity | undefined>();

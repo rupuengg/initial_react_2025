@@ -56,10 +56,8 @@ export const globalSlice = createSlice({
     setFeaturedGallery(draft: IGlobalState, action: PayloadAction<IGallery>) {
       draft.featureGallery = action.payload;
     },
-    setEntryPoint(draft: IGlobalState, action: PayloadAction<{ path: string; entrypoint: string; sectionId: string | null }>) {
-      draft.path = action.payload.path;
+    setEntryPoint(draft: IGlobalState, action: PayloadAction<{ entrypoint: string }>) {
       draft.entrypoint = action.payload.entrypoint;
-      draft.sectionId = action.payload.sectionId;
     },
     onOpenMFE(draft: IGlobalState, action: PayloadAction<INavigation>) {
       const path = findPath(draft.sidebarNavigations, 'title', action.payload.entrypoint);
@@ -67,9 +65,7 @@ export const globalSlice = createSlice({
       draft.mfeTitle = action.payload.title;
       draft.mfeSupTitle = path.slice(0, -1);
       // draft.mainNavTitle = action.payload.mainNavTitle;
-      draft.sectionId = action.payload.sectionId;
       draft.entrypoint = action.payload.entrypoint;
-      draft.path = action.payload.path;
     },
     showNotification(draft: IGlobalState, action: PayloadAction<{ notificationType: E_Notification_Type; notificationMessage: string }>) {
       draft.notification.isActiveScreen = false;

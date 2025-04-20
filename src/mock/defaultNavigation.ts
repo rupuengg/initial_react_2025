@@ -73,6 +73,7 @@ export const defaultNavigation: INavigation[] = [
     element: React.createElement(ProjectPhoto),
     scrollTo: '',
     items: [],
+    isHide: true,
   },
   {
     title: 'Gallery',

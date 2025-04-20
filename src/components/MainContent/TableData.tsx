@@ -15,11 +15,11 @@ export const TableData = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { path, entrypoint, sectionId, mfeTitle } = global;
+  const { entrypoint, mfeTitle } = global;
   const [isExport, setIsExport] = useState<boolean>(false);
   const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
 
-  const { mapper, columnSetting } = useTableMapper(path, entrypoint, sectionId);
+  const { mapper, columnSetting } = useTableMapper(entrypoint);
 
   const mockData = useMemo(() => {
     if (entrypoint && entityData.items[entrypoint]) return entityData.items[entrypoint].list;
@@ -68,7 +68,7 @@ export const TableData = () => {
       // Load Data
       if (!entityData.items[mapper.entrypoint] || !entityData.items[mapper.entrypoint].list || entityData.items[mapper.entrypoint].list.length === 0) dispatch(getDataList(mapper));
     }
-  }, [mapper, entityData.items, dispatch]);
+  }, [mapper.entrypoint, mapper, entityData.items, dispatch]);
 
   if (!entityData.items || !entityData.items[mapper.entrypoint] || (entityData.items[mapper.entrypoint] && !entityData.items[mapper.entrypoint].isTabularDataActive)) return <h1>Loading...</h1>;
 

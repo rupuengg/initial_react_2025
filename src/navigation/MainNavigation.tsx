@@ -1,3 +1,4 @@
+import { INavigation } from 'models';
 import { NoMatch } from 'pages';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -11,7 +12,7 @@ export const MainNavigation = () => {
     <Routes>
       <Route path='/'>
         <Route index element={<Navigate to={`${navigation[0].link}`} replace />} />
-        {navigation.map(nav => (
+        {navigation.map((nav: INavigation) => (
           <Route key={nav.link} path={nav.link} element={nav.element} />
         ))}
         <Route path={'/admin/*'} element={<PrivateRoute />} />

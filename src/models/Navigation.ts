@@ -6,7 +6,6 @@ export interface INavigation {
   element?: React.JSX.Element;
   scrollTo: string;
   items?: INavigation[];
-  path?: string;
+  isHide?: boolean;
   entrypoint?: string;
-  sectionId?: string;
 }
