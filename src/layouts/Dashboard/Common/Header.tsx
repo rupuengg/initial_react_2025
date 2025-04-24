@@ -21,7 +21,7 @@ export const Header = () => {
           <div className='navBar'>
             <div className='logo-box'>
               <Link to='/'>
-                <Logo />
+                <Logo titleColor='#ddceb0' />
               </Link>
             </div>
             <div className='navMenu'>

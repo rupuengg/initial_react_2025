@@ -1,25 +1,36 @@
 import React, { useCallback, useMemo } from 'react';
 import { E_FieldType, E_Form_Type } from 'enums';
 import { IBaseForm } from './BaseForm';
-import { TextField } from './TextField';
-import { FieldLabel } from './fields';
+import { FieldLabel, TextBox } from './fields';
 import { FieldText } from './fields/FieldText';
+import { ImageUrl } from './fields/ImageUrl';
+import { SelectBox } from './fields/SelectBox';
+import { Textarea } from './fields/Textarea';
 
 interface IRenderForm {
-  form: IBaseForm;
+  form?: IBaseForm[] | null;
   isReadable?: boolean;
   onChange?: (key: string, value: any, other?: any) => void;
 }
 
 export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, onChange }) => {
-  const getMainField = useCallback(
-    (row: IBaseForm) => {
+  const getField = useCallback(
+    (row: IBaseForm, colIndex: number, rowIndex: number) => {
       if (isReadable) {
-        return [React.createElement(FieldLabel, { key: row.key + 'label' }, row.fieldLabel), React.createElement(FieldText, { key: row.key + 'text' }, row.fieldValue?.toString())];
+        return [
+          React.createElement(FieldLabel, { key: colIndex + '-' + rowIndex + '-label', fieldLabel: row.fieldLabel }, row.fieldLabel),
+          React.createElement(FieldText, { key: colIndex + '-' + rowIndex + '-text', fieldValue: row.fieldValue?.toString() }, row.fieldValue?.toString()),
+        ];
       } else {
         switch (row.fieldType) {
           case E_FieldType.TEXT:
-            return React.createElement(TextField, { ...row, onChange });
+            return React.createElement(TextBox, { ...row, onChange });
+          case E_FieldType.TEXTAREA:
+            return React.createElement(Textarea, { ...row, onChange });
+          case E_FieldType.DROPDOWN_ONE_SELECT:
+            return React.createElement(SelectBox, { ...row, onChange });
+          case E_FieldType.URL_CAPTURE:
+            return React.createElement(ImageUrl, { ...row, onChange });
           default:
             return null;
         }
@@ -28,30 +39,37 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, onChange }
     [isReadable, onChange]
   );
 
-  const getField = useCallback(
-    (column: IBaseForm): React.ReactNode => {
+  const getColOrRow = useCallback(
+    (column: IBaseForm, colIndex: number = 0, rowIndex: number = 0): React.ReactNode => {
+      const key = `${colIndex}-${rowIndex}-`;
       if (column.type === E_Form_Type.COLUMN) {
         return React.createElement(
           'div',
-          { className: 'flex-row-item', id: column.key, key: column.key },
-          column.rows?.map(row => getField(row))
+          { className: 'flex-row-item', key: `${key}col` },
+          column.rows?.map((row, index) => getColOrRow(row, colIndex + 1, index))
         );
       } else if (column.type === E_Form_Type.ROW) {
         return React.createElement(
           'div',
-          { className: 'flex-row', id: column.key, key: column.key },
-          column.fields?.map(field => getField(field))
+          { className: `flex-row${column.fields?.length === 1 ? ' flex-row-1' : ''}`, key: `${key}col-row` },
+          column.fields?.map((field, index) => getColOrRow(field, colIndex + 1, index))
         );
       } else if (column.type === E_Form_Type.FIELD) {
-        return React.createElement('div', { className: 'flex-row-item', id: column.key, key: column.key }, getMainField(column));
+        return React.createElement('div', { className: 'flex-row-item', key: `${key}col-row-group` }, getField(column, colIndex, rowIndex));
       }
     },
-    [getMainField]
+    [isReadable, getField]
   );
 
   const mainForm = useMemo(() => {
-    return React.createElement('div', { className: 'flex-row-auto' }, getField(form));
-  }, [form, getField]);
+    return React.createElement(
+      'div',
+      { className: 'flex-row' },
+      form?.map((f, index) => getColOrRow(f, index))
+    );
+  }, [form, isReadable, getColOrRow]);
+
+  if (!form) return null;
 
   return mainForm;
 };

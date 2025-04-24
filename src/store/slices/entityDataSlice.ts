@@ -25,7 +25,7 @@ export const entityDataSlice = createSlice({
         typeof action.payload.result !== 'string'
       ) {
         const list: CommonEntity[] = [...draft.items[action.payload.entrypoint].list];
-        const dataIndex = list.findIndex(item => item.id.toString() === action.payload.dataKey);
+        const dataIndex = list.findIndex(item => item.id?.toString() === action.payload.dataKey);
         if (dataIndex >= 0) {
           draft.items[action.payload.entrypoint].list = [
             ...list.slice(0, dataIndex),
@@ -38,14 +38,14 @@ export const entityDataSlice = createSlice({
     addOrUpdateData(draft: IEntityDataState, action: PayloadAction<IEntityDataParams<CommonEntity>>) {
       if (
         action.payload.result &&
-        action.payload.dataKey &&
+        // action.payload.dataKey &&
         !Array.isArray(action.payload.result) &&
         draft.items[action.payload.entrypoint] &&
         action.payload.result &&
         typeof action.payload.result !== 'string'
       ) {
         const list: CommonEntity[] = [...draft.items[action.payload.entrypoint].list];
-        const dataIndex = list.findIndex(item => item.id.toString() === action.payload.dataKey);
+        const dataIndex = list.findIndex(item => item.id?.toString() === action.payload.dataKey);
         if (dataIndex >= 0) {
           draft.items[action.payload.entrypoint].list = [
             ...list.slice(0, dataIndex),
@@ -67,7 +67,7 @@ export const entityDataSlice = createSlice({
         typeof action.payload.result === 'string'
       ) {
         const list: CommonEntity[] = [...draft.items[action.payload.entrypoint].list];
-        const dataIndex = list.findIndex(item => item.id.toString() === action.payload.dataKey);
+        const dataIndex = list.findIndex(item => item.id?.toString() === action.payload.dataKey);
         if (dataIndex >= 0) {
           draft.items[action.payload.entrypoint].list = [...list.slice(0, dataIndex), ...list.slice(dataIndex + 1)];
         }

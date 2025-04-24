@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-export interface ITextBox {
+export interface ITextarea {
   fieldLabel?: string;
   fieldName?: string;
   fieldValue?: string;
@@ -11,8 +11,8 @@ export interface ITextBox {
   onChange?: (key: string, value: any, other?: any) => void;
 }
 
-export const TextBox: React.FC<ITextBox> = ({ fieldLabel, fieldName, fieldValue, isRequired, error, onChange }) => {
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+export const Textarea: React.FC<ITextarea> = ({ fieldLabel, fieldName, fieldValue, isRequired, onChange }) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(fieldName || '', e.currentTarget.value);
   }, []);
 
@@ -23,9 +23,8 @@ export const TextBox: React.FC<ITextBox> = ({ fieldLabel, fieldName, fieldValue,
         {isRequired ? <sup>*</sup> : null}
       </label>
       <div className='box'>
-        <input name={fieldName} value={fieldValue} onChange={handleChange} />
+        <textarea name={fieldName} rows={4} value={fieldValue} onChange={handleChange} />
       </div>
-      {error && <span className='error'>{error}</span>}
     </div>
   );
 };

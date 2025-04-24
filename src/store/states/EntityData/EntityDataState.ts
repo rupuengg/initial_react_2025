@@ -13,29 +13,6 @@ export interface IEndpoint {
 
 export const defaultEndpoint: IEndpoint = {};
 
-export function getEndpoint(uri?: string | IEndpoint): IEndpoint {
-  const version = ''; //path === 'raas' ? '' : '/v1/';
-  const endpoint: IEndpoint = { ...defaultEndpoint };
-
-  if (uri && typeof uri === 'string') {
-    endpoint.list = version + uri;
-    endpoint.get = version + uri;
-    endpoint.save = version + uri;
-    endpoint.update = version + uri;
-    endpoint.delete = version + uri;
-  } else if (uri && typeof uri !== 'string') {
-    return {
-      list: version + uri.list,
-      get: version + uri.get,
-      save: version + uri.save,
-      update: version + uri.update,
-      delete: version + uri.delete,
-    };
-  }
-
-  return endpoint;
-}
-
 export interface IEntityDataParams<CommonEntity> {
   path: string;
   entrypoint: string;

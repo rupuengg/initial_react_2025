@@ -1,5 +1,4 @@
 export interface IFieldText {
-  key: string;
   fieldLabel?: string;
   fieldName?: string;
   fieldValue?: string;
@@ -10,12 +9,12 @@ export interface IFieldText {
   onChange?: (value: any) => void;
 }
 
-export const FieldText: React.FC<IFieldText> = ({ key, fieldLabel }) => {
-  if (!fieldLabel) return null;
+export const FieldText: React.FC<IFieldText> = ({ fieldName, fieldValue }) => {
+  if (!fieldValue) return null;
 
   return (
-    <p key={key} className='text'>
-      {fieldLabel}
+    <p key={`text-${fieldName}`} className='text'>
+      {fieldValue}
     </p>
   );
 };

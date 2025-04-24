@@ -25,7 +25,9 @@ export const DashboardLayout: React.FC<IDashboardLayout> = ({ children }) => {
         <div className='sidebar'>
           <Sidebar />
         </div>
-        <div className='content'>{children}</div>
+        <div className='content'>
+          <div className='inner'>{children}</div>
+        </div>
       </div>
 
       {/* Footer Start */}

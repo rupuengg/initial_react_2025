@@ -95,21 +95,22 @@ export interface IAgTable<AgGridEntity> {
   columnDefs: (ColDef<AgGridEntity> | ColGroupDef<AgGridEntity>)[] | null;
   onRowClick?: (data: AgGridEntity) => void;
   onRowDoubleClick?: (e: any, data: AgGridEntity) => void;
-  onDelete?: (data: CommonEntity) => void;
+  onActionButtonClick?: (data: CommonEntity, type: any) => void;
   isDownloadAsCsv?: boolean;
 }
 
-export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowClick, onRowDoubleClick, onDelete, isDownloadAsCsv }: IAgTable<AgGridEntity>) => {
+export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowClick, onRowDoubleClick, onActionButtonClick, isDownloadAsCsv }: IAgTable<AgGridEntity>) => {
   const gridRef = useRef<AgGridReact<AgGridEntity>>(null);
   const columnBodyTemplate = useCallback(
     (params: ICellRendererParams<CommonEntity>) => {
       const column: any = params.colDef;
 
       if (column.field === 'actionButtons') return <div className='actionIcons'>{params.value}</div>;
-      else if (params.colDef?.cellDataType === E_Renderer_Type.ACTION) return <CellRemdererComponent params={params} onClick={(params: ICellRendererParams) => onDelete && onDelete(params.data)} />;
+      else if (params.colDef?.cellDataType === E_Renderer_Type.ACTION)
+        return <CellRemdererComponent params={params} onClick={(params: ICellRendererParams, type: any) => onActionButtonClick && onActionButtonClick(params.data, type)} />;
       else return <CellRemdererComponent params={params} />;
     },
-    [onDelete]
+    [onActionButtonClick]
   );
 
   const defaultColDef: ColDef<AgGridEntity> = {

@@ -16,10 +16,10 @@ export interface ANAInfoModel {
 export const EMPTY_ANA_INFO: ANAInfoModel = {
   currentBu: '',
   availableBuList: [],
-  allowRead: false,
-  allowUpdate: false,
-  allowCreate: false,
-  allowDelete: false,
+  allowRead: true,
+  allowUpdate: true,
+  allowCreate: true,
+  allowDelete: true,
   email: '',
   userName: '',
 };

@@ -7,6 +7,17 @@ export const axioInstance: { [x: string]: AxiosInstance } = {
   backend: backendApiAxiosInstance,
 };
 
+interface IIApiResponseError {
+  type: string;
+  description: string;
+}
+
+export interface IApiResponse<T> {
+  statusCode: number;
+  data: T[];
+  error?: IIApiResponseError;
+}
+
 export interface IEntityDataApi {
   get(domain: string, endpoint: IEndpoint): Promise<CommonEntity[]>;
   getByKey(domain: string, endpoint: IEndpoint, key: string): Promise<CommonEntity>;
@@ -20,7 +31,7 @@ export const EntityDataApi: IEntityDataApi = {
     try {
       if (!endpoint.list) throw new Error('Error - Endpoint not exists');
       const response = await backendApiAxiosInstance.get(endpoint.list, { headers: { 'Content-Type': 'application/json' } });
-      return response.data;
+      return response.data.data;
     } catch {
       return [];
     }
@@ -29,7 +40,7 @@ export const EntityDataApi: IEntityDataApi = {
     try {
       if (!endpoint.get) throw new Error('Error - Endpoint not exists');
       const response = await backendApiAxiosInstance.get(`${endpoint.get}/${key}`, { headers: { 'Content-Type': 'application/json' } });
-      return response.data;
+      return response.data.data;
     } catch {
       throw new Error('Error while converting');
     }
@@ -37,8 +48,9 @@ export const EntityDataApi: IEntityDataApi = {
   post: async (domain: string, endpoint: IEndpoint, data: CommonEntity): Promise<CommonEntity> => {
     try {
       if (!endpoint.save) throw new Error('Error - Endpoint not exists');
+      delete data.id;
       const response = await backendApiAxiosInstance.post(endpoint.save, JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } });
-      return response.data;
+      return response.data.data;
     } catch {
       throw new Error('Error while converting');
     }
@@ -47,7 +59,7 @@ export const EntityDataApi: IEntityDataApi = {
     try {
       if (!endpoint.update) throw new Error('Error - Endpoint not exists');
       const response = await backendApiAxiosInstance.put(endpoint.update, JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } });
-      return response.data;
+      return response.data.data;
     } catch {
       throw new Error('Error while converting');
     }
@@ -56,7 +68,7 @@ export const EntityDataApi: IEntityDataApi = {
     try {
       if (!endpoint.delete) throw new Error('Error - Endpoint not exists');
       const response = await backendApiAxiosInstance.delete(`${endpoint.delete}/${key}`, { headers: { 'Content-Type': 'application/json' } });
-      return response.data === '' ? 'OK' : response.data;
+      return response.data.data === '' ? 'OK' : response.data.data;
     } catch {
       throw new Error('Error while converting');
     }

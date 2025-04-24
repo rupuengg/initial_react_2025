@@ -16,8 +16,8 @@ export const defaultSideBarNavigation: INavigation[] = [
     entrypoint: 'blogs',
   },
   {
-    title: 'Setting',
-    link: '/setting',
+    title: 'Site Config',
+    link: '/siteConfig',
     element: undefined,
     scrollTo: '',
     entrypoint: 'siteConfig',

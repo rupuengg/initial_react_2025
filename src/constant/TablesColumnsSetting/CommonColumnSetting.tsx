@@ -17,7 +17,7 @@ function getActionButtonColumnSetting(anaInfo?: any): ColDef<CommonEntity> | Col
     },
     suppressHeaderContextMenu: true,
     sortable: false,
-    maxWidth: 55,
+    maxWidth: 100,
     resizable: false,
     suppressMovable: true,
     hide: anaInfo && !anaInfo.allowDelete,

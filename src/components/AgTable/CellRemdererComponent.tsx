@@ -1,19 +1,20 @@
+import { faCopy, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ICellRendererParams } from 'ag-grid-community';
 import moment from 'moment';
 import { useCallback, useMemo } from 'react';
 import { CommonEntity } from 'entities';
 import { E_Renderer_Type } from 'enums';
+import { FontIcon } from 'components/Icon';
 
 interface ICellRemdererComponent {
   params: ICellRendererParams<CommonEntity>;
-  onClick?: (params: ICellRendererParams<CommonEntity>) => void;
+  onClick?: (params: ICellRendererParams<CommonEntity>, type: any) => void;
 }
 
 export const CellRemdererComponent: React.FC<ICellRemdererComponent> = ({ params, onClick }) => {
   const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
-      console.log(e);
-      if (onClick) onClick(params);
+    (e: React.MouseEvent<HTMLAnchorElement>, type?: any) => {
+      if (onClick) onClick(params, type);
     },
     [params]
   );
@@ -37,7 +38,13 @@ export const CellRemdererComponent: React.FC<ICellRemdererComponent> = ({ params
       case E_Renderer_Type.VALUE_EITHER_N:
         return params?.value ? params?.value : 'N';
       case E_Renderer_Type.ACTION:
-        return <span onClick={handleClick}>Trash</span>;
+        return (
+          <>
+            <FontIcon icon={faCopy} onClick={e => handleClick(e, 'copy')} />
+            <FontIcon icon={faEdit} onClick={e => handleClick(e, 'edit')} />
+            <FontIcon icon={faTrash} onClick={e => handleClick(e, 'delete')} />
+          </>
+        );
       default:
         return params.value;
     }

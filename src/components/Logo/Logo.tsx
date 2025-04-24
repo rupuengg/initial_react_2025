@@ -1,9 +1,13 @@
 import { LogoSvg } from './LogoSvg';
 
-export const Logo = () => {
+export interface ILogo {
+  titleColor?: string;
+}
+
+export const Logo: React.FC<ILogo> = ({ titleColor = '#111111' }) => {
   return (
     <div className='logo'>
-      <LogoSvg titleColor='#111111' />
+      <LogoSvg titleColor={titleColor} />
     </div>
   );
 };

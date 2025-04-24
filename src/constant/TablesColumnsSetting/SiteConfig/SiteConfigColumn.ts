@@ -10,11 +10,6 @@ import { numberComparator } from 'utils';
 export function getSiteConfigColumnSetting(anaInfo?: any): (ColDef<ISiteConfigEntity> | ColGroupDef<ISiteConfigEntity>)[] {
   return [
     {
-      field: 'id',
-      headerName: 'Id',
-      width: 106,
-    },
-    {
       field: 'route',
       headerName: 'Route.',
       pinned: 'left',
@@ -22,8 +17,6 @@ export function getSiteConfigColumnSetting(anaInfo?: any): (ColDef<ISiteConfigEn
     {
       field: 'title',
       headerName: 'Title',
-      width: 150,
-      // dataType: 'number',
       comparator: numberComparator,
     },
     // {

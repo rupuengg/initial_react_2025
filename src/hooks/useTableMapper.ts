@@ -12,7 +12,7 @@ export const useTableMapper = (entrypoint: string | undefined) => {
   const anaInfo = useANAInfo();
   const [mapper, setMapper] = useState<IEntityDataParams<CommonEntity>>(defaultEntityDataParams);
   const [columnSetting, setColumnSetting] = useState<(ColDef<CommonEntity> | ColGroupDef<CommonEntity>)[]>([]);
-  const [entityForm, setEntityForm] = useState<IBaseForm | undefined>();
+  const [entityForm, setEntityForm] = useState<IBaseForm[] | undefined>();
   const [defaultEntity, setDefaultEntity] = useState<CommonEntity | undefined>();
 
   useEffect(() => {

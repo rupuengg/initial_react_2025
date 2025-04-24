@@ -1,5 +1,4 @@
-import { faCross, faEdit, faHistory, faRefresh, faSave } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faRefresh, faSave, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { IBaseForm } from 'forms';
 import { RenderForm } from 'forms/RenderForm';
 import _ from 'lodash';
@@ -10,9 +9,10 @@ import { CommonEntity } from 'entities';
 import { E_Form_Type, E_Operation_Permission } from 'enums';
 import { useANAModulePermission, useTableMapper } from 'hooks';
 import { UrlUtils } from 'utils';
-import { IApplicationState } from 'store';
+import { IApplicationState, IUseDispatch, saveData, updateData, useAppDispatch } from 'store';
+import { Breadcrumb, FontIcon } from 'components';
 
-export function mapFormWithValues(form: IBaseForm, entity: CommonEntity): IBaseForm {
+export function mapFormWithValues(form: IBaseForm[] | undefined, entity: CommonEntity): IBaseForm[] | undefined {
   const cb = (frm: IBaseForm): IBaseForm => {
     const newFrm: IBaseForm = { ...frm };
 
@@ -25,7 +25,7 @@ export function mapFormWithValues(form: IBaseForm, entity: CommonEntity): IBaseF
     return newFrm;
   };
 
-  return cb(form);
+  return form?.map(f => cb(f));
 }
 
 interface IAddEditView {
@@ -44,6 +44,7 @@ function getPermission(type: E_Operation_Permission): IAddEditView {
       permission.isAdd = false;
       break;
     case E_Operation_Permission.ADD:
+    case E_Operation_Permission.COPY:
       permission.isRead = false;
       permission.isEditable = false;
       permission.isAdd = true;
@@ -64,6 +65,7 @@ interface IAddEditViewForm {
 
 export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const { global, entityData } = useSelector((state: IApplicationState) => state);
+  const dispatch: IUseDispatch = useAppDispatch();
   const { entrypoint, mainNavTitle, mfeSupTitle, mfeTitle } = global;
   const { mapper, entityForm, defaultEntity } = useTableMapper(entrypoint);
   const { allowCreate, allowUpdate } = useANAModulePermission(mapper.permission);
@@ -76,16 +78,16 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
 
   // Set item by ID
   useEffect(() => {
-    if (params.dataId && params.entity && entityData.items[params.entity]) {
-      setItem(entityData.items[params.entity].list.find(i => i.id.toString() === params.dataId));
-      setInitialItem(entityData.items[params.entity].list.find(i => i.id.toString() === params.dataId));
+    if (params.dataId && params.other && entityData.items[params.other]) {
+      setItem(entityData.items[params.other].list.find(i => i.id?.toString() === params.dataId));
+      setInitialItem(entityData.items[params.other].list.find(i => i.id?.toString() === params.dataId));
     } else {
       if (defaultEntity) {
         setItem(defaultEntity);
         setInitialItem(defaultEntity);
       }
     }
-  }, [type, params.entity, params.dataId, entityData, defaultEntity]);
+  }, [type, params.other, params.dataId, entityData, defaultEntity]);
 
   // Map item with form
   const form = useMemo(() => {
@@ -94,9 +96,15 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   }, [item, entityForm]);
 
   const handleChange = useCallback(
-    (fieldName: string, fieldValue: string | number | string[] | undefined | null) => {
-      console.log(fieldName, fieldValue);
-      setItem((p: CommonEntity | undefined) => (p ? { ...p, [fieldName]: fieldValue } : undefined));
+    (fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
+      setItem((p: CommonEntity | undefined) => {
+        if (!p) return undefined;
+        return {
+          ...p,
+          ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
+          [fieldName]: fieldValue,
+        };
+      });
     },
     [entrypoint, item]
   );
@@ -120,7 +128,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   //   async () => {
   //     setIsSave(true);
   //     Validation(isAdd ? createBlockValidationSchema : updateBlockValidationSchema).ValidateForm(yardBlock, setErrors, () => {
-  //       if (yardBlock.blockStacks && yardBlock.blockStacks.length === 0) {
+  //       i`f (yardBlock.blockStacks && yardBlock.blockStacks.length === 0) {
   //         onShowNotification(false, YardBlockConstants.YARD_BLOCK.LABEL.MANDATORY_STACK_MESSAGE);
   //       } else {
   //         if (yardBlock.key) {
@@ -148,36 +156,12 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   //   [yardBlock, saveYardBlock, mergedBlock, saveMergedBlock]
   // );
 
-  // const commonProps = {
-  //   ...props,
-  //   isAdd: props.isAdd,
-  //   isRead: props.isRead,
-  //   isEditable: props.isEditable,
-  //   isSaveClicked: isSave,
-  //   yardBlock: props.yardBlock,
-  //   errorMessages: errors,
-  //   yardBlocks: props.yardBlocks,
-  //   setErrors: setErrors,
-  //   onFieldChange: props.onFieldChange,
-  //   requiredFields: Object.keys(isAdd ? createBlockValidation : updateBlockValidation),
-  // };
-
-  const isDisable = useMemo(() => {
-    if (type === 'add') {
-      return !allowCreate;
-    }
-
-    if (type === 'edit') {
-      return !allowUpdate;
-    }
-  }, [type, allowCreate, allowUpdate]);
-
   const getTitle = useMemo(() => {
     const parentTitle = mainNavTitle?.length ? mainNavTitle : mfeSupTitle;
     const titles: { title: string }[] = parentTitle ? parentTitle.map((item: any) => ({ title: item })) : [];
     titles.push({ title: mfeTitle || '' });
 
-    if (type === E_Operation_Permission.ADD) titles.push({ title: 'Add' });
+    if (type === E_Operation_Permission.ADD || type === E_Operation_Permission.COPY) titles.push({ title: 'Add' });
     else {
       titles.push({ title: 'View' });
       if (type === E_Operation_Permission.EDIT) titles.push({ title: 'Edit' });
@@ -188,7 +172,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
 
   const handleEdit = useCallback(() => {
     navigate({
-      pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other, E_Operation_Permission.EDIT, params.dataId),
+      pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other, E_Operation_Permission.EDIT, params.dataId),
       search: `?${searchParams.toString()}`,
     });
   }, []);
@@ -196,78 +180,55 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const handleClose = useCallback(() => {
     if (type === E_Operation_Permission.EDIT) {
       navigate({
-        pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other, E_Operation_Permission.VIEW, params.dataId),
+        pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other, E_Operation_Permission.VIEW, params.dataId),
         search: `?${searchParams.toString()}`,
       });
     } else {
       navigate({
-        pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other),
+        pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other),
         search: `?${searchParams.toString()}`,
       });
     }
   }, [type]);
 
-  const handleReset = useCallback(() => {}, []);
+  const handleReset = useCallback(() => {
+    setItem(initialItem);
+  }, [initialItem]);
 
   const handleSave = useCallback(() => {
-    navigate({
-      pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other),
-      search: `?${searchParams.toString()}`,
-    });
-  }, []);
+    if (type === E_Operation_Permission.EDIT) {
+      dispatch(updateData({ ...mapper, data: { ...item } }));
+    } else {
+      dispatch(saveData({ ...mapper, data: { ...item, id: 0 } }));
+    }
+    // navigate({
+    //   pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other),
+    //   search: `?${searchParams.toString()}`,
+    // });
+  }, [type, mapper, item]);
 
-  const handleAmend = useCallback(() => {}, []);
-
-  console.log('item', item, form);
   return (
     <div className='main-box' style={{ width: '100%', border: 'none', backgroundColor: '#FFFFFF', overflow: 'auto', padding: '0' }}>
       <div className='header-bar' style={{ width: '100%', alignItems: 'center' }}>
-        {/* <Breadcrumb style={{ margin: '0' }}>
-          <HPHBreadcrumb breadcrumbData={getTitle} onCurrentClick={handleClose}></HPHBreadcrumb>
-        </Breadcrumb> */}
+        <Breadcrumb data={getTitle} />
 
         <div className='action'>
-          {!isAdd && (
-            <>
-              {/* Amendment History */}
-              {/* <IconButton fileName='Icon-doc' size='medium' toolTipArrow toolTipPlacement='bottom' toolTipText='Amendment History' onClick={handleAmend} /> */}
-              <span onClick={handleAmend}>
-                <FontAwesomeIcon icon={faHistory} />
-              </span>
-            </>
-          )}
-
           {!isAdd && isEditable && isRead && (
             <>
               {/* Edit Button */}
-              {/* {isEditable && allowUpdate && <IconButton fileName='Icon-pen' size='medium' toolTipText={'Edit'} toolTipArrow={false} onClick={handleEdit} />} */}
-              <span onClick={handleEdit}>
-                <FontAwesomeIcon icon={faEdit} />
-              </span>
+              <FontIcon icon={faEdit} onClick={handleEdit} />
               {/* Close Button */}
-              {/* {<IconButton fileName='Icon-cross' size='medium' toolTipText={'Close'} toolTipArrow={false} onClick={handleClose} />} */}
-              <span onClick={handleClose}>
-                <FontAwesomeIcon icon={faCross} />
-              </span>
+              <FontIcon icon={faXmark} onClick={handleClose} />
             </>
           )}
           {(isAdd || (isEditable && !isRead)) && (
             <>
               {/* Reset Form Button */}
-              {/* <IconButton fileName='Icon-reset' size='medium' toolTipArrow={false} toolTipPlacement='bottom' toolTipText={'Reset'} onClick={handleReset} /> */}
-              <span onClick={handleReset}>
-                <FontAwesomeIcon icon={faRefresh} />
-              </span>
+              <FontIcon icon={faRefresh} disabled={isSaveEnable} onClick={handleReset} />
               {/* Close Button */}
-              <span onClick={handleClose}>
-                <FontAwesomeIcon icon={faCross} />
-              </span>
+              <FontIcon icon={faXmark} onClick={handleClose} />
               {/* Save Button */}
-              {((isAdd && allowCreate) || (isEditable && allowUpdate)) && (
-                <span onClick={handleSave}>
-                  <FontAwesomeIcon icon={faSave} />
-                </span>
-              )}
+              {((isAdd && allowCreate) || (isEditable && allowUpdate)) && <FontIcon icon={faSave} disabled={isSaveEnable} isClicked={!isSaveEnable} onClick={handleSave} />}
             </>
           )}
         </div>
@@ -276,21 +237,14 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
       {/* Readable and Editable Form */}
       <div className={'form-layouts'} id='block-add-edit-form'>
         {/* If user add new record */}
-        {isAdd && <div className='title'>{`NEW ${mfeTitle?.toUpperCase()}`}</div>}
+        {/* {isAdd && <div className='title'>{`NEW ${mfeTitle?.toUpperCase()}`}</div>} */}
 
         {/* If user edit existing record */}
-        {isEditable && <div className='title'>{params.dataId}</div>}
+        {/* {isEditable && <div className='title'>{params.dataId}</div>} */}
 
-        {(isAdd || (isEditable && !isRead)) && <p>Form Remark</p>}
+        {/* {(isAdd || (isEditable && !isRead)) && <p>Form Remark</p>} */}
 
-        <div style={{ marginTop: '30px', width: '100%' }}>
-          {/* General Information */}
-          {/* <BlockGeneralInformation {...commonProps} /> */}
-          {form && <RenderForm form={form} isReadable={isRead} onChange={handleChange} />}
-          <pre>
-            <code>{JSON.stringify(item, null, 2)}</code>
-          </pre>
-        </div>
+        <RenderForm form={form} isReadable={isRead} onChange={handleChange} />
       </div>
     </div>
   );

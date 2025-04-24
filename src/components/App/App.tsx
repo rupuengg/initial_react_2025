@@ -2,7 +2,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { MainContainer } from 'containers';
 import { store } from 'store';
-import './App.css';
 
 export const App = () => {
   return (

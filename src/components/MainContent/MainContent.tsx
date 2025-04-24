@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { E_Operation_Permission } from 'enums';
 import { AddEditViewForm } from 'components';
 import { TableData } from './TableData';
@@ -6,10 +6,17 @@ import { TableData } from './TableData';
 export const MainContent = () => {
   return (
     <Routes>
-      <Route index path={`/add`} element={<AddEditViewForm type={E_Operation_Permission.ADD} />} />
-      <Route index path={`/view/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.VIEW} />} />
-      <Route index path={`/edit/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.EDIT} />} />
-      <Route index path={`/*`} element={<TableData />} />
+      <Route index path={'/'} element={<Navigate to={'/admin/dashboard'} />} />
+      {/* <Route index path={`:entity/:other/add`} element={<AddEditViewForm type={E_Operation_Permission.ADD} />} />
+      <Route index path={`:entity/:other/view/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.VIEW} />} />
+      <Route index path={`:entity/:other/edit/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.EDIT} />} />
+      <Route index path={`:entity/:other/copy/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.COPY} />} />
+      <Route index path={`:entity/:other/*`} element={<TableData />} /> */}
+      <Route index path={`:other/add`} element={<AddEditViewForm type={E_Operation_Permission.ADD} />} />
+      <Route index path={`:other/view/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.VIEW} />} />
+      <Route index path={`:other/edit/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.EDIT} />} />
+      <Route index path={`:other/copy/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.COPY} />} />
+      <Route index path={`:other/*`} element={<TableData />} />
     </Routes>
   );
 };

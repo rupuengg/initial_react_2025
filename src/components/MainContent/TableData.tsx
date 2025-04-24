@@ -6,6 +6,7 @@ import { CommonEntity, IEntityStatusDataEntity } from 'entities';
 import { E_Data_Load_Status, E_Operation_Permission } from 'enums';
 import { useTableMapper } from 'hooks';
 import { UrlUtils } from 'utils';
+// import { UrlUtils } from 'utils';
 import { IApplicationState, IUseDispatch, deleteData, getDataList, useAppDispatch } from 'store';
 import { AgTable, AgTableHeader } from 'components';
 
@@ -28,28 +29,31 @@ export const TableData = () => {
 
   const handleAdd = useCallback(() => {
     navigate({
-      pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other, E_Operation_Permission.ADD),
+      pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other, E_Operation_Permission.ADD),
       search: `?${searchParams.toString()}`,
     });
   }, [params, navigate, searchParams]);
 
   const handleRowClick = useCallback((data: CommonEntity) => {
-    console.log(data);
+    console.debug(data);
   }, []);
 
   const handleRowDoubleClick = useCallback(
     (e: any, data: CommonEntity) => {
-      navigate({
-        pathname: UrlUtils.makeRouteWidthoutSearch(params.entity, params.other, E_Operation_Permission.VIEW, data.id.toString()),
-        search: `?${searchParams.toString()}`,
-      });
+      navigate(E_Operation_Permission.VIEW + '/' + data.id?.toString());
+      // navigate({
+      //   pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other, E_Operation_Permission.VIEW, data.id.toString()),
+      //   search: `?${searchParams.toString()}`,
+      // });
     },
     [params, navigate, searchParams]
   );
 
-  const handleDelete = useCallback(
-    (data: CommonEntity) => {
-      dispatch(deleteData({ ...mapper, dataKey: data.id.toString() }));
+  const handleActionButton = useCallback(
+    (data: CommonEntity, type: any) => {
+      if (type === 'delete') dispatch(deleteData({ ...mapper, result: undefined, data: undefined, dataKey: data.id?.toString() }));
+      else if (type === 'edit') navigate(E_Operation_Permission.EDIT + '/' + data.id?.toString());
+      else if (type === 'copy') navigate(E_Operation_Permission.COPY + '/' + data.id?.toString());
     },
     [mapper, dispatch]
   );
@@ -70,7 +74,7 @@ export const TableData = () => {
     }
   }, [mapper.entrypoint, mapper, entityData.items, dispatch]);
 
-  if (!entityData.items || !entityData.items[mapper.entrypoint] || (entityData.items[mapper.entrypoint] && !entityData.items[mapper.entrypoint].isTabularDataActive)) return <h1>Loading...</h1>;
+  // if (!entityData.items || !entityData.items[mapper.entrypoint] || (entityData.items[mapper.entrypoint] && !entityData.items[mapper.entrypoint].isTabularDataActive)) return <h1>Loading...</h1>;
 
   return (
     <AgTable<CommonEntity>
@@ -91,7 +95,7 @@ export const TableData = () => {
       isDownloadAsCsv={isExport}
       onRowClick={handleRowClick}
       onRowDoubleClick={handleRowDoubleClick}
-      onDelete={handleDelete}
+      onActionButtonClick={handleActionButton}
     />
   );
 };

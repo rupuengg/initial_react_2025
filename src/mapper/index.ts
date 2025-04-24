@@ -7,16 +7,39 @@ import { CommonEntity } from 'entities';
 import { ANAInfoModel } from 'entities/ANAInfo';
 import { E_Mapping_Data } from 'enums';
 import { isPermissionExist } from 'utils';
-import { DataApiPath, IEndpoint, defaultEntityDataParams, getEndpoint } from 'store';
+import { DataApiPath, IEndpoint, defaultEndpoint, defaultEntityDataParams } from 'store';
 import { mapFormWithValues } from 'components';
 
-function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInfo?: ANAInfoModel): Permission | IBaseForm | (ColDef<any> | ColGroupDef<CommonEntity>)[] {
+export function getEndpoint(uri?: string | IEndpoint): IEndpoint {
+  const version = ''; //path === 'raas' ? '' : '/v1/';
+  const endpoint: IEndpoint = { ...defaultEndpoint };
+
+  if (uri && typeof uri === 'string') {
+    endpoint.list = version + uri;
+    endpoint.get = version + uri;
+    endpoint.save = version + uri;
+    endpoint.update = version + uri;
+    endpoint.delete = version + uri;
+  } else if (uri && typeof uri !== 'string') {
+    return {
+      list: version + uri.list,
+      get: version + uri.get,
+      save: version + uri.save,
+      update: version + uri.update,
+      delete: version + uri.delete,
+    };
+  }
+
+  return endpoint;
+}
+
+function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInfo?: ANAInfoModel): Permission | IBaseForm[] | (ColDef<any> | ColGroupDef<CommonEntity>)[] {
   if (!entrypoint) throw new Error('Please entrypoint');
 
-  const getCondition = (fun_ColumnSetting: any, permission: Permission, frm?: IBaseForm, defaultEntity?: CommonEntity) => {
+  const getCondition = (fun_ColumnSetting: any, permission: Permission, frm?: IBaseForm[], defaultEntity?: CommonEntity) => {
     switch (mappingData) {
       case E_Mapping_Data.COLUMN_SETTING:
-        return fun_ColumnSetting.apply(fun_ColumnSetting, [anaInfo]);
+        return fun_ColumnSetting(anaInfo);
       case E_Mapping_Data.FORM:
         return frm;
       case E_Mapping_Data.PERMISSION:
@@ -31,7 +54,7 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
     case 'siteConfig':
       return getCondition(getSiteConfigColumnSetting, Permission.CHASSIS_TYPE, SiteConfigEntityForm, defaultSiteConfigEntity);
     default:
-      return getCondition([], Permission.LOGIN);
+      return getCondition(() => [], Permission.LOGIN);
   }
 }
 
@@ -42,7 +65,7 @@ export class Mapper {
   private endpoint?: string | IEndpoint;
   private permission?: Permission;
   private anaInfo?: ANAInfoModel;
-  private form?: IBaseForm;
+  private form?: IBaseForm[];
   private defaultEntity?: CommonEntity;
 
   constructor(entrypoint: string, anaInfo?: ANAInfoModel) {
@@ -94,7 +117,7 @@ export class Mapper {
     this.setEndpoint();
     this.permission = getMappingData(E_Mapping_Data.PERMISSION, this.entrypoint) as Permission;
     this.defaultEntity = getMappingData(E_Mapping_Data.DEFAULT_ENTITY, this.entrypoint) as unknown as CommonEntity;
-    this.form = mapFormWithValues(getMappingData(E_Mapping_Data.FORM, this.entrypoint) as IBaseForm, this.defaultEntity);
+    this.form = mapFormWithValues(getMappingData(E_Mapping_Data.FORM, this.entrypoint) as IBaseForm[], this.defaultEntity);
     this.setAnaInfoPermission();
 
     const { entrypoint, endpoint, permission } = this;
