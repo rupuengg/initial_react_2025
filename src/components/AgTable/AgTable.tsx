@@ -63,13 +63,6 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
     // cellDataType: false,
   };
 
-  const autoGroupColumnDef = useMemo<ColDef>(() => {
-    return {
-      minWidth: 200,
-      pinned: 'left',
-    };
-  }, []);
-
   const newColumnDefs = useMemo(() => {
     return columnDefs
       ? columnDefs.map(c => ({
@@ -94,7 +87,7 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
     // }
   }, []);
 
-  const getRowId = useCallback((params: GetRowIdParams) => String(params.data.key), []);
+  const getRowId = useCallback((params: GetRowIdParams) => String(params.data.id?.toString()), []);
 
   useEffect(() => {
     if (gridRef.current && gridRef.current.api) gridRef.current.api.updateGridOptions({ rowData: refreshData });
@@ -115,7 +108,6 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
           className='ag-theme-alpine'
           columnDefs={newColumnDefs}
           defaultColDef={defaultColDef}
-          autoGroupColumnDef={autoGroupColumnDef}
           rowData={data}
           // pivotMode={false}
           getRowId={getRowId}
