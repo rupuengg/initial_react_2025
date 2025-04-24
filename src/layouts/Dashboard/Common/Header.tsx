@@ -1,9 +1,15 @@
-import { useCallback } from 'react';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Logo } from 'components';
+import { FontIcon, Logo } from 'components';
 
 export const Header = () => {
+  const [gear, setGear] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  const handleGearClick = useCallback(() => {
+    setGear(s => !s);
+  }, []);
 
   const handleLoggedOut = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -25,13 +31,23 @@ export const Header = () => {
               </Link>
             </div>
             <div className='navMenu'>
-              <ul>
-                <li>
-                  <Link className='link' to='/admin/logout' onClick={handleLoggedOut}>
-                    Logout
-                  </Link>
-                </li>
-              </ul>
+              <FontIcon disabled={!gear} icon={faGear} onClick={handleGearClick} />
+              {gear && (
+                <div className='sub-menu'>
+                  <ul>
+                    <li>
+                      <Link className='link' to='/admin/logout' onClick={handleLoggedOut}>
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className='link' to='/admin/logout' onClick={handleLoggedOut}>
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>

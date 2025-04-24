@@ -58,8 +58,34 @@
 
       & .navMenu {
         display: flex;
-        flex: 1 1 auto;
+        flex: 1 0 auto;
         justify-content: flex-end;
+        position: relative;
+
+        & .sub-menu {
+          position: absolute;
+          top: 25px;
+          right: 2px;
+          width: 100px;
+          height: auto;
+          background-color: #ddceb0;
+          padding: 10px;
+          border-radius: 10px 0 10px 10px;
+
+          & a {
+            color: #222222;
+          }
+
+          &::before {
+            position: absolute;
+            right: 0px;
+            top: -6px;
+            content: '';
+            border: solid transparent;
+            border-bottom-color: #ddceb0;
+            border-width: 0 6px 6px 6px;
+          }
+        }
       }
     }
   }
@@ -124,6 +150,10 @@
       .sidebar-menu {
         & li {
           padding: 5px 10px;
+        }
+
+        & a {
+          font-size: 10px;
         }
       }
     }
