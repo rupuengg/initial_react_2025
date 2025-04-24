@@ -12,9 +12,9 @@ function getActionButtonColumnSetting(anaInfo?: any): ColDef<CommonEntity> | Col
     suppressHeaderMenuButton: true,
     cellDataType: E_Renderer_Type.ACTION,
     suppressHeaderFilterButton: true,
-    columnChooserParams: {
-      suppressColumnFilter: true,
-    },
+    // columnChooserParams: {
+    //   suppressColumnFilter: true,
+    // },
     suppressHeaderContextMenu: true,
     sortable: false,
     maxWidth: 100,

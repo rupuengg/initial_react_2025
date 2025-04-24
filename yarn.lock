@@ -2689,35 +2689,6 @@ adjust-sourcemap-loader@^4.0.0:
     loader-utils "^2.0.0"
     regex-parser "^2.2.11"
 
-ag-charts-community@11.2.4:
-  version "11.2.4"
-  resolved "https://registry.yarnpkg.com/ag-charts-community/-/ag-charts-community-11.2.4.tgz#7d47941a4755f66e623c2a5f77c218ead9cb1e84"
-  integrity sha512-L4DDGpCP1IVjjgacADRMPSucUiH7CU4nLJFFI/eWkv+ee0WOte7XIgIiwzUci+UD4IhLHu5zwbOoHdZ9LX/E5w==
-  dependencies:
-    ag-charts-core "11.2.4"
-    ag-charts-locale "11.2.4"
-    ag-charts-types "11.2.4"
-
-ag-charts-core@11.2.4:
-  version "11.2.4"
-  resolved "https://registry.yarnpkg.com/ag-charts-core/-/ag-charts-core-11.2.4.tgz#4a9f5990bdd3334513d422e89b16c8000108c0e4"
-  integrity sha512-RiN2GXSBuYBAGhbfxiQjhM+pDnJ+2iT/W0r/2KHBHXI8Bv89l+jYKBunb/4SqcP6/DBaxhh+yESk25dYj391Bg==
-  dependencies:
-    ag-charts-types "11.2.4"
-
-ag-charts-enterprise@11.2.4:
-  version "11.2.4"
-  resolved "https://registry.yarnpkg.com/ag-charts-enterprise/-/ag-charts-enterprise-11.2.4.tgz#a1f48fecfc6467586c603bf4da493921923d6965"
-  integrity sha512-4msY1swe0GwEytQI9H3ANM+pMWVeAa8u8yGcZJ8kMzTFB3urNjXXGmYLZ7rQCiPfzLUuY25iGKf36ToUMHrrNA==
-  dependencies:
-    ag-charts-community "11.2.4"
-    ag-charts-core "11.2.4"
-
-ag-charts-locale@11.2.4:
-  version "11.2.4"
-  resolved "https://registry.yarnpkg.com/ag-charts-locale/-/ag-charts-locale-11.2.4.tgz#a06e8b607b4233b57dc7dabacda4d5cf67d0d0a3"
-  integrity sha512-hArufzKISb/5UJtIPfTKu3TvSQ3ZAuwMrOsn8F6I4rOwJnNxbZYeQvm2yiKXx9D7hMhr3d1lNZxNIlKOrMZY/w==
-
 ag-charts-types@11.2.4:
   version "11.2.4"
   resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-11.2.4.tgz#8e234c67044aaa838298844a8a71f900af187be5"
@@ -2729,16 +2700,6 @@ ag-grid-community@33.2.4, ag-grid-community@^33.2.3:
   integrity sha512-7XT1+wxmMlMVXB27BJOzlft9ATB0C5HOJcCGMc8dCO2W17JXbNknVEEDGTBKoSvA4Cei8sARrRDxmPgY8mWopQ==
   dependencies:
     ag-charts-types "11.2.4"
-
-ag-grid-enterprise@^33.2.3:
-  version "33.2.4"
-  resolved "https://registry.yarnpkg.com/ag-grid-enterprise/-/ag-grid-enterprise-33.2.4.tgz#07f98da6d76a10f1c9dd5367f5e9aa81e99e1abd"
-  integrity sha512-JFFm0d/7+cdTR/J0oMRwwKfFHII5xsYCw3t6ef1iQHjhpIR9H3vv6XVGL41aYvwuaQcZM4kDWZnwlVfjGFC47w==
-  dependencies:
-    ag-grid-community "33.2.4"
-  optionalDependencies:
-    ag-charts-community "11.2.4"
-    ag-charts-enterprise "11.2.4"
 
 ag-grid-react@^33.2.3:
   version "33.2.4"

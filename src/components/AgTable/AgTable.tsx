@@ -1,92 +1,26 @@
-// import { LicenseManager } from 'ag-charts-enterprise';
 import {
-  AllCommunityModule,
   ClientSideRowModelModule,
   ColDef,
   ColGroupDef,
   GetRowIdParams,
-  // NumberEditorModule,
-  // NumberFilterModule,
-  // TextEditorModule,
-  // TextFilterModule,
-  // ColGroupDef,
-  // GridApi,
-  // GridOptions,
-  // SideBarDef,
-  // createGrid,
   GridReadyEvent,
   ICellRendererParams,
   ModuleRegistry,
   RowClickedEvent,
-  // RowClassParams,
-  // ColumnPivotChangedEvent,
-  // ColumnValueChangedEvent,
-  // FilterOpenedEvent,
-  // ColumnVisibleEvent,
-  // FilterModifiedEvent,
-  // ColumnPivotModeChangedEvent,
   RowDoubleClickedEvent,
   ValidationModule,
   provideGlobalGridOptions,
 } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import {
-  AllEnterpriseModule,
-  ColumnMenuModule,
-  ColumnsToolPanelModule,
-  ContextMenuModule,
-  FiltersToolPanelModule,
-  // DateFilterModule,
-  // IntegratedChartsModule,
-  // RowGroupingModule,
-  MultiFilterModule,
-  PivotModule,
-  RowGroupingPanelModule,
-  SetFilterModule,
-} from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CommonEntity } from 'entities';
 import { E_Renderer_Type } from 'enums';
 import { CellRemdererComponent } from './CellRemdererComponent';
 
-// LicenseManager.setLicenseKey(
-//   'Using_this_{AG_Grid}_Enterprise_key_{AG-064264}_in_excess_of_the_licence_granted_is_not_permitted___Please_report_misuse_to_legal@ag-grid.com___For_help_with_changing_this_key_please_contact_info@ag-grid.com___{Hongkong_International_Terminals_Limited}_is_granted_a_{Single_Application}_Developer_License_for_the_application_{Veronica}_only_for_{5}_Front-End_JavaScript_developers___All_Front-End_JavaScript_developers_working_on_{Veronica}_need_to_be_licensed___{Veronica}_has_not_been_granted_a_Deployment_License_Add-on___This_key_works_with_{AG_Grid}_Enterprise_versions_released_before_{17_October_2025}____[v3]_[01]_MTc2MDY1NTYwMDAwMA==75a0d9f52a371edff31804fa0f139dcf'
-// );
+ModuleRegistry.registerModules([ClientSideRowModelModule, ValidationModule /* Development Only */]);
 
-ModuleRegistry.registerModules([
-  AllCommunityModule,
-  AllEnterpriseModule,
-  ClientSideRowModelModule,
-  ColumnsToolPanelModule,
-  ColumnMenuModule,
-  ContextMenuModule,
-  PivotModule,
-  FiltersToolPanelModule,
-  SetFilterModule,
-  RowGroupingPanelModule,
-  ValidationModule /* Development Only */,
-
-  MultiFilterModule,
-  // SetFilterModule,
-  // TextFilterModule,
-  // NumberFilterModule,
-  // DateFilterModule,
-
-  // IntegratedChartsModule.with(AgChartsEnterpriseModule),
-
-  // NumberEditorModule,
-  // TextEditorModule,
-  // TextFilterModule,
-  // NumberFilterModule,
-  // ClientSideRowModelModule,
-  // ColumnMenuModule,
-  // ContextMenuModule,
-  // RowGroupingModule,
-]);
-
-// Mark all grids as using legacy themes
 provideGlobalGridOptions({ theme: 'legacy' });
 
 export interface IAgTable<AgGridEntity> {
@@ -100,6 +34,7 @@ export interface IAgTable<AgGridEntity> {
 }
 
 export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowClick, onRowDoubleClick, onActionButtonClick, isDownloadAsCsv }: IAgTable<AgGridEntity>) => {
+  const [data] = useState<AgGridEntity[] | undefined>(refreshData);
   const gridRef = useRef<AgGridReact<AgGridEntity>>(null);
   const columnBodyTemplate = useCallback(
     (params: ICellRendererParams<CommonEntity>) => {
@@ -114,16 +49,16 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
   );
 
   const defaultColDef: ColDef<AgGridEntity> = {
-    // autoHeaderHeight: true,
+    autoHeaderHeight: true,
     flex: 1,
     minWidth: 150,
-    filter: 'agSetColumnFilter',
+    // filter: 'agSetColumnFilter',
     cellRenderer: columnBodyTemplate,
     suppressHeaderMenuButton: false,
     suppressHeaderContextMenu: false,
-    enableValue: true,
-    enableRowGroup: true,
-    enablePivot: true,
+    // enableValue: true,
+    // enableRowGroup: true,
+    // enablePivot: true,
     // suppressColumnsToolPanel: true,
     // cellDataType: false,
   };
@@ -152,11 +87,18 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
   }, []);
 
   const onGridReady = useCallback((params: GridReadyEvent) => {
-    params.api.getToolPanelInstance('filters')!.expandFilters();
-    params.api!.getToolPanelInstance('filters')!.collapseFilterGroups();
+    console.log('params', params);
+    // if (params.api.getToolPanelInstance('filters')) {
+    //   params.api.getToolPanelInstance('filters')!.expandFilters();
+    //   params.api!.getToolPanelInstance('filters')!.collapseFilterGroups();
+    // }
   }, []);
 
   const getRowId = useCallback((params: GetRowIdParams) => String(params.data.key), []);
+
+  useEffect(() => {
+    if (gridRef.current && gridRef.current.api) gridRef.current.api.updateGridOptions({ rowData: refreshData });
+  }, [refreshData]);
 
   useEffect(() => {
     if (gridRef.current && isDownloadAsCsv) {
@@ -174,8 +116,8 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
           columnDefs={newColumnDefs}
           defaultColDef={defaultColDef}
           autoGroupColumnDef={autoGroupColumnDef}
-          rowData={refreshData}
-          pivotMode={false}
+          rowData={data}
+          // pivotMode={false}
           getRowId={getRowId}
           // rowSelection={{ mode: "singleRow", checkboxes: false, enableClickSelection: true }}
           // getRowClass={(params: RowClassParams<AgGridEntity>) => {
@@ -199,40 +141,40 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
             if (!e.api.isPivotMode() && e.data && onRowDoubleClick) onRowDoubleClick(e, e.data);
           }}
           // sideBar={"columns"}
-          sideBar={{
-            toolPanels: [
-              {
-                id: 'columns',
-                labelDefault: 'Columns',
-                labelKey: 'columns',
-                iconKey: 'columns',
-                toolPanel: 'agColumnsToolPanel',
-                toolPanelParams: {
-                  suppressRowGroups: false,
-                  suppressValues: false,
-                  suppressPivotMode: false,
-                  suppressColumnFilter: false,
-                  suppressColumnSelectAll: true,
-                  suppressColumnExpandAll: true,
-                },
-              },
-              {
-                id: 'filters',
-                labelDefault: 'Filters',
-                labelKey: 'filters',
-                iconKey: 'filter',
-                toolPanel: 'agFiltersToolPanel',
-                toolPanelParams: {
-                  suppressExpandAll: true,
-                  suppressFilterSearch: true,
-                },
-              },
-            ],
-            hiddenByDefault: false,
-          }}
-          pivotPanelShow={'always'}
-          cellSelection={true}
-          enableCharts={true}
+          // sideBar={{
+          //   toolPanels: [
+          //     {
+          //       id: 'columns',
+          //       labelDefault: 'Columns',
+          //       labelKey: 'columns',
+          //       iconKey: 'columns',
+          //       toolPanel: 'agColumnsToolPanel',
+          //       toolPanelParams: {
+          //         // suppressRowGroups: false,
+          //         suppressValues: false,
+          //         suppressPivotMode: false,
+          //         suppressColumnFilter: false,
+          //         suppressColumnSelectAll: true,
+          //         suppressColumnExpandAll: true,
+          //       },
+          //     },
+          //     {
+          //       id: 'filters',
+          //       labelDefault: 'Filters',
+          //       labelKey: 'filters',
+          //       iconKey: 'filter',
+          //       toolPanel: 'agFiltersToolPanel',
+          //       toolPanelParams: {
+          //         suppressExpandAll: true,
+          //         suppressFilterSearch: true,
+          //       },
+          //     },
+          //   ],
+          //   hiddenByDefault: false,
+          // }}
+          // pivotPanelShow={'always'}
+          // cellSelection={true}
+          // enableCharts={true}
           onGridReady={onGridReady}
           maintainColumnOrder={true}
           suppressScrollOnNewData={false}
