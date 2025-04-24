@@ -1,24 +1,25 @@
 import { INavigation } from 'models';
+import { E_Board_Type } from 'enums';
 
 export const defaultSideBarNavigation: INavigation[] = [
   {
     title: 'Dashboard',
     link: '/dashboard',
-    element: undefined,
+    type: E_Board_Type.BOARD,
     scrollTo: '',
     entrypoint: 'dashboard',
   },
   {
     title: 'Blogs',
     link: '/blogs',
-    element: undefined,
+    type: E_Board_Type.TABLE,
     scrollTo: '',
     entrypoint: 'blogs',
   },
   {
     title: 'Site Config',
     link: '/siteConfig',
-    element: undefined,
+    type: E_Board_Type.TABLE,
     scrollTo: '',
     entrypoint: 'siteConfig',
   },

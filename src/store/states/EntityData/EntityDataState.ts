@@ -1,7 +1,6 @@
 import { Permission } from 'constant/Ana';
 import { CommonEntity } from 'entities';
-
-// import { Permission } from 'module/Ana';
+import { E_Data_Save_Status } from 'enums';
 
 export interface IEndpoint {
   list?: string;
@@ -41,10 +40,16 @@ export interface DropdownOptions {
   showText?: string;
 }
 
+export interface IDataSaveStatus {
+  dataSaveStatus?: E_Data_Save_Status;
+  error?: string;
+}
+
 export interface IDataState {
   list: CommonEntity[];
   initialForms?: CommonEntity;
   lastEditRowId: string;
+  dataSaveStatus?: IDataSaveStatus;
 
   isLoading: boolean;
   isTabularDataActive: boolean;

@@ -77,6 +77,8 @@ export interface IGlobalState {
   sidebarNavigations: INavigation[];
   offers: IOffer[];
 
+  selectedNav?: INavigation;
+
   entrypoint?: string;
   mfeTitle?: string;
   mfeSupTitle?: any[];

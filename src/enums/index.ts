@@ -1,4 +1,6 @@
+export * from './E_Board_Type';
 export * from './E_Data_Load_Status';
+export * from './E_Data_Save_Status';
 export * from './E_FieldType';
 export * from './E_Form_Type';
 export * from './E_Image_Type';

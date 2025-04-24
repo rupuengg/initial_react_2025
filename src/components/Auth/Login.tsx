@@ -48,7 +48,7 @@ export const Login = () => {
               </Link>
             </div>
             <h1 className='header1'>Admin Login</h1>
-            <div className='form-box'>
+            <div className='form-layouts'>
               <div className='form-field marginTop20'>
                 <label>Email</label>
                 <div className='box'>

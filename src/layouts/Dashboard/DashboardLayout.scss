@@ -3,6 +3,7 @@
 .dashboard_layout {
   position: relative;
   height: calc(100% - 120px);
+  overflow: hidden;
 
   /**Header*/
   .mainHeader {

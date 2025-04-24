@@ -2,14 +2,15 @@ import { faEdit, faRefresh, faSave, faXmark } from '@fortawesome/free-solid-svg-
 import { IBaseForm } from 'forms';
 import { RenderForm } from 'forms/RenderForm';
 import _ from 'lodash';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { CommonEntity } from 'entities';
-import { E_Form_Type, E_Operation_Permission } from 'enums';
+import { E_Data_Save_Status, E_Form_Type, E_Operation_Permission } from 'enums';
 import { useANAModulePermission, useTableMapper } from 'hooks';
 import { UrlUtils } from 'utils';
 import { IApplicationState, IUseDispatch, saveData, updateData, useAppDispatch } from 'store';
+import { EntityDataActions } from 'store/slices/entityDataSlice';
 import { Breadcrumb, FontIcon } from 'components';
 
 export function mapFormWithValues(form: IBaseForm[] | undefined, entity: CommonEntity): IBaseForm[] | undefined {
@@ -75,6 +76,21 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const params = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const refSave = useRef(0);
+
+  useEffect(() => {
+    if (params.dataId && params.other && entityData.items[params.other]) {
+      if (entityData.items[params.other].dataSaveStatus?.dataSaveStatus === E_Data_Save_Status.SAVE_INITIALIZE) refSave.current++;
+      if (entityData.items[params.other].dataSaveStatus?.dataSaveStatus === E_Data_Save_Status.SAVE_DONE && refSave.current === 1) {
+        dispatch(EntityDataActions.dataSaveStatusStart({ entrypoint: entrypoint }));
+        refSave.current = 0;
+        navigate({
+          pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other),
+          search: `?${searchParams.toString()}`,
+        });
+      }
+    }
+  }, [entrypoint, entityData, params.other, params.dataId, dispatch, searchParams, navigate]);
 
   // Set item by ID
   useEffect(() => {
@@ -95,19 +111,16 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
     return null;
   }, [item, entityForm]);
 
-  const handleChange = useCallback(
-    (fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
-      setItem((p: CommonEntity | undefined) => {
-        if (!p) return undefined;
-        return {
-          ...p,
-          ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
-          [fieldName]: fieldValue,
-        };
-      });
-    },
-    [entrypoint, item]
-  );
+  const handleChange = useCallback((fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
+    setItem((p: CommonEntity | undefined) => {
+      if (!p) return undefined;
+      return {
+        ...p,
+        ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
+        [fieldName]: fieldValue,
+      };
+    });
+  }, []);
 
   const isSaveEnable = useMemo(() => _.isEqual(item, initialItem), [item, initialItem]);
 
@@ -175,7 +188,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
       pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other, E_Operation_Permission.EDIT, params.dataId),
       search: `?${searchParams.toString()}`,
     });
-  }, []);
+  }, [params.other, params.dataId, searchParams, navigate]);
 
   const handleClose = useCallback(() => {
     if (type === E_Operation_Permission.EDIT) {
@@ -189,23 +202,20 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
         search: `?${searchParams.toString()}`,
       });
     }
-  }, [type]);
+  }, [type, params.other, params.dataId, searchParams, navigate]);
 
   const handleReset = useCallback(() => {
     setItem(initialItem);
   }, [initialItem]);
 
   const handleSave = useCallback(() => {
+    dispatch(EntityDataActions.dataSaveStatusStart({ entrypoint: entrypoint }));
     if (type === E_Operation_Permission.EDIT) {
       dispatch(updateData({ ...mapper, data: { ...item } }));
     } else {
       dispatch(saveData({ ...mapper, data: { ...item, id: 0 } }));
     }
-    // navigate({
-    //   pathname: UrlUtils.makeRouteWidthoutSearch('admin', params.other),
-    //   search: `?${searchParams.toString()}`,
-    // });
-  }, [type, mapper, item]);
+  }, [type, entrypoint, mapper, item, dispatch]);
 
   return (
     <div className='main-box' style={{ width: '100%', border: 'none', backgroundColor: '#FFFFFF', overflow: 'auto', padding: '0' }}>

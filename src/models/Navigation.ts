@@ -1,9 +1,9 @@
-import React from 'react';
+import { E_Board_Type } from 'enums';
 
 export interface INavigation {
   title: string;
   link: string;
-  element?: React.JSX.Element;
+  type: E_Board_Type;
   scrollTo: string;
   items?: INavigation[];
   isHide?: boolean;

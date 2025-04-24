@@ -1,5 +1,6 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CommonEntity } from 'entities';
+import { E_Data_Save_Status } from 'enums';
 import { IEntityDataParams, IEntityDataState, defaultDataState, defaultEntityDataState } from 'store/states';
 import { deleteData, getDataByKey, getDataList, saveData, updateData } from 'store/thunk';
 
@@ -45,7 +46,7 @@ export const entityDataSlice = createSlice({
         typeof action.payload.result !== 'string'
       ) {
         const list: CommonEntity[] = [...draft.items[action.payload.entrypoint].list];
-        const dataIndex = list.findIndex(item => item.id?.toString() === action.payload.dataKey);
+        const dataIndex = list.findIndex(item => item.id?.toString() === action.payload.data?.id?.toString());
         if (dataIndex >= 0) {
           draft.items[action.payload.entrypoint].list = [
             ...list.slice(0, dataIndex),
@@ -55,6 +56,7 @@ export const entityDataSlice = createSlice({
         } else {
           draft.items[action.payload.entrypoint].list = [...list, { ...action.payload.result }];
         }
+        draft.items[action.payload.entrypoint].dataSaveStatus = { dataSaveStatus: E_Data_Save_Status.SAVE_DONE, error: undefined };
       }
     },
     deleteData(draft: IEntityDataState, action: PayloadAction<IEntityDataParams<CommonEntity>>) {
@@ -77,6 +79,18 @@ export const entityDataSlice = createSlice({
       if (action.payload.dataKey && draft.items[action.payload.entrypoint]) {
         draft.items[action.payload.entrypoint].lastEditRowId = action.payload.dataKey;
       }
+    },
+    dataSaveStatusStart(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined }>) {
+      if (action.payload.entrypoint) draft.items[action.payload.entrypoint].dataSaveStatus = { dataSaveStatus: E_Data_Save_Status.SAVE_INITIALIZE };
+    },
+    dataSaveStatusDone(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined }>) {
+      if (action.payload.entrypoint) draft.items[action.payload.entrypoint].dataSaveStatus = { dataSaveStatus: E_Data_Save_Status.SAVE_DONE };
+    },
+    dataSaveStatusError(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined; error: string }>) {
+      if (action.payload.entrypoint) draft.items[action.payload.entrypoint].dataSaveStatus = { dataSaveStatus: E_Data_Save_Status.SAVE_ERROR, error: action.payload.error };
+    },
+    dataSaveStatusReset(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined }>) {
+      if (action.payload.entrypoint) draft.items[action.payload.entrypoint].dataSaveStatus = undefined;
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IEntityDataState>) => {

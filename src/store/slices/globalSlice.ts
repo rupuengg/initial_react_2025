@@ -66,6 +66,7 @@ export const globalSlice = createSlice({
       draft.mfeSupTitle = path.slice(0, -1);
       // draft.mainNavTitle = action.payload.mainNavTitle;
       draft.entrypoint = action.payload.entrypoint;
+      draft.selectedNav = action.payload;
     },
     showNotification(draft: IGlobalState, action: PayloadAction<{ notificationType: E_Notification_Type; notificationMessage: string }>) {
       draft.notification.isActiveScreen = false;
