@@ -127,10 +127,12 @@ export const AgTable = <AgGridEntity,>({ header, refreshData, columnDefs, onRowC
           //   // }
           // }}
           onRowClicked={(e: RowClickedEvent<AgGridEntity>) => {
-            if (!e.api.isPivotMode() && e.data && onRowClick) onRowClick(e.data);
+            // if (!e.api.isPivotMode() && e.data && onRowClick) onRowClick(e.data);
+            if (e.data && onRowClick) onRowClick(e.data);
           }}
           onRowDoubleClicked={(e: RowDoubleClickedEvent<AgGridEntity>) => {
-            if (!e.api.isPivotMode() && e.data && onRowDoubleClick) onRowDoubleClick(e, e.data);
+            // if (!e.api.isPivotMode() && e.data && onRowDoubleClick) onRowDoubleClick(e, e.data);
+            if (e.data && onRowDoubleClick) onRowDoubleClick(e, e.data);
           }}
           // sideBar={"columns"}
           // sideBar={{
