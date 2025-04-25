@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Notification } from 'components';
 import { Footer, Header } from './Common';
 import { Sidebar } from './Common/Sidebar';
 import './DashboardLayout.scss';
@@ -17,9 +18,7 @@ export const DashboardLayout: React.FC<IDashboardLayout> = ({ children }) => {
 
   return (
     <div className='dashboard_layout'>
-      {/* Header */}
       <Header />
-      {/* End */}
 
       <div className='conatainer'>
         <div className='sidebar'>
@@ -30,9 +29,8 @@ export const DashboardLayout: React.FC<IDashboardLayout> = ({ children }) => {
         </div>
       </div>
 
-      {/* Footer Start */}
+      <Notification />
       <Footer />
-      {/* End */}
     </div>
   );
 };

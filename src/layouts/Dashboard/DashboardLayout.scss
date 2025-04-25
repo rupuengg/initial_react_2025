@@ -2,7 +2,7 @@
 
 .dashboard_layout {
   position: relative;
-  height: calc(100% - 120px);
+  height: 100%; //calc(100% - 120px);
   overflow: hidden;
 
   /**Header*/
@@ -148,12 +148,24 @@
       }
 
       .sidebar-menu {
+        margin-right: 2px;
+
         & li {
-          padding: 5px 10px;
+          border: 1px solid #fff;
+          margin-bottom: 2px;
+          cursor: pointer;
+
+          &:hover {
+            & a {
+              color: #bb8f71;
+            }
+          }
         }
 
         & a {
-          font-size: 10px;
+          padding: 2px 10px;
+          display: block;
+          font-size: 12px;
         }
       }
     }

@@ -6,13 +6,14 @@ export interface IFontIcon {
   className?: string;
   disabled?: boolean;
   isClicked?: boolean;
+  color?: string;
   onClick?: (e?: any) => void;
 }
 
-export const FontIcon: React.FC<IFontIcon> = ({ icon, disabled, isClicked = true, onClick }) => {
+export const FontIcon: React.FC<IFontIcon> = ({ icon, disabled, color, isClicked = true, onClick }) => {
   return (
     <span className='font-awesome-icon' onClick={() => isClicked && onClick && onClick()}>
-      <FontAwesomeIcon icon={icon} color={disabled ? '#cccccc' : '#bb8f71'} />
+      <FontAwesomeIcon icon={icon} color={disabled ? '#cccccc' : color || '#bb8f71'} />
     </span>
   );
 };

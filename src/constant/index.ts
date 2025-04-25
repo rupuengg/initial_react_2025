@@ -1,2 +1,2 @@
 export * from './TablesColumnsSetting';
-export * from './WorkspaceConstant';
+export * from './GlobalConstant';

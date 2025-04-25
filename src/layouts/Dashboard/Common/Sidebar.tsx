@@ -40,7 +40,6 @@ export const Sidebar = () => {
       };
 
       const result = searchMenu(sidebarNavigations || []);
-      console.log('result', result);
       if (result) whenMfeOpen({ ...result });
     }
   }, [sidebarNavigations, uriPath, uriEntrypoint, whenMfeOpen]);

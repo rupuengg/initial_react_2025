@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { WorkspaceConstant } from 'constant';
+import { GlobalConstant } from 'constant';
 
 export const useEntrypoint = () => {
   const [uriPath, setPath] = useState<string>('');
@@ -8,7 +8,7 @@ export const useEntrypoint = () => {
   useEffect(() => {
     const cb = (path: string) => {
       if (path) {
-        const str = path.replace(`#/${WorkspaceConstant.API_MAIN_ROUTE}`, '');
+        const str = path.replace(`#/${GlobalConstant.API_MAIN_ROUTE}`, '');
         if (str.length > 1) {
           const len = str.includes('?') ? str.indexOf('?') : str.length;
           const params = str.slice(1, len).split('/');

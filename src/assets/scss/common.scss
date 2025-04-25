@@ -224,8 +224,6 @@ body {
   padding: 0 0 0 0;
 
   &:hover {
-    color: get_color(nav_menu_font_color_hover);
-    border-color: get_color(nav_menu_font_color_hover);
     -webkit-transition: border 0s ease-out;
     -moz-transition: border 0s ease-out;
     -o-transition: border 0s ease-out;
@@ -234,8 +232,6 @@ body {
   }
 
   &.active {
-    color: get_color(nav_menu_font_color_hover);
-    border-color: get_color(nav_menu_font_color_hover);
     -webkit-transition: border 0s ease-out;
     -moz-transition: border 0s ease-out;
     -o-transition: border 0s ease-out;
@@ -315,5 +311,25 @@ body {
 
   @media (min-width: $breakpoint-tablet) {
     font-size: 15px;
+  }
+}
+
+.notification {
+  position: fixed;
+  bottom: 43px;
+  left: 150px;
+  width: calc(100% - 150px);
+  background-color: #ddceb0;
+  & > div {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  & .message {
+    font-size: 14px;
+    font-weight: 600;
+    color: #bb8f71;
   }
 }
