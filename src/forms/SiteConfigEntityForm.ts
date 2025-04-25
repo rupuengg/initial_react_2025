@@ -25,7 +25,7 @@ export const SiteConfigEntityForm: IBaseForm[] = [
             type: E_Form_Type.FIELD,
             fieldType: E_FieldType.TEXTAREA,
             fieldName: 'description',
-            fieldLabel: 'Description',
+            fieldLabel: 'Meta Description',
             isRequired: true,
           },
         ],
@@ -47,9 +47,9 @@ export const SiteConfigEntityForm: IBaseForm[] = [
         fields: [
           {
             type: E_Form_Type.FIELD,
-            fieldType: E_FieldType.TEXTAREA,
+            fieldType: E_FieldType.TAG,
             fieldName: 'keywords',
-            fieldLabel: 'Keywords',
+            fieldLabel: 'Meta Keywords',
           },
         ],
       },

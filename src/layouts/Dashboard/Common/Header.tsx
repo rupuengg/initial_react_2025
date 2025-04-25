@@ -30,8 +30,10 @@ export const Header = () => {
                 <Logo titleColor='#ddceb0' />
               </Link>
             </div>
-            <div className='navMenu'>
-              <FontIcon disabled={!gear} icon={faGear} onClick={handleGearClick} />
+            <div className='popup-menu'>
+              <div className='setting' onClick={handleGearClick}>
+                <FontIcon disabled={false} icon={faGear} />
+              </div>
               {gear && (
                 <div className='sub-menu'>
                   <ul>

@@ -5,6 +5,7 @@ import { FieldLabel, TextBox } from './fields';
 import { FieldText } from './fields/FieldText';
 import { ImageUrl } from './fields/ImageUrl';
 import { SelectBox } from './fields/SelectBox';
+import { TagBox } from './fields/TagBox';
 import { Textarea } from './fields/Textarea';
 
 interface IRenderForm {
@@ -31,6 +32,8 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, onChange }
             return React.createElement(SelectBox, { ...row, onChange });
           case E_FieldType.URL_CAPTURE:
             return React.createElement(ImageUrl, { ...row, onChange });
+          case E_FieldType.TAG:
+            return React.createElement(TagBox, { ...row, onChange });
           default:
             return null;
         }

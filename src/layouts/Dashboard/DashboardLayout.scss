@@ -55,38 +55,6 @@
           }
         }
       }
-
-      & .navMenu {
-        display: flex;
-        flex: 1 0 auto;
-        justify-content: flex-end;
-        position: relative;
-
-        & .sub-menu {
-          position: absolute;
-          top: 25px;
-          right: 2px;
-          width: 100px;
-          height: auto;
-          background-color: #ddceb0;
-          padding: 10px;
-          border-radius: 10px 0 10px 10px;
-
-          & a {
-            color: #222222;
-          }
-
-          &::before {
-            position: absolute;
-            right: 0px;
-            top: -6px;
-            content: '';
-            border: solid transparent;
-            border-bottom-color: #ddceb0;
-            border-width: 0 6px 6px 6px;
-          }
-        }
-      }
     }
   }
 
@@ -265,6 +233,76 @@
 
     &:last-of-type {
       margin-right: 0px;
+    }
+  }
+
+  & .popup-menu {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    position: relative;
+
+    & .setting {
+      border: 1px solid #bb8f71;
+      display: flex;
+      align-items: center;
+      padding-left: 6px;
+      width: 50px;
+      height: 28px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &::after {
+        position: absolute;
+        right: 8px;
+        top: 13px;
+        content: '';
+        width: 0px;
+        height: 0px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #bb8f71;
+      }
+    }
+
+    & .sub-menu {
+      position: absolute;
+      top: 32px;
+      right: 0px;
+      width: 150px;
+      height: auto;
+      border: 1px solid #bb8f71;
+      background-color: #222222;
+      padding: 10px;
+      border-radius: 10px;
+
+      & a:hover,
+      &a:active {
+        color: #bb8f71;
+      }
+    }
+  }
+
+  & .tag-box {
+    & .tag {
+      display: inline-flex;
+      background-color: #bb8f71;
+      color: #ffffff;
+      font-size: 11px;
+      padding: 1px 4px;
+      border-radius: 8px;
+      margin-right: 4px;
+      line-height: 1.5;
+      white-space: nowrap;
+      align-items: center;
+
+      & span {
+        margin-right: 4px;
+      }
+
+      &:last-of-type {
+        margin-right: 0px;
+      }
     }
   }
 }

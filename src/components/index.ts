@@ -11,3 +11,4 @@ export * from './MainContent';
 export * from './Notification';
 export * from './Offer';
 export * from './SocialMedia';
+export * from './Tags';
