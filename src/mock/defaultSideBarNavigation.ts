@@ -24,6 +24,13 @@ export const defaultSideBarNavigation: INavigation[] = [
     entrypoint: 'blogs',
   },
   {
+    title: 'Job Seeker',
+    link: '/job_seeker',
+    type: E_Board_Type.TABLE,
+    scrollTo: '',
+    entrypoint: 'jobSeeker',
+  },
+  {
     title: 'Site Config',
     link: '/siteConfig',
     type: E_Board_Type.TABLE,

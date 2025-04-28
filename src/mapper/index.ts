@@ -1,8 +1,10 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
 import { ContactInfoEntityForm, IBaseForm, SiteConfigEntityForm } from 'forms';
+import { JobSeekerEntityForm } from 'forms/JobSeekerEntityForm';
 import { defaultContactInfo } from 'mock/defaultContactInfo';
+import { defaultJobSeeker } from 'mock/defaultJobSeeker';
 import { defaultSiteConfigEntity } from 'mock/defaultSiteConfigEntity';
-import { getContactInfoColumnSetting, getSiteConfigColumnSetting } from 'constant';
+import { getContactInfoColumnSetting, getJobSeekerColumnSetting, getSiteConfigColumnSetting } from 'constant';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
 import { CommonEntity } from 'entities';
 import { ANAInfoModel } from 'entities/ANAInfo';
@@ -56,6 +58,8 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
       return getCondition(getContactInfoColumnSetting, Permission.CHASSIS_TYPE, ContactInfoEntityForm, defaultContactInfo);
     case 'siteConfig':
       return getCondition(getSiteConfigColumnSetting, Permission.CHASSIS_TYPE, SiteConfigEntityForm, defaultSiteConfigEntity);
+    case 'jobSeeker':
+      return getCondition(getJobSeekerColumnSetting, Permission.CHASSIS_TYPE, JobSeekerEntityForm, defaultJobSeeker);
     default:
       return getCondition(() => [], Permission.LOGIN);
   }
