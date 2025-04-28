@@ -32,7 +32,7 @@ export const Header = () => {
             </div>
             <div className='popup-menu'>
               <div className='setting' onClick={handleGearClick}>
-                <FontIcon disabled={false} icon={faGear} />
+                <FontIcon isDisabled={false} color={'#bb8f71'} icon={faGear} />
               </div>
               {gear && (
                 <div className='sub-menu'>

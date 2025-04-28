@@ -2,8 +2,9 @@ import { getCommonColumnSetting } from '../CommonColumnSetting';
 import { ColDef, ColGroupDef } from 'ag-grid-community';
 // import { ANAInfoModel } from 'module/Ana';
 import { ISiteConfigEntity } from 'entities';
+
 // import { E_Renderer_Type } from 'enums';
-import { numberComparator } from 'utils';
+// import { numberComparator } from 'utils';
 
 // import { qcmaintenanceRadioOption } from './QuayCraneForm';
 
@@ -17,7 +18,7 @@ export function getSiteConfigColumnSetting(anaInfo?: any): (ColDef<ISiteConfigEn
     {
       field: 'title',
       headerName: 'Title',
-      comparator: numberComparator,
+      // comparator: numberComparator,
     },
     // {
     //   field: 'maintenance',

@@ -1,6 +1,6 @@
 import { faPlus, faRefresh, faTrashRestore, faUpload } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { FontIcon } from 'components/Icon';
 
 // import { RefreshButton } from "./RefreshButton";
 
@@ -36,31 +36,13 @@ export const AgTableHeader: React.FC<IAgTableHeader> = ({
       {typeof headerLabel === 'string' ? <h1 className='header1' dangerouslySetInnerHTML={{ __html: headerLabel }} /> : <h1 className='header1'>{headerLabel}</h1>}
 
       <div className='table-actionbar'>
-        {/* {showAddIcon && <IconButton id='add' fileName='Icon-add' size='medium' toolTipArrow={false} toolTipPlacement='left' toolTipText={'Add'} onClick={onAdd && onAdd} />} */}
-        {showAddIcon && (
-          <span onClick={onAdd && onAdd}>
-            <FontAwesomeIcon icon={faPlus} />
-          </span>
-        )}
-        {/* {showReloadIcon && <IconButton fileName='Icon-reload' size='medium' toolTipArrow={false} toolTipPlacement='left' toolTipText={'Reload'} onClick={onReload && onReload} />} */}
-        {showReloadIcon && (
-          <span onClick={onReload && onReload}>
-            <FontAwesomeIcon icon={faRefresh} />
-          </span>
-        )}
-        {/* {showDownloadIcon && <IconButton fileName='Icon-upload' size='medium' toolTipArrow={false} toolTipPlacement='left' toolTipText={'Export'} onClick={onExportCsv && onExportCsv} />} */}
-        {showDownloadIcon && (
-          <span onClick={onExportCsv && onExportCsv}>
-            <FontAwesomeIcon icon={faUpload} />
-          </span>
-        )}
-        {/* {showRecoveryIcon && <IconButton fileName='Icon-recover-trash-list' size='medium' toolTipArrow={false} toolTipPlacement='left' toolTipText={'Recovery'} onClick={onRecover && onRecover} />} */}
-        {showRecoveryIcon && (
-          <span onClick={onRecover && onRecover}>
-            <FontAwesomeIcon icon={faTrashRestore} />
-          </span>
-        )}
-        {/* {showRefreshIcon && <RefreshButton countDownStart={27} cb={refreshCallback} />} */}
+        {showAddIcon && <FontIcon icon={faPlus} isDisabled={false} onClick={onAdd} />}
+
+        {showReloadIcon && <FontIcon icon={faRefresh} onClick={onReload} />}
+
+        {showDownloadIcon && <FontIcon icon={faUpload} onClick={onExportCsv} />}
+
+        {showRecoveryIcon && <FontIcon icon={faTrashRestore} onClick={onRecover} />}
       </div>
     </div>
   );

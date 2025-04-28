@@ -1,13 +1,11 @@
-import { defaultEntityStatusDataEntity } from 'mock';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { CommonEntity, IEntityStatusDataEntity } from 'entities';
-import { E_Data_Load_Status, E_Operation_Permission } from 'enums';
+import { CommonEntity } from 'entities';
+import { E_Operation_Permission } from 'enums';
 import { useTableMapper } from 'hooks';
 import { UrlUtils } from 'utils';
-// import { UrlUtils } from 'utils';
-import { IApplicationState, IUseDispatch, deleteData, getDataList, useAppDispatch } from 'store';
+import { IApplicationState, IUseDispatch, deleteData, useAppDispatch } from 'store';
 import { AgTable, AgTableHeader } from 'components';
 
 export const TableData = () => {
@@ -18,7 +16,6 @@ export const TableData = () => {
   const [searchParams] = useSearchParams();
   const { entrypoint, mfeTitle } = global;
   const [isExport, setIsExport] = useState<boolean>(false);
-  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
 
   const { mapper, columnSetting } = useTableMapper(entrypoint);
 
@@ -57,22 +54,6 @@ export const TableData = () => {
     },
     [mapper, dispatch]
   );
-
-  useEffect(() => {
-    if (
-      mapper.entrypoint &&
-      (!startRef.current || !startRef.current[mapper.entrypoint] || startRef.current[mapper.entrypoint] === E_Data_Load_Status.PENDING) &&
-      entityData.items[mapper.entrypoint] &&
-      entityData.items[mapper.entrypoint].isTabularDataActive
-    ) {
-      startRef.current = { ...startRef.current, [mapper.entrypoint]: E_Data_Load_Status.FULFULLED };
-    }
-    if (mapper.entrypoint && (!startRef.current || !startRef.current[mapper.entrypoint] || startRef.current[mapper.entrypoint] === E_Data_Load_Status.NOT_YET_STARTED)) {
-      startRef.current = { ...startRef.current, [mapper.entrypoint]: E_Data_Load_Status.PENDING };
-      // Load Data
-      if (!entityData.items[mapper.entrypoint] || !entityData.items[mapper.entrypoint].list || entityData.items[mapper.entrypoint].list.length === 0) dispatch(getDataList(mapper));
-    }
-  }, [mapper.entrypoint, mapper, entityData.items, dispatch]);
 
   // if (!entityData.items || !entityData.items[mapper.entrypoint] || (entityData.items[mapper.entrypoint] && !entityData.items[mapper.entrypoint].isTabularDataActive)) return <h1>Loading...</h1>;
 

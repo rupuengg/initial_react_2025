@@ -1,4 +1,4 @@
-import { faCopy, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faEdit, faMessage, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ICellRendererParams } from 'ag-grid-community';
 import moment from 'moment';
 import { useCallback, useMemo } from 'react';
@@ -33,6 +33,8 @@ export const CellRemdererComponent: React.FC<ICellRemdererComponent> = ({ params
             <div className='color-label'>{params.value}</div>
           </div>
         );
+      case E_Renderer_Type.MESSAGE_READ:
+        return <FontIcon icon={faMessage} isRead={!params.value} />;
       case E_Renderer_Type.TICK:
         return Boolean(params.value) === true && <span>Tick</span>;
       case E_Renderer_Type.VALUE_EITHER_N:

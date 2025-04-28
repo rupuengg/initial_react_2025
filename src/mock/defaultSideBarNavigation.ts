@@ -10,6 +10,13 @@ export const defaultSideBarNavigation: INavigation[] = [
     entrypoint: 'dashboard',
   },
   {
+    title: 'Contacts',
+    link: '/contactInfo',
+    type: E_Board_Type.TABLE,
+    scrollTo: '',
+    entrypoint: 'contactInfo',
+  },
+  {
     title: 'Blogs',
     link: '/blogs',
     type: E_Board_Type.TABLE,

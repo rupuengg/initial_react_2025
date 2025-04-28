@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+  <head><link rel="icon" href="/favicon.png" />
     <meta name="language" content="English" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="google-site-verification" content="z_5HlCkpyxt7dVxFX-65bH-qVoqJc-b-Vvz0mED9j9k" />
     <meta data-hid="robots" name="robots" content="index,follow" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <base href="%PUBLIC_URL%/" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <base href="/" />
     <?php include './metaTag.php'; ?>
   </head>
   <body>

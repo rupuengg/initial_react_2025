@@ -1,13 +1,20 @@
-import { useMemo } from 'react';
+import { defaultEntityStatusDataEntity } from 'mock';
+import { useEffect, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { E_Board_Type, E_Operation_Permission } from 'enums';
-import { IApplicationState } from 'store';
+import { IEntityStatusDataEntity } from 'entities';
+import { E_Board_Type, E_Data_Load_Status, E_Operation_Permission } from 'enums';
+import { useTableMapper } from 'hooks';
+import { IApplicationState, IUseDispatch, getDataList, useAppDispatch } from 'store';
 import { AddEditViewForm } from 'components';
 import { TableData } from './TableData';
 
 export const MainContent = () => {
-  const { selectedNav } = useSelector((state: IApplicationState) => state.global);
+  const { global, entityData } = useSelector((state: IApplicationState) => state);
+  const dispatch: IUseDispatch = useAppDispatch();
+  const { entrypoint, selectedNav } = global;
+  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
+  const { mapper } = useTableMapper(entrypoint);
 
   const board = useMemo(() => <h1 className='header1'>Board</h1>, []);
 
@@ -23,6 +30,24 @@ export const MainContent = () => {
     ),
     []
   );
+
+  useEffect(() => {
+    if (
+      selectedNav &&
+      selectedNav.type === E_Board_Type.TABLE &&
+      mapper.entrypoint &&
+      (!startRef.current || !startRef.current[mapper.entrypoint] || startRef.current[mapper.entrypoint] === E_Data_Load_Status.PENDING) &&
+      entityData.items[mapper.entrypoint] &&
+      entityData.items[mapper.entrypoint].isTabularDataActive
+    ) {
+      startRef.current = { ...startRef.current, [mapper.entrypoint]: E_Data_Load_Status.FULFULLED };
+    }
+    if (mapper.entrypoint && (!startRef.current || !startRef.current[mapper.entrypoint] || startRef.current[mapper.entrypoint] === E_Data_Load_Status.NOT_YET_STARTED)) {
+      startRef.current = { ...startRef.current, [mapper.entrypoint]: E_Data_Load_Status.PENDING };
+      // Load Data
+      if (!entityData.items[mapper.entrypoint] || !entityData.items[mapper.entrypoint].list || entityData.items[mapper.entrypoint].list.length === 0) dispatch(getDataList(mapper));
+    }
+  }, [mapper.entrypoint, mapper, entityData.items, dispatch]);
 
   if (!selectedNav) return null;
 

@@ -17,8 +17,7 @@ export function mapFormWithValues(form: IBaseForm[] | undefined, entity: CommonE
   const cb = (frm: IBaseForm): IBaseForm => {
     const newFrm: IBaseForm = { ...frm };
 
-    if (newFrm.type === E_Form_Type.FIELD && newFrm.fieldName && entity[newFrm.fieldName as keyof CommonEntity])
-      newFrm.fieldValue = entity[newFrm.fieldName as keyof CommonEntity] as keyof CommonEntity;
+    if (newFrm.type === E_Form_Type.FIELD && newFrm.fieldName && entity[newFrm.fieldName as keyof CommonEntity]) newFrm.fieldValue = entity[newFrm.fieldName as keyof CommonEntity] as keyof unknown;
 
     if (newFrm.type === E_Form_Type.COLUMN) newFrm.rows = newFrm.rows?.map(r => ({ ...r, ...cb(r) }));
     else if (newFrm.type === E_Form_Type.ROW) newFrm.fields = newFrm.fields?.map(f => ({ ...f, ...cb(f) }));
@@ -122,7 +121,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
     });
   }, []);
 
-  const isSaveEnable = useMemo(() => _.isEqual(item, initialItem), [item, initialItem]);
+  const isFormChanged = useMemo(() => !_.isEqual(item, initialItem), [item, initialItem]);
 
   // useEffect(() => {
   //   if (isAdd || (isEditable && !isRead)) {
@@ -234,11 +233,11 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
           {(isAdd || (isEditable && !isRead)) && (
             <>
               {/* Reset Form Button */}
-              <FontIcon icon={faRefresh} disabled={isSaveEnable} onClick={handleReset} />
+              <FontIcon icon={faRefresh} isDisabled={!isFormChanged} onClick={handleReset} />
               {/* Close Button */}
               <FontIcon icon={faXmark} onClick={handleClose} />
               {/* Save Button */}
-              {((isAdd && allowCreate) || (isEditable && allowUpdate)) && <FontIcon icon={faSave} disabled={isSaveEnable} isClicked={!isSaveEnable} onClick={handleSave} />}
+              {((isAdd && allowCreate) || (isEditable && allowUpdate)) && <FontIcon icon={faSave} isDisabled={!isFormChanged} onClick={handleSave} />}
             </>
           )}
         </div>

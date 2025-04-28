@@ -179,7 +179,6 @@
       display: flex;
 
       & span {
-        margin-left: 10px;
         cursor: pointer;
       }
     }
@@ -233,6 +232,24 @@
 
     &:last-of-type {
       margin-right: 0px;
+    }
+
+    &.hover {
+      & svg {
+        color: #bb8f71;
+      }
+    }
+
+    &.disable {
+      & svg {
+        color: #ebebe4 !important;
+      }
+    }
+
+    &.read {
+      & svg {
+        color: #bb8f71 !important;
+      }
     }
   }
 
@@ -297,6 +314,7 @@
       align-items: center;
 
       & span {
+        display: flex;
         margin-right: 4px;
       }
 

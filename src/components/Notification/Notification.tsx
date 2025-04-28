@@ -41,14 +41,14 @@ export const Notification = () => {
     <div className='notification'>
       <div>
         <div>
-          {notification.notificationType === E_Notification_Type.SUCCESS && <FontIcon disabled={false} icon={faCheck} />}
-          {notification.notificationType === E_Notification_Type.ALERT && <FontIcon disabled={false} color='#ff4633' icon={faExclamation} />}
+          {notification.notificationType === E_Notification_Type.SUCCESS && <FontIcon color='#bb8f71' isDisabled={false} icon={faCheck} />}
+          {notification.notificationType === E_Notification_Type.ALERT && <FontIcon isDisabled={false} color='#ff4633' icon={faExclamation} />}
           <span className='message'>{notification.notificationMessage}</span>
         </div>
 
         <div>
           <Link to='' onClick={() => handleClearNotification()}>
-            <FontIcon icon={faXmark} disabled={false} />
+            <FontIcon icon={faXmark} color='#bb8f71' isDisabled={false} />
           </Link>
         </div>
       </div>

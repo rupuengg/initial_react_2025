@@ -1,9 +1,11 @@
+import { IContactInfoEntity } from './ContactInfoEntity';
 import { ISiteConfigEntity } from './SiteConfigEntity';
 
 export * from './EntityStatusDataEntity';
+export * from './ContactInfoEntity';
 export * from './SiteConfigEntity';
 
-export type CommonEntity = ISiteConfigEntity;
+export type CommonEntity = IContactInfoEntity | ISiteConfigEntity;
 // | BerthEntity
 // | ChassisEquipmentEntity
 // | ContainerHandlingVehicleEntity

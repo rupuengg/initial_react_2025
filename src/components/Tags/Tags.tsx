@@ -26,14 +26,12 @@ export const Tags: React.FC<ITags> = ({ tags, onDelete }) => {
   return (
     <div className='tag-box'>
       {tags.map(tag => (
-        <>
-          <div key={tag} className='tag'>
-            <span>{tag}</span>
-            <Link to='' onClick={e => handleRemoveTag(e, tag)}>
-              <FontIcon disabled={false} icon={faXmark} color='#fff' />
-            </Link>
-          </div>
-        </>
+        <div key={tag} className='tag'>
+          <span>{tag}</span>
+          <Link to='' onClick={e => handleRemoveTag(e, tag)}>
+            <FontIcon isDisabled={false} color='#ffffff' icon={faXmark} />
+          </Link>
+        </div>
       ))}
     </div>
   );
