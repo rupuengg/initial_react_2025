@@ -286,12 +286,25 @@
       position: absolute;
       top: 32px;
       right: 0px;
-      width: 150px;
+      width: 120px;
       height: auto;
       border: 1px solid #bb8f71;
       background-color: #222222;
-      padding: 10px;
+      padding: 15px 10px;
       border-radius: 10px;
+
+      & li {
+        margin-bottom: 15px;
+        line-height: 1;
+
+        &:last-of-type {
+          margin-bottom: 0px;
+        }
+
+        & a {
+          display: block;
+        }
+      }
 
       & a:hover,
       &a:active {

@@ -16,7 +16,7 @@ export const CellRemdererComponent: React.FC<ICellRemdererComponent> = ({ params
     (e: React.MouseEvent<HTMLAnchorElement>, type?: any) => {
       if (onClick) onClick(params, type);
     },
-    [params]
+    [params, onClick]
   );
 
   const html = useMemo(() => {
@@ -50,7 +50,7 @@ export const CellRemdererComponent: React.FC<ICellRemdererComponent> = ({ params
       default:
         return params.value;
     }
-  }, [params]);
+  }, [params, handleClick]);
 
   return html;
 };

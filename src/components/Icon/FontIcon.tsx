@@ -32,7 +32,6 @@ export const FontIcon: React.FC<IFontIcon> = ({ icon, isDisabled, isRead, color,
     if (!isDisabled && onClick) onClick();
   }, [isDisabled, onClick]);
 
-  console.log('isRead', isRead);
   return (
     <span className={`font-awesome-icon${read}${isHover ? ' hover' : ''}${isDisabled ? ' disable' : ''}`} onClick={handleClick} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
       <FontAwesomeIcon icon={icon} {...(color ? { color: color } : { color: '#cccccc' })} />
