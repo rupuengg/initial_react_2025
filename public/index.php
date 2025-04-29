@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="manifest" href="/manifest.json" />
     <base href="/" />
-    <?php include './metaTag.php'; ?>
+    <?php include_once 'initial/metaTag.php'; ?>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
