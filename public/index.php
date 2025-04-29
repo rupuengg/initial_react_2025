@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head><link rel="icon" href="/favicon.png" />
+  <head>
+    <link rel="icon" href="/favicon.png" />
     <meta name="language" content="English" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />

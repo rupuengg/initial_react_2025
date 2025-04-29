@@ -1,6 +1,19 @@
 import { defaultNavigation } from 'mock';
+import { INavigation } from 'models';
 import { E_FieldType, E_Form_Type } from 'enums';
-import { IBaseForm } from './BaseForm';
+import { IBaseForm, IOption } from './BaseForm';
+
+const getNavs = (navs: INavigation[]): IOption[] => {
+  let options: IOption[] = [];
+
+  navs.forEach((nav: INavigation) => {
+    options.push({ key: nav.link, value: nav.link });
+
+    if (nav.items && nav.items.length > 0) options = options.concat(getNavs(nav.items));
+  });
+
+  return options;
+};
 
 export const SiteConfigEntityForm: IBaseForm[] = [
   {
@@ -38,7 +51,7 @@ export const SiteConfigEntityForm: IBaseForm[] = [
             fieldType: E_FieldType.DROPDOWN_ONE_SELECT,
             fieldName: 'route',
             fieldLabel: 'Route',
-            options: defaultNavigation.map(nav => ({ key: nav.link, value: nav.link })),
+            options: getNavs(defaultNavigation),
           },
         ],
       },
