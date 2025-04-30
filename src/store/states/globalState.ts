@@ -7,8 +7,7 @@ import banner5 from '../../assets/images/banner/banner5.jpg';
 import offerData from 'json/offers.json';
 import photos from 'json/photos.json';
 import { defaultNavigation, defaultSideBarNavigation } from 'mock';
-import { IBanner, IGallery, INavigation, IPhoto } from 'models';
-import { IOffer } from 'models/Offer';
+import { IBanner, IGallery, INavigation, IOffer, IPhoto } from 'entities';
 import { E_Notification_Type } from 'enums';
 
 const banners = [

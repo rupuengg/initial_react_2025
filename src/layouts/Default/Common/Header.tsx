@@ -1,11 +1,11 @@
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { INavigation } from 'models/Navigation';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { INavigation } from 'entities';
 import { IApplicationState } from 'store';
 import { Logo } from 'components';
 import { Topper } from './Topper';

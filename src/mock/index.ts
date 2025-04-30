@@ -1,4 +1,7 @@
+export * from './defaultANAInfoModel';
+export * from './defaultContactInfo';
 export * from './defaultEntityStatusDataEntity';
+export * from './defaultJobSeeker';
 export * from './defaultNavigation';
 export * from './defaultSideBarNavigation';
 export * from './defaultSiteConfigEntity';

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import { IOffer } from 'models/Offer';
 import React, { useState } from 'react';
+import { IOffer } from 'entities';
 import './OfferItem.scss';
 
 export interface IOfferItemProps {

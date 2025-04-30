@@ -1,12 +1,13 @@
+import { defaultANAInfoModel } from 'mock';
 import { useEffect, useState } from 'react';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
-import { ANAInfoModel, EMPTY_ANA_INFO } from 'entities/ANAInfo';
+import { ANAInfoModel } from 'entities/ANAInfo';
 import { isPermissionExist } from 'utils';
 import { useANAInfo } from './useANAInfo';
 
 export const useANAModulePermission = (permission?: Permission) => {
   const anaInfo = useANAInfo();
-  const [anaInfoPermission, setAnaPermission] = useState<ANAInfoModel>(EMPTY_ANA_INFO);
+  const [anaInfoPermission, setAnaPermission] = useState<ANAInfoModel>(defaultANAInfoModel);
 
   useEffect(() => {
     if (anaInfo.allHphPermission && permission) {

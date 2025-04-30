@@ -1,4 +1,4 @@
-import { IUser } from 'models';
+import { IUser } from 'entities';
 
 export const defaultUser: IUser = {
   id: '1',

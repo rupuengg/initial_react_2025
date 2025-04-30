@@ -1,4 +1,4 @@
-import { IPhoto } from 'models';
+import { IPhoto } from 'entities';
 
 export const PhotoUtils = (photos: IPhoto[] | undefined) => {
   return {

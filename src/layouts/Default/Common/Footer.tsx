@@ -1,10 +1,10 @@
 // import logoNoBackground from '../../assets/images/logo/logoNoBackground.png';
 import { faMailReply, faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { INavigation } from 'models';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { INavigation } from 'entities';
 import { E_Icon_Name } from 'enums';
 import { IApplicationState } from 'store';
 import { Icon, SocialMedia } from 'components';

@@ -1,4 +1,4 @@
-import { IGallery, IPhoto } from 'models';
+import { IGallery, IPhoto } from 'entities';
 import { ApiPath } from 'store/constants';
 import { imageKitAxiosInstance } from './axios';
 

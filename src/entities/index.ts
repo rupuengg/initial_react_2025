@@ -1,11 +1,20 @@
 import { IContactInfoEntity } from './ContactInfoEntity';
+import { IJobSeekerEntity } from './JobSeekerEntity';
 import { ISiteConfigEntity } from './SiteConfigEntity';
 
-export * from './EntityStatusDataEntity';
+export * from './ANAInfo';
+export * from './Banner';
 export * from './ContactInfoEntity';
+export * from './EntityStatusDataEntity';
+export * from './Gallery';
+export * from './JobSeekerEntity';
+export * from './Navigation';
+export * from './Offer';
+export * from './Photo';
 export * from './SiteConfigEntity';
+export * from './User';
 
-export type CommonEntity = IContactInfoEntity | ISiteConfigEntity;
+export type CommonEntity = IContactInfoEntity | IJobSeekerEntity | ISiteConfigEntity;
 // | BerthEntity
 // | ChassisEquipmentEntity
 // | ContainerHandlingVehicleEntity

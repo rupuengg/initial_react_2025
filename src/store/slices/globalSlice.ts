@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IGallery, INavigation, IPhoto } from 'models';
+import { IGallery, INavigation, IPhoto } from 'entities';
 import { E_Notification_Type } from 'enums';
 import { IGlobalState, defaultGlobalState } from 'store/states';
 import { getAllGallery, getAllPhotos, getFeaturedGallery, getGalleryPhotos } from 'store/thunk';

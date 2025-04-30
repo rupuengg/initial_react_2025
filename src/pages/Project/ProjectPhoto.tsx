@@ -1,6 +1,5 @@
 import { IKContext, IKVideo } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
-import { IGallery } from 'models';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { useMemo, useState } from 'react';
@@ -8,6 +7,7 @@ import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { IGallery, IPhoto } from 'entities';
 import { PhotoUtils } from 'utils';
 import { IApplicationState } from 'store';
 import './Project.scss';
@@ -70,7 +70,7 @@ export const ProjectPhoto = () => {
   }, [photos, params.id]);
 
   const images = useMemo(() => {
-    return PhotoUtils(gallery?.photos?.filter(p => p.audioCodec !== 'aac'))
+    return PhotoUtils(gallery?.photos?.filter((p: IPhoto) => p.audioCodec !== 'aac'))
       .sort()
       ?.map(g => {
         return { src: g.url, width: Number(g.width), height: Number(g.height), url: g.url } as Photo;

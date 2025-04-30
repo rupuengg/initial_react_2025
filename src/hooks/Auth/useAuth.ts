@@ -1,5 +1,5 @@
-import { IUser } from 'models';
 import { useEffect, useState } from 'react';
+import { IUser } from 'entities';
 import { E_Is_Login } from 'enums';
 import { decryption } from 'utils';
 import { useToken } from './useToken';

@@ -1,7 +1,7 @@
-import { INavigation } from 'models';
 import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
+import { INavigation } from 'entities';
 import { useEntrypoint } from 'hooks';
 import { UrlUtils } from 'utils';
 import { GlobalActions, IApplicationState, IUseDispatch, useAppDispatch } from 'store';

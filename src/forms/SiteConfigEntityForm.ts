@@ -1,5 +1,5 @@
 import { defaultNavigation } from 'mock';
-import { INavigation } from 'models';
+import { INavigation } from 'entities';
 import { E_FieldType, E_Form_Type } from 'enums';
 import { IBaseForm, IOption } from './BaseForm';
 

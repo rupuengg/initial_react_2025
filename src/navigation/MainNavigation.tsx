@@ -1,8 +1,8 @@
-import { INavigation } from 'models';
 import { About, Contact, Faq, Gallery, Home, NoMatch, Project, ProjectPhoto, Services } from 'pages';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { INavigation } from 'entities';
 import { IApplicationState } from 'store';
 import { Login, PrivateRoute } from 'components';
 

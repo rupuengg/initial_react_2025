@@ -1,4 +1,4 @@
-import { INavigation } from 'models';
+import { INavigation } from 'entities';
 import { E_Board_Type } from 'enums';
 
 export const defaultNavigation: INavigation[] = [
