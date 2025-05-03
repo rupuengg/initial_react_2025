@@ -10,7 +10,6 @@ And new menu inside this, type should be mandatory TABLE, BOARD, PAGE
 title: 'Menu Title',
 link: '/menu_link',
 type: E_Board_Type.TABLE,
-scrollTo: '',
 entrypoint: 'menu_entry_point',
 }
 ```

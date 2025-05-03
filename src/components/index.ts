@@ -8,6 +8,7 @@ export * from './Enuiry';
 export * from './Icon';
 export * from './Logo';
 export * from './MainContent';
+export * from './NavMenuLink';
 export * from './Notification';
 export * from './Offer';
 export * from './SocialMedia';

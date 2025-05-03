@@ -4,4 +4,5 @@ export const DataApiPath: { [x: string]: string | IEndpoint } = {
   siteConfig: 'seo',
   contactInfo: 'contact',
   jobSeeker: 'job-seeker',
+  menu: 'menus',
 };

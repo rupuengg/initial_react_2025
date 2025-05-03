@@ -77,10 +77,15 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const [searchParams] = useSearchParams();
   const refSave = useRef(0);
 
+  const dataSaveStatus = useMemo(() => {
+    if (params.other && entityData.items && entityData.items[params.other] && entityData.items[params.other].dataSaveStatus) return entityData.items[params.other].dataSaveStatus?.dataSaveStatus;
+    return null;
+  }, [params.other, entityData.items]);
+
   useEffect(() => {
-    if (params.dataId && params.other && entityData.items[params.other]) {
-      if (entityData.items[params.other].dataSaveStatus?.dataSaveStatus === E_Data_Save_Status.SAVE_INITIALIZE) refSave.current++;
-      if (entityData.items[params.other].dataSaveStatus?.dataSaveStatus === E_Data_Save_Status.SAVE_DONE && refSave.current === 1) {
+    if (params.dataId && params.other && entityData.items[params.other] && dataSaveStatus) {
+      if (dataSaveStatus === E_Data_Save_Status.SAVE_INITIALIZE) refSave.current++;
+      if (dataSaveStatus === E_Data_Save_Status.SAVE_DONE && refSave.current === 1) {
         dispatch(EntityDataActions.dataSaveStatusStart({ entrypoint: entrypoint }));
         refSave.current = 0;
         navigate({
@@ -89,7 +94,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
         });
       }
     }
-  }, [entrypoint, entityData, params.other, params.dataId, dispatch, searchParams, navigate]);
+  }, [entrypoint, entityData, params.other, params.dataId, dispatch, searchParams, dataSaveStatus, navigate]);
 
   // Set item by ID
   useEffect(() => {

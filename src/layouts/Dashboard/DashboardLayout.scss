@@ -128,6 +128,18 @@
               color: #bb8f71;
             }
           }
+
+          & ul {
+            display: none;
+          }
+
+          &.active ul {
+            display: block;
+
+            & a {
+              margin-left: 10px;
+            }
+          }
         }
 
         & a {
