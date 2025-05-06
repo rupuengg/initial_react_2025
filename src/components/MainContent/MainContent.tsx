@@ -6,7 +6,7 @@ import { IEntityStatusDataEntity } from 'entities';
 import { E_Board_Type, E_Data_Load_Status, E_Operation_Permission } from 'enums';
 import { useTableMapper } from 'hooks';
 import { IApplicationState, IUseDispatch, getDataList, useAppDispatch } from 'store';
-import { AddEditViewForm } from 'components';
+import { AddEditViewForm, Login } from 'components';
 import { TableData } from './TableData';
 
 export const MainContent = () => {
@@ -21,6 +21,7 @@ export const MainContent = () => {
   const table = useMemo(
     () => (
       <Routes>
+        <Route index path={`login`} element={<Login />} />
         <Route index path={`:other/add`} element={<AddEditViewForm type={E_Operation_Permission.ADD} />} />
         <Route index path={`:other/view/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.VIEW} />} />
         <Route index path={`:other/edit/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.EDIT} />} />

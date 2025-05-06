@@ -12,6 +12,7 @@ export * from './Navigation';
 export * from './Offer';
 export * from './Photo';
 export * from './SiteConfigEntity';
+export * from './TestimonialEntity';
 export * from './User';
 
 export type CommonEntity = IContactInfoEntity | IJobSeekerEntity | ISiteConfigEntity;

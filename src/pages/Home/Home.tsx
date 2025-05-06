@@ -1,4 +1,4 @@
-import user1 from '../../assets/images/testimonial/user1.jpg';
+import defaultUser from '../../assets/images/testimonial/default.svg';
 import kitchen_left from '../../assets/images/why_choose/kitchen_left.jpg';
 import kitchen_right from '../../assets/images/why_choose/kitchen_right.jpg';
 import living_area from '../../assets/images/why_choose/living_area.jpg';
@@ -10,11 +10,12 @@ import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { ITestimonialEntity } from 'entities';
 import { IApplicationState } from 'store';
 import { CustomSlider, Enquiry, OfferItem } from 'components';
 
 export const Home = () => {
-  const { banners, featureGallery, galleries, offers } = useSelector((state: IApplicationState) => state.global);
+  const { banners, featureGallery, galleries, offers, testimonial } = useSelector((state: IApplicationState) => state.global);
   const navigate = useNavigate();
 
   const images = useMemo(() => {
@@ -268,21 +269,21 @@ export const Home = () => {
           <h2 className='header2'>testimonial</h2>
 
           <div className='main-item marginTop50'>
-            <div className='item-list'>
-              <div className='inner-box'>
-                <div className='img'></div>
-                <div className='content'>
-                  <p className='para'>
-                    Lorem ipsum dolor sit ametsed do eiusmodet dolore magna aliqua. Uquis nostrud <br />
-                    exercitation ullamco commodo consequat. Donec viverra vel massa at posuere <br />
-                    Aliquam et fringilla augue consequat posuere sem.
-                  </p>
-                  <div className='img-box'>
-                    <img alt={'User One'} src={user1} />
+            {testimonial
+              .filter(item => !item.isHide)
+              .map((item: ITestimonialEntity, index: number) => (
+                <div key={index} className='item-list'>
+                  <div className='inner-box'>
+                    <div className='img'></div>
+                    <div className='content'>
+                      <p className='para'>{item.text}</p>
+                      <div className='img-box'>
+                        <img alt={item.name} src={defaultUser} />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
       </div>

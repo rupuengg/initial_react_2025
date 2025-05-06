@@ -6,8 +6,9 @@ import banner5 from '../../assets/images/banner/banner5.jpg';
 // import galleries from 'json/galleries.json';
 import offerData from 'json/offers.json';
 import photos from 'json/photos.json';
+import testimonialData from 'json/testimonial.json';
 import { defaultNavigation, defaultSideBarNavigation } from 'mock';
-import { IBanner, IGallery, INavigation, IOffer, IPhoto } from 'entities';
+import { IBanner, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
 
 const banners = [
@@ -75,6 +76,7 @@ export interface IGlobalState {
   navigation: INavigation[];
   sidebarNavigations: INavigation[];
   offers: IOffer[];
+  testimonial: ITestimonialEntity[];
 
   selectedNav?: INavigation;
 
@@ -92,6 +94,7 @@ export const defaultGlobalState: IGlobalState = {
   navigation: defaultNavigation,
   sidebarNavigations: defaultSideBarNavigation,
   offers: offerData,
+  testimonial: testimonialData,
 
   entrypoint: '',
   mfeTitle: '',

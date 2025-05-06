@@ -295,6 +295,8 @@
             & .para {
               color: #ddceb0;
               padding-top: 0;
+              height: 220px;
+              align-items: center;
             }
 
             & .img-box,
@@ -303,6 +305,10 @@
               height: 120px;
               margin: 0 auto;
               border-radius: 100px;
+            }
+
+            & .img-box img {
+              border: 2px solid #000000;
             }
           }
         }

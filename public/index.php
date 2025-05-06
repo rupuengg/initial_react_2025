@@ -10,7 +10,8 @@
     <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="manifest" href="/manifest.json" />
     <base href="/" />
-    <?php include_once 'initial/metaTag.php'; ?>
+    <?php define('ROOT_PATH', dirname(__DIR__) . '/frontend/'); ?>
+    <?php include ROOT_PATH.'initial/metaTag.php'; ?>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
