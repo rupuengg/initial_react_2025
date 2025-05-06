@@ -6,7 +6,6 @@ import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { IApplicationState } from 'store';
-import './Project.scss';
 
 export const Project = () => {
   const { photos } = useSelector((state: IApplicationState) => state.global);

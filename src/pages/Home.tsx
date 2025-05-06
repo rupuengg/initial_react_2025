@@ -1,8 +1,8 @@
-import defaultUser from '../../assets/images/testimonial/default.svg';
-import kitchen_left from '../../assets/images/why_choose/kitchen_left.jpg';
-import kitchen_right from '../../assets/images/why_choose/kitchen_right.jpg';
-import living_area from '../../assets/images/why_choose/living_area.jpg';
-import our_work_living_room from '../../assets/images/why_choose/our_work_living_room.jpg';
+import defaultUser from 'assets/images/testimonial/default.svg';
+import kitchen_left from 'assets/images/why_choose/kitchen_left.jpg';
+import kitchen_right from 'assets/images/why_choose/kitchen_right.jpg';
+import living_area from 'assets/images/why_choose/living_area.jpg';
+import our_work_living_room from 'assets/images/why_choose/our_work_living_room.jpg';
 import { IKImage } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
 import { useCallback, useMemo } from 'react';

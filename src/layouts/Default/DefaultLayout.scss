@@ -376,4 +376,28 @@
   .whatsapp-icon svg {
     fill: #ffffff;
   }
+
+  .all_projects {
+    display: block;
+    margin: 0 0 40px;
+
+    & ul {
+      display: flex;
+      list-style: none;
+
+      & li {
+        flex: 1 0 20%;
+
+        & img {
+          height: 200px;
+        }
+      }
+    }
+  }
+
+  .success {
+    color: #bb8f71;
+    font-size: 18px;
+    font-weight: 600;
+  }
 }

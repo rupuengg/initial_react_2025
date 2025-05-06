@@ -10,7 +10,6 @@ import { useParams } from 'react-router-dom';
 import { IGallery, IPhoto } from 'entities';
 import { PhotoUtils } from 'utils';
 import { IApplicationState } from 'store';
-import './Project.scss';
 
 export const ProjectPhoto = () => {
   const { photos } = useSelector((state: IApplicationState) => state.global);

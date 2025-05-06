@@ -1,4 +1,4 @@
-import IslandResort_interiordesign_after from '../../assets/images/about/IslandResort_interiordesign_after.jpg';
+import IslandResort_interiordesign_after from 'assets/images/about/IslandResort_interiordesign_after.jpg';
 import { DefaultLayout } from 'layouts';
 
 export const Services = () => {

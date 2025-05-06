@@ -6,7 +6,6 @@ import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
 import { IApplicationState } from 'store';
-import './Gallery.scss';
 
 export const Gallery = () => {
   const { photos } = useSelector((state: IApplicationState) => state.global);

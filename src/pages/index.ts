@@ -5,4 +5,5 @@ export * from './Gallery';
 export * from './Home';
 export * from './NoMatch';
 export * from './Project';
+export * from './ProjectPhoto';
 export * from './Services';
