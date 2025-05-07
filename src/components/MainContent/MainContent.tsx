@@ -55,7 +55,7 @@ export const MainContent = () => {
       // Load Data
       if (!entityData.items[mapper.entrypoint] || !entityData.items[mapper.entrypoint].list || entityData.items[mapper.entrypoint].list.length === 0) dispatch(getDataList(mapper));
     }
-  }, [mapper.entrypoint, mapper, entityData.items, dispatch]);
+  }, [selectedNav, mapper.entrypoint, mapper, entityData.items, dispatch]);
 
   useEffect(() => {
     if (isRefreshData) {
@@ -63,7 +63,7 @@ export const MainContent = () => {
       dispatch(EntityDataActions.loadingStart(mapper.entrypoint));
       dispatch(getDataList(mapper));
     }
-  }, [isRefreshData, mapper]);
+  }, [isRefreshData, mapper, dispatch]);
 
   if (!selectedNav) return null;
 

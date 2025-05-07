@@ -48,7 +48,7 @@ export const TableData: React.FC<ITableData> = ({ isDataLoading, onRefresh }) =>
       //   search: `?${searchParams.toString()}`,
       // });
     },
-    [params, navigate, searchParams]
+    [navigate]
   );
 
   const handleActionButton = useCallback(
@@ -57,7 +57,7 @@ export const TableData: React.FC<ITableData> = ({ isDataLoading, onRefresh }) =>
       else if (type === 'edit') navigate(E_Operation_Permission.EDIT + '/' + data.id?.toString());
       else if (type === 'copy') navigate(E_Operation_Permission.COPY + '/' + data.id?.toString());
     },
-    [mapper, dispatch]
+    [mapper, dispatch, navigate]
   );
 
   // if (!entityData.items || !entityData.items[mapper.entrypoint] || (entityData.items[mapper.entrypoint] && !entityData.items[mapper.entrypoint].isTabularDataActive)) return <h1>Loading...</h1>;
