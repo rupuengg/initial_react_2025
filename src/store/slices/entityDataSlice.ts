@@ -8,11 +8,23 @@ export const entityDataSlice = createSlice({
   name: 'entityDataSlice',
   initialState: defaultEntityDataState,
   reducers: {
+    loadingStart(draft: IEntityDataState, action: PayloadAction<string>) {
+      draft.items = {
+        ...draft.items,
+        [action.payload]: { ...defaultDataState, isLoading: true },
+      };
+    },
+    loadingEnd(draft: IEntityDataState, action: PayloadAction<string>) {
+      draft.items = {
+        ...draft.items,
+        [action.payload]: { ...defaultDataState, isLoading: false },
+      };
+    },
     setDataList(draft: IEntityDataState, action: PayloadAction<IEntityDataParams<CommonEntity>>) {
       if (action.payload.result && Array.isArray(action.payload.result)) {
         draft.items = {
           ...draft.items,
-          [action.payload.entrypoint]: { ...defaultDataState, list: [...action.payload.result], isTabularDataActive: true },
+          [action.payload.entrypoint]: { ...defaultDataState, list: [...action.payload.result], isTabularDataActive: true, isLoading: false },
         };
       }
     },

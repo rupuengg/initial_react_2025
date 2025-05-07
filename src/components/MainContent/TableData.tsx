@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { CommonEntity } from 'entities';
@@ -8,7 +8,12 @@ import { UrlUtils } from 'utils';
 import { IApplicationState, IUseDispatch, deleteData, useAppDispatch } from 'store';
 import { AgTable, AgTableHeader } from 'components';
 
-export const TableData = () => {
+interface ITableData {
+  isDataLoading?: boolean;
+  onRefresh: () => void;
+}
+
+export const TableData: React.FC<ITableData> = ({ isDataLoading, onRefresh }) => {
   const { global, entityData } = useSelector((state: IApplicationState) => state);
   const dispatch: IUseDispatch = useAppDispatch();
   const params = useParams();
@@ -62,13 +67,16 @@ export const TableData = () => {
       header={
         <AgTableHeader
           headerLabel={mfeTitle}
+          showRefreshIcon={true}
           showDownloadIcon={true}
           showAddIcon={true}
+          isRefreshDone={!isDataLoading}
           onAdd={handleAdd}
           onExportCsv={() => {
             setIsExport(true);
             setTimeout(() => setIsExport(false), 0);
           }}
+          refreshCallback={onRefresh}
         />
       }
       columnDefs={columnSetting}

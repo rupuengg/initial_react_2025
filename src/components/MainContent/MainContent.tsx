@@ -1,20 +1,27 @@
 import { defaultEntityStatusDataEntity } from 'mock';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { IEntityStatusDataEntity } from 'entities';
 import { E_Board_Type, E_Data_Load_Status, E_Operation_Permission } from 'enums';
 import { useTableMapper } from 'hooks';
 import { IApplicationState, IUseDispatch, getDataList, useAppDispatch } from 'store';
+import { EntityDataActions } from 'store/slices/entityDataSlice';
 import { AddEditViewForm, Login } from 'components';
 import { TableData } from './TableData';
 
 export const MainContent = () => {
   const { global, entityData } = useSelector((state: IApplicationState) => state);
+  const [isRefreshData, setIsRefreshData] = useState<boolean>(false);
   const dispatch: IUseDispatch = useAppDispatch();
   const { entrypoint, selectedNav } = global;
   const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const { mapper } = useTableMapper(entrypoint);
+
+  const entrypointData = useMemo(() => {
+    if (entityData.items && entrypoint && entityData.items[entrypoint]) return entityData.items[entrypoint];
+    return null;
+  }, [entrypoint, entityData.items]);
 
   const board = useMemo(() => <h1 className='header1'>Board</h1>, []);
 
@@ -26,10 +33,10 @@ export const MainContent = () => {
         <Route index path={`:other/view/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.VIEW} />} />
         <Route index path={`:other/edit/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.EDIT} />} />
         <Route index path={`:other/copy/:dataId`} element={<AddEditViewForm type={E_Operation_Permission.COPY} />} />
-        <Route index path={`:other/*`} element={<TableData />} />
+        <Route index path={`:other/*`} element={<TableData onRefresh={() => setIsRefreshData(true)} isDataLoading={entrypointData?.isLoading} />} />
       </Routes>
     ),
-    []
+    [entrypointData?.isLoading]
   );
 
   useEffect(() => {
@@ -49,6 +56,14 @@ export const MainContent = () => {
       if (!entityData.items[mapper.entrypoint] || !entityData.items[mapper.entrypoint].list || entityData.items[mapper.entrypoint].list.length === 0) dispatch(getDataList(mapper));
     }
   }, [mapper.entrypoint, mapper, entityData.items, dispatch]);
+
+  useEffect(() => {
+    if (isRefreshData) {
+      setIsRefreshData(false);
+      dispatch(EntityDataActions.loadingStart(mapper.entrypoint));
+      dispatch(getDataList(mapper));
+    }
+  }, [isRefreshData, mapper]);
 
   if (!selectedNav) return null;
 
