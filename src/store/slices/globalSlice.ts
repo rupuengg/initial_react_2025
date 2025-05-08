@@ -2,7 +2,7 @@ import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/to
 import { IGallery, INavigation, IPhoto } from 'entities';
 import { E_Notification_Type } from 'enums';
 import { IGlobalState, defaultGlobalState } from 'store/states';
-import { getAllGallery, getAllPhotos, getFeaturedGallery, getGalleryPhotos } from 'store/thunk';
+import { getAllGallery, getAllPhotos, getFeaturedGallery, getGalleryPhotos, getSidebarNavination } from 'store/thunk';
 
 const findPath = (ob: any, key: any, value: any) => {
   const path: any = [];
@@ -86,6 +86,9 @@ export const globalSlice = createSlice({
       draft.notification.notificationType = E_Notification_Type.ALERT;
       draft.notification.notificationMessage = '';
     },
+    setSidebarNavigation(draft: IGlobalState, action: PayloadAction<INavigation[]>) {
+      draft.sidebarNavigations = action.payload;
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder
@@ -100,6 +103,9 @@ export const globalSlice = createSlice({
       })
       .addCase(getFeaturedGallery.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery>) => {
         globalSlice.caseReducers.setFeaturedGallery(draft, action);
+      })
+      .addCase(getSidebarNavination.fulfilled, (draft: IGlobalState, action: PayloadAction<INavigation[]>) => {
+        globalSlice.caseReducers.setSidebarNavigation(draft, action);
       });
   },
 });

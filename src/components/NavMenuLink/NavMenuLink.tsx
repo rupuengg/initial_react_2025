@@ -42,7 +42,7 @@ export const NavMenuLink: React.FC<INavMenuLink> = ({ nav, parentIndex, currentI
   );
 
   return (
-    <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'} parentIndex - ${parentIndex} - currentIndex - ${currentIndex}`} data-CurrentIndex={currentIndex} data-ParentIndex={parentIndex}>
+    <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'} parentIndex - ${parentIndex} - currentIndex - ${currentIndex}`} data-currentindex={currentIndex} data-parentindex={parentIndex}>
       <NavLink to={`/admin${nav.link}`} onClick={e => handleClick(e, nav)} className={({ isActive }) => `${isActive ? 'link active' : 'link inactive'}`}>
         {nav.title}
       </NavLink>

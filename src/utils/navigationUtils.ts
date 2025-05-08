@@ -5,8 +5,8 @@ import { NavMenuLink } from 'components';
 export const NavigationUtils = () => {
   return {
     makeMenu: (items: INavigation[], parentIndex: number = 0) => {
-      return items.map((item, index) => {
-        return React.createElement(NavMenuLink, { nav: { ...item }, parentIndex: parentIndex, currentIndex: index });
+      return items?.map((item, index) => {
+        return React.createElement(NavMenuLink, { key: index, nav: { ...item }, parentIndex: parentIndex, currentIndex: index });
       });
     },
     makeParentNodeActive: (main: Element | null, parentIndex: number) => {

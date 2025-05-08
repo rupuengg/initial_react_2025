@@ -1,22 +1,11 @@
-import { AxiosInstance } from 'axios';
+// import { AxiosInstance } from 'axios';
 import { CommonEntity } from 'entities';
 import { backendApiAxiosInstance } from 'store/services/axios';
 import { IEndpoint } from 'store/states';
 
-export const axioInstance: { [x: string]: AxiosInstance } = {
-  backend: backendApiAxiosInstance,
-};
-
-interface IIApiResponseError {
-  type: string;
-  description: string;
-}
-
-export interface IApiResponse<T> {
-  statusCode: number;
-  data: T[];
-  error?: IIApiResponseError;
-}
+// export const axioInstance: { [x: string]: AxiosInstance } = {
+//   backend: backendApiAxiosInstance,
+// };
 
 export interface IEntityDataApi {
   get(domain: string, endpoint: IEndpoint): Promise<CommonEntity[]>;

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import React, { useState } from 'react';
 import { IOffer } from 'entities';
-import './OfferItem.scss';
 
 export interface IOfferItemProps {
   offer: IOffer;
@@ -34,7 +33,7 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
         {offer.options.map((option, index) => (
           <p
             key={`list-${index}`}
-            className={currentOption === index ? 'para active' : 'para'}
+            className={currentOption === index ? 'active' : ''}
             onClick={() => setCurrentOption(index)}
             style={{ backgroundImage: currentOption === index ? `url("${require('../../assets/images/offer/active.png')}")` : 'none' }}
           >

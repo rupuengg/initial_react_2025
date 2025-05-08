@@ -159,22 +159,6 @@
     }
   }
 
-  .offers {
-    display: flex;
-    flex-direction: column;
-
-    & .article {
-      display: flex;
-      padding: 50px 0 0;
-      flex-direction: row;
-      justify-content: space-between;
-
-      @media (max-width: $breakpoint-tablet) {
-        flex-direction: column;
-      }
-    }
-  }
-
   .why_choose_us {
     display: flex;
     flex-direction: column;
@@ -399,5 +383,185 @@
     color: #bb8f71;
     font-size: 18px;
     font-weight: 600;
+  }
+
+  .offers {
+    display: flex;
+    flex-direction: column;
+
+    & .article {
+      display: flex;
+      column-gap: 30px;
+      flex-direction: row;
+
+      @media (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      .offer {
+        display: flex;
+        position: relative;
+        flex-wrap: wrap;
+        margin: 0;
+
+        & > section,
+        & > figcaption {
+          width: 100%;
+          float: left;
+          flex: 1 0 50%;
+        }
+
+        & aside .w-full {
+          padding: 1rem;
+        }
+
+        & > aside {
+          box-shadow: 2px 2px 3px 2px #8a8a8a;
+          background-color: #ffffff;
+          float: left;
+          width: 100%;
+          margin-bottom: 50px;
+          margin-top: 50px;
+        }
+
+        & aside .flex nav {
+          width: 48%;
+        }
+
+        & aside .flex section {
+          width: 50%;
+          margin-left: 2%;
+
+          & > article {
+            flex-direction: column;
+          }
+        }
+      }
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      .offer {
+        flex: 0 0 45%;
+        margin: 0;
+
+        & figcaption {
+          .header2 {
+            display: block;
+            font-size: 18px;
+          }
+          .header3 {
+            display: block;
+            font-size: 14px;
+          }
+        }
+
+        &:first-child {
+          padding-right: 20px;
+
+          & > aside {
+            margin: 50px 0 0;
+          }
+        }
+
+        &:last-child {
+          padding-left: 20px;
+
+          & > aside {
+            margin: 50px 0 0;
+          }
+        }
+
+        & > section,
+        .offer > figcaption {
+          width: 50%;
+          float: left;
+        }
+
+        & > aside .w-full {
+          width: 100%;
+        }
+
+        & > .clear {
+          clear: both;
+        }
+
+        & > aside {
+          height: 420px;
+          box-shadow: 2px 2px 3px 2px #8a8a8a;
+          background-color: #ffffff;
+          border-radius: 20px;
+          padding: 2.5rem;
+          padding-bottom: 0;
+          display: block;
+        }
+
+        & aside .flex nav {
+          width: 45%;
+        }
+
+        & aside .flex section {
+          width: 55%;
+        }
+      }
+    }
+
+    .offer section:first-child img:first-child {
+      width: 8rem;
+      width: 80%;
+    }
+
+    .offer aside .flex {
+      display: flex;
+    }
+
+    .navBar {
+      display: block;
+    }
+
+    .navBar > p {
+      display: block;
+      text-align: left;
+      margin: 0;
+      padding: 16px 0 0;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      background-position: 0;
+      height: 30px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+    .navBar > p.active {
+      padding-left: 40px;
+    }
+
+    .rightbox {
+      display: block;
+    }
+
+    .rightbox img {
+      width: auto;
+      height: auto;
+    }
+
+    .rightbox .header3 {
+      font-size: 16px;
+      letter-spacing: 4px;
+    }
+
+    .rightbox ul {
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .rightbox ul li {
+      display: block;
+      margin: 0;
+      padding: 0.5rem 0;
+    }
   }
 }
