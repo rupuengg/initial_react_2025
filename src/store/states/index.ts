@@ -1,2 +1,2 @@
-export * from './EntityData';
+export * from './entityDataState';
 export * from './globalState';

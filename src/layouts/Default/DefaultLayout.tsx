@@ -1,6 +1,6 @@
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { E_Icon_Name } from 'enums';
 import { Icon } from 'components';
@@ -19,9 +19,9 @@ export const DefaultLayout: React.FC<IDefaultLayout> = ({ children }) => {
     window.scrollTo(0, 0);
   }, [params]);
 
-  const handleQuery = useCallback(() => {
-    setIsShowQuery(p => !p);
-  }, []);
+  // const handleQuery = useCallback(() => {
+  //   setIsShowQuery(p => !p);
+  // }, []);
 
   return (
     <div className='default_layout'>
@@ -34,9 +34,9 @@ export const DefaultLayout: React.FC<IDefaultLayout> = ({ children }) => {
       <div className='query'>
         {!isShowQuery && (
           <>
-            <div className='text' onClick={handleQuery}>
+            {/* <div className='text' onClick={handleQuery}>
               Query
-            </div>
+            </div> */}
             <a className='whatsapp' target='_blank' href='https://wa.me/9599385377?text=Hello' rel='noreferrer'>
               <Icon iconName={E_Icon_Name.WHATSAPP} />
             </a>

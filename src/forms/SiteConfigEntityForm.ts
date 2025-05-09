@@ -1,13 +1,14 @@
 import { defaultNavigation } from 'mock';
 import { INavigation } from 'entities';
 import { E_FieldType, E_Form_Type } from 'enums';
-import { IBaseForm, IOption } from './BaseForm';
+import { IOptions } from 'store';
+import { IBaseForm } from './BaseForm';
 
-const getNavs = (navs: INavigation[]): IOption[] => {
-  let options: IOption[] = [];
+const getNavs = (navs: INavigation[]): IOptions[] => {
+  let options: IOptions[] = [];
 
   navs.forEach((nav: INavigation) => {
-    options.push({ key: nav.link, value: nav.link });
+    options.push({ value: nav.link, label: nav.link });
 
     if (nav.items && nav.items.length > 0) options = options.concat(getNavs(nav.items));
   });

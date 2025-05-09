@@ -36,11 +36,12 @@ export const defaultSideBarNavigation: INavigation[] = [
     link: '/menu',
     type: E_Board_Type.TABLE,
     isShowHideSubMenu: true,
+    entrypoint: 'menu',
     items: [
       {
         id: 5,
         title: 'Menu Items',
-        link: '/menu_item',
+        link: '/menu',
         type: E_Board_Type.TABLE,
         entrypoint: 'menu',
       },

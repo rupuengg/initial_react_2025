@@ -29,15 +29,10 @@ export const defaultEntityDataParams: IEntityDataParams<CommonEntity> = {
   endpoint: { ...defaultEndpoint },
 };
 
-export interface DropdownOptions {
-  dropdownLabel?: string;
+export interface IOptions {
   value?: string;
-  tagLabel?: string | number;
-  icon?: string;
-  isMaster?: boolean;
-  lozengesLabel?: string;
-  lozengesVariation?: string;
-  showText?: string;
+  label?: string;
+  tagLabel?: string;
 }
 
 export interface IDataSaveStatus {
@@ -63,7 +58,7 @@ export interface IDataState {
   errorMessage: { [key: string]: string };
 
   // Dropdown Options
-  dp: { [x: string]: DropdownOptions[] };
+  dp: { [x: string]: IOptions[] };
 }
 
 export const defaultDataState: IDataState = {

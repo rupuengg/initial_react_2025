@@ -54,6 +54,5 @@ export const Sidebar = () => {
     }
   }, [sidebarNavigations, uriPath, uriEntrypoint, whenMfeOpen]);
 
-  console.log('sidebarNavigations', sidebarNavigations);
   return <ul className='sidebar-menu'>{NavigationUtils().makeMenu(sidebarNavigations, 0)}</ul>;
 };

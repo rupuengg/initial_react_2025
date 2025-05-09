@@ -1,5 +1,6 @@
 import { E_Board_Type, E_FieldType, E_Form_Type } from 'enums';
 import { EnumUtils } from 'utils';
+import { IOptions } from 'store';
 import { IBaseForm } from './BaseForm';
 
 export const MenuEntityForm: IBaseForm[] = [
@@ -35,7 +36,7 @@ export const MenuEntityForm: IBaseForm[] = [
             fieldLabel: 'Board Type',
             options: EnumUtils()
               .enum2Obj(E_Board_Type)
-              .map(item => ({ key: item.id, value: item.name })),
+              .map(item => ({ value: item.id, label: item.name }) as IOptions),
           },
         ],
       },
@@ -44,9 +45,10 @@ export const MenuEntityForm: IBaseForm[] = [
         fields: [
           {
             type: E_Form_Type.FIELD,
-            fieldType: E_FieldType.DROPDOWN_ONE_SELECT,
+            fieldType: E_FieldType.DROPDOWN_MULTI_SELECT,
             fieldName: 'items',
             fieldLabel: 'Submenus',
+            optionConfig: { api: 'menus', fieldName: 'items', fieldMapper: { value: 'id', label: 'title' } },
           },
         ],
       },

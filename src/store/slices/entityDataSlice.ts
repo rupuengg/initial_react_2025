@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CommonEntity } from 'entities';
 import { E_Data_Save_Status } from 'enums';
-import { IEntityDataParams, IEntityDataState, defaultDataState, defaultEntityDataState } from 'store/states';
+import { IEntityDataParams, IEntityDataState, IOptions, defaultDataState, defaultEntityDataState } from 'store/states';
 import { deleteData, getDataByKey, getDataList, saveData, updateData } from 'store/thunk';
 
 export const entityDataSlice = createSlice({
@@ -103,6 +103,14 @@ export const entityDataSlice = createSlice({
     },
     dataSaveStatusReset(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined }>) {
       if (action.payload.entrypoint) draft.items[action.payload.entrypoint].dataSaveStatus = undefined;
+    },
+    setDropDownOptions(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined; fieldName: string; options: IOptions[] }>) {
+      if (action.payload.entrypoint) {
+        draft.items[action.payload.entrypoint].dp = {
+          ...draft.items[action.payload.entrypoint].dp,
+          [action.payload.fieldName]: action.payload.options,
+        };
+      }
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IEntityDataState>) => {

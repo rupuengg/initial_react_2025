@@ -9,7 +9,7 @@ import { CommonEntity } from 'entities';
 import { E_Data_Save_Status, E_Form_Type, E_Operation_Permission } from 'enums';
 import { useANAModulePermission, useTableMapper } from 'hooks';
 import { UrlUtils } from 'utils';
-import { IApplicationState, IUseDispatch, saveData, updateData, useAppDispatch } from 'store';
+import { IApplicationState, IOptions, IUseDispatch, saveData, updateData, useAppDispatch } from 'store';
 import { EntityDataActions } from 'store/slices/entityDataSlice';
 import { Breadcrumb, FontIcon } from 'components';
 
@@ -77,6 +77,10 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const [searchParams] = useSearchParams();
   const refSave = useRef(0);
 
+  const dp = useMemo(() => {
+    if (params.other && entityData.items && entityData.items[params.other] && entityData.items[params.other].dp) return entityData.items[params.other].dp;
+  }, [params.other, entityData.items]);
+
   const dataSaveStatus = useMemo(() => {
     if (params.other && entityData.items && entityData.items[params.other] && entityData.items[params.other].dataSaveStatus) return entityData.items[params.other].dataSaveStatus?.dataSaveStatus;
     return null;
@@ -109,11 +113,18 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
     }
   }, [type, params.other, params.dataId, entityData, defaultEntity]);
 
+  const dropdownUpdater = useCallback(
+    (fieldName: string, options: IOptions[]) => {
+      dispatch(EntityDataActions.setDropDownOptions({ entrypoint: entrypoint, fieldName, options }));
+    },
+    [entrypoint, dispatch]
+  );
+
   // Map item with form
   const form = useMemo(() => {
     if (item && entityForm) return mapFormWithValues(entityForm, item);
     return null;
-  }, [item, entityForm]);
+  }, [item, entityForm, dropdownUpdater]);
 
   const handleChange = useCallback((fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
     setItem((p: CommonEntity | undefined) => {
@@ -258,7 +269,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
 
         {/* {(isAdd || (isEditable && !isRead)) && <p>Form Remark</p>} */}
 
-        <RenderForm form={form} isReadable={isRead} onChange={handleChange} />
+        <RenderForm form={form} dp={dp} dropdownUpdater={dropdownUpdater} isReadable={isRead} onChange={handleChange} />
       </div>
     </div>
   );
