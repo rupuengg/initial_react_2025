@@ -9,8 +9,16 @@ export function getMenuColumnSetting(anaInfo?: any): (ColDef<INavigation> | ColG
       headerName: 'Title',
     },
     {
-      field: 'link',
-      headerName: 'Link.',
+      field: 'route',
+      headerName: 'Link',
+    },
+    {
+      field: 'page',
+      headerName: 'Page',
+    },
+    {
+      field: 'menuType',
+      headerName: 'Menu Type',
     },
     {
       field: 'type',

@@ -3,7 +3,5 @@ export * from './defaultContactInfo';
 export * from './defaultEntityStatusDataEntity';
 export * from './defaultJobSeeker';
 export * from './defaultMenu';
-export * from './defaultNavigation';
-export * from './defaultSideBarNavigation';
 export * from './defaultSiteConfigEntity';
 export * from './defaultUser';

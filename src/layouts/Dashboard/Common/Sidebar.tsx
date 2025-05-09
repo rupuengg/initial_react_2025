@@ -5,7 +5,7 @@ import { IEntityStatusDataEntity, INavigation } from 'entities';
 import { E_Data_Load_Status } from 'enums';
 import { useEntrypoint } from 'hooks';
 import { NavigationUtils } from 'utils';
-import { GlobalActions, IApplicationState, IUseDispatch, getSidebarNavination, useAppDispatch } from 'store';
+import { DataApiPath, GlobalActions, IApplicationState, IUseDispatch, getSidebarNavination, useAppDispatch } from 'store';
 
 export const Sidebar = () => {
   const { sidebarNavigations } = useSelector((state: IApplicationState) => state.global);
@@ -19,7 +19,7 @@ export const Sidebar = () => {
     }
     if (startRef.current.sidebarNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.PENDING };
-      dispatch(getSidebarNavination('menus'));
+      dispatch(getSidebarNavination(DataApiPath.sidebarNavigation.toString()));
     }
   }, [dispatch]);
 
@@ -35,7 +35,7 @@ export const Sidebar = () => {
   useEffect(() => {
     if (uriPath && uriEntrypoint) {
       const isExists = (nav: INavigation) => {
-        return nav.entrypoint === uriEntrypoint || nav.link === '/' + uriEntrypoint;
+        return nav.entrypoint === uriEntrypoint || nav.route === '/' + uriEntrypoint;
       };
 
       const searchMenu = (navigation: INavigation[]): INavigation | undefined => {

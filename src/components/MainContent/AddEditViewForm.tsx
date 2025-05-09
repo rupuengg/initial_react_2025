@@ -87,7 +87,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   }, [params.other, entityData.items]);
 
   useEffect(() => {
-    if (params.dataId && params.other && entityData.items[params.other] && dataSaveStatus) {
+    if (params.other && dataSaveStatus) {
       if (dataSaveStatus === E_Data_Save_Status.SAVE_INITIALIZE) refSave.current++;
       if (dataSaveStatus === E_Data_Save_Status.SAVE_DONE && refSave.current === 1) {
         dispatch(EntityDataActions.dataSaveStatusStart({ entrypoint: entrypoint }));
@@ -98,7 +98,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
         });
       }
     }
-  }, [entrypoint, entityData, params.other, params.dataId, dispatch, searchParams, dataSaveStatus, navigate]);
+  }, [entrypoint, entityData, params.other, dispatch, searchParams, dataSaveStatus, navigate]);
 
   // Set item by ID
   useEffect(() => {

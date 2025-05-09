@@ -34,7 +34,7 @@ export const NavMenuLink: React.FC<INavMenuLink> = ({ nav, parentIndex, currentI
       NavigationUtils().makeParentNodeActive(e.currentTarget.parentElement, parentIndex);
       // document.querySelector('.sidebar-menu li')?.removeAttribute('class');
       navigate({
-        pathname: UrlUtils.makeRouteWidthoutSearch(`admin${item.link}`),
+        pathname: UrlUtils.makeRouteWidthoutSearch(`admin${item.route}`),
         search: `?${searchParams.toString()}`,
       });
     },
@@ -43,7 +43,7 @@ export const NavMenuLink: React.FC<INavMenuLink> = ({ nav, parentIndex, currentI
 
   return (
     <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'} parentIndex - ${parentIndex} - currentIndex - ${currentIndex}`} data-currentindex={currentIndex} data-parentindex={parentIndex}>
-      <NavLink to={`/admin${nav.link}`} onClick={e => handleClick(e, nav)} className={({ isActive }) => `${isActive ? 'link active' : 'link inactive'}`}>
+      <NavLink to={`/admin${nav.route}`} onClick={e => handleClick(e, nav)} className={({ isActive }) => `${isActive ? 'link active' : 'link inactive'}`}>
         {nav.title}
       </NavLink>
       {nav.items && nav.items.length > 0 && <ul>{NavigationUtils().makeMenu(nav.items, currentIndex)}</ul>}

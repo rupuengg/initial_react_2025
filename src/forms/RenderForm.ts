@@ -36,6 +36,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdo
 
   const getOptions = useCallback((main: { [x: string]: IOptions[] }, row: IBaseForm): IOptions[] => {
     if (main && row.fieldName && main[row.fieldName]) return main[row.fieldName];
+    else if (row.options) return row.options;
     return [];
   }, []);
 
@@ -54,7 +55,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdo
           case E_FieldType.TEXTAREA:
             return React.createElement(Textarea, { ...row, onChange });
           case E_FieldType.DROPDOWN_ONE_SELECT:
-            return React.createElement(SelectBox, { ...row, onChange });
+            return React.createElement(SelectBox, { ...row, options: getOptions(dp || {}, row), onChange });
           case E_FieldType.DROPDOWN_MULTI_SELECT:
             return React.createElement(SelectMulti, { ...row, options: getOptions(dp || {}, row), onChange });
           case E_FieldType.URL_CAPTURE:
