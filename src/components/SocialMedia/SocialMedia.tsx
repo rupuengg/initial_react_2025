@@ -22,9 +22,12 @@ export const SocialMedia = () => {
       <Link to={'https://www.instagram.com/panachew0rld'} onClick={handleOpen}>
         <Icon iconName={E_Icon_Name.INSTAGRAM} />
       </Link>
-      {/* <Link to={'https://www.linkedin.com/in/panacheworld-interior-763b1a35b'} onClick={handleOpen}>
+      <Link to={'https://www.linkedin.com/company/panachwworldinterior'} onClick={handleOpen}>
         <Icon iconName={E_Icon_Name.LINKDIN} />
-      </Link> */}
+      </Link>
+      <Link to={'https://in.pinterest.com/panacheworldinterior'} onClick={handleOpen}>
+        <Icon iconName={E_Icon_Name.PINTEREST} />
+      </Link>
       <Link to={'https://whatsapp.com/channel/0029VbAkBy1DOQIef5gQv40P'} onClick={handleOpen}>
         <Icon iconName={E_Icon_Name.WHATSAPP} />
       </Link>

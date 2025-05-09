@@ -7,6 +7,8 @@ export * from './E_Image_Type';
 export * from './E_Icon_Name';
 export * from './E_Is_Login';
 export * from './E_Mapping_Data';
+export * from './E_Menu_Type';
 export * from './E_Notification_Type';
 export * from './E_Operation_Permission';
+export * from './E_Page_Mappper';
 export * from './E_Renderer_Type';

@@ -12,9 +12,12 @@ export interface ITextBox {
 }
 
 export const TextBox: React.FC<ITextBox> = ({ fieldLabel, fieldName, fieldValue, isRequired, error, onChange }) => {
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) onChange(fieldName || '', e.currentTarget.value);
-  }, []);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (onChange) onChange(fieldName || '', e.currentTarget.value);
+    },
+    [fieldName, onChange]
+  );
 
   return (
     <div className='form-field'>
@@ -23,7 +26,7 @@ export const TextBox: React.FC<ITextBox> = ({ fieldLabel, fieldName, fieldValue,
         {isRequired ? <sup>*</sup> : null}
       </label>
       <div className='box'>
-        <input name={fieldName} value={fieldValue} onChange={handleChange} />
+        <input name={fieldName} value={fieldValue || ''} onChange={handleChange} />
       </div>
       {error && <span className='error'>{error}</span>}
     </div>

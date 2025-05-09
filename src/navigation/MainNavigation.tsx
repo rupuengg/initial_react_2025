@@ -1,41 +1,45 @@
-import { About, Contact, Faq, Gallery, Home, NoMatch, Project, ProjectPhoto, Services } from 'pages';
-import { useCallback } from 'react';
+import { defaultEntityStatusDataEntity } from 'mock';
+import { IPageMapper, NoMatch, pageMapper } from 'pages';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { INavigation } from 'entities';
-import { IApplicationState } from 'store';
+import { IEntityStatusDataEntity, INavigation } from 'entities';
+import { E_Data_Load_Status } from 'enums';
+import { DataApiPath, IApplicationState, IUseDispatch, getMainNavination, useAppDispatch } from 'store';
 import { Login, PrivateRoute } from 'components';
 
 export const MainNavigation = () => {
   const { navigation } = useSelector((state: IApplicationState) => state.global);
+  const dispatch: IUseDispatch = useAppDispatch();
+  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
+
+  const homeRoute = useMemo(() => {
+    return navigation.find(nav => nav.page?.toString().toLowerCase().trim() === 'home')?.route;
+  }, [navigation]);
+
+  useEffect(() => {
+    if (startRef.current.mainNavigation === E_Data_Load_Status.PENDING) {
+      startRef.current = { ...startRef.current, mainNavigation: E_Data_Load_Status.FULFULLED };
+    }
+    if (startRef.current.mainNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, mainNavigation: E_Data_Load_Status.PENDING };
+      dispatch(getMainNavination(DataApiPath.mainNavigation.toString()));
+    }
+  }, [dispatch]);
 
   const renderComp = useCallback((nav: INavigation) => {
-    switch (nav.link) {
-      case '/home_interior_design_in_noida':
-        return <Home />;
-      case '/about_us':
-        return <About />;
-      case '/home_interior_services':
-        return <Services />;
-      case '/project_done_by_us':
-        return <Project />;
-      case '/project_done_by_us/:id':
-        return <ProjectPhoto />;
-      case '/all_photos':
-        return <Gallery />;
-      case '/contact_us':
-        return <Contact />;
-      case '/faq':
-        return <Faq />;
-    }
+    if (nav.page && pageMapper[nav.page as keyof IPageMapper]) return pageMapper[nav.page as keyof IPageMapper];
+    return null;
   }, []);
+
+  if (!homeRoute) return null;
 
   return (
     <Routes>
       <Route path='/'>
-        <Route index element={<Navigate to={`${navigation[0].link}`} replace />} />
+        <Route index element={<Navigate to={homeRoute} replace />} />
         {navigation.map((nav: INavigation) => (
-          <Route key={nav.link} path={nav.link} element={renderComp(nav)} />
+          <Route key={nav.route} path={nav.route} element={renderComp(nav)} />
         ))}
         <Route key='login' path={'/admin/login'} element={<Login />} />
         <Route path={'/admin/*'} element={<PrivateRoute />} />

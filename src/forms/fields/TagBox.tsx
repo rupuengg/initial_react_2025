@@ -35,7 +35,7 @@ export const TagBox: React.FC<ITagBox> = props => {
       setTags([...newTags]);
       if (onChange) onChange(fieldName || '', newTags.join(', '));
     },
-    [tags, setTags]
+    [fieldName, tags, setTags, onChange]
   );
 
   const handleChange = useCallback(
@@ -47,7 +47,7 @@ export const TagBox: React.FC<ITagBox> = props => {
         setText('');
       } else setText(value);
     },
-    [tags]
+    [addTags]
   );
 
   const handlePaste = useCallback(
@@ -59,7 +59,7 @@ export const TagBox: React.FC<ITagBox> = props => {
       const newTags = clipboardData.split(',').map(tag => tag.trim());
       addTags(newTags);
     },
-    [tags]
+    [addTags]
   );
 
   const handleClickDiv = useCallback(() => {
@@ -76,7 +76,7 @@ export const TagBox: React.FC<ITagBox> = props => {
       </label>
       <div className='box' onClick={handleClickDiv}>
         <Tags tags={tags} onDelete={tags => tags && setTags([...tags])} />
-        <input ref={inputRef} name={fieldName} value={text} autoComplete='off' onChange={handleChange} onPaste={handlePaste} />
+        <input ref={inputRef} name={fieldName || ''} value={text} autoComplete='off' onChange={handleChange} onPaste={handlePaste} />
       </div>
       {error && <span className='error'>{error}</span>}
     </div>

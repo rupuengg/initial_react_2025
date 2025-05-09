@@ -1,21 +1,32 @@
-import { useCallback, useEffect } from 'react';
+import { defaultEntityStatusDataEntity } from 'mock';
+import { useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
-import { INavigation } from 'entities';
+import { IEntityStatusDataEntity, INavigation } from 'entities';
+import { E_Data_Load_Status } from 'enums';
 import { useEntrypoint } from 'hooks';
-import { UrlUtils } from 'utils';
-import { GlobalActions, IApplicationState, IUseDispatch, useAppDispatch } from 'store';
+import { NavigationUtils } from 'utils';
+import { DataApiPath, GlobalActions, IApplicationState, IUseDispatch, getSidebarNavination, useAppDispatch } from 'store';
 
 export const Sidebar = () => {
   const { sidebarNavigations } = useSelector((state: IApplicationState) => state.global);
+  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const dispatch: IUseDispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-
   const { uriPath, uriEntrypoint } = useEntrypoint();
+
+  useEffect(() => {
+    if (startRef.current.sidebarNavigation === E_Data_Load_Status.PENDING) {
+      startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.FULFULLED };
+    }
+    if (startRef.current.sidebarNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.PENDING };
+      dispatch(getSidebarNavination(DataApiPath.sidebarNavigation.toString()));
+    }
+  }, [dispatch]);
 
   const whenMfeOpen = useCallback(
     (mfe: INavigation) => {
+      const main = document.querySelector(`.sidebar-menu li a.active`)?.parentElement;
+      if (main) NavigationUtils().makeParentNodeActive(main, Number(main.getAttribute('data-parentindex')));
       dispatch(GlobalActions.onOpenMFE(mfe));
     },
     [dispatch]
@@ -24,12 +35,11 @@ export const Sidebar = () => {
   useEffect(() => {
     if (uriPath && uriEntrypoint) {
       const isExists = (nav: INavigation) => {
-        return nav.entrypoint === uriEntrypoint || nav.link === '/' + uriEntrypoint;
+        return nav.entrypoint === uriEntrypoint || nav.route === '/' + uriEntrypoint;
       };
 
       const searchMenu = (navigation: INavigation[]): INavigation | undefined => {
         for (const nav of navigation) {
-          // if (nav.type === 'Group' || nav.separator) continue;
           if (isExists(nav)) return nav;
 
           if (nav.items && nav.items.length > 0) {
@@ -44,28 +54,5 @@ export const Sidebar = () => {
     }
   }, [sidebarNavigations, uriPath, uriEntrypoint, whenMfeOpen]);
 
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, nav: INavigation): void => {
-      e.preventDefault();
-      // searchParams.delete('defaultPageInformation');
-      navigate({
-        pathname: UrlUtils.makeRouteWidthoutSearch(`admin${nav.link}`),
-        search: `?${searchParams.toString()}`,
-      });
-    },
-    [searchParams, navigate]
-  );
-
-  const makeMenu = (items: INavigation[], parentIndex: number = 0) => {
-    return items.map((item, index) => (
-      <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'}parentIndex - ${index}`}>
-        <NavLink to={`/admin${item.link}`} onClick={e => handleClick(e, item)} className={({ isActive }) => (isActive ? 'link active' : 'link inactive')}>
-          {item.title}
-        </NavLink>
-        {item.items && item.items.length > 0 && <ul>{makeMenu(item.items, index)}</ul>}
-      </li>
-    ));
-  };
-
-  return <ul className='sidebar-menu'>{makeMenu(sidebarNavigations, 0)}</ul>;
+  return <ul className='sidebar-menu'>{NavigationUtils().makeMenu(sidebarNavigations, 0)}</ul>;
 };

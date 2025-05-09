@@ -1,9 +1,24 @@
-export * from './About';
-export * from './Contact';
-export * from './Faq';
-export * from './Gallery';
-export * from './Home';
+import React from 'react';
+import { About } from './About';
+import { Contact } from './Contact';
+import { Faq } from './Faq';
+import { Gallery } from './Gallery';
+import { Home } from './Home';
+import { Project } from './Project';
+import { Services } from './Services';
+
 export * from './NoMatch';
-export * from './Project';
-export * from './ProjectPhoto';
-export * from './Services';
+
+export interface IPageMapper {
+  [x: string]: any;
+}
+
+export const pageMapper: IPageMapper = {
+  Home: React.createElement(Home),
+  About: React.createElement(About),
+  Services: React.createElement(Services),
+  Project: React.createElement(Project),
+  Gallery: React.createElement(Gallery),
+  Contact: React.createElement(Contact),
+  Faq: React.createElement(Faq),
+};

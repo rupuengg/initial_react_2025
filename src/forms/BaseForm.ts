@@ -1,10 +1,6 @@
-// import { FieldType, TextType } from 'veronica-ui-component/dist/component/core';
 import { E_FieldType, E_Form_Type } from 'enums';
-
-export interface IOption {
-  key: string;
-  value: string;
-}
+import { IDropDownHelper } from 'helpers/dropdownHelper';
+import { IOptions } from 'store';
 
 export interface IBaseForm {
   type: E_Form_Type;
@@ -13,7 +9,8 @@ export interface IBaseForm {
   field?: IBaseForm;
   fieldType?: E_FieldType;
   fieldName?: string;
-  options?: IOption[];
+  options?: IOptions[];
+  optionConfig?: IDropDownHelper;
   fieldLabel?: string;
   fieldValue?: any; //string | number | object | boolean;
   valueType?: 'text' | 'number';

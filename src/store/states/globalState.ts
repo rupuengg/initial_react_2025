@@ -7,7 +7,6 @@ import banner5 from '../../assets/images/banner/banner5.jpg';
 import offerData from 'json/offers.json';
 import photos from 'json/photos.json';
 import testimonialData from 'json/testimonial.json';
-import { defaultNavigation, defaultSideBarNavigation } from 'mock';
 import { IBanner, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
 
@@ -92,8 +91,8 @@ export const defaultGlobalState: IGlobalState = {
   photos: photos,
   galleries: [],
   banners,
-  navigation: defaultNavigation,
-  sidebarNavigations: defaultSideBarNavigation,
+  navigation: [],
+  sidebarNavigations: [],
   offers: offerData,
   testimonial: testimonialData,
 

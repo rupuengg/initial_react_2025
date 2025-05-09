@@ -1,11 +1,11 @@
-import { IOption } from 'forms';
 import { useCallback } from 'react';
+import { IOptions } from 'store';
 
 export interface ISelectBox {
   fieldLabel?: string;
   fieldName?: string;
   fieldValue?: string;
-  options?: IOption[];
+  options?: IOptions[];
   error?: string;
   isSavedClicked?: boolean;
   isRequired?: boolean;
@@ -13,9 +13,12 @@ export interface ISelectBox {
 }
 
 export const SelectBox: React.FC<ISelectBox> = ({ fieldLabel, fieldName, fieldValue, isRequired, options, onChange }) => {
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (onChange) onChange(fieldName || '', e.currentTarget.value);
-  }, []);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      if (onChange) onChange(fieldName || '', e.currentTarget.value);
+    },
+    [fieldName, onChange]
+  );
 
   return (
     <div className='form-field'>
@@ -27,7 +30,7 @@ export const SelectBox: React.FC<ISelectBox> = ({ fieldLabel, fieldName, fieldVa
         <select name={fieldName} value={fieldValue} onChange={handleChange}>
           <option>Select</option>
           {options?.map(option => (
-            <option key={option.key} value={option.key}>
+            <option key={option.value} value={option.label}>
               {option.value}
             </option>
           ))}

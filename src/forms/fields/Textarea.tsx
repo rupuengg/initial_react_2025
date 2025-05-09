@@ -12,9 +12,12 @@ export interface ITextarea {
 }
 
 export const Textarea: React.FC<ITextarea> = ({ fieldLabel, fieldName, fieldValue, isRequired, onChange }) => {
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (onChange) onChange(fieldName || '', e.currentTarget.value);
-  }, []);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      if (onChange) onChange(fieldName || '', e.currentTarget.value);
+    },
+    [fieldName, onChange]
+  );
 
   return (
     <div className='form-field'>
@@ -23,7 +26,7 @@ export const Textarea: React.FC<ITextarea> = ({ fieldLabel, fieldName, fieldValu
         {isRequired ? <sup>*</sup> : null}
       </label>
       <div className='box'>
-        <textarea name={fieldName} rows={4} value={fieldValue} onChange={handleChange} />
+        <textarea name={fieldName} rows={4} value={fieldValue || ''} onChange={handleChange} />
       </div>
     </div>
   );

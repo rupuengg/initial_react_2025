@@ -35,7 +35,7 @@ export const Header = () => {
       (item, index) =>
         !item.isHide && (
           <li key={`${parentIndex === 0 ? 'mainMenu-' : 'subMenu'}parentIndex - ${index}`}>
-            <NavLink to={item.link} className={({ isActive }) => (isActive ? 'link active' : 'link inactive')} onClick={() => setIsShowSubMenu(false)}>
+            <NavLink to={item.route} className={({ isActive }) => (isActive ? 'link active' : 'link inactive')} onClick={() => setIsShowSubMenu(false)}>
               {item.title}
             </NavLink>
             {item.items && item.items.length > 0 && <ul>{makeMenu(item.items, index)}</ul>}

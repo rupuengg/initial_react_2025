@@ -12,4 +12,6 @@ export const defaultEntityStatusDataEntity: IEntityStatusDataEntity = {
   getAllUserInteractionsSatus: E_Data_Load_Status.NOT_YET_STARTED,
   getLiveUsersSatus: E_Data_Load_Status.NOT_YET_STARTED,
   getLiveUserChatSatus: E_Data_Load_Status.NOT_YET_STARTED,
+  mainNavigation: E_Data_Load_Status.NOT_YET_STARTED,
+  sidebarNavigation: E_Data_Load_Status.NOT_YET_STARTED,
 };

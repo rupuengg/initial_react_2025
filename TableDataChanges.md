@@ -1,20 +1,5 @@
 # Add New Admin Menu and Its Table Content
 
-## Add Admin Menu
-
-Goto [SideBar Nav](https://github.com/rupuengg/pw-frontend/blob/development/src/mock/defaultSideBarNavigation.ts)
-And new menu inside this, type should be mandatory TABLE, BOARD, PAGE
-
-```
-{
-title: 'Menu Title',
-link: '/menu_link',
-type: E_Board_Type.TABLE,
-scrollTo: '',
-entrypoint: 'menu_entry_point',
-}
-```
-
 ## Create new Entity(Model) for new menu
 
 Goto [Entities](https://github.com/rupuengg/pw-frontend/tree/development/src/entities)

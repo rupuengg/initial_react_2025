@@ -4,4 +4,5 @@ export enum E_Icon_Name {
   LINKDIN = 'linkedIn',
   TWITTER = 'twitter',
   WHATSAPP = 'whatsapp',
+  PINTEREST = 'pinterest',
 }

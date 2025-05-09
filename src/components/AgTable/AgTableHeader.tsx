@@ -47,7 +47,7 @@ export const AgTableHeader: React.FC<IAgTableHeader> = ({
       setIsRefreshStart(1);
       refreshCallback();
     }
-  }, []);
+  }, [refreshCallback]);
 
   return (
     <div className='header-bar'>

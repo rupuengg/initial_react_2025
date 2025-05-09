@@ -270,7 +270,7 @@ export const Home = () => {
 
           <div className='main-item marginTop50'>
             {testimonial
-              .filter(item => !item.isHide)
+              .filter((item: ITestimonialEntity) => !item.isHide)
               .map((item: ITestimonialEntity, index: number) => (
                 <div key={index} className='item-list'>
                   <div className='inner-box'>
