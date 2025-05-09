@@ -124,7 +124,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const form = useMemo(() => {
     if (item && entityForm) return mapFormWithValues(entityForm, item);
     return null;
-  }, [item, entityForm, dropdownUpdater]);
+  }, [item, entityForm]);
 
   const handleChange = useCallback((fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
     setItem((p: CommonEntity | undefined) => {

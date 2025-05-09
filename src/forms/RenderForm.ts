@@ -66,7 +66,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdo
         }
       }
     },
-    [isReadable, dp, onChange]
+    [isReadable, getOptions, dp, onChange, dropdownCallback, dropdownUpdater]
   );
 
   const getColOrRow = useCallback(
@@ -88,7 +88,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdo
         return React.createElement('div', { className: 'flex-row-item', key: `${key}col-row-group` }, getField(column, colIndex, rowIndex));
       }
     },
-    [isReadable, getField]
+    [getField]
   );
 
   const mainForm = useMemo(() => {
@@ -97,7 +97,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdo
       { className: 'flex-row' },
       form?.map((f, index) => getColOrRow(f, index))
     );
-  }, [form, isReadable, getColOrRow]);
+  }, [form, getColOrRow]);
 
   if (!form) return null;
 
