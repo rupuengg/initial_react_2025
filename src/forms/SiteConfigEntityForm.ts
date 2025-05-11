@@ -34,10 +34,9 @@ export const SiteConfigEntityForm: IBaseForm[] = [
         fields: [
           {
             type: E_Form_Type.FIELD,
-            fieldType: E_FieldType.DROPDOWN_ONE_SELECT,
+            fieldType: E_FieldType.TEXT,
             fieldName: 'route',
             fieldLabel: 'Route',
-            optionConfig: { api: 'main_menu/0', fieldMapper: { value: 'route', label: 'route' } },
           },
         ],
       },

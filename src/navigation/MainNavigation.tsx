@@ -1,5 +1,6 @@
 import { defaultEntityStatusDataEntity } from 'mock';
 import { IPageMapper, NoMatch, pageMapper } from 'pages';
+import { ProjectPhoto } from 'pages/ProjectPhoto';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -41,6 +42,7 @@ export const MainNavigation = () => {
         {navigation.map((nav: INavigation) => (
           <Route key={nav.route} path={nav.route} element={renderComp(nav)} />
         ))}
+        <Route path={'/project_done_by_us/:id'} element={<ProjectPhoto />} />
         <Route key='login' path={'/admin/login'} element={<Login />} />
         <Route path={'/admin/*'} element={<PrivateRoute />} />
       </Route>

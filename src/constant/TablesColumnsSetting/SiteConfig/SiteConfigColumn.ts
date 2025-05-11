@@ -7,7 +7,7 @@ export function getSiteConfigColumnSetting(anaInfo?: any): (ColDef<ISiteConfigEn
     {
       field: 'route',
       headerName: 'Route.',
-      pinned: 'left',
+      width: 100,
     },
     {
       field: 'title',

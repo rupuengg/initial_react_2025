@@ -35,7 +35,7 @@ export const ImageUrl: React.FC<IImageUrl> = props => {
   const handleChange = useCallback(async (name: string, value: any) => {
     getMeta(value, (err: string | Event, img: HTMLImageElement, mimeType?: string) => {
       const imgData: IImageData = { width: img?.naturalWidth, height: img?.naturalHeight, mime: mimeType };
-      if (props.onChange) props.onChange(props.fieldName || '', value, imgData);
+      if (props.onChange) props.onChange(props.fieldName || '', img.src, imgData);
     });
   }, []);
 
