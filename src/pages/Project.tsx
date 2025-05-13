@@ -8,23 +8,25 @@ import { useNavigate } from 'react-router-dom';
 import { IApplicationState } from 'store';
 
 export const Project = () => {
-  const { photos } = useSelector((state: IApplicationState) => state.global);
+  const { galleries } = useSelector((state: IApplicationState) => state.global);
   const navigate = useNavigate();
 
   const images = useMemo(() => {
-    return photos
-      .filter(p => p.customMetadata && typeof p.customMetadata.cover === 'boolean' && p.customMetadata.cover)
-      .map(g => {
-        return { src: g.url, width: Number(g.width), height: Number(g.height), url: g.url, key: g.fileId } as Photo;
-      });
-  }, [photos]);
+    return (
+      galleries
+        // .filter(p => p.customMetadata && typeof p.customMetadata.cover === 'boolean' && p.customMetadata.cover)
+        .map(g => {
+          return { src: g.galleryCover.url, width: Number(g.galleryCover.width), height: Number(g.galleryCover.height), url: g.galleryCover.url, key: g.galleryCover.fileId } as Photo;
+        })
+    );
+  }, [galleries]);
 
   const handleClick = useCallback(
     (d: any) => {
-      const photo = photos.find(p => p.fileId === d.photo.key);
-      if (photo) navigate(`/project_done_by_us/${photo.customMetadata?.galleryId || ''}`);
+      const photo = galleries.find(p => p.galleryCover.fileId === d.photo.key);
+      if (photo) navigate(`/project_done_by_us/${photo.galleryId || ''}`);
     },
-    [photos, navigate]
+    [galleries, navigate]
   );
 
   if (!images) return null;

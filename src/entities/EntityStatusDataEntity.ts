@@ -13,6 +13,8 @@ export interface IEntityStatusDataEntity {
   getLiveUserChatSatus?: E_Data_Load_Status;
   mainNavigation?: E_Data_Load_Status;
   sidebarNavigation?: E_Data_Load_Status;
+  getAllGalleries?: E_Data_Load_Status;
+  allPhotos?: E_Data_Load_Status;
 
   [x: string]: E_Data_Load_Status | undefined;
 }

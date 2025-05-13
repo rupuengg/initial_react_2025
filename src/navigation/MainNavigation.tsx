@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { IEntityStatusDataEntity, INavigation } from 'entities';
 import { E_Data_Load_Status } from 'enums';
-import { DataApiPath, IApplicationState, IUseDispatch, getMainNavination, useAppDispatch } from 'store';
+import { DataApiPath, IApplicationState, IUseDispatch, getAllGallery, getMainNavination, useAppDispatch } from 'store';
 import { Login, PrivateRoute } from 'components';
 
 export const MainNavigation = () => {
@@ -25,6 +25,16 @@ export const MainNavigation = () => {
     if (startRef.current.mainNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, mainNavigation: E_Data_Load_Status.PENDING };
       dispatch(getMainNavination(DataApiPath.mainNavigation.toString()));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    // if (startRef.current.getAllGalleries === E_Data_Load_Status.PENDING) {
+    //   startRef.current = { ...startRef.current, getAllGalleries: E_Data_Load_Status.FULFULLED };
+    // }
+    if (startRef.current.getAllGalleries === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, getAllGalleries: E_Data_Load_Status.PENDING };
+      dispatch(getAllGallery());
     }
   }, [dispatch]);
 

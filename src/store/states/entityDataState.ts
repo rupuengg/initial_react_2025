@@ -33,6 +33,7 @@ export interface IOptions {
   value?: string;
   label?: string;
   tagLabel?: string;
+  other?: any;
 }
 
 export interface IDataSaveStatus {

@@ -11,4 +11,5 @@ export * from './E_Menu_Type';
 export * from './E_Notification_Type';
 export * from './E_Operation_Permission';
 export * from './E_Page_Mappper';
+export * from './E_Project_Gallery_Type';
 export * from './E_Renderer_Type';

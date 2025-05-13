@@ -1,5 +1,6 @@
 import { IContactInfoEntity } from './ContactInfoEntity';
 import { IJobSeekerEntity } from './JobSeekerEntity';
+import { INavigation } from './Navigation';
 import { ISiteConfigEntity } from './SiteConfigEntity';
 
 export * from './ANAInfo';
@@ -15,52 +16,4 @@ export * from './SiteConfigEntity';
 export * from './TestimonialEntity';
 export * from './User';
 
-export type CommonEntity = IContactInfoEntity | IJobSeekerEntity | ISiteConfigEntity;
-// | BerthEntity
-// | ChassisEquipmentEntity
-// | ContainerHandlingVehicleEntity
-// | ContainerSizeEntity
-// | ContainerTypeEntity
-// | ContainerTypeGroupEntity
-// | CountryEntity
-// | DamageCodeEntity
-// | DangerousCodeEntity
-// | EquipmentCodeEntity
-// | GateQueueEntity
-// | GradeCodeEntity
-// | GroundingCategoryEntity
-// | HoldCodeEntity
-// | ITPagerEntity
-// | InternalTractorEntity
-// | LineEntity
-// | LineServiceEntity
-// | LocationGroupEntity
-// | LocationTypeEntity
-// | MsshPoolAssignmentEntity
-// | PilotOnBoardEntity
-// | PolicyCodeEntity
-// | PortEntity
-// | ProvinceEntity
-// | OperatorConfigEntity
-// | QcDeploymentEntity
-// | QcMoveLogEntity
-// | QuayCraneEntity
-// | RailTerminalEntity
-// | ReasonCodeEntity
-// | ServiceAreaBlockEntity
-// | SpecialArrangementCodeEntity
-// | SpecialHandlingCodeEntity
-// | TerminalOperationSettingEntity
-// | TieDownLocationEntity
-// | TractorDeploymentEntity
-// | TractorPairingEntity
-// | UserActivityTrackingEntity
-// | VesselEntity
-// | VirtualLocationEntity
-// | VoyageEntity
-// | WorkingShiftEntity
-// | YardBlockEntity
-// | YardCraneEntity
-// | YardCraneMergeBlockEntity
-// | YardCraneWorkloadMaintenanceEntity
-// | YardZoneEntity;
+export type CommonEntity = INavigation | IContactInfoEntity | IJobSeekerEntity | ISiteConfigEntity;

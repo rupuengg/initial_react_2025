@@ -129,10 +129,22 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
   const handleChange = useCallback((fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
     setItem((p: CommonEntity | undefined) => {
       if (!p) return undefined;
+
+      let previousData: any = { ...p };
+
+      if (fieldName === 'ogImageUrl') {
+        previousData = { ...previousData, ...{ ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height }, [fieldName]: fieldValue };
+      } else if (fieldName === 'items' && otherValue) {
+        previousData = { ...previousData, [fieldName]: JSON.stringify(otherValue) };
+      } else {
+        previousData = { ...previousData, [fieldName]: fieldValue };
+      }
+
       return {
-        ...p,
-        ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
-        [fieldName]: fieldValue,
+        ...previousData,
+        // ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
+        // ...(fieldName === 'items' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
+        // [fieldName]: fieldValue,
       };
     });
   }, []);
@@ -232,6 +244,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
     }
   }, [type, entrypoint, mapper, item, dispatch]);
 
+  console.log('form', form);
   return (
     <div className='main-box' style={{ width: '100%', border: 'none', backgroundColor: '#FFFFFF', overflow: 'auto', padding: '0' }}>
       <div className='header-bar' style={{ width: '100%', alignItems: 'center' }}>
@@ -269,7 +282,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
 
         {/* {(isAdd || (isEditable && !isRead)) && <p>Form Remark</p>} */}
 
-        <RenderForm form={form} dp={dp} dropdownUpdater={dropdownUpdater} isReadable={isRead} onChange={handleChange} />
+        <RenderForm form={form} entity={item} dp={dp} dropdownUpdater={dropdownUpdater} isReadable={isRead} onChange={handleChange} />
       </div>
     </div>
   );

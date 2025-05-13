@@ -1,10 +1,9 @@
 import { IGallery, IPhoto } from 'entities';
 import { ApiPath } from 'store/constants';
-import { imageKitAxiosInstance } from './axios';
+import { backendApiAxiosInstance, imageKitAxiosInstance } from './axios';
 
 export interface IPhotoApi {
   getAll(): Promise<IPhoto[]>;
-  getAllGallery(): Promise<IGallery[]>;
   getByKey(key: string): Promise<IGallery>;
   getFeaturedGallery(): Promise<IGallery>;
   create(photo: IPhoto): Promise<IPhoto>;
@@ -17,14 +16,8 @@ export interface IPhotoApi {
 export const PhotoApi: IPhotoApi = {
   getAll: async (): Promise<IPhoto[]> => {
     try {
-      return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.PHOTO_PATH}`, { headers: { 'Content-Type': 'application/json' } })).data;
-    } catch {
-      return [];
-    }
-  },
-  getAllGallery: async (): Promise<IGallery[]> => {
-    try {
-      return (await imageKitAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.GALLERY_PATH}`, { headers: { 'Content-Type': 'application/json' } })).data;
+      const response = await backendApiAxiosInstance.get(`${ApiPath.PATH.ROUTE_PATH.PHOTO_PATH}/all`, { headers: { 'Content-Type': 'application/json' } });
+      return response.data.data;
     } catch {
       return [];
     }

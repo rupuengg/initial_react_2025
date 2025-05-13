@@ -42,9 +42,12 @@ export const Sidebar = () => {
         for (const nav of navigation) {
           if (isExists(nav)) return nav;
 
-          if (nav.items && nav.items.length > 0) {
-            const result = searchMenu(nav.items);
-            if (result) return result;
+          if (nav.items) {
+            const items = JSON.parse(nav.items);
+            if (items.length > 0) {
+              const result = searchMenu(items);
+              if (result) return result;
+            }
           }
         }
       };

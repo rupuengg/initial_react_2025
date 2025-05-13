@@ -14,4 +14,6 @@ export const defaultEntityStatusDataEntity: IEntityStatusDataEntity = {
   getLiveUserChatSatus: E_Data_Load_Status.NOT_YET_STARTED,
   mainNavigation: E_Data_Load_Status.NOT_YET_STARTED,
   sidebarNavigation: E_Data_Load_Status.NOT_YET_STARTED,
+  getAllGalleries: E_Data_Load_Status.NOT_YET_STARTED,
+  allPhotos: E_Data_Load_Status.NOT_YET_STARTED,
 };

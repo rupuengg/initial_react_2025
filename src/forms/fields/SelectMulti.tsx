@@ -17,13 +17,19 @@ export const SelectMulti: React.FC<ISelectMulti> = ({ fieldLabel, fieldName, fie
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       const values: string[] = [];
+      const others: any[] = [];
       for (let index = 0; index < e.currentTarget.selectedOptions.length; index++) {
         const element = e.currentTarget.selectedOptions[index];
         values.push(element.value);
+
+        const o = options.find(o => o.value?.toString() === element.value.toString());
+        if (o) {
+          others.push(o.other);
+        }
       }
-      if (onChange) onChange(fieldName || '', _.uniq(values));
+      if (onChange) onChange(fieldName || '', _.uniq(values), others.length > 0 ? others : null);
     },
-    [fieldName, onChange]
+    [options, fieldName, onChange]
   );
 
   return (

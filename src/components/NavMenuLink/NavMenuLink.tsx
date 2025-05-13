@@ -46,7 +46,7 @@ export const NavMenuLink: React.FC<INavMenuLink> = ({ nav, parentIndex, currentI
       <NavLink to={`/admin${nav.route}`} onClick={e => handleClick(e, nav)} className={({ isActive }) => `${isActive ? 'link active' : 'link inactive'}`}>
         {nav.title}
       </NavLink>
-      {nav.items && nav.items.length > 0 && <ul>{NavigationUtils().makeMenu(nav.items, currentIndex)}</ul>}
+      {nav.subMenus && nav.subMenus.length > 0 && <ul>{NavigationUtils().makeMenu(nav.subMenus, currentIndex)}</ul>}
     </li>
   );
 };

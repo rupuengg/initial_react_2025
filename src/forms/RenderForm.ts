@@ -6,16 +6,19 @@ import { IDropDownHelper, dropdownHelper } from 'helpers/dropdownHelper';
 import { IOptions } from 'store';
 import { IBaseForm } from './BaseForm';
 import { FieldLabel, FieldText, ImageUrl, SelectBox, SelectMulti, TagBox, TextBox, Textarea } from './fields';
+import { LeftToRightSelection } from './fields/LeftToRightSelection';
+import { RadioBox } from './fields/RadioBox';
 
 interface IRenderForm {
   form?: IBaseForm[] | null;
+  entity?: any;
   isReadable?: boolean;
   dp?: { [x: string]: IOptions[] };
   dropdownUpdater?: (fieldName: string, options: IOptions[]) => void;
   onChange?: (key: string, value: any, other?: any) => void;
 }
 
-export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdownUpdater, onChange }) => {
+export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp, dropdownUpdater, onChange }) => {
   const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
 
   const dropdownCallback = useCallback((optionsConfig?: IDropDownHelper) => {
@@ -42,32 +45,37 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, isReadable, dp, dropdo
 
   const getField = useCallback(
     (row: IBaseForm, colIndex: number, rowIndex: number) => {
+      const value = entity && row.fieldName ? entity[row.fieldName] : '';
       if (isReadable) {
         return [
           React.createElement(FieldLabel, { key: colIndex + '-' + rowIndex + '-label', fieldLabel: row.fieldLabel }, row.fieldLabel),
-          React.createElement(FieldText, { key: colIndex + '-' + rowIndex + '-text', fieldValue: row.fieldValue?.toString() }, row.fieldValue?.toString()),
+          React.createElement(FieldText, { key: colIndex + '-' + rowIndex + '-text', fieldValue: value?.toString() }, value?.toString()),
         ];
       } else {
         if (row.optionConfig && row.fieldName) dropdownCallback({ ...row.optionConfig, fieldName: row.fieldName, callback: dropdownUpdater });
         switch (row.fieldType) {
           case E_FieldType.TEXT:
-            return React.createElement(TextBox, { ...row, onChange });
+            return React.createElement(TextBox, { ...row, fieldValue: value, onChange });
           case E_FieldType.TEXTAREA:
-            return React.createElement(Textarea, { ...row, onChange });
+            return React.createElement(Textarea, { ...row, fieldValue: value, onChange });
           case E_FieldType.DROPDOWN_ONE_SELECT:
-            return React.createElement(SelectBox, { ...row, options: getOptions(dp || {}, row), onChange });
+            return React.createElement(SelectBox, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
           case E_FieldType.DROPDOWN_MULTI_SELECT:
-            return React.createElement(SelectMulti, { ...row, options: getOptions(dp || {}, row), onChange });
+            return React.createElement(SelectMulti, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
+          case E_FieldType.LEFT_TO_RIGHT:
+            return React.createElement(LeftToRightSelection, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
+          case E_FieldType.RADIO:
+            return React.createElement(RadioBox, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
           case E_FieldType.URL_CAPTURE:
-            return React.createElement(ImageUrl, { ...row, onChange });
+            return React.createElement(ImageUrl, { ...row, fieldValue: value, onChange });
           case E_FieldType.TAG:
-            return React.createElement(TagBox, { ...row, onChange });
+            return React.createElement(TagBox, { ...row, fieldValue: value, onChange });
           default:
             return null;
         }
       }
     },
-    [isReadable, getOptions, dp, onChange, dropdownCallback, dropdownUpdater]
+    [entity, isReadable, getOptions, dp, onChange, dropdownCallback, dropdownUpdater]
   );
 
   const getColOrRow = useCallback(

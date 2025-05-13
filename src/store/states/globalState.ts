@@ -5,7 +5,7 @@ import banner4 from '../../assets/images/banner/banner4.jpg';
 import banner5 from '../../assets/images/banner/banner5.jpg';
 // import galleries from 'json/galleries.json';
 import offerData from 'json/offers.json';
-import photos from 'json/photos.json';
+// import photos from 'json/photos.json';
 import testimonialData from 'json/testimonial.json';
 import { IBanner, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
@@ -66,6 +66,12 @@ export const defaultNotificationState: INotificationState = {
   isActiveScreen: false,
 };
 
+export interface IProject {
+  listAll: IPhoto[];
+  listOfDone: IPhoto[];
+  listOfUnderConstruction: IPhoto[];
+}
+
 export interface IGlobalState {
   photos: IPhoto[];
   galleries: IGallery[];
@@ -78,6 +84,10 @@ export interface IGlobalState {
   testimonial: ITestimonialEntity[];
   isContactFormSubmit?: boolean;
 
+  projects: {
+    [x: string]: IProject;
+  };
+
   selectedNav?: INavigation;
 
   entrypoint?: string;
@@ -88,13 +98,15 @@ export interface IGlobalState {
 }
 
 export const defaultGlobalState: IGlobalState = {
-  photos: photos,
+  photos: [],
   galleries: [],
   banners,
   navigation: [],
   sidebarNavigations: [],
   offers: offerData,
   testimonial: testimonialData,
+
+  projects: {},
 
   entrypoint: '',
   mfeTitle: '',

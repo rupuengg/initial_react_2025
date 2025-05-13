@@ -17,5 +17,5 @@ export interface IBaseForm {
   error?: string;
   isSavedClicked?: boolean;
   isRequired?: boolean;
-  onChange?: (fieldKey: string, fieldValue: any) => void;
+  // onChange?: (fieldKey: string, fieldValue: any) => void;
 }

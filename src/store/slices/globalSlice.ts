@@ -2,7 +2,17 @@ import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/to
 import { IGallery, INavigation, IPhoto } from 'entities';
 import { E_Notification_Type } from 'enums';
 import { IGlobalState, defaultGlobalState } from 'store/states';
-import { getAllGallery, getAllPhotos, getFeaturedGallery, getGalleryPhotos, getMainNavination, getSidebarNavination } from 'store/thunk';
+import {
+  getAllDonePhotos,
+  getAllGallery,
+  getAllPhotos,
+  getAllUnderConstructionPhotos,
+  getFeaturedGallery,
+  getGalleryAllPhotos,
+  getGalleryPhotos,
+  getMainNavination,
+  getSidebarNavination,
+} from 'store/thunk';
 
 const findPath = (ob: any, key: any, value: any) => {
   const path: any = [];
@@ -87,10 +97,37 @@ export const globalSlice = createSlice({
       draft.notification.notificationMessage = '';
     },
     setMainNavigation(draft: IGlobalState, action: PayloadAction<INavigation[]>) {
-      draft.navigation = action.payload;
+      draft.navigation = action.payload.filter(item => item.isParent === 1).map(item => ({ ...item, subMenus: item.items ? JSON.parse(item.items) : null }));
     },
     setSidebarNavigation(draft: IGlobalState, action: PayloadAction<INavigation[]>) {
-      draft.sidebarNavigations = action.payload;
+      draft.sidebarNavigations = action.payload.filter(item => item.isParent === 1).map(item => ({ ...item, subMenus: item.items ? JSON.parse(item.items) : null }));
+    },
+    setGalleryAllPhotos(draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) {
+      draft.projects = {
+        ...draft.projects,
+        [action.payload.galleryId]: {
+          ...draft.projects[action.payload.galleryId],
+          listAll: action.payload.photos,
+        },
+      };
+    },
+    setGalleryDonePhotos(draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) {
+      draft.projects = {
+        ...draft.projects,
+        [action.payload.galleryId]: {
+          ...draft.projects[action.payload.galleryId],
+          listOfDone: action.payload.photos,
+        },
+      };
+    },
+    setGalleryUnderConstructionPhotos(draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) {
+      draft.projects = {
+        ...draft.projects,
+        [action.payload.galleryId]: {
+          ...draft.projects[action.payload.galleryId],
+          listOfUnderConstruction: action.payload.photos,
+        },
+      };
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
@@ -112,6 +149,15 @@ export const globalSlice = createSlice({
       })
       .addCase(getSidebarNavination.fulfilled, (draft: IGlobalState, action: PayloadAction<INavigation[]>) => {
         globalSlice.caseReducers.setSidebarNavigation(draft, action);
+      })
+      .addCase(getGalleryAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) => {
+        globalSlice.caseReducers.setGalleryAllPhotos(draft, action);
+      })
+      .addCase(getAllDonePhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) => {
+        globalSlice.caseReducers.setGalleryDonePhotos(draft, action);
+      })
+      .addCase(getAllUnderConstructionPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) => {
+        globalSlice.caseReducers.setGalleryUnderConstructionPhotos(draft, action);
       });
   },
 });

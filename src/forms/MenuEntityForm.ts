@@ -73,10 +73,25 @@ export const MenuEntityForm: IBaseForm[] = [
         fields: [
           {
             type: E_Form_Type.FIELD,
-            fieldType: E_FieldType.DROPDOWN_MULTI_SELECT,
+            fieldType: E_FieldType.RADIO,
+            fieldName: 'isParent',
+            fieldLabel: 'Parent Menu',
+            options: [
+              { value: '1', label: 'Yes' },
+              { value: '0', label: 'No' },
+            ],
+          },
+        ],
+      },
+      {
+        type: E_Form_Type.ROW,
+        fields: [
+          {
+            type: E_Form_Type.FIELD,
+            fieldType: E_FieldType.LEFT_TO_RIGHT,
             fieldName: 'items',
             fieldLabel: 'Submenus',
-            optionConfig: { api: 'menus', fieldMapper: { value: 'id', label: 'title' } },
+            optionConfig: { api: 'menus', fieldMapper: { value: 'id', label: 'title' }, filter: (item: any) => Number(item.isParent) !== 1 },
           },
         ],
       },

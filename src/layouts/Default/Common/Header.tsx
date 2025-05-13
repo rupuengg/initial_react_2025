@@ -38,7 +38,7 @@ export const Header = () => {
             <NavLink to={item.route} className={({ isActive }) => (isActive ? 'link active' : 'link inactive')} onClick={() => setIsShowSubMenu(false)}>
               {item.title}
             </NavLink>
-            {item.items && item.items.length > 0 && <ul>{makeMenu(item.items, index)}</ul>}
+            {item.subMenus && item.subMenus.length > 0 && <ul>{makeMenu(item.subMenus, index)}</ul>}
           </li>
         )
     );
