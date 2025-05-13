@@ -1,27 +1,14 @@
-import { defaultEntityStatusDataEntity } from 'mock';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { IEntityStatusDataEntity, INavigation } from 'entities';
-import { E_Data_Load_Status } from 'enums';
+import { INavigation } from 'entities';
 import { useEntrypoint } from 'hooks';
 import { NavigationUtils } from 'utils';
-import { DataApiPath, GlobalActions, IApplicationState, IUseDispatch, getSidebarNavination, useAppDispatch } from 'store';
+import { GlobalActions, IApplicationState, IUseDispatch, useAppDispatch } from 'store';
 
 export const Sidebar = () => {
   const { sidebarNavigations } = useSelector((state: IApplicationState) => state.global);
-  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const dispatch: IUseDispatch = useAppDispatch();
   const { uriPath, uriEntrypoint } = useEntrypoint();
-
-  useEffect(() => {
-    if (startRef.current.sidebarNavigation === E_Data_Load_Status.PENDING) {
-      startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.FULFULLED };
-    }
-    if (startRef.current.sidebarNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.PENDING };
-      dispatch(getSidebarNavination(DataApiPath.sidebarNavigation.toString()));
-    }
-  }, [dispatch]);
 
   const whenMfeOpen = useCallback(
     (mfe: INavigation) => {
