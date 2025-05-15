@@ -20,7 +20,7 @@ export const MainNavigation = () => {
   }, [navigation]);
 
   useEffect(() => {
-    if (!isAdminBoard && startRef.current.mainNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
+    if (startRef.current.mainNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, mainNavigation: E_Data_Load_Status.PENDING };
       dispatch(getMainNavination(DataApiPath.mainNavigation.toString()));
     }

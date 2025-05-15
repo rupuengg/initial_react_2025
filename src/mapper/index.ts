@@ -1,8 +1,10 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
 import { ContactInfoEntityForm, IBaseForm, SiteConfigEntityForm } from 'forms';
 import { JobSeekerEntityForm, MenuEntityForm } from 'forms';
+import { BlogEntityForm } from 'forms/BlogEntityForm';
 import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultSiteConfigEntity } from 'mock';
-import { getContactInfoColumnSetting, getJobSeekerColumnSetting, getMenuColumnSetting, getSiteConfigColumnSetting } from 'constant';
+import { defaultBlog } from 'mock/defaultBlog';
+import { getBlogColumnSetting, getContactInfoColumnSetting, getJobSeekerColumnSetting, getMenuColumnSetting, getSiteConfigColumnSetting } from 'constant';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
 import { ANAInfoModel, CommonEntity } from 'entities';
 import { E_Mapping_Data } from 'enums';
@@ -51,6 +53,8 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
   };
 
   switch (entrypoint) {
+    case 'blogs':
+      return getCondition(getBlogColumnSetting, Permission.CHASSIS_TYPE, BlogEntityForm, defaultBlog);
     case 'contactInfo':
       return getCondition(getContactInfoColumnSetting, Permission.CHASSIS_TYPE, ContactInfoEntityForm, defaultContactInfo);
     case 'siteConfig':

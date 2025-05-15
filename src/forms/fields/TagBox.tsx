@@ -74,7 +74,7 @@ export const TagBox: React.FC<ITagBox> = props => {
         <span>{fieldLabel}</span>
         {isRequired ? <sup>*</sup> : null}
       </label>
-      <div className='box' onClick={handleClickDiv}>
+      <div className='field-box' onClick={handleClickDiv}>
         <Tags tags={tags} onDelete={tags => tags && setTags([...tags])} />
         <input ref={inputRef} name={fieldName || ''} value={text} autoComplete='off' onChange={handleChange} onPaste={handlePaste} />
       </div>

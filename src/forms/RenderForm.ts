@@ -5,9 +5,7 @@ import { E_Data_Load_Status, E_FieldType, E_Form_Type } from 'enums';
 import { IDropDownHelper, dropdownHelper } from 'helpers/dropdownHelper';
 import { IOptions } from 'store';
 import { IBaseForm } from './BaseForm';
-import { FieldLabel, FieldText, ImageUrl, SelectBox, SelectMulti, TagBox, TextBox, Textarea } from './fields';
-import { LeftToRightSelection } from './fields/LeftToRightSelection';
-import { RadioBox } from './fields/RadioBox';
+import { FieldLabel, FieldText, ImageUrl, LeftToRightSelection, RadioBox, SelectBox, SelectMulti, TagBox, TextBox, TextEditor, Textarea } from './fields';
 
 interface IRenderForm {
   form?: IBaseForm[] | null;
@@ -58,6 +56,8 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
             return React.createElement(TextBox, { ...row, fieldValue: value, onChange });
           case E_FieldType.TEXTAREA:
             return React.createElement(Textarea, { ...row, fieldValue: value, onChange });
+          case E_FieldType.EDITOR:
+            return React.createElement(TextEditor, { ...row, fieldValue: value, onChange });
           case E_FieldType.DROPDOWN_ONE_SELECT:
             return React.createElement(SelectBox, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
           case E_FieldType.DROPDOWN_MULTI_SELECT:

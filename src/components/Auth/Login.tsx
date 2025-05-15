@@ -51,15 +51,17 @@ export const Login = () => {
             <div className='form-layouts'>
               <div className='form-field marginTop20'>
                 <label>Email</label>
-                <div className='box'>
+                <div className='field-box box'>
                   <input name='email' type='text' value={username} onChange={handleChange} />
                 </div>
+                <span className='error'></span>
               </div>
               <div className='form-field marginTop20'>
                 <label>Password</label>
-                <div className='box'>
+                <div className='field-box box'>
                   <input name='password' type='password' value={password} onChange={handleChange} />
                 </div>
+                <span className='error'></span>
               </div>
               <div className='form-field marginTop40'>
                 <div className='button'>

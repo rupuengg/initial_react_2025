@@ -244,7 +244,6 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
     }
   }, [type, entrypoint, mapper, item, dispatch]);
 
-  console.log('form', form);
   return (
     <div className='main-box' style={{ width: '100%', border: 'none', backgroundColor: '#FFFFFF', overflow: 'auto', padding: '0' }}>
       <div className='header-bar' style={{ width: '100%', alignItems: 'center' }}>

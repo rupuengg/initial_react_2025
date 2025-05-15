@@ -25,7 +25,7 @@ export const TextBox: React.FC<ITextBox> = ({ fieldLabel, fieldName, fieldValue,
         <span>{fieldLabel}</span>
         {isRequired ? <sup>*</sup> : null}
       </label>
-      <div className='box'>
+      <div className='field-box'>
         <input name={fieldName} value={fieldValue || ''} onChange={handleChange} />
       </div>
       {error && <span className='error'>{error}</span>}

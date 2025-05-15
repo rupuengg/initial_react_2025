@@ -28,7 +28,7 @@ export const CheckBox: React.FC<ICheckBox> = ({ fieldLabel, fieldName, fieldValu
         <span>{fieldLabel}</span>
         {isRequired ? <sup>*</sup> : null}
       </label>
-      <div className='radio-box-group'>
+      <div className='field-box radio-box-group'>
         {options?.map(option => (
           <div key={option.value} className='radio-box'>
             <input type='checkbox' id={option.value} name={fieldName} value={Number(option.value)} {...(value === Number(option.value) ? { checked: true } : {})} onChange={handleChange} />

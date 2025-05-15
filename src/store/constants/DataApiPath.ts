@@ -7,4 +7,5 @@ export const DataApiPath: { [x: string]: string | IEndpoint } = {
   menu: 'menus',
   mainNavigation: 'main_menu/1',
   sidebarNavigation: 'admin_menu',
+  blogs: 'blog',
 };

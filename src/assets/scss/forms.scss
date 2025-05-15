@@ -42,9 +42,10 @@
     & .error {
       position: absolute;
       bottom: -21px;
-      left: 10px;
+      left: 2px;
       color: get-color(red);
-      font-size: 10px;
+      font-size: 11px;
+      font-weight: 600;
       background-color: transparent;
     }
 
@@ -56,7 +57,7 @@
       padding-left: 0;
       padding-bottom: 4px;
       font-family: Montserrat;
-      padding-left: 5px;
+      padding-left: 2px;
 
       & sup {
         color: get_color(red);
@@ -65,10 +66,15 @@
       }
     }
 
-    & .box {
-      box-shadow: 0px 0px 0px 2px #8a8a8a;
-      border-radius: 10px;
-      padding: 5px 10px;
+    & .field-box {
+      padding: 1px;
+      border: 1px solid #8a8a8a;
+
+      &:hover,
+      &:active {
+        padding: 0;
+        border: 2px solid #8a8a8a;
+      }
     }
 
     & .radio-box-group {
@@ -82,6 +88,7 @@
           margin: 0;
           padding: 0;
           cursor: pointer;
+          border: 0;
         }
 
         & input {
@@ -101,8 +108,7 @@
         display: flex;
         flex: 0 0 calc(50% - 17px);
         height: 200px;
-        border: 2px solid #8a8a8a;
-        border-radius: 10px;
+        border: 1px solid #8a8a8a;
 
         & .inner-box {
           overflow: scroll;
@@ -136,9 +142,25 @@
       }
     }
 
+    & .editor .ql-container.ql-snow {
+      height: 400px;
+    }
+
     & .button {
-      box-shadow: none;
       text-align: right;
+      & button {
+        border: 1px solid #8a8a8a;
+        padding: 6px 15px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+          border: 2px solid #8a8a8a;
+          padding: 5px 14px;
+        }
+      }
     }
 
     & input,
@@ -147,8 +169,10 @@
       display: block;
       font-family: Montserrat;
       border: 0;
-      width: 98%;
-      line-height: 20px;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      line-height: 2;
       font-size: 14px;
 
       &:focus-visible {
@@ -156,7 +180,7 @@
       }
     }
 
-    & button {
+    & button.button {
       padding: 10px 30px;
       border-radius: 10px;
       margin: 0;

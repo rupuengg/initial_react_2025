@@ -25,7 +25,7 @@ export const Textarea: React.FC<ITextarea> = ({ fieldLabel, fieldName, fieldValu
         <span>{fieldLabel}</span>
         {isRequired ? <sup>*</sup> : null}
       </label>
-      <div className='box'>
+      <div className='field-box'>
         <textarea name={fieldName} rows={4} value={fieldValue || ''} onChange={handleChange} />
       </div>
     </div>

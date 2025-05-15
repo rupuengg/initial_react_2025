@@ -38,7 +38,7 @@ export const SelectMulti: React.FC<ISelectMulti> = ({ fieldLabel, fieldName, fie
         <span>{fieldLabel}</span>
         {isRequired ? <sup>*</sup> : null}
       </label>
-      <div className='box'>
+      <div className='field-box'>
         <select name={fieldName} value={fieldValue || []} multiple onChange={handleChange}>
           <option>Select</option>
           {options?.map(option => <option key={option.value} {...(fieldValue && fieldValue.includes(option.value || '') ? { selected: true } : {})} value={option.value} label={option.label} />)}

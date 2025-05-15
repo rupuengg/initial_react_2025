@@ -26,7 +26,7 @@ export const SelectBox: React.FC<ISelectBox> = ({ fieldLabel, fieldName, fieldVa
         <span>{fieldLabel}</span>
         {isRequired ? <sup>*</sup> : null}
       </label>
-      <div className='box'>
+      <div className='field-box'>
         <select name={fieldName} value={fieldValue} onChange={handleChange}>
           <option>Select</option>
           {options?.map(option => (
