@@ -47,7 +47,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
       if (isReadable) {
         return [
           React.createElement(FieldLabel, { key: colIndex + '-' + rowIndex + '-label', fieldLabel: row.fieldLabel }, row.fieldLabel),
-          React.createElement(FieldText, { key: colIndex + '-' + rowIndex + '-text', fieldValue: value?.toString() }, value?.toString()),
+          React.createElement(FieldText, { key: colIndex + '-' + rowIndex + '-text', fieldType: row.fieldType, fieldValue: value?.toString() }, value?.toString()),
         ];
       } else {
         if (row.optionConfig && row.fieldName) dropdownCallback({ ...row.optionConfig, fieldName: row.fieldName, callback: dropdownUpdater });

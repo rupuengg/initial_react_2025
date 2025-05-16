@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { IContactInfoEntity } from 'entities';
 import { useTableMapper } from 'hooks';
 import { GlobalActions, IApplicationState, IUseDispatch, saveData, useAppDispatch } from 'store';
-import './Enquiry.scss';
 
 export const Enquiry = () => {
   const { isContactFormSubmit } = useSelector((state: IApplicationState) => state.global);
@@ -37,35 +36,35 @@ export const Enquiry = () => {
   return (
     <div className='siteCssWidth1200'>
       <div className='enquire marginTop100 marginBottom100'>
-        <div className='formBox'>
+        <div className='form-layouts'>
           <h1 className='header1'>Enquire for services</h1>
           {isContactFormSubmit && <p className='success'>Your request has been sent</p>}
-          <div className='formItem marginTop20'>
+          <div className='form-field marginTop20'>
             <label>Name</label>
-            <div className='box'>
+            <div className='field-box'>
               <input name='name' value={contactForm.name} onChange={handleChange} />
             </div>
           </div>
-          <div className='formItem marginTop20'>
+          <div className='form-field marginTop20'>
             <label>Phone no</label>
-            <div className='box'>
+            <div className='field-box'>
               <input name='phone' value={contactForm.phone} onChange={handleChange} />
             </div>
           </div>
-          <div className='formItem marginTop20'>
+          <div className='form-field marginTop20'>
             <label>Email</label>
-            <div className='box'>
+            <div className='field-box'>
               <input name='email' value={contactForm.email} onChange={handleChange} />
             </div>
           </div>
-          <div className='formItem marginTop20'>
+          <div className='form-field marginTop20'>
             <label>Query</label>
-            <div className='box'>
+            <div className='field-box'>
               <input name='query' value={contactForm.query} onChange={handleChange} />
             </div>
           </div>
-          <div className='formItem marginTop20'>
-            <div className='box button'>
+          <div className='form-field marginTop20'>
+            <div className='button'>
               <button type='button' onClick={handleSubmit}>
                 Submit
               </button>

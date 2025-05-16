@@ -3,6 +3,7 @@
 .default_layout {
   position: relative;
 
+  @import 'assets/scss/forms.scss';
   @import './Common/Header.scss';
   @import './Common/Topper.scss';
   @import './Common/Footer.scss';

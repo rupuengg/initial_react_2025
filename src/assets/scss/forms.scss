@@ -251,3 +251,22 @@
   //   }
   // }
 }
+
+.form-preview,
+.blog-preview {
+  display: block;
+
+  & p {
+    & img {
+      height: 400px !important;
+      margin: 0 auto;
+      display: block;
+    }
+
+    & a {
+      color: #bb8f71;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+}

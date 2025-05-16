@@ -10,6 +10,7 @@ export interface ITextEditor {
   error?: string;
   isSavedClicked?: boolean;
   isRequired?: boolean;
+  isPreview?: boolean;
   onChange?: (key: string, value: any, other?: any) => void;
 }
 
@@ -63,7 +64,6 @@ export const TextEditor: React.FC<ITextEditor> = ({ fieldLabel, fieldName, field
         {isRequired ? <sup>*</sup> : null}
       </label>
       <div className='field-box editor'>
-        {/* <Editor value={fieldValue || ''} onChange={handleChange} /> */}
         <ReactQuill ref={quillRef} theme='snow' modules={modules} formats={formats} value={fieldValue || 'Hello'} onChange={handleChange} />
       </div>
     </div>
