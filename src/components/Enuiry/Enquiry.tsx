@@ -25,6 +25,10 @@ export const Enquiry = () => {
     if (e.currentTarget) setContactForm(p => ({ ...p, [e.target.name]: e.target.value }));
   }, []);
 
+  const handleAreaChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (e.currentTarget) setContactForm(p => ({ ...p, [e.target.name]: e.target.value }));
+  }, []);
+
   const handleSubmit = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -60,7 +64,7 @@ export const Enquiry = () => {
           <div className='form-field marginTop20'>
             <label>Query</label>
             <div className='field-box'>
-              <input name='query' value={contactForm.query} onChange={handleChange} />
+              <textarea name='query' rows={4} value={contactForm.query} onChange={handleAreaChange} />
             </div>
           </div>
           <div className='form-field marginTop20'>

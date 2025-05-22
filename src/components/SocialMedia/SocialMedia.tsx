@@ -31,6 +31,9 @@ export const SocialMedia = () => {
       <Link to={'https://whatsapp.com/channel/0029VbAkBy1DOQIef5gQv40P'} onClick={handleOpen}>
         <Icon iconName={E_Icon_Name.WHATSAPP} />
       </Link>
+      <Link to={'https://www.youtube.com/@PanacheWorldInterior'} onClick={handleOpen}>
+        <Icon iconName={E_Icon_Name.YOUTUBE} />
+      </Link>
     </div>
   );
 };
