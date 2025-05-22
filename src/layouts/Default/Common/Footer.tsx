@@ -24,7 +24,7 @@ export const Footer = () => {
         return aId > bId ? 1 : aId < bId ? -1 : 0;
       });
     return m;
-  }, []);
+  }, [mainMenuGroup]);
 
   const makeMenu = (items: INavigation[], parentIndex: number = 0) => {
     return items.map((item, index) => (

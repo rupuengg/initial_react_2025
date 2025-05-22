@@ -3,10 +3,6 @@ import banner2 from '../../assets/images/banner/banner2.jpg';
 import banner3 from '../../assets/images/banner/banner3.jpg';
 import banner4 from '../../assets/images/banner/banner4.jpg';
 import banner5 from '../../assets/images/banner/banner5.jpg';
-// import galleries from 'json/galleries.json';
-import offerData from 'json/offers.json';
-// import photos from 'json/photos.json';
-import testimonialData from 'json/testimonial.json';
 import { IBanner, IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
@@ -107,8 +103,8 @@ export const defaultGlobalState: IGlobalState = {
   banners,
   navigation: [],
   sidebarNavigations: [],
-  offers: offerData,
-  testimonial: testimonialData,
+  offers: [],
+  testimonial: [],
 
   projects: {},
 

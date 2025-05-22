@@ -15,6 +15,8 @@ export interface IEntityStatusDataEntity {
   sidebarNavigation?: E_Data_Load_Status;
   getAllGalleries?: E_Data_Load_Status;
   allPhotos?: E_Data_Load_Status;
+  testimonial?: E_Data_Load_Status;
+  offers?: E_Data_Load_Status;
 
   [x: string]: E_Data_Load_Status | undefined;
 }

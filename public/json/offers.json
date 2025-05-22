@@ -1,0 +1,94 @@
+{
+  "statusCode": 200,
+  "data": [
+    {
+      "floor_image": "offer/2-bhk.png",
+      "title": "2bhk interiors",
+      "price": "Starting ₹7 Lacs",
+      "options": [
+        {
+          "title": "Modular kitchen",
+          "img": "offer/kitchen.png",
+          "items": ["Chimney", "Hob", "Faucet", "Sink", "Granite countertop"]
+        },
+        {
+          "title": "Living room",
+          "img": "offer/living.png",
+          "items": ["3-seater sofa", "TV unit", "Coffee table"]
+        },
+        {
+          "title": "Master bedroom",
+          "img": "offer/master-bedroom.png",
+          "items": ["King size bed", "Wardrobe", "Bedside tables"]
+        },
+        {
+          "title": "Guest bedroom",
+          "img": "offer/guest-bedroom.png",
+          "items": ["Queen size bed", "Wardrobe", "Bedside tables"]
+        },
+        {
+          "title": "Dining room",
+          "img": "offer/dining-room.png",
+          "items": ["4-Seater dining set"]
+        },
+        {
+          "title": "Services",
+          "img": "offer/services.png",
+          "items": ["False ceiling", "Painting", "Decor and lighting", "Kitchen civil work", "Deep cleaning"]
+        },
+        {
+          "title": "Other",
+          "img": "offer/services.png",
+          "items": ["Mandir", "Shoe Racks", "Bathroom Partition"]
+        }
+      ]
+    },
+    {
+      "floor_image": "offer/3-bhk.png",
+      "title": "3bhk interiors",
+      "price": "Starting ₹9 Lacs",
+      "options": [
+        {
+          "title": "Modular kitchen",
+          "img": "offer/kitchen.png",
+          "items": ["Chimney", "Hob", "Faucet", "Sink", "Granite countertop"]
+        },
+        {
+          "title": "Living room",
+          "img": "offer/living.png",
+          "items": ["3-seater sofa", "TV unit", "Coffee table"]
+        },
+        {
+          "title": "Master bedroom",
+          "img": "offer/master-bedroom.png",
+          "items": ["King size bed", "Wardrobe", "Bedside tables"]
+        },
+        {
+          "title": "Guest bedroom (1)",
+          "img": "offer/guest-bedroom.png",
+          "items": ["Queen size bed", "Wardrobe", "Bedside tables"]
+        },
+        {
+          "title": "Guest bedroom (2)",
+          "img": "offer/guest-bedroom.png",
+          "items": ["Queen size bed", "Wardrobe", "Bedside tables"]
+        },
+        {
+          "title": "Dining room",
+          "img": "offer/dining-room.png",
+          "items": ["4-Seater dining set"]
+        },
+        {
+          "title": "Services",
+          "img": "offer/services.png",
+          "items": ["False ceiling", "Painting", "Decor and lighting", "Kitchen civil work", "Deep cleaning"]
+        },
+        {
+          "title": "Other",
+          "img": "offer/services.png",
+          "items": ["Mandir", "Shoe Racks", "Bathroom Partition"]
+        }
+      ]
+    }
+  ]
+}

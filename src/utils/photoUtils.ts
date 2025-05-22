@@ -2,17 +2,17 @@ import { IGallery, IPhoto } from 'entities';
 
 export const PhotoUtils = (photos: IPhoto[] | undefined) => {
   const galleryImageKitFolderMapper: { [x: string]: string } = {
-    '000_f_142_gulshan_bellina': '000 - F 142 Gulshan Bellina - Done',
-    '053_t7_1906_exotica_dreamVelli': '053 - T7 - 1906 - Exotica DreamVilli - Done',
-    '012_f_123_gulshan_bellina': '012 - F - 123 - Gulshan Bellina - Done',
-    '016_f_044_gulshan_bellina': '016 - F - 044 - Gulshan Bellina - Done',
-    '031_f_154_gulshan_bellina': '031 - F - 154 - Gulshan Bellina - Done',
-    '043_110_dhurva_apartment_delhi': '043 - 110 - Aditya - Dhurav Apartment Delhi - Done',
-    '049_j_061_gulshan_bellina': '049 - J - 061 - Subodh - Gulshan Bellina - Done',
+    '000_f_142_gulshan_bellina_done': '000 - F 142 Gulshan Bellina - Done',
+    '053_t7_1906_exotica_dreamvilli_done': '053 - T7 - 1906 - Exotica DreamVilli - Done',
+    '012_f_123_gulshan_bellina_done': '012 - F - 123 - Gulshan Bellina - Done',
+    '016_f_044_gulshan_bellina_done': '016 - F - 044 - Gulshan Bellina - Done',
+    '031_f_154_gulshan_bellina_done': '031 - F - 154 - Gulshan Bellina - Done',
+    '043_110_aditya_dhurav_apartment_delhi_done': '043 - 110 - Aditya - Dhurav Apartment Delhi - Done',
+    '049_j_061_subodh_gulshan_bellina_done': '049 - J - 061 - Subodh - Gulshan Bellina - Done',
     '034_g_3052_gaur_city_14_avenue': '034 - G 3052 - Gaur City 14 Avenue',
-    '013_g_1004_samridhi': '013 - G - Ajay - 1004 - Samridhi - Done',
-    '029_a_183_gulshan_belolina': '029 - A- 183 - Gulshan Bellina - Done',
-    '011_g_044_gulshan_bellina': '011 - G - 044 - Gulshan Bellina - Done',
+    '013_g_ajay_1004_samridhi_done': '013 - G - Ajay - 1004 - Samridhi - Done',
+    '029_a-_183_gulshan_bellina_done': '029 - A- 183 - Gulshan Bellina - Done',
+    '011_g_044_gulshan_bellina_done': '011 - G - 044 - Gulshan Bellina - Done',
   };
 
   return {
@@ -33,7 +33,10 @@ export const PhotoUtils = (photos: IPhoto[] | undefined) => {
 
       if (galleryImageKitFolderMapper[galleryId]) return { galleryId, imageKitFolder: galleryImageKitFolderMapper[galleryId] || '' };
 
-      throw new Error('No imagekit Fodler map');
+      return { galleryId, imageKitFolder: '' };
+    },
+    getAllProjects: () => {
+      return Object.keys(galleryImageKitFolderMapper);
     },
   };
 };

@@ -1,0 +1,511 @@
+{
+  "statusCode": 200,
+  "data": [
+    {
+      "type": "folder",
+      "name": "000 - F 142 Gulshan Bellina - Done",
+      "createdAt": "2024-12-25T11:54:40.979Z",
+      "updatedAt": "2025-05-11T14:04:52.073Z",
+      "folderId": "676bf281e375273f6051daf3",
+      "folderPath": "\/000 - F 142 Gulshan Bellina - Done",
+      "galleryId": "000_f_142_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "011-l-sofa-wp.671e5277.jpeg",
+        "createdAt": "2024-12-25T11:54:41.075Z",
+        "updatedAt": "2025-04-11T14:31:42.137Z",
+        "fileId": "676bf281e375273f6051db9f",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "676bf281e375273f6051db9f",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "1",
+          "XResolution": "1",
+          "DateCreated": "2024-12-25T11:54:41.753Z",
+          "DateTimeCreated": "2024-12-25T11:54:41.754Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "000_f_142_gulshan_bellina",
+          "galleryName": "000 - F 142 Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/000%20-%20F%20142%20Gulshan%20Bellina%20-%20Done\/011-l-sofa-wp.671e5277.jpeg?updatedAt=1744381902137",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/000%20-%20F%20142%20Gulshan%20Bellina%20-%20Done\/011-l-sofa-wp.671e5277.jpeg?updatedAt=1744381902137&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/000 - F 142 Gulshan Bellina - Done\/011-l-sofa-wp.671e5277.jpeg",
+        "height": "1024",
+        "width": "1280",
+        "size": "285912",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "053 - T7 - 1906 - Exotica DreamVilli - Done",
+      "createdAt": "2025-01-24T17:43:31.307Z",
+      "updatedAt": "2025-05-11T14:03:43.597Z",
+      "folderId": "6793d143432c4764169f41a8",
+      "folderPath": "\/053 - T7 - 1906 - Exotica DreamVilli - Done",
+      "galleryId": "053_t7_1906_exotica_dreamvilli_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG-20230111-WA0009.jpg",
+        "createdAt": "2025-01-24T17:45:15.816Z",
+        "updatedAt": "2025-05-12T03:20:59.595Z",
+        "fileId": "6793d1ab432c476416a10064",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793d1ab432c476416a10064",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "1",
+          "XResolution": "1",
+          "DateCreated": "2025-01-24T17:45:16.492Z",
+          "DateTimeCreated": "2025-01-24T17:45:16.492Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "053_t7_1906_exotica_dreamVelli",
+          "galleryName": "053 - T7 - 1906 - Exotica CreamVilli - inProgress"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/053%20-%20T7%20-%201906%20-%20Exotica%20DreamVilli%20-%20Done\/IMG-20230111-WA0009.jpg?updatedAt=1747020059595",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/053%20-%20T7%20-%201906%20-%20Exotica%20DreamVilli%20-%20Done\/IMG-20230111-WA0009.jpg?updatedAt=1747020059595&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/053 - T7 - 1906 - Exotica DreamVilli - Done\/IMG-20230111-WA0009.jpg",
+        "height": "1280",
+        "width": "963",
+        "size": "66721",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "012 - F - 123 - Gulshan Bellina - Done",
+      "createdAt": "2025-01-24T17:50:37.051Z",
+      "updatedAt": "2025-05-11T14:03:11.219Z",
+      "folderId": "6793d2ed432c476416a72dab",
+      "folderPath": "\/012 - F - 123 - Gulshan Bellina - Done",
+      "galleryId": "012_f_123_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG_20211119_130748.jpg",
+        "createdAt": "2025-01-24T17:53:06.285Z",
+        "updatedAt": "2025-05-12T08:52:35.393Z",
+        "fileId": "6793d382432c476416aa070e",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793d382432c476416aa070e",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "72",
+          "XResolution": "72",
+          "DateCreated": "2025-01-24T17:53:07.000Z",
+          "DateTimeCreated": "2025-01-24T17:53:07.000Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "012_f_123_gulshan_bellina",
+          "galleryName": "012 - F - 123 - Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/012%20-%20F%20-%20123%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20211119_130748.jpg?updatedAt=1747039955393",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/012%20-%20F%20-%20123%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20211119_130748.jpg?updatedAt=1747039955393&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/012 - F - 123 - Gulshan Bellina - Done\/IMG_20211119_130748.jpg",
+        "height": "4000",
+        "width": "3000",
+        "size": "2752966",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "016 - F - 044 - Gulshan Bellina - Done",
+      "createdAt": "2025-01-24T17:56:22.074Z",
+      "updatedAt": "2025-05-11T14:02:19.420Z",
+      "folderId": "6793d446432c476416ac9dfa",
+      "folderPath": "\/016 - F - 044 - Gulshan Bellina - Done",
+      "galleryId": "016_f_044_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG_9055.JPG",
+        "createdAt": "2025-01-24T17:58:18.080Z",
+        "updatedAt": "2025-05-12T09:13:02.905Z",
+        "fileId": "6793d4ba432c476416ae4aa7",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793d4ba432c476416ae4aa7",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "72",
+          "XResolution": "72",
+          "DateCreated": "2025-01-24T17:58:18.799Z",
+          "DateTimeCreated": "2025-01-24T17:58:18.799Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "016_f_044_gulshan_bellina",
+          "galleryName": "016 - F - 044 - Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/016%20-%20F%20-%20044%20-%20Gulshan%20Bellina%20-%20Done\/IMG_9055.JPG?updatedAt=1747041182905",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/016%20-%20F%20-%20044%20-%20Gulshan%20Bellina%20-%20Done\/IMG_9055.JPG?updatedAt=1747041182905&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/016 - F - 044 - Gulshan Bellina - Done\/IMG_9055.JPG",
+        "height": "3456",
+        "width": "5184",
+        "size": "5792084",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "031 - F - 154 - Gulshan Bellina - Done",
+      "createdAt": "2025-01-24T18:26:47.802Z",
+      "updatedAt": "2025-05-11T14:01:58.961Z",
+      "folderId": "6793db67432c476416d56008",
+      "folderPath": "\/031 - F - 154 - Gulshan Bellina - Done",
+      "galleryId": "031_f_154_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG_20220330_203558.jpg",
+        "createdAt": "2025-01-24T18:29:00.311Z",
+        "updatedAt": "2025-05-12T09:25:30.152Z",
+        "fileId": "6793dbec432c476416d73851",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793dbec432c476416d73851",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "72",
+          "XResolution": "72",
+          "DateCreated": "2025-01-24T18:29:01.025Z",
+          "DateTimeCreated": "2025-01-24T18:29:01.026Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "031_f_154_gulshan_bellina",
+          "galleryName": "031 - F - 154 - Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/031%20-%20F%20-%20154%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20220330_203558.jpg?updatedAt=1747041930152",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/031%20-%20F%20-%20154%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20220330_203558.jpg?updatedAt=1747041930152&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/031 - F - 154 - Gulshan Bellina - Done\/IMG_20220330_203558.jpg",
+        "height": "4608",
+        "width": "3456",
+        "size": "3598682",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "043 - 110 - Aditya - Dhurav Apartment Delhi - Done",
+      "createdAt": "2025-01-24T18:30:23.595Z",
+      "updatedAt": "2025-05-11T14:01:32.826Z",
+      "folderId": "6793dc3f432c476416d87d5a",
+      "folderPath": "\/043 - 110 - Aditya - Dhurav Apartment Delhi - Done",
+      "galleryId": "043_110_aditya_dhurav_apartment_delhi_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG-20221104-WA0025.jpg",
+        "createdAt": "2025-01-24T18:36:24.839Z",
+        "updatedAt": "2025-05-11T13:39:34.125Z",
+        "fileId": "6793dda8432c476416de5b59",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793dda8432c476416de5b59",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "1",
+          "XResolution": "1",
+          "DateCreated": "2025-01-24T18:36:25.519Z",
+          "DateTimeCreated": "2025-01-24T18:36:25.520Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": true,
+          "galleryId": "043_110_dhurva_apartment_delhi",
+          "galleryName": "043 - 110 - Aditya - Dhurav Apartment Delhi - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done\/IMG-20221104-WA0025.jpg?updatedAt=1746970774125",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/043%20-%20110%20-%20Aditya%20-%20Dhurav%20Apartment%20Delhi%20-%20Done\/IMG-20221104-WA0025.jpg?updatedAt=1746970774125&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/043 - 110 - Aditya - Dhurav Apartment Delhi - Done\/IMG-20221104-WA0025.jpg",
+        "height": "1280",
+        "width": "960",
+        "size": "120534",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "049 - J - 061 - Subodh - Gulshan Bellina - Done",
+      "createdAt": "2025-01-24T18:39:45.141Z",
+      "updatedAt": "2025-05-11T14:01:08.819Z",
+      "folderId": "6793de71432c476416e14050",
+      "folderPath": "\/049 - J - 061 - Subodh - Gulshan Bellina - Done",
+      "galleryId": "049_j_061_subodh_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG_20220907_184551493.jpg",
+        "createdAt": "2025-01-24T18:44:01.757Z",
+        "updatedAt": "2025-04-11T14:28:48.669Z",
+        "fileId": "6793df71432c476416e44d94",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793df71432c476416e44d94",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "72",
+          "XResolution": "72",
+          "DateCreated": "2025-01-24T18:44:02.461Z",
+          "DateTimeCreated": "2025-01-24T18:44:02.463Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "049_j_061_gulshan_bellina",
+          "galleryName": "049 - J - 061 - Subodh - Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/049%20-%20J%20-%20061%20-%20Subodh%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20220907_184551493.jpg?updatedAt=1744381728669",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/049%20-%20J%20-%20061%20-%20Subodh%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20220907_184551493.jpg?updatedAt=1744381728669&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/049 - J - 061 - Subodh - Gulshan Bellina - Done\/IMG_20220907_184551493.jpg",
+        "height": "3072",
+        "width": "4080",
+        "size": "2192766",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "034 - G 3052 - Gaur City 14 Avenue",
+      "createdAt": "2025-01-24T18:46:05.570Z",
+      "updatedAt": "2025-05-11T14:00:40.769Z",
+      "folderId": "6793dfed432c476416e6cdff",
+      "folderPath": "\/034 - G 3052 - Gaur City 14 Avenue",
+      "galleryId": "034_g_3052_gaur_city_14_avenue",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG_20220506_233122.jpg",
+        "createdAt": "2025-01-24T18:49:06.242Z",
+        "updatedAt": "2025-04-11T14:28:15.911Z",
+        "fileId": "6793e0a2432c476416eabdcd",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793e0a2432c476416eabdcd",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "72",
+          "XResolution": "72",
+          "DateCreated": "2025-01-24T18:49:07.001Z",
+          "DateTimeCreated": "2025-01-24T18:49:07.002Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "034_g_3052_gaur_city_14_avenue",
+          "galleryName": "034 - G 3052 - Gaur City 14 Avenue"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/034%20-%20G%203052%20-%20Gaur%20City%2014%20Avenue\/IMG_20220506_233122.jpg?updatedAt=1744381695911",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/034%20-%20G%203052%20-%20Gaur%20City%2014%20Avenue\/IMG_20220506_233122.jpg?updatedAt=1744381695911&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/034 - G 3052 - Gaur City 14 Avenue\/IMG_20220506_233122.jpg",
+        "height": "3000",
+        "width": "3000",
+        "size": "2153783",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "013 - G - Ajay - 1004 - Samridhi - Done",
+      "createdAt": "2025-01-24T18:50:39.450Z",
+      "updatedAt": "2025-05-11T14:00:16.101Z",
+      "folderId": "6793e0ff432c476416ec8e4c",
+      "folderPath": "\/013 - G - Ajay - 1004 - Samridhi - Done",
+      "galleryId": "013_g_ajay_1004_samridhi_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG-20220213-WA0019.jpg",
+        "createdAt": "2025-01-24T18:52:32.108Z",
+        "updatedAt": "2025-04-11T14:27:37.562Z",
+        "fileId": "6793e170432c476416eed258",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793e170432c476416eed258",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "1",
+          "XResolution": "1",
+          "DateCreated": "2025-01-24T18:52:32.782Z",
+          "DateTimeCreated": "2025-01-24T18:52:32.782Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "013_g_1004_samridhi",
+          "galleryName": "013 - G - Ajay - 1004 - Samridhi - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done\/IMG-20220213-WA0019.jpg?updatedAt=1744381657562",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/013%20-%20G%20-%20Ajay%20-%201004%20-%20Samridhi%20-%20Done\/IMG-20220213-WA0019.jpg?updatedAt=1744381657562&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/013 - G - Ajay - 1004 - Samridhi - Done\/IMG-20220213-WA0019.jpg",
+        "height": "1280",
+        "width": "960",
+        "size": "100528",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "029 - A- 183 - Gulshan Bellina - Done",
+      "createdAt": "2025-01-24T18:53:52.938Z",
+      "updatedAt": "2025-05-11T13:59:49.992Z",
+      "folderId": "6793e1c0432c476416f06ac3",
+      "folderPath": "\/029 - A- 183 - Gulshan Bellina - Done",
+      "galleryId": "029_a-_183_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG_20220320_143303.jpg",
+        "createdAt": "2025-01-24T18:56:58.979Z",
+        "updatedAt": "2025-05-12T09:36:45.089Z",
+        "fileId": "6793e27b432c476416f41831",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793e27b432c476416f41831",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "72",
+          "XResolution": "72",
+          "DateCreated": "2025-01-24T18:56:59.680Z",
+          "DateTimeCreated": "2025-01-24T18:56:59.680Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "029_a_183_gulshan_belolina",
+          "galleryName": "029 - A- 183 - Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/029%20-%20A-%20183%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20220320_143303.jpg?updatedAt=1747042605089",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/029%20-%20A-%20183%20-%20Gulshan%20Bellina%20-%20Done\/IMG_20220320_143303.jpg?updatedAt=1747042605089&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/029 - A- 183 - Gulshan Bellina - Done\/IMG_20220320_143303.jpg",
+        "height": "3000",
+        "width": "4000",
+        "size": "2684621",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    },
+    {
+      "type": "folder",
+      "name": "011 - G - 044 - Gulshan Bellina - Done",
+      "createdAt": "2025-01-24T19:01:31.485Z",
+      "updatedAt": "2025-05-11T13:59:11.092Z",
+      "folderId": "6793e38b432c476416f9d1d0",
+      "folderPath": "\/011 - G - 044 - Gulshan Bellina - Done",
+      "galleryId": "011_g_044_gulshan_bellina_done",
+      "galleryCover": {
+        "type": "file",
+        "name": "IMG-20211014-WA0027.jpg",
+        "createdAt": "2025-01-24T19:03:14.528Z",
+        "updatedAt": "2025-05-12T03:10:48.161Z",
+        "fileId": "6793e3f2432c476416fbcf99",
+        "tags": null,
+        "AITags": null,
+        "versionInfo": {
+          "id": "6793e3f2432c476416fbcf99",
+          "name": "Version 1"
+        },
+        "embeddedMetadata": {
+          "YResolution": "1",
+          "XResolution": "1",
+          "DateCreated": "2025-01-24T19:03:15.204Z",
+          "DateTimeCreated": "2025-01-24T19:03:15.204Z"
+        },
+        "isPublished": "1",
+        "customCoordinates": null,
+        "customMetadata": {
+          "cover": true,
+          "featured": false,
+          "galleryId": "011_g_044_gulshan_bellina",
+          "galleryName": "011 - G - 044 - Gulshan Bellina - Done"
+        },
+        "isPrivateFile": "",
+        "url": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/011%20-%20G%20-%20044%20-%20Gulshan%20Bellina%20-%20Done\/IMG-20211014-WA0027.jpg?updatedAt=1747019448161",
+        "thumbnail": "https:\/\/ik.imagekit.io\/yz7i3lbbn\/011%20-%20G%20-%20044%20-%20Gulshan%20Bellina%20-%20Done\/IMG-20211014-WA0027.jpg?updatedAt=1747019448161&tr=n-ik_ml_thumbnail",
+        "fileType": "image",
+        "filePath": "\/011 - G - 044 - Gulshan Bellina - Done\/IMG-20211014-WA0027.jpg",
+        "height": "1599",
+        "width": "1200",
+        "size": "161195",
+        "hasAlpha": "",
+        "mime": "image\/jpeg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "statusCode": 200,
+  "data": [
+    {
+      "name": "Sandeep",
+      "image": "",
+      "text": "Good quality work",
+      "isHide": true
+    },
+    {
+      "name": "Pooja Matia",
+      "image": "",
+      "text": "Unbelievable design by Rupender Sir... With finishing work",
+      "isHide": false
+    },
+    {
+      "name": "Vipul Rastogi",
+      "image": "",
+      "text": "Excellent piece of work in reasonable pricing within due deadline. The best part is they delivered the premises neat and clean without any strains. We just moved in.",
+      "isHide": false
+    },
+    {
+      "name": "Anil Sahu",
+      "image": "",
+      "text": "Panache world is one of the best interior decorators who r working in Delhi NCR . They gave me a proper budget and time for my work and it was done in time.",
+      "isHide": false
+    },
+    {
+      "name": "Rachna Sahotra",
+      "image": "",
+      "text": "I really appreciate the quality of work of Panache World and that too on very reasonable price. They understood our needs and were very responsive to our ideas and designed everything accordingly. The whole team was helpful during the entire process from scratch to end. I am very much satisfied with the work done. Will definitely recommend the same 👍",
+      "isHide": false
+    }
+  ]
+}

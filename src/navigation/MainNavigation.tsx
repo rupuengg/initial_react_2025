@@ -1,13 +1,12 @@
 import { defaultEntityStatusDataEntity } from 'mock';
-import { IPageMapper, NoMatch, pageMapper } from 'pages';
-import { CustomBlog } from 'pages/CustomBlog';
-import { ProjectPhoto } from 'pages/ProjectPhoto';
+import { CustomBlog, IPageMapper, NoMatch, NotFound, ProjectPhoto, pageMapper } from 'pages';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { IEntityStatusDataEntity, INavigation } from 'entities';
 import { E_Data_Load_Status, E_Menu_Type } from 'enums';
-import { IApplicationState, IUseDispatch, getAllGallery, getMenuGroup, useAppDispatch } from 'store';
+import { PhotoUtils } from 'utils';
+import { IApplicationState, IUseDispatch, getJsonAllGallery, getJsonAllPhotos, getMenuGroup, getOffers, getTestimonial, useAppDispatch } from 'store';
 import { Login, PrivateRoute } from 'components';
 
 export const MainNavigation = () => {
@@ -15,6 +14,10 @@ export const MainNavigation = () => {
   const dispatch: IUseDispatch = useAppDispatch();
   const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const isAdminBoard = useMemo(() => window.location.href.includes('/admin'), []);
+
+  const allProjects = useMemo(() => {
+    return PhotoUtils(undefined).getAllProjects();
+  }, []);
 
   const homeRoute = useMemo(() => {
     return mainMenuGroup?.menus?.find(nav => nav.page?.toString().toLowerCase().trim() === 'home')?.route;
@@ -28,9 +31,32 @@ export const MainNavigation = () => {
   }, [isAdminBoard, dispatch]);
 
   useEffect(() => {
+    if (!isAdminBoard && startRef.current.testimonial === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, testimonial: E_Data_Load_Status.PENDING };
+      dispatch(getTestimonial());
+    }
+  }, [isAdminBoard, dispatch]);
+
+  useEffect(() => {
+    if (!isAdminBoard && startRef.current.offers === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, offers: E_Data_Load_Status.PENDING };
+      dispatch(getOffers());
+    }
+  }, [isAdminBoard, dispatch]);
+
+  useEffect(() => {
     if (!isAdminBoard && startRef.current.getAllGalleries === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, getAllGalleries: E_Data_Load_Status.PENDING };
-      dispatch(getAllGallery());
+      // dispatch(getAllGallery());
+      dispatch(getJsonAllGallery());
+    }
+  }, [isAdminBoard, dispatch]);
+
+  useEffect(() => {
+    if (!isAdminBoard && startRef.current.allPhotos === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, allPhotos: E_Data_Load_Status.PENDING };
+      // dispatch(getAllPhotos());
+      dispatch(getJsonAllPhotos());
     }
   }, [isAdminBoard, dispatch]);
 
@@ -55,9 +81,13 @@ export const MainNavigation = () => {
         <Route index element={<Navigate to={homeRoute || ''} replace />} />
         {mainMenuGroup?.menus?.map((nav: INavigation) => <Route key={nav.route} path={nav.route} element={renderComp(nav)} />)}
         <Route path={'/blog/:id'} element={<CustomBlog isShowSingle={true} />} />
-        <Route path={'/project_done_by_us/:id'} element={<ProjectPhoto />} />
+        {allProjects.map(p => (
+          <Route key={p} path={'/project_done_by_us/' + p} element={<ProjectPhoto projectId={p} />} />
+        ))}
+        {/* <Route path={'/project_done_by_us/:id'} element={<ProjectPhoto />} /> */}
         <Route key='login' path={'/admin/login'} element={<Login />} />
         <Route path={'/admin/*'} element={<PrivateRoute />} />
+        <Route path='*' element={<NotFound />} />
       </Route>
       <Route path='*' element={<NoMatch />} />
     </Routes>

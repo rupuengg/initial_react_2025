@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IBlogEntity, IGallery, INavigation, IPhoto } from 'entities';
+import { IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Menu_Type, E_Notification_Type } from 'enums';
 import { IGlobalState, defaultGlobalState } from 'store/states';
@@ -12,9 +12,13 @@ import {
   getFeaturedGallery,
   getGalleryAllPhotos,
   getGalleryPhotos,
+  getJsonAllGallery,
+  getJsonAllPhotos,
   getMainNavination,
   getMenuGroup,
+  getOffers,
   getSidebarNavination,
+  getTestimonial,
 } from 'store/thunk';
 
 const findPath = (ob: any, key: any, value: any) => {
@@ -68,6 +72,12 @@ export const globalSlice = createSlice({
     },
     setFeaturedGallery(draft: IGlobalState, action: PayloadAction<IGallery>) {
       draft.featureGallery = action.payload;
+    },
+    setTestimonial(draft: IGlobalState, action: PayloadAction<ITestimonialEntity[]>) {
+      draft.testimonial = action.payload;
+    },
+    setOffers(draft: IGlobalState, action: PayloadAction<IOffer[]>) {
+      draft.offers = action.payload;
     },
     setEntryPoint(draft: IGlobalState, action: PayloadAction<{ entrypoint: string }>) {
       draft.entrypoint = action.payload.entrypoint;
@@ -154,7 +164,13 @@ export const globalSlice = createSlice({
       .addCase(getAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IPhoto[]>) => {
         globalSlice.caseReducers.setAllPhotos(draft, action);
       })
+      .addCase(getJsonAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IPhoto[]>) => {
+        globalSlice.caseReducers.setAllPhotos(draft, action);
+      })
       .addCase(getAllGallery.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery[]>) => {
+        globalSlice.caseReducers.setAllGallery(draft, action);
+      })
+      .addCase(getJsonAllGallery.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery[]>) => {
         globalSlice.caseReducers.setAllGallery(draft, action);
       })
       .addCase(getGalleryPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery>) => {
@@ -183,6 +199,12 @@ export const globalSlice = createSlice({
       })
       .addCase(getBlogList.fulfilled, (draft: IGlobalState, action: PayloadAction<IBlogEntity[]>) => {
         globalSlice.caseReducers.setBlogs(draft, action);
+      })
+      .addCase(getTestimonial.fulfilled, (draft: IGlobalState, action: PayloadAction<ITestimonialEntity[]>) => {
+        globalSlice.caseReducers.setTestimonial(draft, action);
+      })
+      .addCase(getOffers.fulfilled, (draft: IGlobalState, action: PayloadAction<IOffer[]>) => {
+        globalSlice.caseReducers.setOffers(draft, action);
       });
   },
 });

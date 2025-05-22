@@ -6,32 +6,34 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { IEntityStatusDataEntity, IPhoto } from 'entities';
 import { E_Data_Load_Status, E_Project_Gallery_Type } from 'enums';
 import { PhotoUtils } from 'utils';
 import { IApplicationState, IUseDispatch, getAllDonePhotos, getAllUnderConstructionPhotos, getGalleryAllPhotos, useAppDispatch } from 'store';
 
-export const ProjectPhoto = () => {
+export interface IProjectPhoto {
+  projectId: string;
+}
+
+export const ProjectPhoto: React.FC<IProjectPhoto> = ({ projectId }) => {
   const { galleries, projects } = useSelector((state: IApplicationState) => state.global);
   const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const [galleryType] = useState<E_Project_Gallery_Type>(E_Project_Gallery_Type.ONLY_DONE_PHOTOS);
   const dispatch: IUseDispatch = useAppDispatch();
-  const params = useParams();
   const [index, setIndex] = useState(-1);
 
   const ps = useMemo(() => {
-    if (params.id && projects && projects[params.id] && projects[params.id].listOfDone) return projects[params.id][galleryType];
+    if (projectId && projects && projects[projectId] && projects[projectId].listOfDone) return projects[projectId][galleryType];
     // if (params.id && projects && projects[params.id] && projects[params.id].listAll) return projects[params.id].listAll;
     else return [];
-  }, [galleryType, projects, params.id]);
+  }, [galleryType, projects, projectId]);
 
   useEffect(() => {
-    if (params.id && !startRef.current[params.id]) startRef.current[params.id] = E_Data_Load_Status.NOT_YET_STARTED;
+    if (projectId && !startRef.current[projectId]) startRef.current[projectId] = E_Data_Load_Status.NOT_YET_STARTED;
 
-    if (galleries && galleries.length > 0 && ps.length === 0 && params.id && startRef.current[params.id] === E_Data_Load_Status.NOT_YET_STARTED) {
-      const requestParams = PhotoUtils(undefined).getGalleryAndImageKitFolder(galleries, params.id);
-      startRef.current = { ...startRef.current, [params.id]: E_Data_Load_Status.PENDING };
+    if (galleries && galleries.length > 0 && ps.length === 0 && projectId && startRef.current[projectId] === E_Data_Load_Status.NOT_YET_STARTED) {
+      const requestParams = PhotoUtils(undefined).getGalleryAndImageKitFolder(galleries, projectId);
+      startRef.current = { ...startRef.current, [projectId]: E_Data_Load_Status.PENDING };
       switch (galleryType) {
         case E_Project_Gallery_Type.ALL_PHOTOS:
           dispatch(getGalleryAllPhotos(requestParams));
@@ -44,52 +46,7 @@ export const ProjectPhoto = () => {
           break;
       }
     }
-  }, [galleries, params.id, dispatch]);
-
-  // const gallery: IGallery | undefined | null = useMemo(() => {
-  //   const galleries: { [x: string]: IGallery } = {};
-
-  //   if (photos && params.id) {
-  //     const d = photos.find(p => p.customMetadata?.galleryId === params.id);
-  //     const photo = photos.find(p => p.fileId === d?.fileId);
-  //     if (photo) {
-  //       const photoAr: string[] | undefined = photo?.filePath?.split('/');
-
-  //       photos.forEach(p => {
-  //         const ar: string[] | undefined = p?.filePath?.split('/');
-  //         if (ar && ar[1]) {
-  //           const categoryKey: string = ar[1];
-
-  //           if (galleries[categoryKey]) galleries[categoryKey]?.photos?.push(p);
-  //           else {
-  //             galleries[categoryKey] = {
-  //               type: p.type,
-  //               name: ar[1],
-  //               url: p.url,
-  //               thumbnail: p.thumbnail,
-  //               fileType: p.fileType,
-  //               filePath: p.filePath,
-  //               photos: [p],
-  //               width: Number(p.width),
-  //               height: Number(p.height),
-  //             };
-  //           }
-
-  //           if (p.customMetadata && p.customMetadata.cover) {
-  //             galleries[categoryKey].type = p.type;
-  //             galleries[categoryKey].url = p.url;
-  //             galleries[categoryKey].thumbnail = p.thumbnail;
-  //             galleries[categoryKey].fileType = p.fileType;
-  //             galleries[categoryKey].filePath = p.filePath;
-  //           }
-  //         }
-  //       });
-
-  //       return photoAr && photoAr[1] && galleries[photoAr[1]] ? galleries[photoAr[1]] : null;
-  //     }
-  //   }
-  //   return undefined;
-  // }, [photos, params.id]);
+  }, [galleryType, ps.length, galleries, projectId, dispatch]);
 
   const images = useMemo(() => {
     return PhotoUtils(ps?.filter((p: IPhoto) => p.audioCodec !== 'aac'))

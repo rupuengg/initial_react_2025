@@ -15,13 +15,8 @@ import { IApplicationState } from 'store';
 import { CustomSlider, Enquiry, OfferItem } from 'components';
 
 export const Home = () => {
-  const { banners, featureGallery, galleries, offers, testimonial } = useSelector((state: IApplicationState) => state.global);
+  const { banners, galleries, offers, testimonial } = useSelector((state: IApplicationState) => state.global);
   const navigate = useNavigate();
-
-  const images = useMemo(() => {
-    // if (featureGallery) return { src: featureGallery.url || '', width: featureGallery.width, height: featureGallery.height } as Photo;
-    return null;
-  }, [featureGallery]);
 
   const projects = useMemo(() => galleries.map(g => ({ src: g.url || '', width: g.width, height: g.height, url: g.url || '' }) as Photo), [galleries]);
 
@@ -163,7 +158,6 @@ export const Home = () => {
         <div className='our_work_may_impress marginTop100'>
           <RowsPhotoAlbum photos={projects} targetRowHeight={400} onClick={handleClick} />
           <h2 className='header2'>our works may impress you</h2>
-          {images && <RowsPhotoAlbum photos={[images]} targetRowHeight={400} onClick={handleClick} />}
 
           <div className='box marginTop50'>
             <div className='column'>

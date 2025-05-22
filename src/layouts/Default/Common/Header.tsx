@@ -26,7 +26,7 @@ export const Header = () => {
         return aId > bId ? 1 : aId < bId ? -1 : 0;
       });
     return m;
-  }, []);
+  }, [mainMenuGroup]);
 
   useEffect(() => {
     const scrollCallback = (e: any) => {

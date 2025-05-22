@@ -16,4 +16,6 @@ export const defaultEntityStatusDataEntity: IEntityStatusDataEntity = {
   sidebarNavigation: E_Data_Load_Status.NOT_YET_STARTED,
   getAllGalleries: E_Data_Load_Status.NOT_YET_STARTED,
   allPhotos: E_Data_Load_Status.NOT_YET_STARTED,
+  testimonial: E_Data_Load_Status.NOT_YET_STARTED,
+  offers: E_Data_Load_Status.NOT_YET_STARTED,
 };
