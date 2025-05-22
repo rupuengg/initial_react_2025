@@ -27,8 +27,8 @@ export const CustomBlog: React.FC<ICustomBlog> = ({ isShowSingle = false }) => {
   }, [params.id, blogs]);
 
   useEffect(() => {
-    if (startRef.current.mainNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, mainNavigation: E_Data_Load_Status.PENDING };
+    if (startRef.current.blogs === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, blogs: E_Data_Load_Status.PENDING };
       dispatch(getBlogList(DataApiPath.blogs.toString()));
     }
   }, [dispatch]);

@@ -1,15 +1,28 @@
 import { DefaultLayout } from 'layouts';
+import { defaultEntityStatusDataEntity } from 'mock';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import { useSelector } from 'react-redux';
-import { IApplicationState } from 'store';
+import { IEntityStatusDataEntity } from 'entities';
+import { E_Data_Load_Status } from 'enums';
+import { IApplicationState, IUseDispatch, getJsonAllPhotos, useAppDispatch } from 'store';
 
 export const Gallery = () => {
   const { photos } = useSelector((state: IApplicationState) => state.global);
+  const dispatch: IUseDispatch = useAppDispatch();
+  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const [index, setIndex] = useState(-1);
+
+  useEffect(() => {
+    if (startRef.current.allPhotos === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, allPhotos: E_Data_Load_Status.PENDING };
+      // dispatch(getAllPhotos());
+      dispatch(getJsonAllPhotos());
+    }
+  }, [dispatch]);
 
   const images = useMemo(() => {
     return photos.map(g => {

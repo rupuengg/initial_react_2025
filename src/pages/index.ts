@@ -1,6 +1,7 @@
 import React from 'react';
 import { About } from './About';
 import { Contact } from './Contact';
+import { CustomBlog } from './CustomBlog';
 import { Faq } from './Faq';
 import { Gallery } from './Gallery';
 import { Home } from './Home';
@@ -24,4 +25,5 @@ export const pageMapper: IPageMapper = {
   Gallery: React.createElement(Gallery),
   Contact: React.createElement(Contact),
   Faq: React.createElement(Faq),
+  CustomBlog: React.createElement(CustomBlog),
 };

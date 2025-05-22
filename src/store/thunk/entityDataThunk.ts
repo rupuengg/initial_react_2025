@@ -26,8 +26,8 @@ export const getDataByKey = createAsyncThunk(`entityDataSlice/getDataByKey`, asy
 export const saveData = createAsyncThunk(`entityDataSlice/saveData`, async (dataParams: IEntityDataParams<CommonEntity>, thunkApi) => {
   if (!dataParams.data) throw new Error('Error while converting');
   dataParams.result = await EntityDataApi.post(domainMapper[dataParams.path], dataParams.endpoint, dataParams.data);
+  thunkApi.dispatch(GlobalActions.submitContactForm());
   if (dataParams.result && !Array.isArray(dataParams.result) && dataParams.result && typeof dataParams.result !== 'string') {
-    thunkApi.dispatch(GlobalActions.submitContactForm());
     thunkApi.dispatch(
       GlobalActions.showNotification({
         notificationType: E_Notification_Type.SUCCESS,

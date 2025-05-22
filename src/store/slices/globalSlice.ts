@@ -14,10 +14,8 @@ import {
   getGalleryPhotos,
   getJsonAllGallery,
   getJsonAllPhotos,
-  getMainNavination,
   getMenuGroup,
   getOffers,
-  getSidebarNavination,
   getTestimonial,
 } from 'store/thunk';
 
@@ -109,12 +107,6 @@ export const globalSlice = createSlice({
       draft.notification.notificationType = E_Notification_Type.ALERT;
       draft.notification.notificationMessage = '';
     },
-    setMainNavigation(draft: IGlobalState, action: PayloadAction<INavigation[]>) {
-      draft.navigation = action.payload.filter(item => item.isParent === 1).map(item => ({ ...item, subMenus: item.items ? JSON.parse(item.items) : null }));
-    },
-    setSidebarNavigation(draft: IGlobalState, action: PayloadAction<INavigation[]>) {
-      draft.sidebarNavigations = action.payload.filter(item => item.isParent === 1).map(item => ({ ...item, subMenus: item.items ? JSON.parse(item.items) : null }));
-    },
     setMenugroup(draft: IGlobalState, action: PayloadAction<{ menuGroupType: E_Menu_Type; result: IMenuGroupEntity }>) {
       const cb = (group: IMenuGroupEntity) => {
         const menus = group.menus || [];
@@ -178,12 +170,6 @@ export const globalSlice = createSlice({
       })
       .addCase(getFeaturedGallery.fulfilled, (draft: IGlobalState, action: PayloadAction<IGallery>) => {
         globalSlice.caseReducers.setFeaturedGallery(draft, action);
-      })
-      .addCase(getMainNavination.fulfilled, (draft: IGlobalState, action: PayloadAction<INavigation[]>) => {
-        globalSlice.caseReducers.setMainNavigation(draft, action);
-      })
-      .addCase(getSidebarNavination.fulfilled, (draft: IGlobalState, action: PayloadAction<INavigation[]>) => {
-        globalSlice.caseReducers.setSidebarNavigation(draft, action);
       })
       .addCase(getMenuGroup.fulfilled, (draft: IGlobalState, action: PayloadAction<{ menuGroupType: E_Menu_Type; result: IMenuGroupEntity }>) => {
         globalSlice.caseReducers.setMenugroup(draft, action);

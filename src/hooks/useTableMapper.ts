@@ -27,7 +27,7 @@ export const useTableMapper = (entrypoint: string | undefined) => {
       setEntityForm(mapperRef.current.getForm());
       setDefaultEntity(mapperRef.current.getDefaultEntity());
     }
-  }, [entrypoint, anaInfo]);
+  }, [entrypoint /*, anaInfo*/]);
 
   return { mapper, columnSetting, entityForm, defaultEntity };
 };

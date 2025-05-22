@@ -5,18 +5,36 @@ import living_area from 'assets/images/why_choose/living_area.jpg';
 import our_work_living_room from 'assets/images/why_choose/our_work_living_room.jpg';
 import { IKImage } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
-import { useCallback, useMemo } from 'react';
+import { defaultEntityStatusDataEntity } from 'mock';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Photo, RowsPhotoAlbum } from 'react-photo-album';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { ITestimonialEntity } from 'entities';
-import { IApplicationState } from 'store';
+import { IEntityStatusDataEntity, ITestimonialEntity } from 'entities';
+import { E_Data_Load_Status } from 'enums';
+import { IApplicationState, IUseDispatch, getOffers, getTestimonial, useAppDispatch } from 'store';
 import { CustomSlider, Enquiry, OfferItem } from 'components';
 
 export const Home = () => {
   const { banners, galleries, offers, testimonial } = useSelector((state: IApplicationState) => state.global);
+  const dispatch: IUseDispatch = useAppDispatch();
+  const startRef = useRef<IEntityStatusDataEntity>(defaultEntityStatusDataEntity);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (startRef.current.testimonial === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, testimonial: E_Data_Load_Status.PENDING };
+      dispatch(getTestimonial());
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (startRef.current.offers === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, offers: E_Data_Load_Status.PENDING };
+      dispatch(getOffers());
+    }
+  }, [dispatch]);
 
   const projects = useMemo(() => galleries.map(g => ({ src: g.url || '', width: g.width, height: g.height, url: g.url || '' }) as Photo), [galleries]);
 

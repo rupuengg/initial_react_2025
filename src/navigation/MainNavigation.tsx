@@ -6,7 +6,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { IEntityStatusDataEntity, INavigation } from 'entities';
 import { E_Data_Load_Status, E_Menu_Type } from 'enums';
 import { PhotoUtils } from 'utils';
-import { IApplicationState, IUseDispatch, getJsonAllGallery, getJsonAllPhotos, getMenuGroup, getOffers, getTestimonial, useAppDispatch } from 'store';
+import { IApplicationState, IUseDispatch, getMenuGroup, useAppDispatch } from 'store';
 import { Login, PrivateRoute } from 'components';
 
 export const MainNavigation = () => {
@@ -31,40 +31,9 @@ export const MainNavigation = () => {
   }, [isAdminBoard, dispatch]);
 
   useEffect(() => {
-    if (!isAdminBoard && startRef.current.testimonial === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, testimonial: E_Data_Load_Status.PENDING };
-      dispatch(getTestimonial());
-    }
-  }, [isAdminBoard, dispatch]);
-
-  useEffect(() => {
-    if (!isAdminBoard && startRef.current.offers === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, offers: E_Data_Load_Status.PENDING };
-      dispatch(getOffers());
-    }
-  }, [isAdminBoard, dispatch]);
-
-  useEffect(() => {
-    if (!isAdminBoard && startRef.current.getAllGalleries === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, getAllGalleries: E_Data_Load_Status.PENDING };
-      // dispatch(getAllGallery());
-      dispatch(getJsonAllGallery());
-    }
-  }, [isAdminBoard, dispatch]);
-
-  useEffect(() => {
-    if (!isAdminBoard && startRef.current.allPhotos === E_Data_Load_Status.NOT_YET_STARTED) {
-      startRef.current = { ...startRef.current, allPhotos: E_Data_Load_Status.PENDING };
-      // dispatch(getAllPhotos());
-      dispatch(getJsonAllPhotos());
-    }
-  }, [isAdminBoard, dispatch]);
-
-  useEffect(() => {
     if (isAdminBoard && startRef.current.sidebarNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.PENDING };
       dispatch(getMenuGroup(E_Menu_Type.ADMIN_MENU));
-      // dispatch(getSidebarNavination(DataApiPath.sidebarNavigation.toString()));
     }
   }, [isAdminBoard, dispatch]);
 
@@ -84,7 +53,6 @@ export const MainNavigation = () => {
         {allProjects.map(p => (
           <Route key={p} path={'/project_done_by_us/' + p} element={<ProjectPhoto projectId={p} />} />
         ))}
-        {/* <Route path={'/project_done_by_us/:id'} element={<ProjectPhoto />} /> */}
         <Route key='login' path={'/admin/login'} element={<Login />} />
         <Route path={'/admin/*'} element={<PrivateRoute />} />
         <Route path='*' element={<NotFound />} />
