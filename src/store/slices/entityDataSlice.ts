@@ -105,6 +105,13 @@ export const entityDataSlice = createSlice({
       if (action.payload.entrypoint) draft.items[action.payload.entrypoint].dataSaveStatus = undefined;
     },
     setDropDownOptions(draft: IEntityDataState, action: PayloadAction<{ entrypoint: string | undefined; fieldName: string; options: IOptions[] }>) {
+      if (action.payload.entrypoint && !draft.items[action.payload.entrypoint]) {
+        draft.items = {
+          ...draft.items,
+          [action.payload.entrypoint]: { ...defaultDataState },
+        };
+      }
+
       if (action.payload.entrypoint) {
         draft.items[action.payload.entrypoint].dp = {
           ...draft.items[action.payload.entrypoint].dp,

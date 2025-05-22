@@ -16,6 +16,15 @@ export const FieldText: React.FC<IFieldText> = ({ fieldName, fieldType, fieldVal
   if (!fieldValue) return null;
 
   if (fieldValue && fieldType === E_FieldType.EDITOR) return <div className='form-preview' dangerouslySetInnerHTML={{ __html: fieldValue }} />;
+  if (fieldValue && (fieldType === E_FieldType.DROPDOWN_ONE_SELECT || fieldType === E_FieldType.DROPDOWN_MULTI_SELECT))
+    return (
+      <div className='form-preview'>
+        <pre>
+          <code>{fieldValue}</code>
+        </pre>
+      </div>
+    );
+
   return (
     <p key={`text-${fieldName}`} className='text'>
       {fieldValue}

@@ -122,7 +122,8 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
 
   // Map item with form
   const form = useMemo(() => {
-    if (item && entityForm) return mapFormWithValues(entityForm, item);
+    // if (item && entityForm) return mapFormWithValues(entityForm, item);
+    if (entityForm) return entityForm;
     return null;
   }, [item, entityForm]);
 

@@ -1,16 +1,16 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
-import { ContactInfoEntityForm, IBaseForm, SiteConfigEntityForm } from 'forms';
+import { ContactInfoEntityForm, IBaseForm, MenuGroupEntityForm, SiteConfigEntityForm } from 'forms';
 import { JobSeekerEntityForm, MenuEntityForm } from 'forms';
 import { BlogEntityForm } from 'forms/BlogEntityForm';
 import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultSiteConfigEntity } from 'mock';
 import { defaultBlog } from 'mock/defaultBlog';
-import { getBlogColumnSetting, getContactInfoColumnSetting, getJobSeekerColumnSetting, getMenuColumnSetting, getSiteConfigColumnSetting } from 'constant';
+import { defaultMenuGroup } from 'mock/defaultMenuGroup';
+import { getBlogColumnSetting, getContactInfoColumnSetting, getJobSeekerColumnSetting, getMenuColumnSetting, getMenuGroupColumnSetting, getSiteConfigColumnSetting } from 'constant';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
 import { ANAInfoModel, CommonEntity } from 'entities';
 import { E_Mapping_Data } from 'enums';
 import { isPermissionExist } from 'utils';
 import { DataApiPath, IEndpoint, defaultEndpoint, defaultEntityDataParams } from 'store';
-import { mapFormWithValues } from 'components';
 
 export function getEndpoint(uri?: string | IEndpoint): IEndpoint {
   const version = ''; //path === 'raas' ? '' : '/v1/';
@@ -63,6 +63,8 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
       return getCondition(getJobSeekerColumnSetting, Permission.CHASSIS_TYPE, JobSeekerEntityForm, defaultJobSeeker);
     case 'menu':
       return getCondition(getMenuColumnSetting, Permission.CHASSIS_TYPE, MenuEntityForm, defaultMenu);
+    case 'menu_group':
+      return getCondition(getMenuGroupColumnSetting, Permission.CHASSIS_TYPE, MenuGroupEntityForm, defaultMenuGroup);
     default:
       return getCondition(() => [], Permission.LOGIN);
   }
@@ -127,7 +129,8 @@ export class Mapper {
     this.setEndpoint();
     this.permission = getMappingData(E_Mapping_Data.PERMISSION, this.entrypoint) as Permission;
     this.defaultEntity = getMappingData(E_Mapping_Data.DEFAULT_ENTITY, this.entrypoint) as unknown as CommonEntity;
-    this.form = mapFormWithValues(getMappingData(E_Mapping_Data.FORM, this.entrypoint) as IBaseForm[], this.defaultEntity);
+    // this.form = mapFormWithValues(getMappingData(E_Mapping_Data.FORM, this.entrypoint) as IBaseForm[], this.defaultEntity);
+    this.form = getMappingData(E_Mapping_Data.FORM, this.entrypoint) as IBaseForm[];
     this.setAnaInfoPermission();
 
     const { entrypoint, endpoint, permission } = this;

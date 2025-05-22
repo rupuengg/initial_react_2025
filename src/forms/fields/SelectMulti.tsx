@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { IOptions } from 'store';
 
 export interface ISelectMulti {
@@ -14,6 +14,11 @@ export interface ISelectMulti {
 }
 
 export const SelectMulti: React.FC<ISelectMulti> = ({ fieldLabel, fieldName, fieldValue, isRequired, options = [], onChange }) => {
+  const values = useMemo(() => {
+    if (fieldValue && Array.isArray(fieldValue) && fieldValue.length > 0) return fieldValue?.map((v: any) => (typeof v === 'object' ? v.id.toString() : v.toString()));
+    else return fieldValue;
+  }, [fieldValue]);
+
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       const values: string[] = [];
@@ -39,9 +44,9 @@ export const SelectMulti: React.FC<ISelectMulti> = ({ fieldLabel, fieldName, fie
         {isRequired ? <sup>*</sup> : null}
       </label>
       <div className='field-box'>
-        <select name={fieldName} value={fieldValue || []} multiple onChange={handleChange}>
+        <select name={fieldName} value={values || []} multiple onChange={handleChange}>
           <option>Select</option>
-          {options?.map(option => <option key={option.value} {...(fieldValue && fieldValue.includes(option.value || '') ? { selected: true } : {})} value={option.value} label={option.label} />)}
+          {options?.map(option => <option key={option.value} value={option.value} label={option.label} />)}
         </select>
       </div>
     </div>

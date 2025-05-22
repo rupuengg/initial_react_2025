@@ -7,4 +7,5 @@ export enum E_Page_Mappper {
   PROJECT = 'Project',
   PROJECT_PHOTO = 'ProjectPhoto',
   SERVICES = 'Services',
+  CUSTOM_BLOG = 'CustomBlog',
 }

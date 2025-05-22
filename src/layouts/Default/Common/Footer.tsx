@@ -1,6 +1,6 @@
-// import logoNoBackground from '../../assets/images/logo/logoNoBackground.png';
 import { faMailReply, faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
@@ -11,7 +11,20 @@ import { Icon, SocialMedia } from 'components';
 import { LogoSvg } from 'components/Logo/LogoSvg';
 
 export const Footer = () => {
-  const { navigation } = useSelector((state: IApplicationState) => state.global);
+  const { mainMenuGroup } = useSelector((state: IApplicationState) => state.global);
+
+  const mainMenus = useMemo(() => {
+    let m: INavigation[] = [];
+    if (mainMenuGroup && mainMenuGroup.menus) m = [...mainMenuGroup.menus];
+
+    if (m.length > 0)
+      m.sort((a: INavigation, b: INavigation) => {
+        const aId = a.id ? a.id : 0;
+        const bId = b.id ? b.id : 0;
+        return aId > bId ? 1 : aId < bId ? -1 : 0;
+      });
+    return m;
+  }, []);
 
   const makeMenu = (items: INavigation[], parentIndex: number = 0) => {
     return items.map((item, index) => (
@@ -59,7 +72,7 @@ export const Footer = () => {
             <SocialMedia />
           </li>
           <li className='sitemap'>
-            <ul className='nav-sitemap'>{makeMenu(navigation, 0)}</ul>
+            <ul className='nav-sitemap'>{makeMenu(mainMenus, 0)}</ul>
           </li>
           <li className='copy'>Copyright &copy; 2021 panacheworld.in. All right reserved</li>
         </ul>

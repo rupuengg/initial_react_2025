@@ -1,7 +1,7 @@
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
@@ -11,9 +11,22 @@ import { Logo } from 'components';
 import { Topper } from './Topper';
 
 export const Header = () => {
-  const { navigation } = useSelector((state: IApplicationState) => state.global);
+  const { mainMenuGroup } = useSelector((state: IApplicationState) => state.global);
   const [isShowSubMenu, setIsShowSubMenu] = useState(false);
   const [isFixedHeader, setIsFixedHeader] = useState(false);
+
+  const mainMenus = useMemo(() => {
+    let m: INavigation[] = [];
+    if (mainMenuGroup && mainMenuGroup.menus) m = [...mainMenuGroup.menus];
+
+    if (m.length > 0)
+      m.sort((a: INavigation, b: INavigation) => {
+        const aId = a.id ? a.id : 0;
+        const bId = b.id ? b.id : 0;
+        return aId > bId ? 1 : aId < bId ? -1 : 0;
+      });
+    return m;
+  }, []);
 
   useEffect(() => {
     const scrollCallback = (e: any) => {
@@ -63,7 +76,7 @@ export const Header = () => {
                       <FontAwesomeIcon icon={isShowSubMenu ? faTimesCircle : faList} />
                     </button>
                   </div>
-                  <ul className={`navigation${isShowSubMenu ? ' open' : ''}`}>{makeMenu(navigation, 0)}</ul>
+                  <ul className={`navigation${isShowSubMenu ? ' open' : ''}`}>{makeMenu(mainMenus, 0)}</ul>
                 </nav>
               </div>
             </div>

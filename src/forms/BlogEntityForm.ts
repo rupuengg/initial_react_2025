@@ -22,6 +22,18 @@ export const BlogEntityForm: IBaseForm[] = [
         fields: [
           {
             type: E_Form_Type.FIELD,
+            fieldType: E_FieldType.TEXT,
+            fieldName: 'route',
+            fieldLabel: 'Route',
+            isRequired: true,
+          },
+        ],
+      },
+      {
+        type: E_Form_Type.ROW,
+        fields: [
+          {
+            type: E_Form_Type.FIELD,
             fieldType: E_FieldType.EDITOR,
             fieldName: 'description',
             fieldLabel: 'Description',

@@ -1,16 +1,19 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IGallery, INavigation, IPhoto } from 'entities';
-import { E_Notification_Type } from 'enums';
+import { IBlogEntity, IGallery, INavigation, IPhoto } from 'entities';
+import { IMenuGroupEntity } from 'entities';
+import { E_Menu_Type, E_Notification_Type } from 'enums';
 import { IGlobalState, defaultGlobalState } from 'store/states';
 import {
   getAllDonePhotos,
   getAllGallery,
   getAllPhotos,
   getAllUnderConstructionPhotos,
+  getBlogList,
   getFeaturedGallery,
   getGalleryAllPhotos,
   getGalleryPhotos,
   getMainNavination,
+  getMenuGroup,
   getSidebarNavination,
 } from 'store/thunk';
 
@@ -102,6 +105,19 @@ export const globalSlice = createSlice({
     setSidebarNavigation(draft: IGlobalState, action: PayloadAction<INavigation[]>) {
       draft.sidebarNavigations = action.payload.filter(item => item.isParent === 1).map(item => ({ ...item, subMenus: item.items ? JSON.parse(item.items) : null }));
     },
+    setMenugroup(draft: IGlobalState, action: PayloadAction<{ menuGroupType: E_Menu_Type; result: IMenuGroupEntity }>) {
+      const cb = (group: IMenuGroupEntity) => {
+        const menus = group.menus || [];
+        const newGroup: IMenuGroupEntity = {
+          ...group,
+          menus: [...menus.filter(item => item.isParent === 1).map(item => ({ ...item, subMenus: item.items ? JSON.parse(item.items) : null }))],
+        };
+        return newGroup;
+      };
+
+      if (action.payload.menuGroupType === E_Menu_Type.MAIN_MENU) draft.mainMenuGroup = cb(action.payload.result);
+      if (action.payload.menuGroupType === E_Menu_Type.ADMIN_MENU) draft.adminMenuGroup = cb(action.payload.result);
+    },
     setGalleryAllPhotos(draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) {
       draft.projects = {
         ...draft.projects,
@@ -129,6 +145,9 @@ export const globalSlice = createSlice({
         },
       };
     },
+    setBlogs(draft: IGlobalState, action: PayloadAction<IBlogEntity[]>) {
+      draft.blogs = action.payload;
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder
@@ -150,6 +169,9 @@ export const globalSlice = createSlice({
       .addCase(getSidebarNavination.fulfilled, (draft: IGlobalState, action: PayloadAction<INavigation[]>) => {
         globalSlice.caseReducers.setSidebarNavigation(draft, action);
       })
+      .addCase(getMenuGroup.fulfilled, (draft: IGlobalState, action: PayloadAction<{ menuGroupType: E_Menu_Type; result: IMenuGroupEntity }>) => {
+        globalSlice.caseReducers.setMenugroup(draft, action);
+      })
       .addCase(getGalleryAllPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) => {
         globalSlice.caseReducers.setGalleryAllPhotos(draft, action);
       })
@@ -158,6 +180,9 @@ export const globalSlice = createSlice({
       })
       .addCase(getAllUnderConstructionPhotos.fulfilled, (draft: IGlobalState, action: PayloadAction<{ galleryId: string; photos: IPhoto[] }>) => {
         globalSlice.caseReducers.setGalleryUnderConstructionPhotos(draft, action);
+      })
+      .addCase(getBlogList.fulfilled, (draft: IGlobalState, action: PayloadAction<IBlogEntity[]>) => {
+        globalSlice.caseReducers.setBlogs(draft, action);
       });
   },
 });

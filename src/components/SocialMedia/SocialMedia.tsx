@@ -13,7 +13,7 @@ export const SocialMedia = () => {
 
   return (
     <div className='social-media'>
-      <Link to={'https://www.facebook.com/profile.php?id=61576137862517'} onClick={handleOpen}>
+      <Link to={'https://www.facebook.com/people/PanacheWorld-Interior/61576137862517/'} onClick={handleOpen}>
         <Icon iconName={E_Icon_Name.FACEBOOK} />
       </Link>
       <Link to={'https://x.com/Panachew0rld'} onClick={handleOpen}>

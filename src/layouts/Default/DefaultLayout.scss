@@ -227,6 +227,44 @@
     }
   }
 
+  .blog-preview {
+    display: block;
+    width: 100%;
+    & > .inner {
+      display: flex;
+      flex-direction: column;
+
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      & h1,
+      & h2 {
+        line-height: 1.6;
+      }
+
+      & h2 {
+        cursor: pointer;
+        text-align: left;
+      }
+    }
+
+    & .header {
+      display: flex;
+      flex-direction: row;
+
+      & a {
+        font-size: 14px;
+        color: #bb8f71;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+  }
+
   .testimonial {
     display: flex;
     flex-direction: column;

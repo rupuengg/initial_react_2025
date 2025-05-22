@@ -6,7 +6,7 @@ import { NavigationUtils } from 'utils';
 import { GlobalActions, IApplicationState, IUseDispatch, useAppDispatch } from 'store';
 
 export const Sidebar = () => {
-  const { sidebarNavigations } = useSelector((state: IApplicationState) => state.global);
+  const { adminMenuGroup } = useSelector((state: IApplicationState) => state.global);
   const dispatch: IUseDispatch = useAppDispatch();
   const { uriPath, uriEntrypoint } = useEntrypoint();
 
@@ -39,10 +39,10 @@ export const Sidebar = () => {
         }
       };
 
-      const result = searchMenu(sidebarNavigations || []);
+      const result = searchMenu(adminMenuGroup?.menus || []);
       if (result) whenMfeOpen({ ...result });
     }
-  }, [sidebarNavigations, uriPath, uriEntrypoint, whenMfeOpen]);
+  }, [adminMenuGroup?.menus, uriPath, uriEntrypoint, whenMfeOpen]);
 
-  return <ul className='sidebar-menu'>{NavigationUtils().makeMenu(sidebarNavigations, 0)}</ul>;
+  return <ul className='sidebar-menu'>{NavigationUtils().makeMenu(adminMenuGroup?.menus || [], 0)}</ul>;
 };

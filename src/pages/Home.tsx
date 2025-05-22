@@ -26,7 +26,7 @@ export const Home = () => {
   const projects = useMemo(() => galleries.map(g => ({ src: g.url || '', width: g.width, height: g.height, url: g.url || '' }) as Photo), [galleries]);
 
   const handleClick = useCallback(() => {
-    navigate('/projects/043_110_aditya_dhurav_apartment_delhi_done');
+    navigate('/project_done_by_us/043_110_aditya_dhurav_apartment_delhi_done');
   }, [navigate]);
 
   return (
@@ -40,11 +40,21 @@ export const Home = () => {
         <div className='offer_to_client marginTop100'>
           <div className='inner'>
             <div className='above_box'>
+              <h1 className='header1'>Best Interior Designer In Noida</h1>
+              <p className='para'>
+                PanacheWorld is a one-stop solution for all your interior design needs in Noida. We are a highly appreciated group of exceptional interior designers in Noida, dedicated to providing
+                interior design services in Noida, Greater Noida, and Ghaziabad. Our expert designers are renowned for their ability to create stunning designs and layouts that seamlessly align with
+                your lifestyle.
+              </p>
+              <p className='para'>
+                PanacheWorld Designs has consistently delivered exceptional interior design. Whether you require design solutions for residential, office, commercial, or luxury spaces, interior
+                designers in Noida are here to fulfil your requirements. Look no further, as you have found the most reliable interior design firm in Noida with us.
+              </p>
               <h2 id='/home' className='header2'>
                 what we offer to our clients
               </h2>
               <p className='para'>
-                We offers custom interiors, <br />
+                We offers custom interiors in Noida, <br />
                 space planning, styling, sustainable design, <br />
                 and expert consultations.
               </p>
@@ -268,6 +278,22 @@ export const Home = () => {
                   </div>
                 </div>
               ))}
+          </div>
+        </div>
+      </div>
+      {/* End */}
+
+      {/* We Offer to Client Section */}
+      <div className='siteCssWidth1200'>
+        <div className='offer_to_client marginTop50'>
+          <div className='inner'>
+            <div className='above_box'>
+              <h1 className='header1'>WE OFFER THE BEST SOLUTIONS</h1>
+              <p className='para'>
+                Our dedication towards our work and the trust of our esteemed clients have pushed us among the top interior designers in Noida, Ghaziabad, and Greater Noida. Here are some of the
+                examples showing our great business relationship with the clients who have acquired our brilliant interior designing.
+              </p>
+            </div>
           </div>
         </div>
       </div>

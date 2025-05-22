@@ -35,7 +35,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
     }
   }, []);
 
-  const getOptions = useCallback((main: { [x: string]: IOptions[] }, row: IBaseForm): IOptions[] => {
+  const getOptions = useCallback((main: { [x: string]: IOptions[] } | undefined, row: IBaseForm): IOptions[] => {
     if (main && row.fieldName && main[row.fieldName]) return main[row.fieldName];
     else if (row.options) return row.options;
     return [];
@@ -59,13 +59,13 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
           case E_FieldType.EDITOR:
             return React.createElement(TextEditor, { ...row, fieldValue: value, onChange });
           case E_FieldType.DROPDOWN_ONE_SELECT:
-            return React.createElement(SelectBox, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
+            return React.createElement(SelectBox, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.DROPDOWN_MULTI_SELECT:
-            return React.createElement(SelectMulti, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
+            return React.createElement(SelectMulti, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.LEFT_TO_RIGHT:
-            return React.createElement(LeftToRightSelection, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
+            return React.createElement(LeftToRightSelection, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.RADIO:
-            return React.createElement(RadioBox, { ...row, fieldValue: value, options: getOptions(dp || {}, row), onChange });
+            return React.createElement(RadioBox, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.URL_CAPTURE:
             return React.createElement(ImageUrl, { ...row, fieldValue: value, onChange });
           case E_FieldType.TAG:
@@ -75,7 +75,7 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
         }
       }
     },
-    [entity, isReadable, getOptions, dp, onChange, dropdownCallback, dropdownUpdater]
+    [dp, entity, isReadable, getOptions, onChange, dropdownCallback, dropdownUpdater]
   );
 
   const getColOrRow = useCallback(

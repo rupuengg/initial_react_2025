@@ -11,6 +11,11 @@ export function getBlogColumnSetting(anaInfo?: any): (ColDef<IBlogEntity> | ColG
       width: 100,
     },
     {
+      field: 'route',
+      headerName: 'Route',
+      width: 100,
+    },
+    {
       field: 'isShow',
       headerName: 'Show',
       cellDataType: E_Renderer_Type.TICK,

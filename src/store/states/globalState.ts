@@ -7,7 +7,8 @@ import banner5 from '../../assets/images/banner/banner5.jpg';
 import offerData from 'json/offers.json';
 // import photos from 'json/photos.json';
 import testimonialData from 'json/testimonial.json';
-import { IBanner, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
+import { IBanner, IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
+import { IMenuGroupEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
 
 const banners = [
@@ -78,6 +79,9 @@ export interface IGlobalState {
   gallery?: IGallery;
   featureGallery?: IGallery;
   banners: IBanner[];
+  blogs?: IBlogEntity[];
+  mainMenuGroup?: IMenuGroupEntity;
+  adminMenuGroup?: IMenuGroupEntity;
   navigation: INavigation[];
   sidebarNavigations: INavigation[];
   offers: IOffer[];
