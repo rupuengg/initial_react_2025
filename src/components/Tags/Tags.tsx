@@ -18,7 +18,7 @@ export const Tags: React.FC<ITags> = ({ tags, onDelete }) => {
         if (onDelete) onDelete(newTags);
       }
     },
-    [tags]
+    [tags, onDelete]
   );
 
   if (!tags) return null;

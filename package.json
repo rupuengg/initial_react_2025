@@ -2,7 +2,7 @@
   "name": "initial_react_2025",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://panacheworld.in",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
@@ -44,7 +44,6 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.14.0",
-    "http-proxy-middleware": "^3.0.3",
     "husky": "^9.1.7",
     "prettier": "3.4.2",
     "typescript-eslint": "^8.20.0"

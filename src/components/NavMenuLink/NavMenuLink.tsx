@@ -38,7 +38,7 @@ export const NavMenuLink: React.FC<INavMenuLink> = ({ nav, parentIndex, currentI
         search: `?${searchParams.toString()}`,
       });
     },
-    [searchParams, navigate]
+    [searchParams, parentIndex, navigate]
   );
 
   return (

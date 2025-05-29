@@ -7,11 +7,10 @@ export const ApiPath = {
     GALLERY_ALLPHOTOS: 'gallery/{galleryId}',
     GALLERY_ONLY_DONE_PHOTOS: 'gallery/{galleryId}/completed',
     GALLERY_ONLY_UNDER_PHOTOS: 'gallery/{galleryId}/under',
-  },
-  METHOD: {
-    GET: 'get',
-    POST: 'post',
-    PUT: 'put',
-    DELETE: 'delete',
+    AUTH: {
+      LOGIN: 'user/enter',
+      LOGOUT: 'auth/logout',
+      PROFILE: 'user/profile',
+    },
   },
 };

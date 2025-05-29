@@ -125,7 +125,7 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
     // if (item && entityForm) return mapFormWithValues(entityForm, item);
     if (entityForm) return entityForm;
     return null;
-  }, [item, entityForm]);
+  }, [entityForm]);
 
   const handleChange = useCallback((fieldName: string, fieldValue: string | number | string[] | undefined | null, otherValue?: any) => {
     setItem((p: CommonEntity | undefined) => {

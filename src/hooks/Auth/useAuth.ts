@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { IUser } from 'entities';
 import { E_Is_Login } from 'enums';
-import { decryption } from 'utils';
+import { IUseDispatch, useAppDispatch } from 'store';
+import { tokenReference } from 'store/services/axios';
+import { authProfile } from 'store/thunk/authThunk';
 import { useToken } from './useToken';
 
 interface IAuth {
@@ -9,7 +11,8 @@ interface IAuth {
   isLogin: E_Is_Login;
 }
 
-export const useAuth = () => {
+export const useAuth = (profile: IUser | undefined) => {
+  const dispatch: IUseDispatch = useAppDispatch();
   const [auth, setAuth] = useState<IAuth>({ isLogin: E_Is_Login.CHECKING });
 
   const token = useToken();
@@ -22,14 +25,19 @@ export const useAuth = () => {
     //   })
     // );
     try {
-      const d = JSON.parse(decryption(token));
-      if (d) {
-        setAuth({ user: d, isLogin: E_Is_Login.LOGIN });
+      if (token) tokenReference.token = token;
+      // const d = JSON.parse(decryption(token));
+      if (token && profile) {
+        setAuth({ user: profile, isLogin: E_Is_Login.LOGIN });
+      } else if (token && !profile) {
+        dispatch(authProfile());
+      } else {
+        setAuth({ isLogin: E_Is_Login.NOT_LOGIN });
       }
     } catch {
       setAuth({ isLogin: E_Is_Login.NOT_LOGIN });
     }
-  }, [token]);
+  }, [token, profile, dispatch]);
 
   return auth;
 };

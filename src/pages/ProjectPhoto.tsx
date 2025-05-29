@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { IEntityStatusDataEntity, IPhoto } from 'entities';
 import { E_Data_Load_Status, E_Project_Gallery_Type } from 'enums';
 import { PhotoUtils } from 'utils';
-import { IApplicationState, IUseDispatch, getAllDonePhotos, getAllUnderConstructionPhotos, getGalleryAllPhotos, useAppDispatch } from 'store';
+import { IApplicationState, IUseDispatch, getAllDonePhotos, getAllUnderConstructionPhotos, getGalleryAllPhotos, getJsonAllGallery, useAppDispatch } from 'store';
 
 export interface IProjectPhoto {
   projectId: string;
@@ -27,6 +27,14 @@ export const ProjectPhoto: React.FC<IProjectPhoto> = ({ projectId }) => {
     // if (params.id && projects && projects[params.id] && projects[params.id].listAll) return projects[params.id].listAll;
     else return [];
   }, [galleryType, projects, projectId]);
+
+  useEffect(() => {
+    if (galleries.length === 0 && startRef.current.getAllGalleries === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, getAllGalleries: E_Data_Load_Status.PENDING };
+      // dispatch(getAllGallery());
+      dispatch(getJsonAllGallery());
+    }
+  }, [dispatch, galleries.length]);
 
   useEffect(() => {
     if (projectId && !startRef.current[projectId]) startRef.current[projectId] = E_Data_Load_Status.NOT_YET_STARTED;

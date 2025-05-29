@@ -11,6 +11,7 @@ export const axiosWithIntercepter = (baseURL: string | undefined) => {
   axiosInstance.interceptors.request.use(
     config => {
       // Modify the config object to include the token in the headers
+      // if (config.headers) config.headers['Access-Control-Allow-Origin'] = baseURL;
       if (config.headers && tokenReference.token) config.headers.Authorization = `Bearer ${tokenReference.token}`;
 
       if (config.url) config.url = encodeUrl(config.url);

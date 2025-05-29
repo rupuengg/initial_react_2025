@@ -3,7 +3,7 @@ import banner2 from '../../assets/images/banner/banner2.jpg';
 import banner3 from '../../assets/images/banner/banner3.jpg';
 import banner4 from '../../assets/images/banner/banner4.jpg';
 import banner5 from '../../assets/images/banner/banner5.jpg';
-import { IBanner, IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
+import { IBanner, IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity, IUser } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
 
@@ -69,6 +69,16 @@ export interface IProject {
   listOfUnderConstruction: IPhoto[];
 }
 
+export interface ILoginInput {
+  cw1: string;
+  cw2: string;
+}
+
+export interface IUserToken {
+  token: string;
+  user: IUser;
+}
+
 export interface IGlobalState {
   photos: IPhoto[];
   galleries: IGallery[];
@@ -95,6 +105,8 @@ export interface IGlobalState {
   mfeSupTitle?: any[];
   mainNavTitle?: string[];
   notification: INotificationState;
+
+  authProfile?: IUser;
 }
 
 export const defaultGlobalState: IGlobalState = {

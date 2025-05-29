@@ -1,18 +1,27 @@
-import { defaultUser } from 'mock';
 import { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { E_Is_Login } from 'enums';
 import { useAuth } from 'hooks';
-import { encryption } from 'utils';
+import { IApplicationState, IUseDispatch, useAppDispatch } from 'store';
+import { authLogin } from 'store/thunk/authThunk';
 import { Logo } from 'components/Logo';
 import './Login.scss';
 
 export const Login = () => {
+  const { authProfile } = useSelector((state: IApplicationState) => state.global);
+  const dispatch: IUseDispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();
-  const { isLogin } = useAuth();
+  const { isLogin } = useAuth(authProfile);
   const [username, setUsername] = useState<string>('admin');
   const [password, setPassword] = useState<string>('');
+
+  useEffect(() => {
+    if (authProfile) {
+      navigate('/admin/dashboard');
+    }
+  }, [authProfile, navigate]);
 
   useEffect(() => {
     if (isLogin === E_Is_Login.LOGIN) {
@@ -28,13 +37,9 @@ export const Login = () => {
   const handleLogin = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      if (username === 'admin' && password === 'rupendra') {
-        const token = encryption(JSON.stringify(defaultUser));
-        sessionStorage.setItem('token', token);
-        navigate('/admin/dashboard');
-      }
+      dispatch(authLogin({ cw1: username, cw2: password }));
     },
-    [username, password, navigate]
+    [username, password, navigate, dispatch]
   );
 
   return (

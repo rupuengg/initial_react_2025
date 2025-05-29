@@ -1,8 +1,9 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity } from 'entities';
+import { IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity, IUser } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Menu_Type, E_Notification_Type } from 'enums';
-import { IGlobalState, defaultGlobalState } from 'store/states';
+import { tokenReference } from 'store/services/axios';
+import { IGlobalState, IUserToken, defaultGlobalState } from 'store/states';
 import {
   getAllDonePhotos,
   getAllGallery,
@@ -18,6 +19,7 @@ import {
   getOffers,
   getTestimonial,
 } from 'store/thunk';
+import { authLogin, authLogout, authProfile } from 'store/thunk/authThunk';
 
 const findPath = (ob: any, key: any, value: any) => {
   const path: any = [];
@@ -150,6 +152,18 @@ export const globalSlice = createSlice({
     setBlogs(draft: IGlobalState, action: PayloadAction<IBlogEntity[]>) {
       draft.blogs = action.payload;
     },
+    setAuthLogin(draft: IGlobalState, action: PayloadAction<IUserToken>) {
+      sessionStorage.setItem('token', action.payload.token);
+      tokenReference.token = action.payload.token;
+      draft.authProfile = action.payload.user;
+    },
+    setAuthLogout(draft: IGlobalState) {
+      draft.authProfile = undefined;
+      tokenReference.token = undefined;
+    },
+    setAuthProfile(draft: IGlobalState, action: PayloadAction<IUser>) {
+      draft.authProfile = action.payload;
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder
@@ -191,6 +205,15 @@ export const globalSlice = createSlice({
       })
       .addCase(getOffers.fulfilled, (draft: IGlobalState, action: PayloadAction<IOffer[]>) => {
         globalSlice.caseReducers.setOffers(draft, action);
+      })
+      .addCase(authLogin.fulfilled, (draft: IGlobalState, action: PayloadAction<IUserToken>) => {
+        globalSlice.caseReducers.setAuthLogin(draft, action);
+      })
+      .addCase(authLogout.fulfilled, (draft: IGlobalState) => {
+        globalSlice.caseReducers.setAuthLogout(draft);
+      })
+      .addCase(authProfile.fulfilled, (draft: IGlobalState, action: PayloadAction<IUser>) => {
+        globalSlice.caseReducers.setAuthProfile(draft, action);
       });
   },
 });
