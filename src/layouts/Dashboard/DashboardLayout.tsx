@@ -25,8 +25,7 @@ export const DashboardLayout: React.FC<IDashboardLayout> = ({ children }) => {
   const auth = useAuth(updateProfile);
 
   useEffect(() => {
-    if (auth.isLogin === E_Is_Login.NOT_LOGIN && params['*'] === '') navigate('/admin/login');
-    if (auth.isLogin === E_Is_Login.NOT_LOGIN && params['*'] === 'dashboard') navigate('/admin/login');
+    if (auth.isLogin === E_Is_Login.NOT_LOGIN) navigate('/admin/login');
   }, [auth]);
 
   useEffect(() => {
