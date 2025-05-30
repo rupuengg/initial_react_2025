@@ -2,6 +2,7 @@ import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/to
 import { IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity, IUser } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Menu_Type, E_Notification_Type } from 'enums';
+import { SessionUtils } from 'utils';
 import { tokenReference } from 'store/services/axios';
 import { IGlobalState, IUserToken, defaultGlobalState } from 'store/states';
 import {
@@ -153,12 +154,23 @@ export const globalSlice = createSlice({
       draft.blogs = action.payload;
     },
     setAuthLogin(draft: IGlobalState, action: PayloadAction<IUserToken>) {
-      sessionStorage.setItem('token', action.payload.token);
-      tokenReference.token = action.payload.token;
-      draft.authProfile = action.payload.user;
+      if (action.payload.token) {
+        SessionUtils().saveToken(action.payload);
+        tokenReference.token = action.payload.token;
+      }
+      if (action.payload.user) draft.authProfile = action.payload.user;
+      if (action.payload.error) draft.loginError = action.payload.error;
+    },
+    setAuthLoginError(draft: IGlobalState, action: PayloadAction<IUserToken>) {
+      draft.loginError = action.payload.error;
+    },
+    setClearLoginError(draft: IGlobalState) {
+      draft.loginError = undefined;
     },
     setAuthLogout(draft: IGlobalState) {
+      SessionUtils().clearToken();
       draft.authProfile = undefined;
+      draft.loginError = undefined;
       tokenReference.token = undefined;
     },
     setAuthProfile(draft: IGlobalState, action: PayloadAction<IUser>) {

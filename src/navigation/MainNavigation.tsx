@@ -7,7 +7,7 @@ import { IEntityStatusDataEntity, INavigation } from 'entities';
 import { E_Data_Load_Status, E_Menu_Type } from 'enums';
 import { PhotoUtils } from 'utils';
 import { IApplicationState, IUseDispatch, getMenuGroup, useAppDispatch } from 'store';
-import { Login, PrivateRoute } from 'components';
+import { Login, PrivateRoute, Profile } from 'components';
 
 export const MainNavigation = () => {
   const { mainMenuGroup } = useSelector((state: IApplicationState) => state.global);
@@ -53,6 +53,7 @@ export const MainNavigation = () => {
         {allProjects.map(p => (
           <Route key={p} path={'/project_done_by_us/' + p} element={<ProjectPhoto projectId={p} />} />
         ))}
+        <Route key='profile' path={'/admin/profile'} element={<Profile />} />
         <Route key='login' path={'/admin/login'} element={<Login />} />
         <Route path={'/admin/*'} element={<PrivateRoute />} />
         <Route path='*' element={<NotFound />} />

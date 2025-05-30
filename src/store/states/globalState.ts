@@ -70,13 +70,14 @@ export interface IProject {
 }
 
 export interface ILoginInput {
-  cw1: string;
-  cw2: string;
+  username: string;
+  password: string;
 }
 
 export interface IUserToken {
-  token: string;
-  user: IUser;
+  token?: string;
+  user?: IUser;
+  error?: string;
 }
 
 export interface IGlobalState {
@@ -107,6 +108,7 @@ export interface IGlobalState {
   notification: INotificationState;
 
   authProfile?: IUser;
+  loginError?: string;
 }
 
 export const defaultGlobalState: IGlobalState = {

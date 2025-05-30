@@ -1,9 +1,10 @@
 // import { useEffect, useState } from 'react';
+import { SessionUtils } from 'utils';
 
 export const useToken = () => {
   // const [token, setToken] = useState<string | null>(null);
 
-  const token = sessionStorage.getItem('token');
+  const token = SessionUtils().getToken();
   // useEffect(() => {
   //   const t = sessionStorage.getItem('token');
 

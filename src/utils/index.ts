@@ -6,4 +6,5 @@ export * from './isDevelopmentEnv';
 export * from './navigationUtils';
 export * from './permissionUtils';
 export * from './photoUtils';
+export * from './sessionUtils';
 export * from './urlUtils';

@@ -8,9 +8,9 @@ export const ApiPath = {
     GALLERY_ONLY_DONE_PHOTOS: 'gallery/{galleryId}/completed',
     GALLERY_ONLY_UNDER_PHOTOS: 'gallery/{galleryId}/under',
     AUTH: {
-      LOGIN: 'user/enter',
+      LOGIN: 'auth/login',
       LOGOUT: 'auth/logout',
-      PROFILE: 'user/profile',
+      PROFILE: 'auth/profile',
     },
   },
 };

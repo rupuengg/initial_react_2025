@@ -4,6 +4,7 @@ export * from './FieldText';
 export * from './ImageUrl';
 export * from './LeftToRightSelection';
 export * from './RadioBox';
+export * from './ReadOnlyField';
 export * from './SelectBox';
 export * from './SelectMulti';
 export * from './TagBox';
