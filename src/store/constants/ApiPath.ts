@@ -12,5 +12,6 @@ export const ApiPath = {
       LOGOUT: 'auth/logout',
       PROFILE: 'auth/profile',
     },
+    BLOG_LIST: 'blog_list',
   },
 };

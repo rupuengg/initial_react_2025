@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { IBlogEntity, IEntityStatusDataEntity } from 'entities';
 import { E_Data_Load_Status } from 'enums';
-import { DataApiPath, IApplicationState, IUseDispatch, getBlogList, useAppDispatch } from 'store';
+import { ApiPath, IApplicationState, IUseDispatch, getBlogList, useAppDispatch } from 'store';
 
 export interface ICustomBlog {
   isShowSingle?: boolean;
@@ -29,7 +29,7 @@ export const CustomBlog: React.FC<ICustomBlog> = ({ isShowSingle = false }) => {
   useEffect(() => {
     if (startRef.current.blogs === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, blogs: E_Data_Load_Status.PENDING };
-      dispatch(getBlogList(DataApiPath.blogs.toString()));
+      dispatch(getBlogList(ApiPath.PATH.BLOG_LIST.toString()));
     }
   }, [dispatch]);
 
