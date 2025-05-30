@@ -10,4 +10,5 @@ export const DataApiPath: { [x: string]: string | IEndpoint } = {
   sidebarNavigation: 'admin_menu',
   blogs: 'blog',
   menuGroupByType: 'menugroups/by/{type}',
+  users: 'users',
 };

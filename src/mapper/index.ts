@@ -1,11 +1,19 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
-import { ContactInfoEntityForm, IBaseForm, MenuGroupEntityForm, SiteConfigEntityForm } from 'forms';
+import { ContactInfoEntityForm, IBaseForm, MenuGroupEntityForm, SiteConfigEntityForm, UserEntityForm } from 'forms';
 import { JobSeekerEntityForm, MenuEntityForm } from 'forms';
 import { BlogEntityForm } from 'forms/BlogEntityForm';
-import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultSiteConfigEntity } from 'mock';
+import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultSiteConfigEntity, defaultUser } from 'mock';
 import { defaultBlog } from 'mock/defaultBlog';
 import { defaultMenuGroup } from 'mock/defaultMenuGroup';
-import { getBlogColumnSetting, getContactInfoColumnSetting, getJobSeekerColumnSetting, getMenuColumnSetting, getMenuGroupColumnSetting, getSiteConfigColumnSetting } from 'constant';
+import {
+  getBlogColumnSetting,
+  getContactInfoColumnSetting,
+  getJobSeekerColumnSetting,
+  getMenuColumnSetting,
+  getMenuGroupColumnSetting,
+  getSiteConfigColumnSetting,
+  getUserColumnSetting,
+} from 'constant';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
 import { ANAInfoModel, CommonEntity } from 'entities';
 import { E_Mapping_Data } from 'enums';
@@ -65,6 +73,8 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
       return getCondition(getMenuColumnSetting, Permission.CHASSIS_TYPE, MenuEntityForm, defaultMenu);
     case 'menu_group':
       return getCondition(getMenuGroupColumnSetting, Permission.CHASSIS_TYPE, MenuGroupEntityForm, defaultMenuGroup);
+    case 'users':
+      return getCondition(getUserColumnSetting, Permission.CHASSIS_TYPE, UserEntityForm, defaultUser);
     default:
       return getCondition(() => [], Permission.LOGIN);
   }

@@ -4,3 +4,4 @@ export * from './JobSeeker';
 export * from './Menu';
 export * from './MenuGroup';
 export * from './SiteConfig';
+export * from './Users';

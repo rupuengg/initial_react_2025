@@ -4,6 +4,7 @@ import { IJobSeekerEntity } from './JobSeekerEntity';
 import { IMenuGroupEntity } from './MenuGroupEntity';
 import { INavigation } from './Navigation';
 import { ISiteConfigEntity } from './SiteConfigEntity';
+import { IUser } from './User';
 
 export * from './ANAInfo';
 export * from './Banner';
@@ -20,4 +21,4 @@ export * from './SiteConfigEntity';
 export * from './TestimonialEntity';
 export * from './User';
 
-export type CommonEntity = INavigation | IContactInfoEntity | IJobSeekerEntity | ISiteConfigEntity | IBlogEntity | IMenuGroupEntity;
+export type CommonEntity = INavigation | IContactInfoEntity | IJobSeekerEntity | ISiteConfigEntity | IBlogEntity | IMenuGroupEntity | IUser;
