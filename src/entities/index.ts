@@ -8,6 +8,7 @@ import { IUser } from './User';
 
 export * from './ANAInfo';
 export * from './Banner';
+export * from './BasicConfigEntity';
 export * from './BlogEntity';
 export * from './ContactInfoEntity';
 export * from './EntityStatusDataEntity';

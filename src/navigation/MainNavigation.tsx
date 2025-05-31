@@ -6,7 +6,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { IEntityStatusDataEntity, INavigation } from 'entities';
 import { E_Data_Load_Status, E_Menu_Type } from 'enums';
 import { PhotoUtils } from 'utils';
-import { IApplicationState, IUseDispatch, getMenuGroup, useAppDispatch } from 'store';
+import { IApplicationState, IUseDispatch, getBasicConfig, getMenuGroup, useAppDispatch } from 'store';
 import { Login, PrivateRoute, Profile } from 'components';
 
 export const MainNavigation = () => {
@@ -34,6 +34,13 @@ export const MainNavigation = () => {
     if (isAdminBoard && startRef.current.sidebarNavigation === E_Data_Load_Status.NOT_YET_STARTED) {
       startRef.current = { ...startRef.current, sidebarNavigation: E_Data_Load_Status.PENDING };
       dispatch(getMenuGroup(E_Menu_Type.ADMIN_MENU));
+    }
+  }, [isAdminBoard, dispatch]);
+
+  useEffect(() => {
+    if (startRef.current.basicConfig === E_Data_Load_Status.NOT_YET_STARTED) {
+      startRef.current = { ...startRef.current, basicConfig: E_Data_Load_Status.PENDING };
+      dispatch(getBasicConfig());
     }
   }, [isAdminBoard, dispatch]);
 

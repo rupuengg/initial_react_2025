@@ -8,4 +8,5 @@ export enum E_FieldType {
   LEFT_TO_RIGHT = 'left-to-right-selection',
   RADIO = 'radio-box',
   URL_CAPTURE = 'url-capture',
+  SOCIAL_MEDIA = 'social-media',
 }

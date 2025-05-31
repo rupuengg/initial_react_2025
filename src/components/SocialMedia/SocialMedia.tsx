@@ -1,9 +1,18 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { E_Icon_Name } from 'enums';
+import { IApplicationState } from 'store';
 import { Icon } from 'components/Icon';
 
 export const SocialMedia = () => {
+  const { basicConfig } = useSelector((state: IApplicationState) => state.global);
+
+  const socialMediaLink = useMemo(() => {
+    if (basicConfig?.socialMediaLink) return JSON.parse(basicConfig?.socialMediaLink);
+    return null;
+  }, [basicConfig?.socialMediaLink]);
+
   const handleOpen = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     if (e) {
       e.preventDefault();
@@ -11,29 +20,45 @@ export const SocialMedia = () => {
     }
   }, []);
 
+  if (!basicConfig) return null;
+
   return (
     <div className='social-media'>
-      <Link to={'https://www.facebook.com/people/PanacheWorld-Interior/61576137862517/'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.FACEBOOK} />
-      </Link>
-      <Link to={'https://x.com/Panachew0rld'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.TWITTER} />
-      </Link>
-      <Link to={'https://www.instagram.com/panachew0rld'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.INSTAGRAM} />
-      </Link>
-      <Link to={'https://www.linkedin.com/company/panachwworldinterior'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.LINKDIN} />
-      </Link>
-      <Link to={'https://in.pinterest.com/panacheworldinterior'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.PINTEREST} />
-      </Link>
-      <Link to={'https://whatsapp.com/channel/0029VbAkBy1DOQIef5gQv40P'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.WHATSAPP} />
-      </Link>
-      <Link to={'https://www.youtube.com/@PanacheWorldInterior'} onClick={handleOpen}>
-        <Icon iconName={E_Icon_Name.YOUTUBE} />
-      </Link>
+      {socialMediaLink[E_Icon_Name.FACEBOOK] && (
+        <Link to={socialMediaLink[E_Icon_Name.FACEBOOK]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.FACEBOOK} />
+        </Link>
+      )}
+      {socialMediaLink[E_Icon_Name.TWITTER] && (
+        <Link to={socialMediaLink[E_Icon_Name.TWITTER]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.TWITTER} />
+        </Link>
+      )}
+      {socialMediaLink[E_Icon_Name.INSTAGRAM] && (
+        <Link to={socialMediaLink[E_Icon_Name.INSTAGRAM]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.INSTAGRAM} />
+        </Link>
+      )}
+      {socialMediaLink[E_Icon_Name.LINKDIN] && (
+        <Link to={socialMediaLink[E_Icon_Name.LINKDIN]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.LINKDIN} />
+        </Link>
+      )}
+      {socialMediaLink[E_Icon_Name.PINTEREST] && (
+        <Link to={socialMediaLink[E_Icon_Name.PINTEREST]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.PINTEREST} />
+        </Link>
+      )}
+      {socialMediaLink[E_Icon_Name.WHATSAPP] && (
+        <Link to={socialMediaLink[E_Icon_Name.WHATSAPP]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.WHATSAPP} />
+        </Link>
+      )}
+      {socialMediaLink[E_Icon_Name.YOUTUBE] && (
+        <Link to={socialMediaLink[E_Icon_Name.YOUTUBE]} onClick={handleOpen}>
+          <Icon iconName={E_Icon_Name.YOUTUBE} />
+        </Link>
+      )}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity, IUser } from 'entities';
+import { IBasicConfigEntity, IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity, IUser } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Menu_Type, E_Notification_Type } from 'enums';
 import { SessionUtils } from 'utils';
@@ -10,6 +10,7 @@ import {
   getAllGallery,
   getAllPhotos,
   getAllUnderConstructionPhotos,
+  getBasicConfig,
   getBlogList,
   getFeaturedGallery,
   getGalleryAllPhotos,
@@ -176,6 +177,9 @@ export const globalSlice = createSlice({
     setAuthProfile(draft: IGlobalState, action: PayloadAction<IUser>) {
       draft.authProfile = action.payload;
     },
+    setBasicConfig(draft: IGlobalState, action: PayloadAction<IBasicConfigEntity>) {
+      draft.basicConfig = action.payload;
+    },
   },
   extraReducers: (builder: ActionReducerMapBuilder<IGlobalState>) => {
     builder
@@ -226,6 +230,9 @@ export const globalSlice = createSlice({
       })
       .addCase(authProfile.fulfilled, (draft: IGlobalState, action: PayloadAction<IUser>) => {
         globalSlice.caseReducers.setAuthProfile(draft, action);
+      })
+      .addCase(getBasicConfig.fulfilled, (draft: IGlobalState, action: PayloadAction<IBasicConfigEntity>) => {
+        globalSlice.caseReducers.setBasicConfig(draft, action);
       });
   },
 });

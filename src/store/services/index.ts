@@ -1,3 +1,4 @@
+export * from './BasicConfigApi';
 export * from './BlogApi';
 export * from './EntityDataApi';
 export * from './GalleryApi';

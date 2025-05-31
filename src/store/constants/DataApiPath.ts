@@ -11,4 +11,5 @@ export const DataApiPath: { [x: string]: string | IEndpoint } = {
   blogs: 'blog',
   menuGroupByType: 'menugroups/by/{type}',
   users: 'users',
+  basic_config: 'basic_config',
 };

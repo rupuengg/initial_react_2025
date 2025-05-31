@@ -13,5 +13,6 @@ export const ApiPath = {
       PROFILE: 'auth/profile',
     },
     BLOG_LIST: 'blog_list',
+    BASIC_CONFIG: 'basic_config/by/',
   },
 };

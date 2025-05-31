@@ -18,6 +18,7 @@ export interface IEntityStatusDataEntity {
   testimonial?: E_Data_Load_Status;
   offers?: E_Data_Load_Status;
   blogs?: E_Data_Load_Status;
+  basicConfig?: E_Data_Load_Status;
 
   [x: string]: E_Data_Load_Status | undefined;
 }

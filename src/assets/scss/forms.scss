@@ -149,6 +149,54 @@
       }
     }
 
+    & .social_links {
+      display: flex;
+      column-gap: 30px;
+
+      & .inner-box {
+        overflow: scroll;
+        width: 100%;
+
+        & ul,
+        & li {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        & li {
+          padding: 4px 6px;
+          color: #000000;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+
+          & > div:first-of-type {
+            flex: 0 0 50px;
+          }
+
+          & > div:last-of-type {
+            flex: 0 0 calc(100% - 50px);
+            padding: 1px;
+            border: 1px solid #8a8a8a;
+          }
+
+          & svg {
+            width: 30px;
+            height: 30px;
+          }
+
+          &:hover {
+            color: #bb8f71;
+          }
+
+          & > span {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
     & .editor .ql-container.ql-snow {
       height: 400px;
     }

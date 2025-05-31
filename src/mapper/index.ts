@@ -1,8 +1,10 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
 import { ContactInfoEntityForm, IBaseForm, MenuGroupEntityForm, SiteConfigEntityForm, UserEntityForm } from 'forms';
 import { JobSeekerEntityForm, MenuEntityForm } from 'forms';
+import { BasicConfigEntityForm } from 'forms/BasicConfigEntityForm';
 import { BlogEntityForm } from 'forms/BlogEntityForm';
 import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultSiteConfigEntity, defaultUser } from 'mock';
+import { defaultBasicConfig } from 'mock/defaultBasicConfig';
 import { defaultBlog } from 'mock/defaultBlog';
 import { defaultMenuGroup } from 'mock/defaultMenuGroup';
 import {
@@ -15,6 +17,7 @@ import {
   getUserColumnSetting,
 } from 'constant';
 import { AclType, Permission, PermissionName } from 'constant/Ana';
+import { getBasicConfigColumnSetting } from 'constant/TablesColumnsSetting/BasicConfig';
 import { ANAInfoModel, CommonEntity } from 'entities';
 import { E_Mapping_Data } from 'enums';
 import { isPermissionExist } from 'utils';
@@ -75,6 +78,8 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
       return getCondition(getMenuGroupColumnSetting, Permission.CHASSIS_TYPE, MenuGroupEntityForm, defaultMenuGroup);
     case 'users':
       return getCondition(getUserColumnSetting, Permission.CHASSIS_TYPE, UserEntityForm, defaultUser);
+    case 'basic_config':
+      return getCondition(getBasicConfigColumnSetting, Permission.CHASSIS_TYPE, BasicConfigEntityForm, defaultBasicConfig);
     default:
       return getCondition(() => [], Permission.LOGIN);
   }

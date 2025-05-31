@@ -102,16 +102,16 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
 
   // Set item by ID
   useEffect(() => {
-    if (params.dataId && params.other && entityData.items[params.other]) {
-      setItem(entityData.items[params.other].list.find(i => i.id?.toString() === params.dataId));
-      setInitialItem(entityData.items[params.other].list.find(i => i.id?.toString() === params.dataId));
+    if (params.dataId && entrypoint && entityData.items[entrypoint]) {
+      setItem(entityData.items[entrypoint].list.find(i => i.id?.toString() === params.dataId));
+      setInitialItem(entityData.items[entrypoint].list.find(i => i.id?.toString() === params.dataId));
     } else {
       if (defaultEntity) {
         setItem(defaultEntity);
         setInitialItem(defaultEntity);
       }
     }
-  }, [type, params.other, params.dataId, entityData, defaultEntity]);
+  }, [type, entrypoint, params.dataId, entityData, defaultEntity]);
 
   const dropdownUpdater = useCallback(
     (fieldName: string, options: IOptions[]) => {

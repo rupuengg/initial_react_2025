@@ -6,6 +6,7 @@ import { IDropDownHelper, dropdownHelper } from 'helpers/dropdownHelper';
 import { IOptions } from 'store';
 import { IBaseForm } from './BaseForm';
 import { FieldLabel, FieldText, ImageUrl, LeftToRightSelection, RadioBox, SelectBox, SelectMulti, TagBox, TextBox, TextEditor, Textarea } from './fields';
+import { SocialLinksSelection } from './fields/SocialLinksSelection';
 
 interface IRenderForm {
   form?: IBaseForm[] | null;
@@ -64,6 +65,8 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
             return React.createElement(SelectMulti, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.LEFT_TO_RIGHT:
             return React.createElement(LeftToRightSelection, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
+          case E_FieldType.SOCIAL_MEDIA:
+            return React.createElement(SocialLinksSelection, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.RADIO:
             return React.createElement(RadioBox, { ...row, fieldValue: value, options: getOptions(dp, row), onChange });
           case E_FieldType.URL_CAPTURE:

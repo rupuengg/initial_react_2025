@@ -19,4 +19,5 @@ export const defaultEntityStatusDataEntity: IEntityStatusDataEntity = {
   testimonial: E_Data_Load_Status.NOT_YET_STARTED,
   offers: E_Data_Load_Status.NOT_YET_STARTED,
   blogs: E_Data_Load_Status.NOT_YET_STARTED,
+  basicConfig: E_Data_Load_Status.NOT_YET_STARTED,
 };
