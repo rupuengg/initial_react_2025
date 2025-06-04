@@ -6,6 +6,7 @@ import { INavigation } from './Navigation';
 import { ISiteConfigEntity } from './SiteConfigEntity';
 import { IUser } from './User';
 
+export * from './Address';
 export * from './ANAInfo';
 export * from './Banner';
 export * from './BasicConfigEntity';
@@ -18,6 +19,7 @@ export * from './MenuGroupEntity';
 export * from './Navigation';
 export * from './Offer';
 export * from './Photo';
+export * from './Project';
 export * from './SiteConfigEntity';
 export * from './TestimonialEntity';
 export * from './User';

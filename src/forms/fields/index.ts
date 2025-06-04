@@ -1,4 +1,5 @@
 export * from './CheckBox';
+export * from './DateBox';
 export * from './FieldLabel';
 export * from './FieldText';
 export * from './ImageUrl';

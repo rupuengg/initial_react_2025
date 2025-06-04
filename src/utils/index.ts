@@ -2,6 +2,7 @@ export * from './comparatorUtils';
 export * from './encodeUrlUtils';
 export * from './encryptionUtils';
 export * from './enumUtils';
+export * from './formUtils';
 export * from './isDevelopmentEnv';
 export * from './navigationUtils';
 export * from './permissionUtils';

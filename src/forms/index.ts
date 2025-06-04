@@ -4,6 +4,7 @@ export * from './ContactInfoEntityForm';
 export * from './JobSeekerEntityForm';
 export * from './MenuEntityForm';
 export * from './MenuGroupEntityForm';
+export * from './ProjectEntityForm';
 export * from './RenderForm';
 export * from './SiteConfigEntityForm';
 export * from './UserEntityForm';

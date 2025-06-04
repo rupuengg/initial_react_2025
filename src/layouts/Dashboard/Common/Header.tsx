@@ -1,6 +1,7 @@
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { SessionUtils } from 'utils';
 import { IUseDispatch, useAppDispatch } from 'store';
 import { authLogout } from 'store/thunk/authThunk';
 import { FontIcon, Logo } from 'components';
@@ -17,6 +18,7 @@ export const Header = () => {
   const handleLoggedOut = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
+      SessionUtils().clearToken();
       dispatch(authLogout());
       setTimeout(() => {
         navigate('/admin/login');

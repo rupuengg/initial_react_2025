@@ -1,9 +1,9 @@
 import { ColDef, ColGroupDef } from 'ag-grid-community';
-import { ContactInfoEntityForm, IBaseForm, MenuGroupEntityForm, SiteConfigEntityForm, UserEntityForm } from 'forms';
+import { ContactInfoEntityForm, IBaseForm, MenuGroupEntityForm, ProjectEntityForm, SiteConfigEntityForm, UserEntityForm } from 'forms';
 import { JobSeekerEntityForm, MenuEntityForm } from 'forms';
 import { BasicConfigEntityForm } from 'forms/BasicConfigEntityForm';
 import { BlogEntityForm } from 'forms/BlogEntityForm';
-import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultSiteConfigEntity, defaultUser } from 'mock';
+import { defaultContactInfo, defaultJobSeeker, defaultMenu, defaultProject, defaultSiteConfigEntity, defaultUser } from 'mock';
 import { defaultBasicConfig } from 'mock/defaultBasicConfig';
 import { defaultBlog } from 'mock/defaultBlog';
 import { defaultMenuGroup } from 'mock/defaultMenuGroup';
@@ -13,6 +13,7 @@ import {
   getJobSeekerColumnSetting,
   getMenuColumnSetting,
   getMenuGroupColumnSetting,
+  getProjectColumnSetting,
   getSiteConfigColumnSetting,
   getUserColumnSetting,
 } from 'constant';
@@ -80,6 +81,8 @@ function getMappingData(mappingData: E_Mapping_Data, entrypoint?: string, anaInf
       return getCondition(getUserColumnSetting, Permission.CHASSIS_TYPE, UserEntityForm, defaultUser);
     case 'basic_config':
       return getCondition(getBasicConfigColumnSetting, Permission.CHASSIS_TYPE, BasicConfigEntityForm, defaultBasicConfig);
+    case 'projects':
+      return getCondition(getProjectColumnSetting, Permission.CHASSIS_TYPE, ProjectEntityForm, defaultProject);
     default:
       return getCondition(() => [], Permission.LOGIN);
   }

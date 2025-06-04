@@ -1,5 +1,6 @@
 export enum E_FieldType {
   TEXT = 'text',
+  DATE = 'date',
   EDITOR = 'editor',
   TEXTAREA = 'textarea',
   TAG = 'tag',

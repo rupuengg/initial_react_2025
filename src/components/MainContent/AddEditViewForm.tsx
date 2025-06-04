@@ -8,7 +8,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { CommonEntity } from 'entities';
 import { E_Data_Save_Status, E_Form_Type, E_Operation_Permission } from 'enums';
 import { useANAModulePermission, useTableMapper } from 'hooks';
-import { UrlUtils } from 'utils';
+import { FormUtils, UrlUtils } from 'utils';
 import { IApplicationState, IOptions, IUseDispatch, saveData, updateData, useAppDispatch } from 'store';
 import { EntityDataActions } from 'store/slices/entityDataSlice';
 import { Breadcrumb, FontIcon } from 'components';
@@ -142,10 +142,12 @@ export const AddEditViewForm: React.FC<IAddEditViewForm> = ({ type }) => {
       }
 
       return {
-        ...previousData,
-        // ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
-        // ...(fieldName === 'items' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
-        // [fieldName]: fieldValue,
+        ...FormUtils().groupIntoPairs({
+          ...previousData,
+          ...(fieldName === 'ogImageUrl' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
+          ...(fieldName === 'items' ? { ogImageType: otherValue.mime, ogImageWidth: otherValue.width, ogImageHeight: otherValue.height } : {}),
+          [fieldName]: fieldValue,
+        } as any),
       };
     });
   }, []);

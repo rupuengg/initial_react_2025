@@ -3,9 +3,10 @@ import React, { useCallback, useMemo, useRef } from 'react';
 import { IEntityStatusDataEntity } from 'entities';
 import { E_Data_Load_Status, E_FieldType, E_Form_Type } from 'enums';
 import { IDropDownHelper, dropdownHelper } from 'helpers/dropdownHelper';
+import { FormUtils } from 'utils';
 import { IOptions } from 'store';
 import { IBaseForm } from './BaseForm';
-import { FieldLabel, FieldText, ImageUrl, LeftToRightSelection, RadioBox, SelectBox, SelectMulti, TagBox, TextBox, TextEditor, Textarea } from './fields';
+import { DateBox, FieldLabel, FieldText, ImageUrl, LeftToRightSelection, RadioBox, SelectBox, SelectMulti, TagBox, TextBox, TextEditor, Textarea } from './fields';
 import { SocialLinksSelection } from './fields/SocialLinksSelection';
 
 interface IRenderForm {
@@ -44,7 +45,8 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
 
   const getField = useCallback(
     (row: IBaseForm, colIndex: number, rowIndex: number) => {
-      const value = entity && row.fieldName ? entity[row.fieldName] : '';
+      const value = FormUtils().getValue(row.fieldName, entity);
+      // const value = entity && row.fieldName ? entity[row.fieldName] : '';
       if (isReadable) {
         return [
           React.createElement(FieldLabel, { key: colIndex + '-' + rowIndex + '-label', fieldLabel: row.fieldLabel }, row.fieldLabel),
@@ -55,6 +57,8 @@ export const RenderForm: React.FC<IRenderForm> = ({ form, entity, isReadable, dp
         switch (row.fieldType) {
           case E_FieldType.TEXT:
             return React.createElement(TextBox, { ...row, fieldValue: value, onChange });
+          case E_FieldType.DATE:
+            return React.createElement(DateBox, { ...row, fieldValue: value, onChange });
           case E_FieldType.TEXTAREA:
             return React.createElement(Textarea, { ...row, fieldValue: value, onChange });
           case E_FieldType.EDITOR:
