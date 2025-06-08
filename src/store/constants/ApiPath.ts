@@ -14,5 +14,6 @@ export const ApiPath = {
     },
     BLOG_LIST: 'blog_list',
     BASIC_CONFIG: 'basic_config/by/',
+    QUERY: 'query',
   },
 };

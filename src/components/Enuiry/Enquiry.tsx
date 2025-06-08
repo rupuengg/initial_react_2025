@@ -1,22 +1,18 @@
 import { defaultContactInfo } from 'mock';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { IContactInfoEntity } from 'entities';
-import { useTableMapper } from 'hooks';
-import { GlobalActions, IApplicationState, IUseDispatch, saveData, useAppDispatch } from 'store';
+import { IUseDispatch, raiseQuery, useAppDispatch } from 'store';
 
 export const Enquiry = () => {
-  const { isContactFormSubmit } = useSelector((state: IApplicationState) => state.global);
   const dispatch: IUseDispatch = useAppDispatch();
   const [contactForm, setContactForm] = useState<IContactInfoEntity>(defaultContactInfo);
-
-  const { mapper } = useTableMapper('contactInfo');
+  const [isContactFormSubmit, setIsContactFormSubmit] = useState<boolean | undefined>();
 
   useEffect(() => {
     if (isContactFormSubmit) {
       setContactForm({ ...defaultContactInfo });
       setTimeout(() => {
-        dispatch(GlobalActions.resetContactForm());
+        setIsContactFormSubmit(false);
       }, 2000);
     }
   }, [isContactFormSubmit, dispatch]);
@@ -32,9 +28,12 @@ export const Enquiry = () => {
   const handleSubmit = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
-      dispatch(saveData({ ...mapper, data: contactForm }));
+      dispatch(raiseQuery(contactForm));
+      setTimeout(() => {
+        setIsContactFormSubmit(true);
+      }, 2000);
     },
-    [contactForm, mapper, dispatch]
+    [contactForm, dispatch]
   );
 
   return (

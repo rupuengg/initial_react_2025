@@ -93,7 +93,6 @@ export interface IGlobalState {
   sidebarNavigations: INavigation[];
   offers: IOffer[];
   testimonial: ITestimonialEntity[];
-  isContactFormSubmit?: boolean;
 
   projects: {
     [x: string]: IProject;

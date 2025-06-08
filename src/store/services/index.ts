@@ -6,3 +6,4 @@ export * from './GlobalApi';
 export * from './MenuGroupApi';
 export * from './MenuGroupApi';
 export * from './PhotoApi';
+export * from './QueryApi';

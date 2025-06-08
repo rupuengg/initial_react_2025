@@ -84,12 +84,6 @@ export const globalSlice = createSlice({
     setEntryPoint(draft: IGlobalState, action: PayloadAction<{ entrypoint: string }>) {
       draft.entrypoint = action.payload.entrypoint;
     },
-    submitContactForm(draft: IGlobalState) {
-      draft.isContactFormSubmit = true;
-    },
-    resetContactForm(draft: IGlobalState) {
-      draft.isContactFormSubmit = false;
-    },
     onOpenMFE(draft: IGlobalState, action: PayloadAction<INavigation>) {
       const path = findPath(draft.sidebarNavigations, 'title', action.payload.entrypoint);
 
