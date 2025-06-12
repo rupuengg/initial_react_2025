@@ -1,7 +1,5 @@
-import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
-import { faMailReply } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SocialMedia } from 'components';
+import { E_Icon_Name } from 'enums';
+import { Icon, SocialMedia } from 'components';
 
 export const Topper = () => {
   return (
@@ -10,18 +8,14 @@ export const Topper = () => {
         <div className='siteCssWidth1200'>
           <div className='contactInfo'>
             <div className='child'>
-              <span>
-                <FontAwesomeIcon icon={faMailReply} />
-              </span>
+              <Icon iconName={E_Icon_Name.EMAIL} style={{ display: 'inline-flex' }} />
               <a href='mailto:shabadinteriors@gmail.com'>sales@panacheworld.in</a>
             </div>
             <div className='child'>
               <SocialMedia />
               <div className='phone'>
-                <span>
-                  <FontAwesomeIcon icon={faPhoneVolume} />
-                </span>
-                <a href='tel:9810681281'>+91-9599385377</a>
+                <Icon iconName={E_Icon_Name.PHONE} style={{ display: 'inline-flex' }} />
+                <a href='tel:9599385377'>+91-9599385377</a>
               </div>
             </div>
           </div>

@@ -6,4 +6,7 @@ export enum E_Icon_Name {
   WHATSAPP = 'whatsapp',
   PINTEREST = 'pinterest',
   YOUTUBE = 'youtube',
+  EMAIL = 'email',
+  EMAIL_OPEN = 'emailOpen',
+  PHONE = 'phone',
 }

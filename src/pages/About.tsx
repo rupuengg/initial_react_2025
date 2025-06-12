@@ -1,4 +1,4 @@
-import our_work_living_room from 'assets/images/why_choose/our_work_living_room.jpg';
+import { IKImage } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
 import { BannerList } from 'components';
 
@@ -132,7 +132,7 @@ export const About = () => {
               </div>
             </div>
             <div className='image'>
-              <img alt='our work living room' src={our_work_living_room} />
+              <IKImage title='our work living room' alt='our work living room' urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/why_choose/our_work_living_room.jpg`} />
             </div>
           </div>
         </div>

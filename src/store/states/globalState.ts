@@ -1,31 +1,26 @@
-import banner1 from '../../assets/images/banner/banner1.jpg';
-import banner2 from '../../assets/images/banner/banner2.jpg';
-import banner3 from '../../assets/images/banner/banner3.jpg';
-import banner4 from '../../assets/images/banner/banner4.jpg';
-import banner5 from '../../assets/images/banner/banner5.jpg';
 import { IBanner, IBasicConfigEntity, IBlogEntity, IGallery, INavigation, IOffer, IPhoto, ITestimonialEntity, IUser } from 'entities';
 import { IMenuGroupEntity } from 'entities';
 import { E_Notification_Type } from 'enums';
 
 const banners = [
   {
-    img: banner1,
+    img: 'banner1.jpg',
     txt: 'our work living room',
   },
   {
-    img: banner2,
+    img: 'banner2.jpg',
     txt: 'our work living room',
   },
   {
-    img: banner3,
+    img: 'banner3.jpg',
     txt: 'our work living room',
   },
   {
-    img: banner4,
+    img: 'banner4.jpg',
     txt: 'our work living room',
   },
   {
-    img: banner5,
+    img: 'banner5.jpg',
     txt: 'our work living room',
   },
 ];

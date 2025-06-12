@@ -1,8 +1,3 @@
-import defaultUser from 'assets/images/testimonial/default.svg';
-import kitchen_left from 'assets/images/why_choose/kitchen_left.jpg';
-import kitchen_right from 'assets/images/why_choose/kitchen_right.jpg';
-import living_area from 'assets/images/why_choose/living_area.jpg';
-import our_work_living_room from 'assets/images/why_choose/our_work_living_room.jpg';
 import { IKImage } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
 import { defaultEntityStatusDataEntity } from 'mock';
@@ -125,13 +120,19 @@ export const Home = () => {
               </p>
             </div>
             <div className='image'>
-              <img alt='our work living room' src={our_work_living_room} />
+              <IKImage title='our work living room' alt='our work living room' urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/why_choose/our_work_living_room.jpg`} />
             </div>
           </div>
           <div className='box marginTop50'>
             <div className='image'>
-              <img style={{ width: '50%' }} alt='our work living room' src={kitchen_left} />
-              <img style={{ width: '50%' }} alt='our work living room' src={kitchen_right} />
+              <IKImage style={{ width: '50%' }} title='our work living room' alt='our work living room' urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/why_choose/kitchen_left.jpg`} />
+              <IKImage
+                style={{ width: '50%' }}
+                title='our work living room'
+                alt='our work living room'
+                urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'}
+                path={`assets/why_choose/kitchen_right.jpg`}
+              />
             </div>
             <div className='text'>
               <h3 className='header3'>our kitchen</h3>
@@ -150,7 +151,7 @@ export const Home = () => {
               </p>
             </div>
             <div className='image'>
-              <img alt='our work living room' src={living_area} />
+              <IKImage title='our work living room' alt='our work living room' urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/why_choose/living_area.jpg`} />
             </div>
           </div>
         </div>
@@ -164,7 +165,7 @@ export const Home = () => {
 
           <article className='article'>
             {offers.map((offer, index) => (
-              <OfferItem key={`list-${index}`} offer={offer} />
+              <OfferItem key={`list-${index}`} offer={offer} selected={offer.options[0]} />
             ))}
           </article>
         </div>
@@ -280,11 +281,11 @@ export const Home = () => {
               .map((item: ITestimonialEntity, index: number) => (
                 <div key={index} className='item-list'>
                   <div className='inner-box'>
-                    <div className='img'></div>
+                    <div className='img' style={{ backgroundImage: 'url("https://ik.imagekit.io/yz7i3lbbn/assets/testimonial/background.jpg")' }}></div>
                     <div className='content'>
                       <p className='para'>{item.text}</p>
                       <div className='img-box'>
-                        <img alt={item.name} src={defaultUser} />
+                        <IKImage title={item.name} alt={item.name} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/testimonial/default.svg`} />
                       </div>
                     </div>
                   </div>

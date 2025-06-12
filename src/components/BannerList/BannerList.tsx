@@ -34,7 +34,7 @@ export const BannerList: React.FC<IBannerList> = ({ isHideAnimation }) => {
     <div className='bannerBox'>
       {banners.map((item, index) => (
         <div key={`banner-${index}`} className={`bannerItem ${index === activeIndex ? 'active' : ''}`}>
-          <div className='slideItem' style={{ backgroundImage: 'url(' + item.img + ')' }}></div>
+          <div className='slideItem' style={{ backgroundImage: 'url(https://ik.imagekit.io/yz7i3lbbn/assets/banner/' + item.img + ')' }}></div>
         </div>
       ))}
     </div>

@@ -1,19 +1,20 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+import { IKImage } from 'imagekitio-react';
 import React, { useState } from 'react';
-import { IOffer } from 'entities';
+import { IOffer, IOfferItem } from 'entities';
 
 export interface IOfferItemProps {
   offer: IOffer;
+  selected: IOfferItem;
 }
 
-export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
-  const [currentOption, setCurrentOption] = useState(0);
+export const OfferItem: React.FC<IOfferItemProps> = ({ offer, selected }) => {
+  const [currentOption, setCurrentOption] = useState<IOfferItem>(selected);
 
   const getHeader = () => {
     return (
       <>
         <section>
-          <img src={require('assets/images/' + offer.floor_image)} alt='2bhk interiors' />
+          <IKImage title={offer.title} alt={offer.title} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/${offer.floor_image}`} />
         </section>
         <figcaption>
           <h2 className='header2'>{offer.title.toUpperCase()}</h2>
@@ -33,9 +34,9 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
         {offer.options.map((option, index) => (
           <p
             key={`list-${index}`}
-            className={currentOption === index ? 'active' : ''}
-            onClick={() => setCurrentOption(index)}
-            style={{ backgroundImage: currentOption === index ? `url("${require('../../assets/images/offer/active.png')}")` : 'none' }}
+            className={currentOption.title === option.title ? 'active' : ''}
+            onClick={() => setCurrentOption(option)}
+            style={{ backgroundImage: currentOption.title === option.title ? `url("https://ik.imagekit.io/yz7i3lbbn/assets/offer/active.png")` : 'none' }}
           >
             {option.title}
           </p>
@@ -45,22 +46,33 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
   };
 
   const getRightContent = () => {
-    const { title, img, items } = offer.options[currentOption];
-
     return (
-      <article className='rightbox' style={{ display: 'block' }}>
-        <img alt='Modular kitchen' src={require('assets/images/' + img)} />
-        <hr />
-        <h3 className='header3'>{title}</h3>
-        <ul>
-          {items.map((item, index) => (
-            <li key={`item-${index}`}>{item}</li>
-          ))}
-        </ul>
-      </article>
+      <section className='w-1/2'>
+        {offer.options.map(option => (
+          <article key={option.title} className='rightbox' style={{ display: currentOption.title === option.title ? 'block' : 'none' }}>
+            <IKImage title={option.title} alt={option.title} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/${option.img}`} />
+            <hr />
+            <h3 className='header3'>{option.title}</h3>
+            <ul>{option.items?.map((item, index) => <li key={`item-${index}`}>{item}</li>)}</ul>
+          </article>
+        ))}
+      </section>
     );
+    // return (
+    //   <section className='w-1/2'>
+    //     {offer.options.map(({ title, img, items }) => {
+    //       <article key={title} className='rightbox' style={{ display: currentOption.title === title ? 'block' : 'none' }}>
+    //         <IKImage title={title} alt={title} urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/${img}`} />
+    //         <hr />
+    //         <h3 className='header3'>{title}</h3>
+    //         <ul>{items?.map((item, index) => <li key={`item-${index}`}>{item}</li>)}</ul>
+    //       </article>;
+    //     })}
+    //   </section>
+    // );
   };
 
+  console.log('currentOption', currentOption);
   return (
     <figure className='offer'>
       {getHeader()}
@@ -69,7 +81,7 @@ export const OfferItem: React.FC<IOfferItemProps> = ({ offer }) => {
         <div className='w-full'>
           <aside className='flex'>
             {getLeftNav()}
-            <section className='w-1/2'>{getRightContent()}</section>
+            {getRightContent()}
           </aside>
         </div>
       </aside>

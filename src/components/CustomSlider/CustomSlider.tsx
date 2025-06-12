@@ -1,3 +1,4 @@
+import { IKImage } from 'imagekitio-react';
 import React, { useEffect, useState } from 'react';
 import './CustomSlider.scss';
 
@@ -64,7 +65,7 @@ export const CustomSlider: React.FC<ICustomSlider> = ({ items }) => {
       {items.map((item, index) => {
         return (
           <div className={'slider_item slider_item-active-' + (activeIndex + 1)} key={index}>
-            <img key={index} src={item.image} alt={item.title} />
+            <IKImage urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/banner/${item.image}`} />
           </div>
         );
       })}
