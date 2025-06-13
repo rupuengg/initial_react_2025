@@ -1,4 +1,4 @@
-import IslandResort_interiordesign_after from 'assets/images/about/IslandResort_interiordesign_after.jpg';
+import { IKImage } from 'imagekitio-react';
 import { DefaultLayout } from 'layouts';
 
 export const Services = () => {
@@ -14,7 +14,7 @@ export const Services = () => {
             to enjoy their lives, we will take into consideration our client’s needs, preferences and living habits. With this information, we’ll work together with each client, giving them
             professional advice and helping them create their ideal house.
           </p>
-          <img src={IslandResort_interiordesign_after} alt='2bhk interiors' />
+          <IKImage title='Services' alt='Services' urlEndpoint={'https://ik.imagekit.io/yz7i3lbbn/'} path={`assets/about/IslandResort_interiordesign_after.jpg`} />
         </div>
       </div>
     </DefaultLayout>
